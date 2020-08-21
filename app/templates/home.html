@@ -1,9 +1,30 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-<link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.17.1/dist/bootstrap-table.min.css">
+<!-- 
+<script type=text/javascript>
+    $(function() {
+      $('a#test').bind('click', function() {
+        $.getJSON('/background_process_test',
+            function(data) {
+          //do nothing
+        });
+        return false;
+      });
+    });
+</script>
+
+
+//button
+<div class='container'>
+<h3>Test</h3>
+    <form>
+        <a href=# id=test><button class='btn btn-default'>Test</button></a>
+    </form>
+
+</div>
+ -->
+
 
     <div>Here is some data:</div>
     <div class="container">
@@ -38,6 +59,7 @@
             // your custom ajax request here
             function ajaxRequest(params) {
             var url = 'https://examples.wenzhixin.net.cn/examples/bootstrap_table/data'
+            // console.log(params)
             $.get(url + '?' + $.param(params.data)).then(function (res) {
                 params.success(res)
             })
