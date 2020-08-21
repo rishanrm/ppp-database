@@ -5,6 +5,24 @@
     <div class="container">
 
         <table
+            id="table"
+            data-toggle="table"
+            data-url="https://examples.wenzhixin.net.cn/examples/bootstrap_table/data"
+            data-height="400"
+            data-side-pagination="server"
+            data-pagination="true">
+            <thead>
+                <tr>
+                    <th data-field="id">ID</th>
+                    <th data-field="name">Item Name</th>
+                    <th data-field="price">Item Price</th>
+                </tr>
+            </thead>
+        </table>
+
+
+<!-- 
+        <table
         >
             <thead>
                 <tr>
@@ -22,7 +40,11 @@
                     </tr>
                 {% endfor %}
             </tbody>
-        </table>
+        </table> -->
+
+
+
+
     </div>
 
 {% endblock content %}

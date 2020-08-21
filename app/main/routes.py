@@ -1,4 +1,4 @@
-from flask import render_template, request, Blueprint, current_app
+from flask import render_template, request, Blueprint, current_app, send_from_directory
 #from app.models import Post
 from app import db
 #from app import app
@@ -24,3 +24,7 @@ def about():
 @main.route("/index")
 def index():
     return render_template('index.html')
+
+@main.route("/data")
+def data():
+    return render_template('data.html')

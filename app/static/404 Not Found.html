@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!-- saved from url=(0038)http://localhost:5000/static/book.json -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>404 Not Found</title>
+<script>(function () {var embed = true;var playbackSet;var quality = 'highres'; onYouTubePlayerReady = function (player) {
+    function onPopupChange(e) {
+        quality = e.detail;
+        updateQuality();
+    };
+    document.addEventListener('updateQ', onPopupChange);
+    playbackSet = false;
+    extPlayer = player;
+    extPlayer.addEventListener("onStateChange", function (newState) {
+        if (newState == 3 && !playbackSet) {
+            updateQuality();
+        }
+        if (newState == -1) {
+            playbackSet = false;
+        }
+        if (newState == 5) {
+            embed = true;
+        }
+    });
+
+    extPlayer.addEventListener("onPlaybackQualityChange", function (event) {
+        if (embed) {
+            if (extPlayer.getAvailableQualityLevels === null) {
+                document.removeEventListener("updateQ", onPopupChange);
+                extPlayer = document.getElementById('movie_player');
+            }
+            var avaliableQuality = extPlayer.getAvailableQualityLevels();
+            var tq = (avaliableQuality.indexOf(quality) == -1) ? avaliableQuality[0] : quality;
+            var qualIsCorrect = (tq === extPlayer.getPlaybackQuality());
+            if (!qualIsCorrect) {
+                updateQuality();
+            }
+            embed = false;
+        }
+    });
+    updateQuality();
+}; function updateQuality() {
+    var avaliableQuality = extPlayer.getAvailableQualityLevels();
+    var q = (avaliableQuality.length && avaliableQuality.indexOf(quality) == -1) ? avaliableQuality[0] : quality;
+    var playerState = extPlayer.getPlayerState();
+    playbackSet = true;
+    var now = new Date().getTime();
+    var saved_q = {
+        creation: now,
+        data: q,
+        expiration: now + 2592000000 // one month
+    };
+    localStorage['yt-player-quality'] = JSON.stringify(saved_q);
+    extPlayer.setPlaybackQuality(q);
+};})()</script><style>@media print {#ghostery-purple-box {display:none !important}}</style></head><body class="vsc-initialized"><h1>Not Found</h1>
+<p>The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.</p>
+</body><div id="__genieContainer" style="all: initial;"></div></html>
