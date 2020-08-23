@@ -27,8 +27,11 @@ def index():
 
 @main.route("/data")
 def data():
-    path = './static/example_copy.json'
-    return path
+    # path = './static/example_copy.json'
+    # return path
+    all_data = db.Table(Config.TABLE_NAME, db.metadata, autoload=True, autoload_with=db.engine)
+    data = db.session.query(all_data).all()
+    return jsonify(data)
 
 @main.route("/get_data")
 def get_data():
