@@ -2,13 +2,41 @@
 
 {% block content %}
 
+
+<h1>Btn2</h1>
+<div id='p2'></div>
+<button id="btn2"> Button2</button>
+<script type="text/javascript">
+    document.getElementById('btn2').addEventListener('click', consoleLog);
+
+    function consoleLog(){
+        console.log('Clicked it')
+        var xhr = new XMLHttpRequest();
+
+        xhr.open('GET', 'example_copy.json', true);
+
+        xhr.onload = function(){
+            if(this.status == 200){
+                console.log(this.responseText)
+                document.getElementById('p2').innerHTML = 
+                this.responseText;
+            }
+        }
+
+        xhr.send();
+    }
+</script>
+
+
+
+
     <div>Here is some data:</div>
     <div class="container">
 
         <table
             id="tablex"
             data-toggle="table"
-            data-ajax="ajaxRequest"
+            data-ajax="ajaxRequest2"
             data-height="400"
             data-side-pagination="server"
             data-pagination="true">
@@ -28,11 +56,44 @@
 
         <script>
             // your custom ajax request here
+            function ajaxRequest2(params) {
+
+            // var xhr = new XMLHttpRequest();
+            // xhr.open('GET', 'example_copy.json', true);
+
+            // xhr.onload = function (res) {
+            //     params.success(res)
+            // }
+            // xhr.send();
+
+
+            $.getJSON("example_copy.js", function(result){
+                $.each(result, function(i, field){
+                $("div").append(field + " ");
+                });
+            });
+
+
+
+            // var url = 'https://examples.wenzhixin.net.cn/examples/bootstrap_table/data'
+            // console.log(params)
+            // $.get(url + '?' + $.param(params.data)).then(function (res) {
+            //     params.success(res)
+            //     console.log(url + '?' + $.param(params.data))
+            // });
+            }
+        </script>
+
+
+
+        <script>
+            // your custom ajax request here
             function ajaxRequest(params) {
             var url = 'https://examples.wenzhixin.net.cn/examples/bootstrap_table/data'
             console.log(params)
             $.get(url + '?' + $.param(params.data)).then(function (res) {
                 params.success(res)
+                console.log($.get(url + '?' + $.param(params.data)))
             })
 ;
             }

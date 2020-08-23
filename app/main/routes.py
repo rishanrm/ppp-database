@@ -27,7 +27,8 @@ def index():
 
 @main.route("/data")
 def data():
-    return render_template('data.html')
+    path = './static/example_copy.json'
+    return path
 
 @main.route("/get_data")
 def get_data():
