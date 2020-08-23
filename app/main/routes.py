@@ -39,3 +39,7 @@ def get_data():
     data = db.session.query(all_data).all()
     csv_column_headers = [1,2,3,4]
     return jsonify({'data': render_template('get_data.html', data=data, headers = csv_column_headers)})
+
+@main.route("/complete")
+def complete():
+    return render_template('complete.html')
