@@ -1,4 +1,4 @@
-from flask import render_template, request, Blueprint, current_app, send_from_directory
+from flask import render_template, request, Blueprint, current_app, send_from_directory, jsonify
 #from app.models import Post
 from app import db
 #from app import app
@@ -28,3 +28,10 @@ def index():
 @main.route("/data")
 def data():
     return render_template('data.html')
+
+@main.route("/get_data")
+def get_data():
+    all_data = db.Table(Config.TABLE_NAME, db.metadata, autoload=True, autoload_with=db.engine)
+    data = db.session.query(all_data).all()
+    csv_column_headers = [1,2,3,4]
+    return jsonify({'data': render_template('get_data.html', data=data, headers = csv_column_headers)})
