@@ -36,7 +36,7 @@
     function consoleLog(){
         console.log('Clicked it')
         // your custom ajax request here
-        function ajaxRequest4() {
+        function ajaxRequest40() {
             var url = '/data'
             $.get(url).then(function (res) {
                 params.success(res)
@@ -54,7 +54,7 @@
         <table
             id="tablex"
             data-toggle="table"
-            data-ajax="ajaxRequest"
+            data-ajax="ajaxRequest4"
             data-height="400"
             data-side-pagination="server"
             data-pagination="true">
@@ -70,22 +70,37 @@
 
         <script>
             // your custom ajax request here
+            //
+            // Data is successfully input in table here but it is from a static source
+            //
+            //
             function ajaxRequest2(params) {
+            var url = 'http://localhost:5000/data'
+            console.log(params)
 
-            // var xhr = new XMLHttpRequest();
-            // xhr.open('GET', 'example_copy.json', true);
-
-            // xhr.onload = function (res) {
-            //     params.success(res)
-            // }
-            // xhr.send();
-
-
-            $.getJSON("example_copy.js", function(result){
-                $.each(result, function(i, field){
-                $("div").append(field + " ");
-                });
+            fetch(url)
+            .then(response => response.json())
+            .then(jsonResponse => {
+            console.log(jsonResponse);
+            params.success(jsonResponse)
             });
+
+
+
+//             $.get(url).then(function (res) {
+//                 params.success(res)
+//                 console.log(res)
+//                 console.log($.get(url + '?' + $.param(params.data)))
+//             })
+// ;
+            }
+
+
+            // $.getJSON("http://localhost:5000/example_copy.json", function(result){
+            //     $.each(result, function(i, field){
+            //     $("div").append(field + " ");
+            //     });
+            // });
 
             // var url = 'https://examples.wenzhixin.net.cn/examples/bootstrap_table/data'
             // console.log(params)
@@ -93,11 +108,14 @@
             //     params.success(res)
             //     console.log(url + '?' + $.param(params.data))
             // });
-            }
         </script>
 
     <script>
         // your custom ajax request here
+        //
+        // Data is successfully rendered at this URL from the DB but it is in the wrong format
+        //
+        //
         function ajaxRequest3(params) {
         var url = '/data'
         console.log(params)
@@ -113,16 +131,45 @@
 
         <script>
             // your custom ajax request here
+            //
+            // Data is successfully input in table here but it is from a static source
+            //
+            //
             function ajaxRequest(params) {
             var url = 'https://examples.wenzhixin.net.cn/examples/bootstrap_table/data'
             console.log(params)
+            console.log(url + '?' + $.param(params.data))
             $.get(url + '?' + $.param(params.data)).then(function (res) {
                 params.success(res)
+                console.log(res)
                 console.log($.get(url + '?' + $.param(params.data)))
             })
 ;
             }
         </script>
+
+<script>
+    // your custom ajax request here
+    //
+    // Data is successfully input in table here from a local static source
+    //
+    //
+    function ajaxRequest4(params) {
+    var url = '/data_test'
+    console.log(params)
+    $.get(url + '?' + $.param(params.data)).then(function (res) {
+        params.success(res)
+        console.log(res)
+    })
+;
+    }
+</script>
+
+
+
+
+
+
 
 <!-- 
         <table

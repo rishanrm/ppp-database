@@ -23,7 +23,7 @@ class Config:
 
     """POSTGRES DATABASE"""
     #TODO: Change back to environment variable
-    RESET_DB = False
+    RESET_DB = True
     POSTGRES_HOST = "localhost"
     POSTGRES_USER = "rishan"
     POSTGRES_PASSWORD = "IamstrongPG18"

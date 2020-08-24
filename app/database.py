@@ -11,6 +11,10 @@ from psycopg2.extensions import quote_ident
 from google.cloud import storage
 from flask import current_app
 
+
+from psycopg2.extras import RealDictCursor
+
+
 #from config import Config
 from app.config import Config
 
@@ -157,10 +161,10 @@ CREATE TABLE IF NOT EXISTS {table_name}(
             db: Connection to the database
         """
 
-        print("Checking for the database...")
-        DatabaseInitialization.reset_database(db_name, reset_db)
-        DatabaseInitialization.check_database(db_name)
-        DatabaseInitialization.check_data_table(db_name, table_name)
+        print("Checking for the database... UNCOMMENT OUT THESE NEXT 3 LINES")
+#        DatabaseInitialization.reset_database(db_name, reset_db)
+#        DatabaseInitialization.check_database(db_name)
+#        DatabaseInitialization.check_data_table(db_name, table_name)
         
         db = DatabaseConnection(db_name, table_name)
         return db
@@ -177,7 +181,7 @@ class DatabaseConnection():
                 password=Config.POSTGRES_PASSWORD,
                 port=Config.POSTGRES_PORT
             )
-            self.my_cursor = self.my_connection.cursor()
+            self.my_cursor = self.my_connection.cursor(cursor_factory=RealDictCursor)
             self.table_name = table_name
         except (Exception, psycopg2.Error) as error:
             print("Error while fetching data from PostgreSQL", error)
@@ -268,15 +272,16 @@ class DatabaseConnection():
             [limit])
         results = self.my_cursor.fetchall()
 
-        for result in results:
-            print("")
-            for item in result:
-                print(item)
+        # for result in results:
+        #     print("")
+        #     for item in result:
+        #         print(item)
 
         return results
 
-    def fetch_from_db(self, limit=None, sort_desc=None):
+    def fetch_from_db(self, args, limit=None, sort_desc=None):
         #Inputs
+        print(args)
         limit = 5
         sort_desc = True
         sort_by_column = 'ad_requests'

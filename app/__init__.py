@@ -8,9 +8,8 @@ from app.database import DatabasePopulation, DatabaseInitialization
 db = DatabaseInitialization.initialize_db(
     Config.DB_NAME, Config.TABLE_NAME, Config.RESET_DB)
 db.import_csv_data_to_db(Config.SOURCE_FILE_NAME)
-results = db.fetch_from_db()
-
-print(results)
+results = db.fetch_most_recent(10000000000)
+#print(results)
 
 db.close_connection()
 
