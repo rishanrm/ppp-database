@@ -3,7 +3,7 @@
 {% block content %}
 
 
-<h1>Btn2</h1>
+<!-- <h1>Btn2</h1>
 <div id='p2'></div>
 <button id="btn2"> Button2</button>
 <script type="text/javascript">
@@ -45,7 +45,7 @@
     ;
         }
     }
-</script>
+</script> -->
 
 
     <div>Here is some data:</div>
@@ -60,13 +60,35 @@
             data-pagination="true">
             <thead>
                 <tr>
-                    <th data-field="id">ID</th>
+                    <!-- <th data-field="id">ID</th>
                     <th data-field="name">Item Name</th>
-                    <th data-field="price">Item Price</th>
+                    <th data-field="price">Item Price</th> -->
+                    <th data-field="ad_requests">ID</th>
+                    <th data-field="dfp_ad_units">Item Name</th>
+                    <th data-field="eb_revenue">Item Price</th>
                 </tr>
             </thead>
         </table>
 
+
+        <script>
+            // your custom ajax request here
+            //
+            // Data is successfully input in table here but it is from a static source
+            //
+            //
+            function ajaxRequest(params) {
+            var url = 'https://examples.wenzhixin.net.cn/examples/bootstrap_table/data'
+            console.log(params)
+            console.log(url + '?' + $.param(params.data))
+            $.get(url + '?' + $.param(params.data)).then(function (res) {
+                params.success(res)
+                console.log(res)
+                console.log($.get(url + '?' + $.param(params.data)))
+            })
+;
+            }
+        </script>        
 
         <script>
             // your custom ajax request here
@@ -128,26 +150,6 @@
     </script>
 
 
-
-        <script>
-            // your custom ajax request here
-            //
-            // Data is successfully input in table here but it is from a static source
-            //
-            //
-            function ajaxRequest(params) {
-            var url = 'https://examples.wenzhixin.net.cn/examples/bootstrap_table/data'
-            console.log(params)
-            console.log(url + '?' + $.param(params.data))
-            $.get(url + '?' + $.param(params.data)).then(function (res) {
-                params.success(res)
-                console.log(res)
-                console.log($.get(url + '?' + $.param(params.data)))
-            })
-;
-            }
-        </script>
-
 <script>
     // your custom ajax request here
     //
@@ -165,7 +167,22 @@
     }
 </script>
 
-
+<script>
+    // your custom ajax request here
+    //
+    // Data is successfully input in table here from a local static source
+    //
+    //
+    function ajaxRequest4(params) {
+    var url = '/fetch'
+    console.log(params)
+    $.get(url + '?' + $.param(params.data)).then(function (res) {
+        params.success(res)
+        console.log(res)
+    })
+;
+    }
+</script>
 
 
 
