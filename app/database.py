@@ -187,7 +187,7 @@ class DatabaseConnection():
     def fetch_from_db(self, limit=None, sort_desc=None):
 
         #Inputs
-        limit = 5
+#        limit = 5
         sort_desc = True
         sort_by_column = 'ad_requests'
         filter_term = 'TC_Dashboard_160x600_Floor'

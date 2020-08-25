@@ -1,3 +1,4 @@
+import json
 from flask import render_template, request, Blueprint, current_app, send_from_directory, jsonify
 #from app.models import Post
 from app import db
@@ -72,8 +73,9 @@ def fetch():
     results_data = db.fetch_from_db()
     results_str = db.get_json_component(results_data, "data")
     table_data_json = db.build_table_json(total_count_str, len(results_data), results_str)
-    return jsonify(table_data_json)
-
+#    return jsonify(table_data_json)
+#    return json.dumps(table_data_json)
+    return json.loads(table_data_json)
 
 @main.route('/data_test/')
 def data_test():
