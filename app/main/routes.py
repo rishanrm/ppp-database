@@ -12,19 +12,27 @@ main = Blueprint('main', __name__)
 @main.route("/")
 @main.route("/home")
 def home():
+  # print('IN THE HOME')
+  # search = request.args.get("search")
+  # sort = request.args.get("sort")
+  # order = request.args.get("order")
+  # offset = request.args.get("offset")
+  # limit = request.args.get("limit")
 
-    with current_app.app_context():
-        db = DatabaseInitialization.initialize_database("local")
-        db = DatabaseConnection("local", Config.DB_NAME, Config.TABLE_NAME)
-        total_count = db.fetch_total_count()
-        total_count_str = db.get_json_component(total_count, "total")
-        results_data = db.fetch_from_db()
-        results_str = db.get_json_component(results_data, "data")
+  # print(limit)
 
-        table_data_json = db.build_table_json(total_count_str, len(results_data), results_str)
-        csv_column_headers = HeaderNames.get_csv_column_headers(Config.SOURCE_FILE_NAME)
+  # with current_app.app_context():
+  #     db = DatabaseInitialization.initialize_database("local")
+  #     db = DatabaseConnection("local", Config.DB_NAME, Config.TABLE_NAME)
+  #     total_count = db.fetch_total_count()
+  #     total_count_str = db.get_json_component(total_count, "total")
+  #     results_data = db.fetch_from_db(search, sort, order, offset, limit)
+  #     results_str = db.get_json_component(results_data, "data")
 
-        return render_template('home.html', data=table_data_json, headers = csv_column_headers)
+  #     table_data_json = db.build_table_json(total_count_str, len(results_data), results_str)
+      csv_column_headers = HeaderNames.get_csv_column_headers(Config.SOURCE_FILE_NAME)
+
+      return render_template('home.html', data="", headers = csv_column_headers)
 
 @main.route("/about")
 def about():
@@ -54,6 +62,19 @@ def params():
   order = request.args.get("order")
   offset = request.args.get("offset")
   limit = request.args.get("limit")
+  
+  with current_app.app_context():
+    db = DatabaseInitialization.initialize_database("local")
+    db = DatabaseConnection("local", Config.DB_NAME, Config.TABLE_NAME)
+    total_count = db.fetch_total_count()
+    total_count_str = db.get_json_component(total_count, "total")
+    results_data = db.fetch_from_db(search, sort, order, offset, limit)
+    results_str = db.get_json_component(results_data, "data")
+
+    table_data_json = db.build_table_json(total_count_str, len(results_data), results_str)
+    csv_column_headers = HeaderNames.get_csv_column_headers(Config.SOURCE_FILE_NAME)
+
+    return json.loads(table_data_json)
 
 @main.route('/query-example')
 def query_example():

@@ -174,8 +174,10 @@
     //
     //
     function ajaxRequest4(params) {
-    var url = '/fetch'
+    var url = '/params'
+    console.log("PARAMS REQUEST HERE:")
     console.log(params)
+    console.log(url + '?' + $.param(params.data))
     $.get(url + '?' + $.param(params.data)).then(function (res) {
         params.success(res)
         console.log(res)
