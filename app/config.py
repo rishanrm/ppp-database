@@ -2,53 +2,57 @@ import os
 
 class Config:
 
-    """CONFIGURABLE APP SETTINGS"""
-    RESULTS_PER_PAGE = 5
-    CLOUD_DEFAULT_IMG = "https://storage.googleapis.com/flask_blog_67394802/profile_pics/default.jpeg"
+    """FILENAME"""
+#    SOURCE_FILE_NAME = 'data/test_data.csv'
     SOURCE_FILE_NAME = './test_data.csv'
-#    SOURCE_FILE_NAME = './PPP Data up to 150K - RI.csv'
+#    SOURCE_FILE_NAME = 'data/PPP Data up to 150K - RI.csv'
 
-    """SECURITY"""
-    DEBUG_STATUS =  os.environ.get("DEBUG_STATUS")
-    REQUIRE_SIGNED_URL = False
-    SSL_REDIRECT = True
-    SECRET_KEY = os.environ.get("SECRET_KEY")
+    """POSTGRES DATABASE RESET SETTINGS"""
+    RESET_DB = False
+    RESET_TABLE = False
+    RESET_DATA = False
+    MANUALLY_CREATE_TABLE = False
 
-    """EMAIL"""
-    MAIL_SERVER = "smtp.googlemail.com"
-    MAIL_PORT = 587
-    MAIL_USE_TLS = True
-    MAIL_USERNAME = os.environ.get("MAIL_USERNAME")
-    MAIL_PASSWORD = os.environ.get("MAIL_PASSWORD")
-
-    """POSTGRES DATABASE"""
-    #TODO: Change back to environment variable
-    RESET_DB = True
+    """POSTGRES DATABASE CONNECTION"""
     POSTGRES_HOST = "localhost"
-    POSTGRES_USER = "rishan"
-    POSTGRES_PASSWORD = "IamstrongPG18"
-    POSTGRES_PORT = 5432
-    DB_NAME = os.path.basename(SOURCE_FILE_NAME)\
+
+    POSTGRES_USER_FOR_LOCAL = os.environ.get("POSTGRES_USER")
+    POSTGRES_PASSWORD_FOR_LOCAL = os.environ.get("POSTGRES_PASSWORD")
+    POSTGRES_PORT_FOR_LOCAL = 5432
+
+#    POSTGRES_USER_FOR_CLOUD = "postgres"
+#    POSTGRES_PASSWORD_FOR_CLOUD = "postgres"
+    POSTGRES_USER_FOR_CLOUD = "initial_setup_user"
+    POSTGRES_PASSWORD_FOR_CLOUD = "initial_setup_password"
+
+    POSTGRES_PORT_FOR_CLOUD = 5431
+
+    POSTGRES_NAME_ROOT = os.path.basename(SOURCE_FILE_NAME)\
         .split(".")[0]\
         .replace(" ", "_")\
         .replace("-", "")\
-        .lower()+"_db"
-    TABLE_NAME = os.path.basename(SOURCE_FILE_NAME)\
-        .split(".")[0]\
-        .replace(" ", "_")\
-        .replace(" ", "")\
-        .lower() +"_table"
-#    TABLE_NAME = 'test_data'
-    DB_URL = f"postgresql://localhost/{DB_NAME}"\
-        + f"?user={POSTGRES_USER}"\
-        + f"&password={POSTGRES_PASSWORD}"
-    SQLALCHEMY_DATABASE_URI = f'postgresql://{POSTGRES_USER}:{POSTGRES_PASSWORD}@localhost/{DB_NAME}'
-#    SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
-#    SQLALCHEMY_DATABASE_URI = "postgresql://localhost/all_test_data?user=rishan&password=IamstrongPG18"
-#    SQLALCHEMY_DATABASE_URI = os.environ.get("postgresql:///all_test_data")
-#    SQLALCHEMY_DATABASE_URI = DB_URL
-    SQLALCHEMY_TRACK_MODIFICATIONS = False
+        .lower()
+    DB_NAME = POSTGRES_NAME_ROOT + "_db"
+    TABLE_NAME = POSTGRES_NAME_ROOT + "_table"
+
+#    DB_URL = f"postgresql://localhost/{DB_NAME}"\
+#        + f"?user={POSTGRES_USER_FOR_LOCAL}"\
+#        + f"&password={POSTGRES_PASSWORD_FOR_LOCAL}"
+#    SQLALCHEMY_DATABASE_URI = f'postgresql://{POSTGRES_USER_FOR_LOCAL}:{POSTGRES_PASSWORD_FOR_LOCAL}@localhost/{DB_NAME}'
+#    SQLALCHEMY_TRACK_MODIFICATIONS = False
+
+    """SECURITY"""
+    DEBUG_STATUS =  os.environ.get("DEBUG_STATUS")
+    SSL_REDIRECT = True
+    SECRET_KEY = os.environ.get("SECRET_KEY")
 
     """GOOGLE CLOUD"""
-    GCLOUD_CREDENTIALS = "app/service_account.json"
-    GCLOUD_DATA_BUCKET_NAME = 'ppp-test-bucket-2'
+    GCLOUD_CREDENTIALS = "service_account.json"
+#    GCLOUD_DATA_BUCKET_NAME = 'ppp-test-bucket-8-1-01'
+#    GCLOUD_BLOB_NAME = SOURCE_FILE_NAME
+    GCLOUD_PROJECT_ID = "ppp-test-283923"
+    GCLOUD_INSTANCE_ID = "ppp-test-8-1-02"
+    GCLOUD_REGION = "us-central"
+    GCLOUD_MACHINE_TYPE = "db-custom-1-3840"
+    GCLOUD_REQUIRE_SIGNED_URL = False
+#   Machine types: https://cloud.google.com/sql/docs/postgres/create-instance

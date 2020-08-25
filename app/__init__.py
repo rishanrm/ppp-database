@@ -3,8 +3,10 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from app.config import Config
-from app.database import DatabasePopulation, DatabaseInitialization
+from app.database import DatabaseConnection, DatabaseInitialization
 
+
+"""
 db = DatabaseInitialization.initialize_db(
     Config.DB_NAME, Config.TABLE_NAME, Config.RESET_DB)
 db.import_csv_data_to_db(Config.SOURCE_FILE_NAME)
@@ -12,7 +14,7 @@ results = db.fetch_most_recent(10000000000)
 #print(results)
 
 db.close_connection()
-
+"""
 db = SQLAlchemy()
 
 def create_app(config_class=Config):

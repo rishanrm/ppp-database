@@ -3,7 +3,7 @@ from flask import render_template, request, Blueprint, current_app, send_from_di
 from app import db
 #from app import app
 from app.config import Config
-from app.database import DatabasePopulation
+from app.database import DatabaseConnection, DatabaseInitialization, HeaderNames
 import os
 
 main = Blueprint('main', __name__)
@@ -15,7 +15,7 @@ def home():
     with current_app.app_context():
         all_data = db.Table(Config.TABLE_NAME, db.metadata, autoload=True, autoload_with=db.engine)
         data = db.session.query(all_data).all()
-        csv_column_headers = DatabasePopulation.get_csv_column_headers(Config.SOURCE_FILE_NAME)
+        csv_column_headers = HeaderNames.get_csv_column_headers(Config.SOURCE_FILE_NAME)
     return render_template('home.html', data=data, headers = csv_column_headers)
 
 @main.route("/about")
@@ -53,13 +53,27 @@ def form_example():
                   <input type="submit" value="Submit"><br>
               </form>'''
 
+# @main.route('/fetch_OLD')
+# def fetch_OLD():
+#     language = request.args.get('language') #if key doesn't exist, returns None
+#     args = request.args
+#     return f'''<h1>The language value is: {language}</h1><h1>{args}</h1>'''
+#     #fetch_from_db
+
 @main.route('/fetch')
 def fetch():
-    language = request.args.get('language') #if key doesn't exist, returns None
-    args = request.args
-    DatabasePopulation.fetch_from_db(args)
-    return f'''<h1>The language value is: {language}</h1><h1>{args}</h1>'''
-    #fetch_from_db
+    db = DatabaseInitialization.initialize_database("local")
+    db = DatabaseConnection("local", Config.DB_NAME, Config.TABLE_NAME)
+#    db.fetch_most_recent(5)
+
+#    db.fetch_json(5)
+    total_count = db.fetch_total_count()
+    total_count_str = db.get_json_component(total_count, "total")
+    results_data = db.fetch_from_db()
+    results_str = db.get_json_component(results_data, "data")
+    table_data_json = db.build_table_json(total_count_str, len(results_data), results_str)
+    return jsonify(table_data_json)
+
 
 @main.route('/data_test/')
 def data_test():
