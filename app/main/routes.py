@@ -71,7 +71,7 @@ def params():
     results_data = db.fetch_from_db(search, sort, order, offset, limit)
     results_str = db.get_json_component(results_data, "data")
 
-    table_data_json = db.build_table_json(total_count_str, len(results_data), results_str)
+    table_data_json = db.build_table_json(len(results_data), total_count_str, results_str)
     csv_column_headers = HeaderNames.get_csv_column_headers(Config.SOURCE_FILE_NAME)
 
     return json.loads(table_data_json)
