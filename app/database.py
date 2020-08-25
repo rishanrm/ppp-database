@@ -184,14 +184,13 @@ class DatabaseConnection():
         results = self.my_cursor.fetchall()
         return results
 
-    def fetch_from_db(self, search, sort_column, sort_order, offset, limit):
+    def fetch_from_db(self, search_term, sort_column, sort_order, offset, limit):
 
         #Inputs
 #        limit = 5
         sort_desc = True
         sort_by_column = 'ad_requests'
-        filter_term = 'TC_Dashboard_160x600_Floor'
-        filter_column = 'dfp_ad_units'
+        search_column = 'dfp_ad_units'
 
         data = ()
 
@@ -206,10 +205,10 @@ class DatabaseConnection():
         )
 
         #Filter
-        if filter_term is not None:
-            stmt += sql.SQL("WHERE {filter_column} LIKE {filter_term} ").format(
-                filter_column = sql.Identifier(filter_column),
-                filter_term = sql.Literal(filter_term + '%%')
+        if search_term:
+            stmt += sql.SQL("WHERE {search_column} LIKE {search_term} ").format(
+                search_column = sql.Identifier(search_column),
+                search_term = sql.Literal(search_term + '%%')
                 )
 
         #Sort
@@ -238,6 +237,8 @@ class DatabaseConnection():
         elif data_type == "data":
             chars_to_strip = 2
         results_str = json.dumps(results)[chars_to_strip:-chars_to_strip]
+        if results_str == "null":
+            results_str = "[]"
 
         if data_type == "data":
             results_str = "\"rows\": " + results_str
