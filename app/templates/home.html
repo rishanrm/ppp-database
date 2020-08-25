@@ -184,9 +184,44 @@
     }
 </script>
 
+<table
+id="tablex"
+data-toggle="table"
+data-ajax="ajaxRequest5"
+data-height="400"
+data-side-pagination="server"
+data-pagination="true">
+<thead>
+    <tr>
+        <!-- <th data-field="id">ID</th>
+        <th data-field="name">Item Name</th>
+        <th data-field="price">Item Price</th> -->
+        <th data-field="ad_requests">ID</th>
+        <th data-field="dfp_ad_units">Item Name</th>
+        <th data-field="eb_revenue">Item Price</th>
+    </tr>
+</thead>
+</table>
 
-
-
+<script>
+    // your custom ajax request here
+    //
+    // Data is successfully input in table here from a local static source
+    //
+    //
+    function ajaxRequest5(params) {
+    //var url = '/fetch'
+    var url= "https://examples.wenzhixin.net.cn/examples/bootstrap_table/data"
+    console.log((url + '?' + $.param(params.data)))
+    $.get(url + '?' + $.param(params.data)).then(function (res) {
+        params.success(res)
+        console.log("hello")
+        console.log(res)
+        console.log("goodbye")
+    })
+;
+    }
+</script>
 
 <!-- 
         <table

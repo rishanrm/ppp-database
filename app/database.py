@@ -184,7 +184,7 @@ class DatabaseConnection():
         results = self.my_cursor.fetchall()
         return results
 
-    def fetch_from_db(self, limit=None, sort_desc=None):
+    def fetch_from_db(self, search, sort, order, offset, limit):
 
         #Inputs
 #        limit = 5

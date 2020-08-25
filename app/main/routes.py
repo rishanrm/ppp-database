@@ -47,6 +47,14 @@ def specific_person():
         return jsonify({'name':'Alice',
                                         'address':'USA'})
 
+@main.route('/params/')
+def params():
+  search = request.args.get("search")
+  sort = request.args.get("sort")
+  order = request.args.get("order")
+  offset = request.args.get("offset")
+  limit = request.args.get("limit")
+
 @main.route('/query-example')
 def query_example():
         language = request.args.get('language') #if key doesn't exist, returns None
