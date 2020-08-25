@@ -54,7 +54,7 @@ def form_example():
               </form>'''
 
 @main.route('/fetch')
-def query_example():
+def fetch():
     language = request.args.get('language') #if key doesn't exist, returns None
     args = request.args
     DatabasePopulation.fetch_from_db(args)

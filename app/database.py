@@ -279,9 +279,26 @@ class DatabaseConnection():
 
         return results
 
-    def fetch_from_db(self, args, limit=None, sort_desc=None):
+
+    def fetch_total_count(self):
+
+        stmt = sql.SQL("""            
+            SELECT row_to_json(t)
+            FROM (
+                SELECT COUNT(*) as total
+                FROM {table_name}
+            ) t;
+        """).format(
+            table_name = sql.Identifier(self.table_name)
+        )
+
+        self.my_cursor.execute(stmt)
+        results = self.my_cursor.fetchall()
+        return results
+
+    def fetch_from_db(self, limit=None, sort_desc=None):
+
         #Inputs
-        print(args)
         limit = 5
         sort_desc = True
         sort_by_column = 'ad_requests'
@@ -292,6 +309,8 @@ class DatabaseConnection():
 
         #Base query
         stmt = sql.SQL("""
+        SELECT array_agg(row_to_json(t))
+        FROM (
             SELECT *
             FROM {table_name}
         """).format(
@@ -321,19 +340,33 @@ class DatabaseConnection():
             stmt += sql.SQL("LIMIT %s ")
             data += (limit,)
 
-        print(stmt)
-        print(data)
-#        quit()
+        stmt += sql.SQL(") t;")
 
         self.my_cursor.execute(stmt, data)
         results = self.my_cursor.fetchall()
-
-        for result in results:
-            print("")
-            for item in result:
-                print(item)
-
         return results
+
+    @staticmethod
+    def get_json_component(results, data_type):
+
+        if data_type == "total":
+            chars_to_strip = 3
+        elif data_type == "data":
+            chars_to_strip = 2
+        results_str = json.dumps(results)[chars_to_strip:-chars_to_strip]
+
+        if data_type == "data":
+            results_str = "\"rows\": " + results_str
+
+        return results_str
+
+    @staticmethod
+    def build_table_json(total_count_str, results_len, results_str):
+
+        results_len_str = "\"totalNotFiltered\": " + str(results_len)
+        table_json_str = "{ " + total_count_str + ", " + results_len_str + ", " + results_str + " }"
+        return table_json_str
+
 
 """Functionality for initial data population in a database"""
 class DatabasePopulation():
