@@ -184,7 +184,7 @@ class DatabaseConnection():
         results = self.my_cursor.fetchall()
         return results
 
-    def fetch_from_db(self, search, sort, order, offset, limit):
+    def fetch_from_db(self, search, sort_column, sort_order, offset, limit):
 
         #Inputs
 #        limit = 5
@@ -213,14 +213,10 @@ class DatabaseConnection():
                 )
 
         #Sort
-        if sort_desc is not None:
-            if sort_desc:
-                sort_type = "DESC"
-            else:
-                sort_type = "ASC"
-            stmt += sql.SQL("ORDER BY {sort_by_column} {sort_type} ").format(
-                sort_by_column = sql.Identifier(sort_by_column),
-                sort_type = sql.SQL(sort_type)
+        if sort_column:
+            stmt += sql.SQL("ORDER BY {sort_column} {sort_order} ").format(
+                sort_column = sql.Identifier(sort_column),
+                sort_order = sql.SQL(sort_order)
                 )
 
         #Limit results
