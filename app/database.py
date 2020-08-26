@@ -227,6 +227,7 @@ class DatabaseConnection():
             stmt += sql.SQL("LIMIT %s ")
             data += (limit,)
 
+        #Closing syntax
         stmt += sql.SQL(") t;")
 
         self.my_cursor.execute(stmt, data)
