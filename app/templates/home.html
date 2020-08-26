@@ -1,6 +1,84 @@
 {% extends 'layout.html' %}
-
 {% block content %}
+    <div class="container">
+
+        <table
+            id="tablex"
+            data-toggle="table"
+            data-ajax="ajaxRequest4"
+            data-height="600"
+            data-buttons-align="right"
+            data-search="true"
+            data-search-align="right"
+            data-search-accent-neutralise="true"
+            data-search-on-enter-key="false"
+            data-search-text=""
+            data-search-time-out="2000"
+            visible-search="true"
+            data-sort-reset="true"
+            data-silent-sort="true"
+            data-side-pagination="server"
+            data-pagination="true"
+            data-pagination-pre-text="Previous"
+            data-pagination-next-text="Next"
+            data-pagination-successively-size="3"
+            data-pagination-v-align="bottom"
+            data-show-pagination-switch="false"
+            data-show-extended-pagination="false"
+            data-remember-order="true"
+            data-show-columns="true"
+            data-show-columns-search="true"
+            data-show-columns-toggle-all="true"
+            data-show-header="true"
+            data-show-footer="false"
+            data-show-fullscreen="true"
+            data-show-refresh="false"
+            data-show-toggle="true"
+            data-smart-display="true"
+            data-undefined-text="-"
+            data-virtual-scroll="true"
+            >
+            <thead>
+                <tr>
+                    <!-- <th data-field="id">ID</th>
+                    <th data-field="name">Item Name</th>
+                    <th data-field="price">Item Price</th> -->
+                    <th data-field="dfp_ad_units" data-sortable="true">Ad Unit</th>
+                    <th data-field="ad_requests" data-sortable="true">Ad Requests</th>
+                    <th data-field="estimated_revenue" data-sortable="true">Estimated Revenue ($)</th>
+                    <th data-field="eb_revenue" data-sortable="true">EB Revenue ($)</th>
+                </tr>
+            </thead>
+        </table>
+
+        <script>
+            // your custom ajax request here
+            //
+            // Data is successfully input in table here from a local static source
+            //
+            //
+            function ajaxRequest4(params) {
+            var url = '/params'
+            console.log("PARAMS REQUEST HERE:")
+            console.log(params)
+            console.log(url + '?' + $.param(params.data))
+            $.get(url + '?' + $.param(params.data)).then(function (res) {
+                params.success(res)
+                console.log(res)
+            })
+        ;
+            }
+        </script>
+
+    </div>
+{% endblock content %}
+
+
+<!-- var url = '/fetch'
+var url= "https://examples.wenzhixin.net.cn/examples/bootstrap_table/data" -->
+
+
+
 
 
 <!-- <h1>Btn2</h1>
@@ -46,212 +124,3 @@
         }
     }
 </script> -->
-
-
-    <div>Here is some data:</div>
-    <div class="container">
-
-        <table
-            id="tablex"
-            data-toggle="table"
-            data-ajax="ajaxRequest4"
-            data-height="400"
-            data-side-pagination="server"
-            data-pagination="true"
-            data-search="true">
-            <thead>
-                <tr>
-                    <!-- <th data-field="id">ID</th>
-                    <th data-field="name">Item Name</th>
-                    <th data-field="price">Item Price</th> -->
-                    <th data-field="ad_requests">ID</th>
-                    <th data-field="dfp_ad_units" data-sortable="true">Item Name</th>
-                    <th data-field="eb_revenue">Item Price</th>
-                </tr>
-            </thead>
-        </table>
-
-
-        <script>
-            // your custom ajax request here
-            //
-            // Data is successfully input in table here but it is from a static source
-            //
-            //
-            function ajaxRequest(params) {
-            var url = 'https://examples.wenzhixin.net.cn/examples/bootstrap_table/data'
-            console.log(params)
-            console.log(url + '?' + $.param(params.data))
-            $.get(url + '?' + $.param(params.data)).then(function (res) {
-                params.success(res)
-                console.log(res)
-                console.log($.get(url + '?' + $.param(params.data)))
-            })
-;
-            }
-        </script>        
-
-        <script>
-            // your custom ajax request here
-            //
-            // Data is successfully input in table here but it is from a static source
-            //
-            //
-            function ajaxRequest2(params) {
-            var url = 'http://localhost:5000/data'
-            console.log(params)
-
-            fetch(url)
-            .then(response => response.json())
-            .then(jsonResponse => {
-            console.log(jsonResponse);
-            params.success(jsonResponse)
-            });
-
-
-
-//             $.get(url).then(function (res) {
-//                 params.success(res)
-//                 console.log(res)
-//                 console.log($.get(url + '?' + $.param(params.data)))
-//             })
-// ;
-            }
-
-
-            // $.getJSON("http://localhost:5000/example_copy.json", function(result){
-            //     $.each(result, function(i, field){
-            //     $("div").append(field + " ");
-            //     });
-            // });
-
-            // var url = 'https://examples.wenzhixin.net.cn/examples/bootstrap_table/data'
-            // console.log(params)
-            // $.get(url + '?' + $.param(params.data)).then(function (res) {
-            //     params.success(res)
-            //     console.log(url + '?' + $.param(params.data))
-            // });
-        </script>
-
-    <script>
-        // your custom ajax request here
-        //
-        // Data is successfully rendered at this URL from the DB but it is in the wrong format
-        //
-        //
-        function ajaxRequest3(params) {
-        var url = '/data'
-        console.log(params)
-        $.get(url).then(function (res) {
-            params.success(res)
-            console.log($.get(url))
-        })
-    ;
-        }
-    </script>
-
-
-<script>
-    // your custom ajax request here
-    //
-    // Data is successfully input in table here from a local static source
-    //
-    //
-    function ajaxRequest4(params) {
-    var url = '/data_test'
-    console.log(params)
-    $.get(url + '?' + $.param(params.data)).then(function (res) {
-        params.success(res)
-        console.log(res)
-    })
-;
-    }
-</script>
-
-<script>
-    // your custom ajax request here
-    //
-    // Data is successfully input in table here from a local static source
-    //
-    //
-    function ajaxRequest4(params) {
-    var url = '/params'
-    console.log("PARAMS REQUEST HERE:")
-    console.log(params)
-    console.log(url + '?' + $.param(params.data))
-    $.get(url + '?' + $.param(params.data)).then(function (res) {
-        params.success(res)
-        console.log(res)
-    })
-;
-    }
-</script>
-
-<table
-id="tablex"
-data-toggle="table"
-data-ajax="ajaxRequest5"
-data-height="400"
-data-side-pagination="server"
-data-pagination="true"
-data-search="true">
-<thead>
-    <tr>
-        <!-- <th data-field="id">ID</th>
-        <th data-field="name">Item Name</th>
-        <th data-field="price">Item Price</th> -->
-        <th data-field="id">ID</th>
-        <th data-field="name">Item Name</th>
-        <th data-field="price">Item Price</th>
-    </tr>
-</thead>
-</table>
-
-<script>
-    // your custom ajax request here
-    //
-    // Data is successfully input in table here from a local static source
-    //
-    //
-    function ajaxRequest5(params) {
-    //var url = '/fetch'
-    var url= "https://examples.wenzhixin.net.cn/examples/bootstrap_table/data"
-    console.log((url + '?' + $.param(params.data)))
-    $.get(url + '?' + $.param(params.data)).then(function (res) {
-        params.success(res)
-        console.log("hello")
-        console.log(res)
-        console.log("goodbye")
-    })
-;
-    }
-</script>
-
-<!-- 
-        <table
-        >
-            <thead>
-                <tr>
-                    {% for header in headers %}
-                        <th>{{ header }}</th>
-                    {% endfor %}
-                </tr>
-            </thead>
-            <tbody>
-                {% for row in data %}
-                    <tr>
-                        {% for item in row %}
-                            <td>{{ item }}</td>
-                        {% endfor %}
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table> -->
-
-
-
-
-    </div>
-
-{% endblock content %}
-
