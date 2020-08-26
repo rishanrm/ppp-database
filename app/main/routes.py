@@ -69,9 +69,13 @@ def params():
     total_count = db.fetch_total_count()
     total_count_str = db.get_json_component(total_count, "total")
     results_data = db.fetch_from_db(search, sort, order, offset, limit)
+    filtered_results_count = db.get_filtered_results_count(results_data)
+#    if len(results_data) < 5:
+#      print (results_data[0][0])
+      
     results_str = db.get_json_component(results_data, "data")
 
-    table_data_json = db.build_table_json(len(results_data), total_count_str, results_str)
+    table_data_json = db.build_table_json(filtered_results_count, total_count_str, results_str)
     csv_column_headers = HeaderNames.get_csv_column_headers(Config.SOURCE_FILE_NAME)
 
     return json.loads(table_data_json)

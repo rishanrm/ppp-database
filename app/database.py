@@ -173,7 +173,7 @@ class DatabaseConnection():
         stmt = sql.SQL("""            
             SELECT row_to_json(t)
             FROM (
-                SELECT COUNT(*) as total
+                SELECT COUNT(*) as "totalNotFiltered"
                 FROM {table_name}
             ) t;
         """).format(
@@ -230,6 +230,13 @@ class DatabaseConnection():
         return results
 
     @staticmethod
+    def get_filtered_results_count(results_data):
+        if results_data[0][0]:
+            return len(results_data[0][0])
+        else:
+            return 0
+
+    @staticmethod
     def get_json_component(results, data_type):
 
         if data_type == "total":
@@ -246,10 +253,10 @@ class DatabaseConnection():
         return results_str
 
     @staticmethod
-    def build_table_json(total_count_str, results_len, results_str):
+    def build_table_json(results_len, total_count_str, results_str):
 
-        results_len_str = "\"totalNotFiltered\": " + str(results_len)
-        table_json_str = "{ " + total_count_str + ", " + results_len_str + ", " + results_str + " }"
+        results_len_str = "\"total\": " + str(results_len)
+        table_json_str = "{ " + results_len_str + ", " + total_count_str + ", " + results_str + " }"
         return table_json_str
 
 
