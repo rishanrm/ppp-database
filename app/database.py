@@ -233,7 +233,7 @@ class DatabaseConnection():
     def sql_field_search(search_column, search_term):
         return sql.SQL("WHERE {search_column} LIKE {search_term} ").format(
             search_column = sql.Identifier(search_column),
-            search_term = sql.Literal(search_term + '%%')
+            search_term = sql.Literal('%%' + search_term + '%%')
             )
         
     @staticmethod
