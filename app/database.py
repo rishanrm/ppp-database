@@ -184,7 +184,7 @@ class DatabaseConnection():
         results = self.my_cursor.fetchall()
         return results
 
-    def fetch_from_db(self, args):
+    def fetch_from_db(self, args, return_type):
 
         data = ()
         search_column="dfp_ad_units"
@@ -206,29 +206,37 @@ class DatabaseConnection():
                 search_term = sql.Literal(args["search"] + '%%')
                 )
 
-        #Sort
-        if args["sort"]:
-            stmt += sql.SQL("ORDER BY {sort_column} {sort_order} ").format(
-                sort_column = sql.Identifier(args["sort"]),
-                sort_order = sql.Literal(args["order"])
-                )
+        if return_type == "data":
 
-        #Offset
-        stmt += sql.SQL("OFFSET %s ")
-        data +=(args["offset"],)
+            #Sort
+            if args["sort"]:
+                stmt += sql.SQL("ORDER BY {sort_column} {sort_order} ").format(
+                    sort_column = sql.Identifier(args["sort"]),
+                    sort_order = sql.Literal(args["order"])
+                    )
 
-        #Limit
-        if args["limit"]:
-            stmt += sql.SQL("LIMIT %s ")
-            data += (args["limit"],)
+            #Offset
+            stmt += sql.SQL("OFFSET %s ")
+            data +=(args["offset"],)
+
+            #Limit
+            if args["limit"]:
+                stmt += sql.SQL("LIMIT %s ")
+                data += (args["limit"],)
 
         #Closing syntax
         stmt += sql.SQL(") t;")
 
-        print(stmt)
         self.my_cursor.execute(stmt, data)
         results = self.my_cursor.fetchall()
-        return results
+
+        if return_type == "data":
+            return results
+        elif return_type == "count":
+            if results[0][0]:
+                return len(results[0][0])
+            else:
+                return 0
 
     @staticmethod
     def get_filtered_results_count(results_data):
