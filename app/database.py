@@ -153,21 +153,6 @@ class DatabaseConnection():
 
         return results
 
-    # def fetch_total_count(self):
-    #     stmt = sql.SQL("""            
-    #         SELECT row_to_json(t)
-    #         FROM (
-    #             SELECT COUNT(*) as total
-    #             FROM {table_name}
-    #         ) t;
-    #     """).format(
-    #         table_name = sql.Identifier(self.table_name)
-    #     )
-
-    #     self.my_cursor.execute(stmt)
-    #     results = self.my_cursor.fetchall()
-    #     return results
-
     def fetch_total_count(self):
 
         stmt = sql.SQL("""            
@@ -184,13 +169,22 @@ class DatabaseConnection():
         results = self.my_cursor.fetchall()
         return results
 
-    def fetch_from_db(self, args, return_type):
+    def run_sql_query(self, args, query_features, return_type):
+        sql_query_data = self.build_query(args, query_features)
+        return self.fetch_from_db(sql_query_data, return_type)
 
-        data = ()
-        search_column="dfp_ad_units"
+    def build_query(self, args, query_features):
+        query_start = self.get_query_start()
+        query_body = self.get_query_body(args, query_features)
+        query_end = self.get_query_end()
         
-        #Base query
-        stmt = sql.SQL("""
+        return {
+            "query": query_start + query_body["query"] + query_end,
+            "data": query_body["data"]
+        }
+
+    def get_query_start(self):
+        return sql.SQL("""
         SELECT array_agg(row_to_json(t))
         FROM (
             SELECT *
@@ -199,35 +193,76 @@ class DatabaseConnection():
             table_name = sql.Identifier(self.table_name)
         )
 
-        #Filter
-        if args["search"]:
-            stmt += sql.SQL("WHERE {search_column} LIKE {search_term} ").format(
-                search_column = sql.Identifier(search_column),
-                search_term = sql.Literal(args["search"] + '%%')
-                )
+    def get_query_body(self, args, query_features):
+        query_body = sql.SQL("")
+        data = ()
+        search_column="dfp_ad_units"
+        
+        if args["search"] and "search" in query_features:
+            query_body += self.sql_field_search(search_column, args["search"])
 
-        if return_type == "data":
+        if args["sort"] and "sort" in query_features:
+            query_body += self.sql_field_sort(args["sort"], args["order"])
+
+        print(args['offset'])
+        if args["offset"] and "offset" in query_features:
+            offset_results = self.sql_field_offset(args["offset"])
+            query_body += offset_results["sql"]
+            data += offset_results["data"]
+
+        if args["limit"] and "limit" in query_features:
+            limit_results = self.sql_field_limit(args["limit"])
+            query_body += limit_results["sql"]
+            data += limit_results["data"]
+
+        return {
+            "query": query_body,
+            "data": data
+        }
+#        if return_type == "data":
 
             #Sort
-            if args["sort"]:
-                stmt += sql.SQL("ORDER BY {sort_column} {sort_order} ").format(
-                    sort_column = sql.Identifier(args["sort"]),
-                    sort_order = sql.Literal(args["order"])
-                    )
 
             #Offset
-            stmt += sql.SQL("OFFSET %s ")
-            data +=(args["offset"],)
 
             #Limit
-            if args["limit"]:
-                stmt += sql.SQL("LIMIT %s ")
-                data += (args["limit"],)
-
         #Closing syntax
-        stmt += sql.SQL(") t;")
+#        stmt += sql.SQL(") t;")
 
-        self.my_cursor.execute(stmt, data)
+    @staticmethod
+    def sql_field_search(search_column, search_term):
+        return sql.SQL("WHERE {search_column} LIKE {search_term} ").format(
+            search_column = sql.Identifier(search_column),
+            search_term = sql.Literal(search_term + '%%')
+            )
+        
+    @staticmethod
+    def sql_field_sort(sort_column, sort_order):
+        return sql.SQL("ORDER BY {sort_column} {sort_order} ").format(
+            sort_column = sql.Identifier(sort_column),
+            sort_order = sql.Literal(sort_order)
+            )
+        
+    @staticmethod
+    def sql_field_offset(offset):
+        return {
+            "sql": sql.SQL("OFFSET %s "),
+            "data": (offset,)
+        }
+        
+    @staticmethod
+    def sql_field_limit(limit):
+        return {
+            "sql": sql.SQL("LIMIT %s "),
+            "data": (limit,)
+        }
+
+    @staticmethod
+    def get_query_end():
+        return sql.SQL(") t;")
+
+    def fetch_from_db(self, sql_query_data, return_type):
+        self.my_cursor.execute(sql_query_data["query"], sql_query_data["data"])
         results = self.my_cursor.fetchall()
 
         if return_type == "data":
@@ -237,6 +272,7 @@ class DatabaseConnection():
                 return len(results[0][0])
             else:
                 return 0
+
 
     @staticmethod
     def get_json_component(results, data_type):

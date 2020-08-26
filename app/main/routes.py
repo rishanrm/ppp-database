@@ -65,10 +65,10 @@ def params():
     total_count = db.fetch_total_count()
     total_count_str = db.get_json_component(total_count, "total")
     
-    filtered_results_count = db.fetch_from_db(request.args, "count")
+    filtered_results_count = db.run_sql_query(request.args, ["search"], "count")
     filtered_count_str = "\"total\": " + str(filtered_results_count)
     
-    results_data = db.fetch_from_db(request.args, "data")
+    results_data = db.run_sql_query(request.args, ["search", "sort", "offset", "limit"], "data")
     results_str = db.get_json_component(results_data, "data")
 
     table_data_json = db.build_table_json(filtered_count_str, total_count_str, results_str)
