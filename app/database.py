@@ -218,7 +218,13 @@ class DatabaseConnection():
                 sort_order = sql.SQL(sort_order)
                 )
 
-        #Limit results
+        #Offset
+        if int(offset) > 0:
+            stmt += sql.SQL("OFFSET {offset} ").format(
+                offset = sql.Identifier(offset)
+                )
+
+        #Limit
         if limit is not None:
             stmt += sql.SQL("LIMIT %s ")
             data += (limit,)
