@@ -219,13 +219,11 @@ class DatabaseConnection():
                 )
 
         #Offset
-        if int(offset) > 0:
-            stmt += sql.SQL("OFFSET {offset} ").format(
-                offset = sql.Identifier(offset)
-                )
+        stmt += sql.SQL("OFFSET %s ")
+        data +=(offset,)
 
         #Limit
-        if limit is not None:
+        if limit:
             stmt += sql.SQL("LIMIT %s ")
             data += (limit,)
 
