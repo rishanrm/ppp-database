@@ -174,6 +174,7 @@ class DatabaseConnection():
         return self.fetch_from_db(sql_query_data, return_type)
 
     def build_query(self, args, query_features):
+        print(query_features)
         query_start = self.get_query_start()
         query_body = self.get_query_body(args, query_features)
         query_end = self.get_query_end()
@@ -240,7 +241,7 @@ class DatabaseConnection():
     def sql_field_sort(sort_column, sort_order):
         return sql.SQL("ORDER BY {sort_column} {sort_order} ").format(
             sort_column = sql.Identifier(sort_column),
-            sort_order = sql.Literal(sort_order)
+            sort_order = sql.SQL(sort_order)
             )
         
     @staticmethod
@@ -262,6 +263,9 @@ class DatabaseConnection():
         return sql.SQL(") t;")
 
     def fetch_from_db(self, sql_query_data, return_type):
+        print("SQL QUERY:")
+        print(sql_query_data["query"])
+        print(sql_query_data["data"])
         self.my_cursor.execute(sql_query_data["query"], sql_query_data["data"])
         results = self.my_cursor.fetchall()
 
