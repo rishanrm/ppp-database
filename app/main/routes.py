@@ -57,13 +57,7 @@ def specific_person():
 
 @main.route('/params/')
 def params():
-  search = request.args.get("search")
-  sort = request.args.get("sort")
-  order = request.args.get("order")
-  offset = request.args.get("offset")
-  limit = request.args.get("limit")
 
-  
   with current_app.app_context():
     db = DatabaseInitialization.initialize_database("local")
     db = DatabaseConnection("local", Config.DB_NAME, Config.TABLE_NAME)
