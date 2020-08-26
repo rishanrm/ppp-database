@@ -184,14 +184,6 @@ class DatabaseConnection():
         results = self.my_cursor.fetchall()
         return results
 
-    @staticmethod
-    def print_args(args):
-        print(args["search"])
-        if(args["search"]):
-            print ('YES')
-        else:
-            print("NO")
-
     def fetch_from_db(self, args):
 
         data = ()
