@@ -184,7 +184,15 @@ class DatabaseConnection():
         results = self.my_cursor.fetchall()
         return results
 
-    def fetch_from_db(self, search_term, sort_column, sort_order, offset, limit):
+    @staticmethod
+    def print_args(args):
+        print(args["search"])
+        if(args["search"]):
+            print ('YES')
+        else:
+            print("NO")
+
+    def fetch_from_db(self, args):
 
         data = ()
 
@@ -199,27 +207,27 @@ class DatabaseConnection():
         )
 
         #Filter
-        if search_term:
+        if args["search"]:
             stmt += sql.SQL("WHERE {search_column} LIKE {search_term} ").format(
                 search_column = sql.Identifier(search_column),
-                search_term = sql.Literal(search_term + '%%')
+                search_term = sql.Literal(args["search"] + '%%')
                 )
 
         #Sort
-        if sort_column:
+        if args["sort"]:
             stmt += sql.SQL("ORDER BY {sort_column} {sort_order} ").format(
-                sort_column = sql.Identifier(sort_column),
+                sort_column = sql.Identifier(args["sort"]),
                 sort_order = sql.SQL(sort_order)
                 )
 
         #Offset
         stmt += sql.SQL("OFFSET %s ")
-        data +=(offset,)
+        data +=(args["offset"],)
 
         #Limit
         if limit:
             stmt += sql.SQL("LIMIT %s ")
-            data += (limit,)
+            data += (args["limit"],)
 
         #Closing syntax
         stmt += sql.SQL(") t;")

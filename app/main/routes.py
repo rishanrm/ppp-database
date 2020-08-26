@@ -62,13 +62,17 @@ def params():
   order = request.args.get("order")
   offset = request.args.get("offset")
   limit = request.args.get("limit")
+
   
   with current_app.app_context():
     db = DatabaseInitialization.initialize_database("local")
     db = DatabaseConnection("local", Config.DB_NAME, Config.TABLE_NAME)
+    
+    db.print_args(request.args)  
+      
     total_count = db.fetch_total_count()
     total_count_str = db.get_json_component(total_count, "total")
-    results_data = db.fetch_from_db(search, sort, order, offset, limit)
+    results_data = db.fetch_from_db(request.args, search, sort, order, offset, limit)
     filtered_results_count = db.get_filtered_results_count(results_data)
 #    if len(results_data) < 5:
 #      print (results_data[0][0])
