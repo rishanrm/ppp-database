@@ -218,7 +218,7 @@ class DatabaseConnection():
         data +=(args["offset"],)
 
         #Limit
-        if limit:
+        if args["limit"]:
             stmt += sql.SQL("LIMIT %s ")
             data += (args["limit"],)
 
