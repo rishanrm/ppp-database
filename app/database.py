@@ -239,13 +239,6 @@ class DatabaseConnection():
                 return 0
 
     @staticmethod
-    def get_filtered_results_count(results_data):
-        if results_data[0][0]:
-            return len(results_data[0][0])
-        else:
-            return 0
-
-    @staticmethod
     def get_json_component(results, data_type):
 
         if data_type == "total":
@@ -262,9 +255,9 @@ class DatabaseConnection():
         return results_str
 
     @staticmethod
-    def build_table_json(results_len, total_count_str, results_str):
+    def build_table_json(results_len_str, total_count_str, results_str):
 
-        results_len_str = "\"total\": " + str(results_len)
+#        results_len_str = "\"total\": " + str(results_len)
         table_json_str = "{ " + results_len_str + ", " + total_count_str + ", " + results_str + " }"
         return table_json_str
 
