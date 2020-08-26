@@ -186,12 +186,6 @@ class DatabaseConnection():
 
     def fetch_from_db(self, search_term, sort_column, sort_order, offset, limit):
 
-        #Inputs
-#        limit = 5
-        sort_desc = True
-        sort_by_column = 'ad_requests'
-        search_column = 'dfp_ad_units'
-
         data = ()
 
         #Base query
