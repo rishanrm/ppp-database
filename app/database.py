@@ -195,7 +195,8 @@ class DatabaseConnection():
     def fetch_from_db(self, args):
 
         data = ()
-
+        search_column="dfp_ad_units"
+        
         #Base query
         stmt = sql.SQL("""
         SELECT array_agg(row_to_json(t))
