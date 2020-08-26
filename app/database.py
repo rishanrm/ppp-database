@@ -210,7 +210,7 @@ class DatabaseConnection():
         if args["sort"]:
             stmt += sql.SQL("ORDER BY {sort_column} {sort_order} ").format(
                 sort_column = sql.Identifier(args["sort"]),
-                sort_order = sql.SQL(sort_order)
+                sort_order = sql.Literal(args["order"])
                 )
 
         #Offset
@@ -225,6 +225,7 @@ class DatabaseConnection():
         #Closing syntax
         stmt += sql.SQL(") t;")
 
+        print(stmt)
         self.my_cursor.execute(stmt, data)
         results = self.my_cursor.fetchall()
         return results
