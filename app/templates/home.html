@@ -8,6 +8,7 @@
             data-ajax="ajaxRequest4"
             data-height="600"
             data-buttons-align="right"
+            data-show-button-text="true"
             data-search="true"
             data-search-align="right"
             data-search-accent-neutralise="true"
@@ -37,6 +38,8 @@
             data-smart-display="true"
             data-undefined-text="-"
             data-virtual-scroll="true"
+            data-show-copy-rows="true"
+
             >
             <thead>
                 <tr>
@@ -49,6 +52,7 @@
                     <th data-field="eb_revenue" data-sortable="true">EB Revenue ($)</th>
                     loanamount,city,state,zip,naicscode,businesstype,raceethnicity,gender,veteran,nonprofit,jobsretained,dateapproved,lender,cd
                     -->
+                    <th data-field="checkbox" data-checkbox="true">#</th>
                     <th data-field="loanamount" data-sortable="true" data-formatter="amountFormatter" data-sort-order="desc">Loan Amount</th>
                     <th data-field="city" data-sortable="true">City</th>
                     <th data-field="state" data-sortable="true">State</th>
@@ -90,19 +94,8 @@
             }
 
 
-            function testamountFormatter(value) {
-                // 16777215 == ffffff in decimal
-                var color = '#' + Math.floor(Math.random() * 6777215).toString(16)
-                return '<div style="color: ' + color + '">' +
-                    '<i class="fa fa-dollar-sign"></i>' +
-                    value.substring(1) +
-                    '</div>'
-            }
 
-
-        
         </script>
-
     </div>
 {% endblock content %}
 

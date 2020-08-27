@@ -34,6 +34,10 @@ def home():
 
       return render_template('home.html', data="", headers = csv_column_headers)
 
+@main.route("/table_examples")
+def table_examples():
+        return render_template('table_examples.html', title='Table Examples')
+
 @main.route("/about")
 def about():
         return render_template('about.html', title='About')
@@ -45,10 +49,6 @@ def index():
 @main.route('/<int:number>/')
 def incrementer(number):
         return "Incremented number is " + str(number+1)
-
-@main.route('/<string:name>/')
-def hello(name):
-        return "Hello " + name
 
 @main.route('/person/')
 def specific_person():
@@ -163,6 +163,11 @@ def data():
 @main.route("/complete")
 def complete():
         return render_template('complete.html')
+
+@main.route("/get_datax")
+def get_datax():
+        import collections
+        return render_template('get_datax.html')
 
 @main.route("/get_data")
 def get_data():
