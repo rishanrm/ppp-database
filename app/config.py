@@ -4,8 +4,8 @@ class Config:
 
     """FILENAME"""
 #    SOURCE_FILE_NAME = 'data/test_data.csv'
-    SOURCE_FILE_NAME = './test_data.csv'
-#    SOURCE_FILE_NAME = 'data/PPP Data up to 150K - RI.csv'
+#    SOURCE_FILE_NAME = './test_data.csv'
+    SOURCE_FILE_NAME = './PPP Data up to 150K - RI.csv'
 
     """POSTGRES DATABASE RESET SETTINGS"""
     RESET_DB = False

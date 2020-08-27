@@ -64,7 +64,11 @@ def params():
 
     total_count = db.fetch_total_count()
     total_count_str = db.get_json_component(total_count, "total")
-    
+
+    print("REQUEST START:")
+    print(request.args)
+    print("REQUEST END")
+
     filtered_results_count = db.run_sql_query(request.args, ["search"], "count")
     filtered_count_str = "\"total\": " + str(filtered_results_count)
     
