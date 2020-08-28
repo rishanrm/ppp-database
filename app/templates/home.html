@@ -41,7 +41,8 @@
             data-virtual-scroll="true"
             data-addrbar="true"
             data-show-export="true"
-            data-export-data-type="all"
+            data-export-data-type="basic"
+            data-filter-control="true"
 
             >
             <thead>
@@ -55,20 +56,20 @@
                     <th data-field="eb_revenue" data-sortable="true">EB Revenue ($)</th>
                     loanamount,city,state,zip,naicscode,businesstype,raceethnicity,gender,veteran,nonprofit,jobsretained,dateapproved,lender,cd
                     -->
-                    <th data-field="loanamount" data-sortable="true" data-formatter="amountFormatter" data-sort-order="desc">Loan Amount</th>
-                    <th data-field="city" data-sortable="true">City</th>
-                    <th data-field="state" data-sortable="true">State</th>
-                    <th data-field="zip" data-sortable="true">Zip Code</th>
-                    <th data-field="naicscode" data-sortable="true">NAICS Code</th>
-                    <th data-field="businesstype" data-sortable="true">Business Type</th>
-                    <th data-field="raceethnicity" data-sortable="true">Race &#47; Ethnicity</th>
-                    <th data-field="gender" data-sortable="true">Gender</th>
-                    <th data-field="veteran" data-sortable="true">Veteran</th>
-                    <th data-field="nonprofit" data-sortable="true">Nonprofit</th>
-                    <th data-field="jobsretained" data-sortable="true">Jobs Retained</th>
-                    <th data-field="dateapproved" data-sortable="true">Date Approved</th>
-                    <th data-field="lender" data-sortable="true">Lender</th>
-                    <th data-field="cd" data-sortable="true">Congressional District</th>
+                    <th data-filter-data="var:userJobTitles" data-field="loanamount" data-sortable="true" data-formatter="amountFormatter" data-sort-order="desc" data-filter-control="select">Loan Amount</th>
+                    <th data-field="city" data-sortable="true" data-filter-control="select">City</th>
+                    <th data-field="state" data-sortable="true" data-filter-control="select">State</th>
+                    <th data-field="zip" data-sortable="true" data-filter-control="select">Zip Code</th>
+                    <th data-field="naicscode" data-sortable="true" data-filter-control="select">NAICS Code</th>
+                    <th data-field="businesstype" data-sortable="true" data-filter-control="select">Business Type</th>
+                    <th data-field="raceethnicity" data-sortable="true" data-filter-control="select">Race &#47; Ethnicity</th>
+                    <th data-field="gender" data-sortable="true" data-filter-control="select">Gender</th>
+                    <th data-field="veteran" data-sortable="true" data-filter-control="select">Veteran</th>
+                    <th data-field="nonprofit" data-sortable="true" data-filter-control="select">Nonprofit</th>
+                    <th data-field="jobsretained" data-sortable="true" data-filter-control="select">Jobs Retained</th>
+                    <th data-field="dateapproved" data-sortable="true" data-filter-control="select">Date Approved</th>
+                    <th data-field="lender" data-sortable="true" data-filter-control="select">Lender</th>
+                    <th data-field="cd" data-sortable="true" data-filter-control="select">Congressional District</th>
                 </tr>
             </thead>
         </table>
@@ -85,72 +86,79 @@
 
         <script src="https://unpkg.com/bootstrap-table@1.17.1/dist/extensions/addrbar/bootstrap-table-addrbar.min.js"></script>
         <script src="https://unpkg.com/bootstrap-table@1.17.1/dist/extensions/export/bootstrap-table-export.min.js"></script>
-
-
+        <script src="https://unpkg.com/bootstrap-table@1.17.1/dist/extensions/filter-control/bootstrap-table-filter-control.min.js"></script>
 
         <script>
-            // your custom ajax request here
-            //
-            // Data is successfully input in table here from a local static source
-            //
-            //
             function ajaxRequest4(params) {
-            var url = '/params'
-            console.log("PARAMS REQUEST HERE:")
-            console.log(params)
-            console.log(url + '?' + $.param(params.data))
-            $.get(url + '?' + $.param(params.data)).then(function (res) {
-                params.success(res)
-                console.log(res)
-            })
-        ;
+                var url = '/params'
+                console.log("PARAMS REQUEST HERE:")
+                console.log(params)
+                console.log(url + '?' + $.param(params.data))
+                $.get(url + '?' + $.param(params.data)).then(function (res) {
+                    params.success(res)
+                    console.log(res)
+                });
             }
+        </script>
 
+        <script>
+            var userJobTitles = {
+                    Admin: 'Admin',
+                    IT: 'IT',
+                    General : 'General',
+                    Security : 'Security',
+                    CEO : 'CEO',
+            };
+        </script>
+
+        <script>
             function amountFormatter(value) {
                 return value.substring(0, value.length - 3)
             }
 
             var $table = $('#table');
-            $('#table').bootstrapTable({
-                exportOptions: {
-                    fileName: 'ppp_data'
-                },
-                exportTypes: ['csv', 'txt', 'sql', 'doc', 'json', 'xml']
+            $('#table').bootstrapTable(
+                {
+                    exportOptions: {
+                        fileName: 'ppp_data'
+                    },
+                    exportTypes: ['csv', 'txt', 'sql', 'doc', 'json', 'xml']
+                }
+            );
+
+
+            $(function() {
+                $('#toolbar').find('select').change(function () {
+                $table.bootstrapTable('destroy').bootstrapTable({
+                    exportDataType: $(this).val(),
+                    exportTypes: ['json', 'xml', 'csv', 'txt', 'sql', 'excel', 'pdf'],
+                    columns: [
+                    {
+                        field: 'state',
+                        checkbox: true,
+                        visible: $(this).val() === 'selected'
+                    },
+                    {
+                        field: 'id',
+                        title: 'ID'
+                    }, {
+                        field: 'name',
+                        title: 'Item Name'
+                    }, {
+                        field: 'price',
+                        title: 'Item Price'
+                    }
+                    ]
+                })
+                }).trigger('change')
             });
 
 
 
-
-  var $table = $('#table')
-
-  $(function() {
-    $('#toolbar').find('select').change(function () {
-      $table.bootstrapTable('destroy').bootstrapTable({
-        exportDataType: $(this).val(),
-        exportTypes: ['json', 'xml', 'csv', 'txt', 'sql', 'excel', 'pdf'],
-        columns: [
-          {
-            field: 'state',
-            checkbox: true,
-            visible: $(this).val() === 'selected'
-          },
-          {
-            field: 'id',
-            title: 'ID'
-          }, {
-            field: 'name',
-            title: 'Item Name'
-          }, {
-            field: 'price',
-            title: 'Item Price'
-          }
-        ]
-      })
-    }).trigger('change')
-  })
-
-
         </script>
+
+
+
     </div>
 {% endblock content %}
 
