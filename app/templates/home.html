@@ -169,14 +169,25 @@
                 })
                 }).trigger('change')
             });
+        </script>
 
 
-    <!-- Column headers without search or filtering -->
-        $( "div:contains('Loan Amount'):last" ).parent().css({"vertical-align":"top"});
-        $( "div:contains('Jobs Retained'):last" ).parent().css({"vertical-align":"top"});
+        <!-- Column headers without search or filtering -->
+        <script>
+            $( "div:contains('Loan Amount'):last" ).parent().css({"vertical-align":"top"});
+            $( "div:contains('Jobs Retained'):last" ).parent().css({"vertical-align":"top"});
 
-    </script>
-
+            function headerStyle(column) {
+                return {
+                    loanamount: {
+                    css: {'vertical-align': 'top'}
+                    },
+                    jobsretained: {
+                    css: {'vertical-align': 'top'}
+                    }
+                }[column.field]
+            }
+        </script>
 
     </div>
 {% endblock content %}
