@@ -199,18 +199,18 @@ class DatabaseConnection():
         data = ()
         search_column="loanamount"
         
-        if "search" in args and args["search"] != "" and "search" in query_features:
+        if "search" in args and args["search"] != "" and args["search"] != "undefined" and "search" in query_features:
             query_body += self.sql_field_search(search_column, args["search"])
 
-        if "sort" in args and args["sort"]  != "" and "sort" in query_features:
+        if "sort" in args and args["sort"]  != ""  and args["sort"] != "undefined" and "sort" in query_features:
             query_body += self.sql_field_sort(args["sort"], args["order"])
 
-        if "offset" in args and args["offset"] != "" and "offset" in query_features:
+        if "offset" in args and args["offset"] != "" and args["offset"] != "undefined" and "offset" in query_features:
             offset_results = self.sql_field_offset(args["offset"])
             query_body += offset_results["sql"]
             data += offset_results["data"]
 
-        if "limit" in args and args["limit"] != "" and "limit" in query_features:
+        if "limit" in args and args["limit"] != "" and args["limit"] != "undefined" and "limit" in query_features:
             limit_results = self.sql_field_limit(args["limit"])
             query_body += limit_results["sql"]
             data += limit_results["data"]
