@@ -47,6 +47,7 @@
             data-mobile-responsive="true"
             data-show-print="true"
             data-reorderable-columns="true"
+            data-header-style="headerStyle"
 
 
             >
@@ -170,9 +171,11 @@
             });
 
 
+    <!-- Column headers without search or filtering -->
+        $( "div:contains('Loan Amount'):last" ).parent().css({"vertical-align":"top"});
+        $( "div:contains('Jobs Retained'):last" ).parent().css({"vertical-align":"top"});
 
-        </script>
-
+    </script>
 
 
     </div>
