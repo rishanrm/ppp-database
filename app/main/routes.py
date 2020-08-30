@@ -117,8 +117,13 @@ def fetch():
 #    return json.dumps(table_data_json)
         return json.loads(table_data_json)
 
-@main.route('/data_test/')
-def data_test():
+@main.route('/data_test/<column>/')
+def data_test(column):
+        print(column)
+#        return send_static_file("./book.json")
+        with open('./app/static/column_options.json', 'r') as myfile:
+            data = myfile.read()
+        return json.loads(data)
         return jsonify({
                 "total": 800,
                 "totalNotFiltered": 800,
@@ -163,6 +168,10 @@ def data():
 @main.route("/complete")
 def complete():
         return render_template('complete.html')
+    
+@main.route("/data2")
+def data2():
+        return render_template('data2.html')
 
 @main.route("/get_datax")
 def get_datax():
