@@ -202,12 +202,11 @@ class DatabaseConnection():
         
         query_body = sql.SQL("")
         data = ()
-        search_column="loanamount"
         
         if "search" in args and args["search"] != "" and args["search"] != "undefined" and "search" in query_features:
             print("SEARCH ARGS:")
             print(args["search"])
-            query_body += self.sql_field_search(search_column, args["search"])
+            query_body += self.sql_field_search(args["search"])
         
         if "filter" in args and args["filter"] != "" and args["filter"] != "undefined" and "filter" in query_features:
             print("FILTER ARGS:")
@@ -254,22 +253,29 @@ class DatabaseConnection():
     """
     @staticmethod
 
-    def sql_field_search(search_column, search_term):
-        return sql.SQL("")
-        # column_headers = HeaderNames.get_csv_column_headers(Config.SOURCE_FILE_NAME)
-        # column_headers = [column_headers[0]]
-        # search_sql = sql.SQL("AND state='RI' ")
-        # for header in column_headers:
-        #     search_sql = sql.SQL("AND LOWER({search_column}) LIKE LOWER({search_term}) ").format(
-        #         search_column = sql.Identifier(header),
-        #         search_term = sql.Literal('%%' + search_term + '%%')
-        #         )
-        # print (search_sql)
-        # print("SEARCH CODE")
-        # return search_sql
+    def sql_field_search(search_term):
 
-    """TODO: ITERATE THROUGH ITEMS IN FILTER DICTIONARY
-    """
+        search_sql = sql.SQL('AND (')
+        search_term_count = 0
+        column_headers = HeaderNames.get_csv_column_headers(Config.SOURCE_FILE_NAME)
+        excluded_columns = ["loanamount", "jobsretained"]
+        column_headers = [column for column in column_headers if column not in excluded_columns]
+
+        for header in column_headers:
+            if search_term_count == 0:
+                prefix=""
+            else:
+                prefix = "OR"
+            search_sql += sql.SQL("{prefix} LOWER({search_column}) LIKE LOWER({search_term}) ").format(
+                prefix = sql.SQL(prefix),
+                search_column = sql.Identifier(header),
+                search_term = sql.Literal('%%' + search_term + '%%')
+            )
+            search_term_count += 1
+        search_sql += sql.SQL(') ')
+        print (search_sql)
+        return search_sql
+
     @staticmethod
     def sql_field_filter(filter_data):
         filter_sql = sql.SQL("")
