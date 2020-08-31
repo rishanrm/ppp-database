@@ -174,7 +174,6 @@ class DatabaseConnection():
         return self.fetch_from_db(sql_query_data, return_type)
 
     def build_query(self, args, query_features):
-        print(query_features)
         query_start = self.get_query_start()
         query_body = self.get_query_body(args, query_features)
         query_end = self.get_query_end()
@@ -196,25 +195,40 @@ class DatabaseConnection():
         )
 
     def get_query_body(self, args, query_features):
+        print("ARGS:")
+        print(args)
+        print("QUERY FEATURES:")
+        print(query_features)
+        
         query_body = sql.SQL("")
         data = ()
         search_column="loanamount"
         
         if "search" in args and args["search"] != "" and args["search"] != "undefined" and "search" in query_features:
+            print("SEARCH ARGS:")
+            print(args["search"])
             query_body += self.sql_field_search(search_column, args["search"])
         
         if "filter" in args and args["filter"] != "" and args["filter"] != "undefined" and "filter" in query_features:
-            query_body += self.sql_field_search(search_column, args["search"])
+            print("FILTER ARGS:")
+            print(args["filter"])
+            query_body += self.sql_field_filter(args["filter"])
 
         if "sort" in args and args["sort"]  != ""  and args["sort"] != "undefined" and "sort" in query_features:
+            print("SORT ARGS:")
+            print(args["sort"])
             query_body += self.sql_field_sort(args["sort"], args["order"])
 
         if "offset" in args and args["offset"] != "" and args["offset"] != "undefined" and "offset" in query_features:
+            print("OFFSET ARGS:")
+            print(args["offset"])
             offset_results = self.sql_field_offset(args["offset"])
             query_body += offset_results["sql"]
             data += offset_results["data"]
 
         if "limit" in args and args["limit"] != "" and args["limit"] != "undefined" and "limit" in query_features:
+            print("LIMIT ARGS:")
+            print(args["limit"])
             limit_results = self.sql_field_limit(args["limit"])
             query_body += limit_results["sql"]
             data += limit_results["data"]
@@ -233,24 +247,39 @@ class DatabaseConnection():
         #Closing syntax
 #        stmt += sql.SQL(") t;")
 
-    @staticmethod
     """TODO: GET LIST OF ALL COLUMNS
     PASS IN LIST
     ITERATE THROUGH LIST ADDING 'LIKE' STATEMENTS FOR EACH ROW
     RETURN FINAL STATEMENT
     """
-    def sql_field_search(search_column, search_term):
-        return sql.SQL("AND LOWER({search_column}) LIKE LOWER({search_term}) ").format(
-            search_column = sql.Identifier(search_column),
-            search_term = sql.Literal('%%' + search_term + '%%')
-            )
-
     @staticmethod
-    def sql_field_filter(filter_column, filter_term):
-        return sql.SQL("AND LOWER({filter_column}) LIKE LOWER({filter_term}) ").format(
-            filter_column = sql.Identifier(filter_column),
-            filter_term = sql.Literal('%%' + filter_term + '%%')
+
+    def sql_field_search(search_column, search_term):
+        return sql.SQL("")
+        # column_headers = HeaderNames.get_csv_column_headers(Config.SOURCE_FILE_NAME)
+        # column_headers = [column_headers[0]]
+        # search_sql = sql.SQL("AND state='RI' ")
+        # for header in column_headers:
+        #     search_sql = sql.SQL("AND LOWER({search_column}) LIKE LOWER({search_term}) ").format(
+        #         search_column = sql.Identifier(header),
+        #         search_term = sql.Literal('%%' + search_term + '%%')
+        #         )
+        # print (search_sql)
+        # print("SEARCH CODE")
+        # return search_sql
+
+    """TODO: ITERATE THROUGH ITEMS IN FILTER DICTIONARY
+    """
+    @staticmethod
+    def sql_field_filter(filter_data):
+        filter_sql = sql.SQL("")
+        filter_data = json.loads(filter_data)
+        for filter in filter_data:
+            filter_sql += sql.SQL("AND LOWER({filter_column}) LIKE LOWER({filter_term}) ").format(
+                filter_column = sql.Identifier(filter),
+                filter_term = sql.Literal('%%' + filter_data[filter] + '%%')
             )
+        return filter_sql
         
     @staticmethod
     def sql_field_sort(sort_column, sort_order):
@@ -571,6 +600,7 @@ class HeaderNames():
         with open(source_file_name, 'r', encoding='utf-8-sig') as f:
             d_reader = csv.DictReader(f)
             headers = d_reader.fieldnames
+            headers = [x.lower() for x in headers]
             return headers
 
     @staticmethod

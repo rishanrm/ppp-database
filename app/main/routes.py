@@ -31,6 +31,8 @@ def home():
 
   #     table_data_json = db.build_table_json(total_count_str, len(results_data), results_str)
       csv_column_headers = HeaderNames.get_csv_column_headers(Config.SOURCE_FILE_NAME)
+      print(csv_column_headers)
+      print("THOSE WERE COLUMN HEADERS")
 
       return render_template('home.html', data="", headers = csv_column_headers)
 
@@ -59,7 +61,7 @@ def specific_person():
 def params():
 
   with current_app.app_context():
-    db = DatabaseInitialization.initialize_database("local")
+#    db = DatabaseInitialization.initialize_database("local")
     db = DatabaseConnection("local", Config.DB_NAME, Config.TABLE_NAME)
 
     total_count = db.fetch_total_count()
@@ -107,7 +109,7 @@ def form_example():
 
 @main.route('/fetch')
 def fetch():
-    db = DatabaseInitialization.initialize_database("local")
+#    db = DatabaseInitialization.initialize_database("local")
     db = DatabaseConnection("local", Config.DB_NAME, Config.TABLE_NAME)
 #    db.fetch_most_recent(5)
 
@@ -123,7 +125,7 @@ def fetch():
 
 @main.route('/data_test/<column>.json')
 def data_test(column):
-    db = DatabaseInitialization.initialize_database("local")
+#    db = DatabaseInitialization.initialize_database("local")
     db = DatabaseConnection("local", Config.DB_NAME, Config.TABLE_NAME)
     column_options = db.get_column_options(column)
     options_dict = db.get_column_options_dict(column_options)
