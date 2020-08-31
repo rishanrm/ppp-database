@@ -276,7 +276,6 @@ class DatabaseConnection():
             else:
                 return 0
 
-
     @staticmethod
     def get_json_component(results, data_type):
 
@@ -300,6 +299,25 @@ class DatabaseConnection():
         table_json_str = "{ " + results_len_str + ", " + total_count_str + ", " + results_str + " }"
         return table_json_str
 
+    def get_column_options(self, column):
+        print('IN COLUMN OPTIONS')
+        query= sql.SQL("""
+            SELECT DISTINCT {column}
+            FROM            {table_name}
+            """).format(
+                column = sql.Identifier(column),
+                table_name = sql.Identifier(self.table_name)
+            )
+        self.my_cursor.execute(query)
+        results = self.my_cursor.fetchall()
+        return results
+
+    @staticmethod
+    def get_column_options_dict(column_options):
+        options_dict = {}
+        for option in column_options:
+            options_dict[option[0]] = option[0]
+        return (options_dict)
 
 class DatabaseInitialization():
 

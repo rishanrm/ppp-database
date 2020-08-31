@@ -76,7 +76,11 @@ def params():
     results_str = db.get_json_component(results_data, "data")
 
     table_data_json = db.build_table_json(filtered_count_str, total_count_str, results_str)
+    print(type(table_data_json))
     csv_column_headers = HeaderNames.get_csv_column_headers(Config.SOURCE_FILE_NAME)
+
+    print("PARAMS ROUTE")
+    print(type(json.loads(table_data_json)))
 
     return json.loads(table_data_json)
 
@@ -103,59 +107,27 @@ def form_example():
 
 @main.route('/fetch')
 def fetch():
-        db = DatabaseInitialization.initialize_database("local")
-        db = DatabaseConnection("local", Config.DB_NAME, Config.TABLE_NAME)
+    db = DatabaseInitialization.initialize_database("local")
+    db = DatabaseConnection("local", Config.DB_NAME, Config.TABLE_NAME)
 #    db.fetch_most_recent(5)
 
 #    db.fetch_json(5)
-        total_count = db.fetch_total_count()
-        total_count_str = db.get_json_component(total_count, "total")
-        results_data = db.fetch_from_db()
-        results_str = db.get_json_component(results_data, "data")
-        table_data_json = db.build_table_json(total_count_str, len(results_data), results_str)
+    total_count = db.fetch_total_count()
+    total_count_str = db.get_json_component(total_count, "total")
+    results_data = db.fetch_from_db()
+    results_str = db.get_json_component(results_data, "data")
+    table_data_json = db.build_table_json(total_count_str, len(results_data), results_str)
 #    return jsonify(table_data_json)
 #    return json.dumps(table_data_json)
-        return json.loads(table_data_json)
+    return json.loads(table_data_json)
 
-@main.route('/data_test/<column>/')
+@main.route('/data_test/<column>.json')
 def data_test(column):
-        print(column)
-#        return send_static_file("./book.json")
-        with open('./app/static/column_options.json', 'r') as myfile:
-            data = myfile.read()
-        return json.loads(data)
-        return jsonify({
-                "total": 800,
-                "totalNotFiltered": 800,
-                "rows": [
-                    {
-                        "id": 0,
-                        "name": "Item 0",
-                        "price": "$0"
-                    },
-                    {
-                        "id": 1,
-                        "name": "Item 1",
-                        "price": "$1"
-                    },
-                    {
-                        "id": 2,
-                        "name": "Item 2",
-                        "price": "$2"
-                    },
-                    {
-                        "id": 3,
-                        "name": "Item 3",
-                        "price": "$3"
-                    },
-                    {
-                        "id": 4,
-                        "name": "Item 4",
-                        "price": "$4"
-                    }
-                ]
-        })
-
+    db = DatabaseInitialization.initialize_database("local")
+    db = DatabaseConnection("local", Config.DB_NAME, Config.TABLE_NAME)
+    column_options = db.get_column_options(column)
+    options_dict = db.get_column_options_dict(column_options)
+    return json.loads(json.dumps(options_dict))
 
 @main.route("/data", methods=['GET'])
 def data():
