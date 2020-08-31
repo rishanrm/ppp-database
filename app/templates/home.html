@@ -63,7 +63,7 @@
                     loanamount,city,state,zip,naicscode,businesstype,raceethnicity,gender,veteran,nonprofit,jobsretained,dateapproved,lender,cd
                     -->
                     <th data-field="loanamount" data-sortable="true" data-formatter="amountFormatter" data-sort-order="desc">Loan Amount</th>
-                    <th data-field="city" data-sortable="true" data-filter-control="input">City</th>
+                    <th data-field="city" data-sortable="true" data-filter-control="select" data-filter-data="url:http://localhost:5000/data_test/city.json>City</th>
                     <!-- <th data-filter-data="var:userJobTitles" data-field="state" data-sortable="true" data-filter-control="select">State</th> -->
                     <th data-field="state" data-sortable="true" data-filter-control="select" data-filter-data="func:functionName">State</th>
                     <th data-field="zip" data-sortable="true" data-filter-control="input">Zip Code</th>

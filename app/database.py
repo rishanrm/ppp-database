@@ -190,6 +190,7 @@ class DatabaseConnection():
         FROM (
             SELECT *
             FROM {table_name}
+            WHERE ''=''
         """).format(
             table_name = sql.Identifier(self.table_name)
         )
@@ -200,6 +201,9 @@ class DatabaseConnection():
         search_column="loanamount"
         
         if "search" in args and args["search"] != "" and args["search"] != "undefined" and "search" in query_features:
+            query_body += self.sql_field_search(search_column, args["search"])
+        
+        if "filter" in args and args["filter"] != "" and args["filter"] != "undefined" and "filter" in query_features:
             query_body += self.sql_field_search(search_column, args["search"])
 
         if "sort" in args and args["sort"]  != ""  and args["sort"] != "undefined" and "sort" in query_features:
@@ -230,10 +234,22 @@ class DatabaseConnection():
 #        stmt += sql.SQL(") t;")
 
     @staticmethod
+    """TODO: GET LIST OF ALL COLUMNS
+    PASS IN LIST
+    ITERATE THROUGH LIST ADDING 'LIKE' STATEMENTS FOR EACH ROW
+    RETURN FINAL STATEMENT
+    """
     def sql_field_search(search_column, search_term):
-        return sql.SQL("WHERE LOWER({search_column}) LIKE LOWER({search_term}) ").format(
+        return sql.SQL("AND LOWER({search_column}) LIKE LOWER({search_term}) ").format(
             search_column = sql.Identifier(search_column),
             search_term = sql.Literal('%%' + search_term + '%%')
+            )
+
+    @staticmethod
+    def sql_field_filter(filter_column, filter_term):
+        return sql.SQL("AND LOWER({filter_column}) LIKE LOWER({filter_term}) ").format(
+            filter_column = sql.Identifier(filter_column),
+            filter_term = sql.Literal('%%' + filter_term + '%%')
             )
         
     @staticmethod
