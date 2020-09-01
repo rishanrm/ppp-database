@@ -4,7 +4,8 @@
 <div id="toolbar">
     <button id="button" class="btn btn-secondary">destroy</button>
     <button id="button2" class="btn btn-secondary">build</button>
-  </div>
+    <button id="button3" class="btn btn-secondary">refreshOptions</button>
+</div>
 
     <div class="container">
 
@@ -45,7 +46,7 @@
             data-smart-display="true"
             data-undefined-text="-"
             data-virtual-scroll="true"
-            data-addrbar="true"
+            data-addrbar="false"
             data-show-export="true"
             data-export-data-type="basic"
             data-filter-control="true"
@@ -55,6 +56,7 @@
             data-header-style="headerStyle"
             data-show-search-clear-button="false"
             data-toolbar="#toolbar"
+
 
 
             >
@@ -122,21 +124,30 @@
             var $table = $('#table')
             var $button = $('#button')
             var $button2 = $('#button2')
-          
+            var $button3 = $('#button3')
+        
             $(function() {
-              $button.click(function () {
-                $table.bootstrapTable('destroy')
-                $table.bootstrapTable()
-              })
-              $button2.click(function () {
-                $table.bootstrapTable()
-              })
+                
+            $button.click(function () {
+                $table.bootstrapTable('refresh');
             })
-          </script>
+            $button2.click(function () {
+                $table.bootstrapTable()
+            })
+            })
+        </script>
 
-
-
-
+        <script>
+        $(function() {
+            $button3.click(function () {
+            $table.bootstrapTable('refreshOptions', {
+                showColumns: true,
+                search: false,
+                showRefresh: true
+            })
+            })
+        })
+        </script>
 
 
 
@@ -157,26 +168,7 @@ BONUS: This looks like the way to use the CLEAR FILTERS button
  -->
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<script>
+        <script>
             function ajaxRequest4(params) {
                 var url = '/params'
                 console.log("PARAMS REQUEST HERE:")
@@ -195,21 +187,6 @@ BONUS: This looks like the way to use the CLEAR FILTERS button
                     CEO : 'CEO',
                 };
             }
-        </script>
-
-        <script>
-            var url = '/params'
-            $.get(url + '?').then(function (res) {
-                params.success(res)
-                console.log(res)
-            });
-            var userJobTitles2 = {
-                    Admin: 'Admin',
-                    IT: 'IT',
-                    General : 'General',
-                    Security : 'Security',
-                    CEO : 'CEO',
-            };
         </script>
 
         <script>
@@ -283,9 +260,16 @@ BONUS: This looks like the way to use the CLEAR FILTERS button
         </script>
 
 <script>
-$table.bootstrapTable({
-});
+$('#table').bootstrapTable({
+    onAll: function (arg1, arg2, params) {
+    console.log('HELLO START')
+    console.log(params)
+  }
+})
 
+$('#table').on('event-name.bs.table', function (e, arg1, arg2) {
+    console.log('HELLO END')
+})
 </script>
 
 
