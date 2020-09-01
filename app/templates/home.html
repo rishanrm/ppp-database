@@ -107,7 +107,9 @@
 
         
         <script src="https://unpkg.com/bootstrap-table@1.17.1/dist/extensions/filter-control/bootstrap-table-filter-control.min.js"></script>
-        <script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.14.1/locale/bootstrap-table-en-US.min.js"></script>
+
+<script>
             function ajaxRequest4(params) {
                 var url = '/params'
                 console.log("PARAMS REQUEST HERE:")
@@ -135,8 +137,6 @@
                 return value.substring(0, value.length - 3)
             }
         </script>
-
-
 
         <script>
             $(function() {
@@ -173,6 +173,37 @@
             }
         </script>
 
+        <script>
+            $(.form-control.search-input).attr("placeholder", "WKERJheskfjhsd")
+        </script>
+
+
+        <script>        
+(function ($) {
+    'use strict';
+
+    $.fn.bootstrapTable.locales['en-US-custom'] = {
+        formatLoadingMessage: function () {
+            return 'Doing government work';
+        },
+        formatRecordsPerPage: function (pageNumber) {
+            return pageNumber + ' results per page';
+        },
+        formatShowingRows: function (pageFrom, pageTo, totalRows) {
+            return 'Showing ' + pageFrom + ' to ' + pageTo + ' of ' + totalRows + ' loans';
+        },
+        formatSearch: function () {
+            return 'Search all columns';
+        },
+        formatNoMatches: function () {
+            return 'Whoops, I\'ve got nothing for you ¯\\_(ツ)_/¯ Want to try again fewer filters?';
+        }
+    };
+
+    $.extend($.fn.bootstrapTable.defaults, $.fn.bootstrapTable.locales['en-US-custom']);
+
+})(jQuery);
+        </script>
     </div>
 {% endblock content %}
 

@@ -203,20 +203,45 @@ class DatabaseConnection():
         query_body = sql.SQL("")
         data = ()
         
-        if "search" in args and args["search"] != "" and args["search"] != "undefined" and "search" in query_features:
-            print("SEARCH ARGS:")
-            print(args["search"])
-            query_body += self.sql_field_search(args["search"])
+        for arg in args:
+            print("THE CURRENT ARG IS")
+            print (arg)
+            if args[arg] != "" and args[arg] != "undefined" and arg in query_features:
+                if arg == "search":
+                    query_body += self.sql_field_search(args["search"])
+                elif arg == "filter":
+                    query_body += self.sql_field_filter(args["filter"])
+                # elif arg == "sort":
+                #     query_body += self.sql_field_sort(args["sort"], args["order"])
+        #         elif arg == "offset":
+        #             print("THIS IS THE ARG FOR OFFSET:")
+        #             print(arg)
+        #             print(args["offset"])
+        #             offset_results = self.sql_field_offset(args["offset"])
+        #             query_body += offset_results["sql"]
+        #             data += offset_results["data"]
+        #         elif arg == "limit":
+        #             limit_results = self.sql_field_limit(args["limit"])
+        #             query_body += limit_results["sql"]
+        #             data += limit_results["data"]
         
-        if "filter" in args and args["filter"] != "" and args["filter"] != "undefined" and "filter" in query_features:
-            print("FILTER ARGS:")
-            print(args["filter"])
-            query_body += self.sql_field_filter(args["filter"])
+        # if "search" in args and args["search"] != "" and args["search"] != "undefined" and "search" in query_features:
+        #     print("SEARCH ARGS:")
+        #     print(args["search"])
+        #     query_body += self.sql_field_search(args["search"])
+        
+        # if "filter" in args and args["filter"] != "" and args["filter"] != "undefined" and "filter" in query_features:
+        #     print("FILTER ARGS:")
+        #     print(args["filter"])
+        #     query_body += self.sql_field_filter(args["filter"])
+        for arg in args:
+            if arg == "sort":
+                if args[arg] != "" and args[arg] != "undefined" and arg in query_features:
 
-        if "sort" in args and args["sort"]  != ""  and args["sort"] != "undefined" and "sort" in query_features:
-            print("SORT ARGS:")
-            print(args["sort"])
-            query_body += self.sql_field_sort(args["sort"], args["order"])
+#                if "sort" in args and args["sort"]  != ""  and args["sort"] != "undefined" and "sort" in query_features:
+#                    print("SORT ARGS:")
+#                    print(args["sort"])
+                    query_body += self.sql_field_sort(args["sort"], args["order"])
 
         if "offset" in args and args["offset"] != "" and args["offset"] != "undefined" and "offset" in query_features:
             print("OFFSET ARGS:")
