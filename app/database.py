@@ -208,7 +208,7 @@ class DatabaseConnection():
         args = OrderedDict((arg, args.get(arg)) for arg in args_order)
         
         for arg in args:
-            if args[arg] != "" and args[arg] != "undefined" and arg in query_features:
+            if args[arg] != "" and args[arg] != "undefined" and args[arg] != None and arg in query_features:
                 if arg == "search":
                     query_body += self.sql_field_search(args["search"])
                 if arg == "filter":
