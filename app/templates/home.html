@@ -173,36 +173,32 @@
             }
         </script>
 
-        <script>
-            $(.form-control.search-input).attr("placeholder", "WKERJheskfjhsd")
-        </script>
-
-
+        <!-- Custom text for loading message, footer, search box placeholder, no match found -->
         <script>        
-(function ($) {
-    'use strict';
+            (function ($) {
+                'use strict';
 
-    $.fn.bootstrapTable.locales['en-US-custom'] = {
-        formatLoadingMessage: function () {
-            return 'Doing government work';
-        },
-        formatRecordsPerPage: function (pageNumber) {
-            return pageNumber + ' results per page';
-        },
-        formatShowingRows: function (pageFrom, pageTo, totalRows) {
-            return 'Showing ' + pageFrom + ' to ' + pageTo + ' of ' + totalRows + ' loans';
-        },
-        formatSearch: function () {
-            return 'Search all columns';
-        },
-        formatNoMatches: function () {
-            return 'Whoops, I\'ve got nothing for you ¯\\_(ツ)_/¯ Want to try again fewer filters?';
-        }
-    };
+                $.fn.bootstrapTable.locales['en-US-custom'] = {
+                    formatLoadingMessage: function () {
+                        return 'Doing government work';
+                    },
+                    formatRecordsPerPage: function (pageNumber) {
+                        return pageNumber + ' results per page';
+                    },
+                    formatShowingRows: function (pageFrom, pageTo, totalRows) {
+                        return 'Showing ' + pageFrom + ' to ' + pageTo + ' of ' + totalRows + ' loans';
+                    },
+                    formatSearch: function () {
+                        return 'Search all columns';
+                    },
+                    formatNoMatches: function () {
+                        return 'Whoops, I\'ve got nothing for you ¯\\_(ツ)_/¯ Want to try again fewer filters?';
+                    }
+                };
 
-    $.extend($.fn.bootstrapTable.defaults, $.fn.bootstrapTable.locales['en-US-custom']);
+                $.extend($.fn.bootstrapTable.defaults, $.fn.bootstrapTable.locales['en-US-custom']);
 
-})(jQuery);
+            })(jQuery);
         </script>
     </div>
 {% endblock content %}

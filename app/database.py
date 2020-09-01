@@ -11,6 +11,7 @@ from psycopg2 import sql
 from psycopg2.extensions import quote_ident
 from google.cloud import storage
 from flask import current_app
+from collections import OrderedDict
 
 
 from psycopg2.extras import RealDictCursor
@@ -203,81 +204,31 @@ class DatabaseConnection():
         query_body = sql.SQL("")
         data = ()
         
+        args_order = ["search", "filter", "sort", "order", "offset", "limit"]
+        args = OrderedDict((arg, args.get(arg)) for arg in args_order)
+        
         for arg in args:
-            print("THE CURRENT ARG IS")
-            print (arg)
             if args[arg] != "" and args[arg] != "undefined" and arg in query_features:
                 if arg == "search":
                     query_body += self.sql_field_search(args["search"])
-                elif arg == "filter":
+                if arg == "filter":
                     query_body += self.sql_field_filter(args["filter"])
-                # elif arg == "sort":
-                #     query_body += self.sql_field_sort(args["sort"], args["order"])
-        #         elif arg == "offset":
-        #             print("THIS IS THE ARG FOR OFFSET:")
-        #             print(arg)
-        #             print(args["offset"])
-        #             offset_results = self.sql_field_offset(args["offset"])
-        #             query_body += offset_results["sql"]
-        #             data += offset_results["data"]
-        #         elif arg == "limit":
-        #             limit_results = self.sql_field_limit(args["limit"])
-        #             query_body += limit_results["sql"]
-        #             data += limit_results["data"]
-        
-        # if "search" in args and args["search"] != "" and args["search"] != "undefined" and "search" in query_features:
-        #     print("SEARCH ARGS:")
-        #     print(args["search"])
-        #     query_body += self.sql_field_search(args["search"])
-        
-        # if "filter" in args and args["filter"] != "" and args["filter"] != "undefined" and "filter" in query_features:
-        #     print("FILTER ARGS:")
-        #     print(args["filter"])
-        #     query_body += self.sql_field_filter(args["filter"])
-        for arg in args:
-            if arg == "sort":
-                if args[arg] != "" and args[arg] != "undefined" and arg in query_features:
-
-#                if "sort" in args and args["sort"]  != ""  and args["sort"] != "undefined" and "sort" in query_features:
-#                    print("SORT ARGS:")
-#                    print(args["sort"])
+                if arg == "sort":
                     query_body += self.sql_field_sort(args["sort"], args["order"])
-
-        if "offset" in args and args["offset"] != "" and args["offset"] != "undefined" and "offset" in query_features:
-            print("OFFSET ARGS:")
-            print(args["offset"])
-            offset_results = self.sql_field_offset(args["offset"])
-            query_body += offset_results["sql"]
-            data += offset_results["data"]
-
-        if "limit" in args and args["limit"] != "" and args["limit"] != "undefined" and "limit" in query_features:
-            print("LIMIT ARGS:")
-            print(args["limit"])
-            limit_results = self.sql_field_limit(args["limit"])
-            query_body += limit_results["sql"]
-            data += limit_results["data"]
-
+                if arg == "offset":
+                    offset_results = self.sql_field_offset(args["offset"])
+                    query_body += offset_results["sql"]
+                    data += offset_results["data"]
+                if arg == "limit":
+                    limit_results = self.sql_field_limit(args["limit"])
+                    query_body += limit_results["sql"]
+                    data += limit_results["data"]
         return {
             "query": query_body,
             "data": data
         }
-#        if return_type == "data":
 
-            #Sort
-
-            #Offset
-
-            #Limit
-        #Closing syntax
-#        stmt += sql.SQL(") t;")
-
-    """TODO: GET LIST OF ALL COLUMNS
-    PASS IN LIST
-    ITERATE THROUGH LIST ADDING 'LIKE' STATEMENTS FOR EACH ROW
-    RETURN FINAL STATEMENT
-    """
     @staticmethod
-
     def sql_field_search(search_term):
 
         search_sql = sql.SQL('AND (')
