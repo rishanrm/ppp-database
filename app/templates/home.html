@@ -1,6 +1,11 @@
 {% extends 'layout.html' %}
 {% block content %}
 
+<div id="toolbar">
+    <button id="button" class="btn btn-secondary">destroy</button>
+    <button id="button2" class="btn btn-secondary">build</button>
+  </div>
+
     <div class="container">
 
         <table
@@ -48,6 +53,8 @@
             data-show-print="true"
             data-reorderable-columns="true"
             data-header-style="headerStyle"
+            data-show-search-clear-button="false"
+            data-toolbar="#toolbar"
 
 
             >
@@ -63,7 +70,7 @@
                     loanamount,city,state,zip,naicscode,businesstype,raceethnicity,gender,veteran,nonprofit,jobsretained,dateapproved,lender,cd
                     -->
                     <th data-field="loanamount" data-sortable="true" data-formatter="amountFormatter" data-sort-order="desc">Loan Amount</th>
-                    <th data-field="city" data-sortable="true" data-filter-control="select" data-filter-data="url:http://localhost:5000/data_test/city.json">City</th>
+                    <th data-field="city" data-sortable="true" data-filter-control="select" data-filter-data="var:userJobTitles">City</th>
                     <!-- <th data-filter-data="var:userJobTitles" data-field="state" data-sortable="true" data-filter-control="select">State</th> -->
                     <th data-field="state" data-sortable="true" data-filter-control="select" data-filter-data="func:functionName">State</th>
                     <th data-field="zip" data-sortable="true" data-filter-control="input">Zip Code</th>
@@ -80,6 +87,8 @@
                 </tr>
             </thead>
         </table>
+
+
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
 
@@ -109,6 +118,64 @@
         <script src="https://unpkg.com/bootstrap-table@1.17.1/dist/extensions/filter-control/bootstrap-table-filter-control.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.14.1/locale/bootstrap-table-en-US.min.js"></script>
 
+        <script>
+            var $table = $('#table')
+            var $button = $('#button')
+            var $button2 = $('#button2')
+          
+            $(function() {
+              $button.click(function () {
+                $table.bootstrapTable('destroy')
+                $table.bootstrapTable()
+              })
+              $button2.click(function () {
+                $table.bootstrapTable()
+              })
+            })
+          </script>
+
+
+
+
+
+
+
+<!-- 
+TO DO NEXT:
+- DESTROY/BUILD looks to be the way to reload the headers
+- To use this, you'll need to:
+1. Save the params
+2. Build the new table with the new params
+
+
+Need to figure out how to return a SQL response to the column headers
+Need to figure out if you can build the new table with the old Params
+Need to re-populate the previous choices in the new table
+
+
+BONUS: This looks like the way to use the CLEAR FILTERS button
+ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <script>
             function ajaxRequest4(params) {
                 var url = '/params'
@@ -118,12 +185,25 @@
                 $.get(url + '?' + $.param(params.data)).then(function (res) {
                     params.success(res)
                     console.log(res)
-                });
+                })
+
+                var userJobTitles = {
+                    Admin: 'Admin',
+                    IT: 'IT',
+                    General : 'General',
+                    Security : 'Security',
+                    CEO : 'CEO',
+                };
             }
         </script>
 
         <script>
-            var userJobTitles = {
+            var url = '/params'
+            $.get(url + '?').then(function (res) {
+                params.success(res)
+                console.log(res)
+            });
+            var userJobTitles2 = {
                     Admin: 'Admin',
                     IT: 'IT',
                     General : 'General',
@@ -169,7 +249,8 @@
 
         <script>
             function functionName() {
-                return {'state': 'state'}
+                var randomnum = Math.random().toString()
+                return {'state': randomnum}
             }
         </script>
 
@@ -200,6 +281,14 @@
 
             })(jQuery);
         </script>
+
+<script>
+$table.bootstrapTable({
+});
+
+</script>
+
+
     </div>
 {% endblock content %}
 
