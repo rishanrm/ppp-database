@@ -135,7 +135,12 @@
             </script> -->
 
         <script>
-            var columns = {}
+            var columns = {
+                state: {
+                    country: randomnum,
+                    city: 'city'
+                }
+            }
 
             function functionName() {
                 var randomnum = Math.random().toString()
@@ -161,6 +166,7 @@
             })
         </script>
 
+        <!-- Table reset -->
         <script>
         $(function() {
             $resetButton.click(function () {
@@ -173,6 +179,7 @@
         })
         </script>
 
+        <!-- Get data -->
         <script>
             function ajaxRequest(params) {
                 var url = '/params'
@@ -194,6 +201,7 @@
             }
         </script>
 
+        <!-- Format loan amount data -->        
         <script>
             function amountFormatter(value) {
                 return value.substring(0, value.length - 3)
@@ -201,7 +209,7 @@
         </script>
 
 
-
+        <!-- Data export -->
         <script>
             $(function() {
                 $('#toolbar').find('select').change(function () {
