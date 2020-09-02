@@ -74,8 +74,8 @@
                     <!-- <th data-field="loanamount" data-sortable="true" data-formatter="amountFormatter" data-sort-order="desc">Loan Amount</th>
                     <th data-field="city" data-sortable="true" data-filter-control="select" data-filter-data="var:userJobTitles">City</th>
                     <th data-filter-data="var:userJobTitles" data-field="state" data-sortable="true" data-filter-control="select">State</th> -->
-                    <th data-filter-data="obj:columnOptions.state" data-field="state" data-sortable="true" data-filter-control="select">State</th>
-                    <th data-field="zip" data-sortable="true" data-filter-control="input">Zip Code</th>
+                    <th data-filter-data="obj:userJobTitles.state" data-field="state" data-sortable="true" data-filter-control="select">State</th>
+                    <th data-filter-data="obj:userJobTitles.zip" data-field="zip" data-sortable="true" data-filter-control="select">Zip Code</th>
                     <th data-field="naicscode" data-sortable="true" data-filter-control="select" data-filter-data="url:http://localhost:5000/data_test/naicscode.json">NAICS Code</th>
                     <th data-field="businesstype" data-sortable="true" data-filter-control="select" data-filter-data="url:http://localhost:5000/data_test/businesstype.json">Business Type</th>
                     <th data-field="raceethnicity" data-sortable="true" data-filter-control="select"  data-filter-data="url:http://localhost:5000/data_test/raceethnicity.json">Race &#47; Ethnicity</th>
@@ -135,18 +135,33 @@
             </script> -->
 
         <script>
-            var columns = {
-                state: {
-                    country: randomnum,
-                    city: 'city'
-                }
-            }
+            var randomnum = Math.random().toString()
 
-            function functionName() {
-                var randomnum = Math.random().toString()
-                return {'state': randomnum,
-                        'city': 'city'}
-            }
+            var userJobTitles = {
+                'state': {
+                    Admin: 'Admin',
+                    IT: 'IT',
+                    General : 'General',
+                    Security : 'Security',
+                    CEO : 'CEO',
+                },
+                'zip': {
+                    Admin: 'Admin'
+                }
+            };
+
+            // var columns = {
+            //     'state': {
+            //         country: randomnum,
+            //         city: 'city'
+            //     }
+            // }
+
+            // function functionName() {
+            //     var randomnum = Math.random().toString()
+            //     return {'state': randomnum,
+            //             'city': 'city'}
+            // }
         </script>
 
         <script>
@@ -190,14 +205,6 @@
                     params.success(res)
                     console.log(res)
                 })
-
-                var userJobTitles = {
-                    Admin: 'Admin',
-                    IT: 'IT',
-                    General : 'General',
-                    Security : 'Security',
-                    CEO : 'CEO',
-                };
             }
         </script>
 
