@@ -71,21 +71,20 @@
                     <th data-field="eb_revenue" data-sortable="true">EB Revenue ($)</th>
                     loanamount,city,state,zip,naicscode,businesstype,raceethnicity,gender,veteran,nonprofit,jobsretained,dateapproved,lender,cd
                     -->
-                    <!-- <th data-field="loanamount" data-sortable="true" data-formatter="amountFormatter" data-sort-order="desc">Loan Amount</th>
-                    <th data-field="city" data-sortable="true" data-filter-control="select" data-filter-data="var:userJobTitles">City</th>
-                    <th data-filter-data="var:userJobTitles" data-field="state" data-sortable="true" data-filter-control="select">State</th> -->
-                    <th data-filter-data="obj:userJobTitles.state" data-field="state" data-sortable="true" data-filter-control="select">State</th>
-                    <th data-filter-data="obj:userJobTitles.zip" data-field="zip" data-sortable="true" data-filter-control="select">Zip Code</th>
-                    <th data-field="naicscode" data-sortable="true" data-filter-control="select" data-filter-data="url:http://localhost:5000/data_test/naicscode.json">NAICS Code</th>
-                    <th data-field="businesstype" data-sortable="true" data-filter-control="select" data-filter-data="url:http://localhost:5000/data_test/businesstype.json">Business Type</th>
-                    <th data-field="raceethnicity" data-sortable="true" data-filter-control="select"  data-filter-data="url:http://localhost:5000/data_test/raceethnicity.json">Race &#47; Ethnicity</th>
-                    <th data-field="gender" data-sortable="true" data-filter-control="select" data-filter-data="url:http://localhost:5000/data_test/gender.json">Gender</th>
-                    <th data-field="veteran" data-sortable="true" data-filter-control="select" data-filter-data="url:http://localhost:5000/data_test/veteran.json">Veteran</th>
-                    <th data-field="nonprofit" data-sortable="true" data-filter-control="select" data-filter-data="url:http://localhost:5000/data_test/nonprofit.json">Nonprofit</th>
-                    <th data-field="jobsretained" data-sortable="true">Jobs Retained</th>
-                    <th data-field="dateapproved" data-sortable="true" data-filter-control="select" data-filter-data="url:http://localhost:5000/data_test/dateapproved.json">Date Approved</th>
-                    <th data-field="lender" data-sortable="true" data-filter-control="select" data-filter-data="url:http://localhost:5000/data_test/lender.json">Lender</th>
-                    <th data-field="cd" data-sortable="true" data-filter-control="select" data-filter-data="url:http://localhost:5000/data_test/cd.json">Congressional District</th>
+                    <th data-field="loanamount"     data-sortable="true" data-filter-control="input"    data-sort-order="desc" data-formatter="amountFormatter"                     >Loan Amount</th>
+                    <th data-field="city"           data-sortable="true" data-filter-control="input"                                                                                >City</th>
+                    <th data-field="state"          data-sortable="true" data-filter-control="select"   data-filter-data="obj:userJobTitles.state"                                  >State</th>
+                    <th data-field="zip"            data-sortable="true" data-filter-control="input"                                                                                >Zip Code</th>
+                    <th data-field="naicscode"      data-sortable="true" data-filter-control="select"   data-filter-data="url:http://localhost:5000/data_test/naicscode.json"       >NAICS Code</th>
+                    <th data-field="businesstype"   data-sortable="true" data-filter-control="select"   data-filter-data="url:http://localhost:5000/data_test/businesstype.json"    >Business Type</th>
+                    <th data-field="raceethnicity"  data-sortable="true" data-filter-control="select"   data-filter-data="url:http://localhost:5000/data_test/raceethnicity.json"   >Race &#47; Ethnicity</th>
+                    <th data-field="gender"         data-sortable="true" data-filter-control="select"   data-filter-data="url:http://localhost:5000/data_test/gender.json"          >Gender</th>
+                    <th data-field="veteran"        data-sortable="true" data-filter-control="select"   data-filter-data="url:http://localhost:5000/data_test/veteran.json"         >Veteran</th>
+                    <th data-field="nonprofit"      data-sortable="true" data-filter-control="select"   data-filter-data="url:http://localhost:5000/data_test/nonprofit.json"       >Nonprofit</th>
+                    <th data-field="jobsretained"   data-sortable="true" data-filter-control="input"                                                                                >Jobs Retained</th>
+                    <th data-field="dateapproved"   data-sortable="true" data-filter-control="select"   data-filter-data="url:http://localhost:5000/data_test/dateapproved.json"    >Date Approved</th>
+                    <th data-field="lender"         data-sortable="true" data-filter-control="input"                                                                                >Lender</th>
+                    <th data-field="cd"             data-sortable="true" data-filter-control="input"                                                                                >Congressional District</th>
                 </tr>
             </thead>
         </table>
@@ -120,6 +119,27 @@
         <script src="https://unpkg.com/bootstrap-table@1.17.1/dist/extensions/filter-control/bootstrap-table-filter-control.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.14.1/locale/bootstrap-table-en-US.min.js"></script>
 
+        <script>
+            function addOptionToSelectControl(selectControl, _value, text, selected) {
+                var value = _value === undefined || _value === null ? '' : _value.toString().trim();
+                var $selectControl = $(selectControl.get(selectControl.length - 1));
+
+                if (!existOptionInSelectControl(selectControl, value)) {
+                    var option = $("<option value=\"".concat(value, "\">").concat(text, "</option>"));
+                    // +++ comparing value and selected as strings so possible type differences wont make a problem 
+                    if (value.toString() === selected.toString()) {
+                        option.attr('selected', true);
+                    }
+
+                    $selectControl.append(option);
+                    // +++ triggering new filter if a non empy defaultFilter is set.
+                    if (value.toString() === selected.toString() && selected !== '') {
+                        selectControl.change()
+                    }
+                }
+            }
+        </script>
+        
         <!-- <script>    
             $('#table').bootstrapTable({
                 onAll: function (arg1, arg2) {
@@ -137,18 +157,7 @@
         <script>
             var randomnum = Math.random().toString()
 
-            var userJobTitles = {
-                'state': {
-                    Admin: 'Admin',
-                    IT: 'IT',
-                    General : 'General',
-                    Security : 'Security',
-                    CEO : 'CEO',
-                },
-                'zip': {
-                    Admin: 'Admin'
-                }
-            };
+
 
             // var columns = {
             //     'state': {
@@ -196,16 +205,77 @@
 
         <!-- Get data -->
         <script>
+            var userJobTitles = {
+                'state': {
+                    Admin: 'Admin',
+                    IT: randomnum,
+                    General : 'General',
+                    Security : 'Security',
+                    CEO : 'CEO',
+                },
+                'zip': {
+                    Admin: 'Admin',
+                    CEO: randomnum
+                }
+            };
             function ajaxRequest(params) {
+                // var userJobTitles = {
+                //     'state': {
+                //         Admin: 'Admin',
+                //         IT: randomnum,
+                //         General : 'General',
+                //         Security : 'Security',
+                //         CEO : 'CEO',
+                //     },
+                //     'zip': {
+                //         Admin: 'Admin',
+                //         CEO: randomnum
+                //     }
+                // };
+                // $table.bootstrapTable('refreshOptions', { //Clear column filters
+                // })
+                $table.bootstrapTable('removeAll')
+                var randomnum = Math.random().toString()
                 var url = '/params'
                 console.log("PARAMS REQUEST HERE:")
                 console.log(params)
                 console.log(url + '?' + $.param(params.data))
-                $.get(url + '?' + $.param(params.data)).then(function (res) {
+                $.get(url + '?' + $.param(params.data))
+                .then(function (res) {
+                    // var randomnum = Math.random().toString()
+                    userJobTitles = {
+                        'state': {
+                            Admin: 'Admin',
+                            IT: randomnum
+                        },
+                        'zip': {
+                            Admin: 'Admin'
+                        }
+                    }
+                    // $table.bootstrapTable('refreshOptions', { //Clear column filters
+                    // })
+                    $(".form-control bootstrap-table-filter-control-zip").trigger("change");
                     params.success(res)
                     console.log(res)
+
                 })
+
+
+                // .then(function() {
+                //     // $table.bootstrapTable('removeAll')
+                //     $table.bootstrapTable('resetSearch') // Clear value in global search box
+                //     $table.bootstrapTable('clearFilterControl') //Unfilter results
+                //     $table.bootstrapTable('refreshOptions', { //Clear column filters
+                //     })
+                // })
+
+
+;
+                
+
+
             }
+
         </script>
 
         <!-- Format loan amount data -->        
