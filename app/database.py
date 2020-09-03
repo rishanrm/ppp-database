@@ -341,11 +341,12 @@ class DatabaseConnection():
         return results
 
     @staticmethod
-    def get_column_options_dict(column_options, column):
+    def get_column_options_dict(column_options, column=""):
         options_dict = {}
         for option in column_options:
             options_dict[option[0]] = option[0]
-        return ({column: options_dict})
+        return (options_dict)
+        # return ({column: options_dict}) #Returns result labeled by the column name
 
     def get_all_column_options(self, column_headers):
         query = sql.SQL("""SELECT """)
@@ -368,45 +369,18 @@ class DatabaseConnection():
 
     @staticmethod
     def format_column_options_json(column_headers, column_options):
-        # print(type(column_options))
-        # print(type(column_options))
-        # os.system("pause")
+    # Returns a single dictionary with all unique values for all columns
         all_options_dict = {}
         i = 0
         for column in column_options:            
             options_dict = {}
-            # os.system("pause")
             for option in column:
-                # print("OPTION:")
-                # print(option)
                 options_dict[option] = option
             all_options_dict[column_headers[i]] = options_dict
             i += 1
-        # print(all_options_dict)
-        # print("LAST PAUSE")
-        # os.system("pause")
         return all_options_dict
         
-
-        """
-        SELECT
-        array_agg(DISTINCT loanamount)  AS loanamount
-        ,array_agg(DISTINCT city) AS city
-        ,array_agg(DISTINCT state) AS state
-        ,array_agg(DISTINCT zip) AS zip
-        ,array_agg(DISTINCT naicscode) AS naicscode
-        ,array_agg(DISTINCT businesstype) AS businesstype
-        ,array_agg(DISTINCT raceethnicity) AS raceethnicity
-        ,array_agg(DISTINCT gender) AS gender
-        ,array_agg(DISTINCT veteran) AS veteran
-        ,array_agg(DISTINCT nonprofit) AS nonprofit
-        ,array_agg(DISTINCT jobsretained) AS jobsretained
-        ,array_agg(DISTINCT dateapproved) AS dateapproved
-        ,array_agg(DISTINCT lender) AS lender
-        ,array_agg(DISTINCT cd) AS cd
-        FROM   ppp_data_up_to_150k__ri_table
-        ;"""
-
+        
 class DatabaseInitialization():
 
 

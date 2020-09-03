@@ -125,20 +125,19 @@ def fetch():
 
 @main.route('/data_test/<column>.json')
 def data_test(column):
-#    db = DatabaseInitialization.initialize_database("local")
     db = DatabaseConnection("local", Config.DB_NAME, Config.TABLE_NAME)
-    # print("STARTING GETTING EVERYTHING")
-    # column_options = db.get_all_column_options()
-    # print("FINISHED GETTING EVERYTHING")
-    
-    column_headers = HeaderNames.get_csv_column_headers(Config.SOURCE_FILE_NAME)
-    column_options = db.get_all_column_options(column_headers)
-    options_dict = db.format_column_options_json(column_headers, column_options)
-    return json.loads(json.dumps(options_dict))
     
     column_options = db.get_column_options(column)    
     options_dict = db.get_column_options_dict(column_options, column)
     return json.loads(json.dumps(options_dict))
+    
+    """Method for returning all data for all columns at once:
+       This will not work until you figure out how to load this
+       before the table loads."""
+    # column_headers = HeaderNames.get_csv_column_headers(Config.SOURCE_FILE_NAME)
+    # column_options = db.get_all_column_options(column_headers)
+    # options_dict = db.format_column_options_json(column_headers, column_options)
+    # return json.loads(json.dumps(options_dict))
 
 @main.route("/data", methods=['GET'])
 def data():
