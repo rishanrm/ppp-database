@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+import os
 import re
 import subprocess
 import csv
@@ -346,9 +347,7 @@ class DatabaseConnection():
             options_dict[option[0]] = option[0]
         return ({'businesstype': options_dict})
 
-    def get_all_column_options(self):
-        column_headers = HeaderNames.get_csv_column_headers(Config.SOURCE_FILE_NAME)
-        # column_headers = ["state", "lender", "cd"]
+    def get_all_column_options(self, column_headers):
         query = sql.SQL("""SELECT """)
         i = 0
         for header in column_headers:
@@ -365,9 +364,28 @@ class DatabaseConnection():
             FROM {table};""".format(table = self.table_name))
         self.my_cursor.execute(query)
         results = self.my_cursor.fetchall()
-        results = results[0]
-        return results
-    
+        return results[0]
+
+    @staticmethod
+    def format_column_options_json(column_headers, column_options):
+        column_options = json.loads(column_options)
+        all_options_dict = {}
+        i = 0
+        for column in column_options:
+            column = column[1:-1]
+            
+            print("COLUMN:")
+            print(type(column))
+            print(column)
+            options_dict = {}
+            os.system("pause")
+            for option in column:
+                # print("OPTION:")
+                # print(option)
+                options_dict[option] = option
+            all_options_dict[column_headers[i]] = options_dict
+            i += 1
+        return all_options_dict
         
 
         """

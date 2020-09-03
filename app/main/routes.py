@@ -127,11 +127,16 @@ def fetch():
 def data_test(column):
 #    db = DatabaseInitialization.initialize_database("local")
     db = DatabaseConnection("local", Config.DB_NAME, Config.TABLE_NAME)
-    print("STARTING GETTING EVERYTHING")
-    db.get_all_column_options()
-    print("FINISHED GETTING EVERYTHING")
+    # print("STARTING GETTING EVERYTHING")
+    # column_options = db.get_all_column_options()
+    # print("FINISHED GETTING EVERYTHING")
     
-    column_options = db.get_column_options(column)
+    column_headers = HeaderNames.get_csv_column_headers(Config.SOURCE_FILE_NAME)
+    column_options = db.get_all_column_options()
+    return db.format_column_options_json(column_headers, column_options)
+    
+    
+    column_options = db.get_column_options(column)    
     options_dict = db.get_column_options_dict(column_options)
     return json.loads(json.dumps(options_dict))
 
