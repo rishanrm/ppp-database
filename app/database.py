@@ -341,11 +341,11 @@ class DatabaseConnection():
         return results
 
     @staticmethod
-    def get_column_options_dict(column_options):
+    def get_column_options_dict(column_options, column):
         options_dict = {}
         for option in column_options:
             options_dict[option[0]] = option[0]
-        return ({'businesstype': options_dict})
+        return ({column: options_dict})
 
     def get_all_column_options(self, column_headers):
         query = sql.SQL("""SELECT """)
@@ -368,23 +368,23 @@ class DatabaseConnection():
 
     @staticmethod
     def format_column_options_json(column_headers, column_options):
-        column_options = json.loads(column_options)
+        # print(type(column_options))
+        # print(type(column_options))
+        # os.system("pause")
         all_options_dict = {}
         i = 0
-        for column in column_options:
-            column = column[1:-1]
-            
-            print("COLUMN:")
-            print(type(column))
-            print(column)
+        for column in column_options:            
             options_dict = {}
-            os.system("pause")
+            # os.system("pause")
             for option in column:
                 # print("OPTION:")
                 # print(option)
                 options_dict[option] = option
             all_options_dict[column_headers[i]] = options_dict
             i += 1
+        # print(all_options_dict)
+        # print("LAST PAUSE")
+        # os.system("pause")
         return all_options_dict
         
 

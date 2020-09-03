@@ -132,12 +132,12 @@ def data_test(column):
     # print("FINISHED GETTING EVERYTHING")
     
     column_headers = HeaderNames.get_csv_column_headers(Config.SOURCE_FILE_NAME)
-    column_options = db.get_all_column_options()
-    return db.format_column_options_json(column_headers, column_options)
-    
+    column_options = db.get_all_column_options(column_headers)
+    options_dict = db.format_column_options_json(column_headers, column_options)
+    return json.loads(json.dumps(options_dict))
     
     column_options = db.get_column_options(column)    
-    options_dict = db.get_column_options_dict(column_options)
+    options_dict = db.get_column_options_dict(column_options, column)
     return json.loads(json.dumps(options_dict))
 
 @main.route("/data", methods=['GET'])

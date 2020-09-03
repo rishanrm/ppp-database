@@ -1,6 +1,6 @@
 {% extends 'layout.html' %}
 {% block content %}
-<script>
+<!-- <script>
     var userJobTitles9
     fetch("http://localhost:5000/data_test/businesstype.json")
         .then(response => response.json())
@@ -15,7 +15,7 @@
         });
     // console.log("OUTSIDE ASSIGNED VARIABLE IS THIS:")
     // console.log(userJobTitles9);
-</script>
+</script> -->
 <div id="toolbar">
     <!-- <button id="button" class="btn btn-secondary">destroy</button>
     <button id="button2" class="btn btn-secondary">build</button> -->
@@ -85,10 +85,10 @@
                     <th data-field="loanamount"     data-sortable="true" data-filter-control="input"    data-sort-order="desc" data-formatter="amountFormatter"                     >Loan Amount</th>
                     <th data-field="city"           data-sortable="true" data-filter-control="input"                                                                                >City</th>
 
-                    <th data-filter-data="obj:userJobTitles9.businesstype"          data-field="state"          data-sortable="true" data-filter-control="select"                                     >State</th>
+                    <th data-filter-data="obj:userJobTitles9.state"          data-field="state"          data-sortable="true" data-filter-control="select"                                     >State</th>
 
                     <th data-field="zip"            data-sortable="true" data-filter-control="input"                                                                                >Zip Code</th>
-                    <th data-field="naicscode"      data-sortable="true" data-filter-control="select"   data-filter-data="url:http://localhost:5000/data_test/naicscode.json"       >NAICS Code</th>
+                    <th data-filter-data="obj:userJobTitles9.naicscode" data-field="naicscode"      data-sortable="true" data-filter-control="select"                               >NAICS Code</th>
                     <th data-field="businesstype"   data-sortable="true" data-filter-control="select"   data-filter-data="url:http://localhost:5000/data_test/businesstype.json"    >Business Type</th>
                     <th data-field="raceethnicity"  data-sortable="true" data-filter-control="select"   data-filter-data="url:http://localhost:5000/data_test/raceethnicity.json"   >Race &#47; Ethnicity</th>
                     <th data-field="gender"         data-sortable="true" data-filter-control="select"   data-filter-data="url:http://localhost:5000/data_test/gender.json"          >Gender</th>
@@ -444,7 +444,7 @@
             })(jQuery);
         </script>
 
-
+<!-- 
 <script>
 $('#table').on('pre-body.bs.table', function (e, arg1, arg2) {
             console.log('HELLO END')
@@ -461,7 +461,7 @@ $('#table').on('pre-body.bs.table', function (e, arg1, arg2) {
                 console.error(error);
             })
         })    
-</script>
+</script> -->
 
 
 <!-- 
