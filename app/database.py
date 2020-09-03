@@ -344,7 +344,50 @@ class DatabaseConnection():
         options_dict = {}
         for option in column_options:
             options_dict[option[0]] = option[0]
-        return (options_dict)
+        return ({'businesstype': options_dict})
+
+    def get_all_column_options(self):
+        column_headers = HeaderNames.get_csv_column_headers(Config.SOURCE_FILE_NAME)
+        # column_headers = ["state", "lender", "cd"]
+        query = sql.SQL("""SELECT """)
+        i = 0
+        for header in column_headers:
+            if i == 0:
+                prefix = ""
+            else:
+                prefix = ","
+            query += sql.SQL("""
+                {prefix} array_agg(DISTINCT {column}) AS {column}""").format(
+                    prefix = sql.SQL(prefix),
+                    column = sql.SQL(header))
+            i += 1
+        query += sql.SQL("""
+            FROM {table};""".format(table = self.table_name))
+        self.my_cursor.execute(query)
+        results = self.my_cursor.fetchall()
+        results = results[0]
+        return results
+    
+        
+
+        """
+        SELECT
+        array_agg(DISTINCT loanamount)  AS loanamount
+        ,array_agg(DISTINCT city) AS city
+        ,array_agg(DISTINCT state) AS state
+        ,array_agg(DISTINCT zip) AS zip
+        ,array_agg(DISTINCT naicscode) AS naicscode
+        ,array_agg(DISTINCT businesstype) AS businesstype
+        ,array_agg(DISTINCT raceethnicity) AS raceethnicity
+        ,array_agg(DISTINCT gender) AS gender
+        ,array_agg(DISTINCT veteran) AS veteran
+        ,array_agg(DISTINCT nonprofit) AS nonprofit
+        ,array_agg(DISTINCT jobsretained) AS jobsretained
+        ,array_agg(DISTINCT dateapproved) AS dateapproved
+        ,array_agg(DISTINCT lender) AS lender
+        ,array_agg(DISTINCT cd) AS cd
+        FROM   ppp_data_up_to_150k__ri_table
+        ;"""
 
 class DatabaseInitialization():
 

@@ -1,6 +1,21 @@
 {% extends 'layout.html' %}
 {% block content %}
-
+<script>
+    var userJobTitles9
+    fetch("http://localhost:5000/data_test/businesstype.json")
+        .then(response => response.json())
+        .then(response => {
+            console.log("JSON IS THIS:")
+            console.log(response);
+            userJobTitles9 = response
+            console.log("ASSIGNED VARIABLE IS THIS:")
+            console.log(userJobTitles9);
+        }, error => {
+            console.error(error);
+        });
+    // console.log("OUTSIDE ASSIGNED VARIABLE IS THIS:")
+    // console.log(userJobTitles9);
+</script>
 <div id="toolbar">
     <!-- <button id="button" class="btn btn-secondary">destroy</button>
     <button id="button2" class="btn btn-secondary">build</button> -->
@@ -40,7 +55,7 @@
             data-show-columns-toggle-all="true"
             data-show-header="true"
             data-show-footer="false"
-            data-show-fullscreen="true"
+            data-show-fullscreen="false"
             data-show-refresh="false"
             data-show-toggle="true"
             data-smart-display="true"
@@ -54,11 +69,7 @@
             data-show-print="true"
             data-reorderable-columns="true"
             data-header-style="headerStyle"
-
             data-toolbar="#toolbar"
-
-
-
             >
             <thead>
                 <tr>
@@ -73,7 +84,9 @@
                     -->
                     <th data-field="loanamount"     data-sortable="true" data-filter-control="input"    data-sort-order="desc" data-formatter="amountFormatter"                     >Loan Amount</th>
                     <th data-field="city"           data-sortable="true" data-filter-control="input"                                                                                >City</th>
-                    <th data-field="state"          data-sortable="true" data-filter-control="select"   data-filter-data="obj:userJobTitles.state"                                  >State</th>
+
+                    <th data-filter-data="obj:userJobTitles9.businesstype"          data-field="state"          data-sortable="true" data-filter-control="select"                                     >State</th>
+
                     <th data-field="zip"            data-sortable="true" data-filter-control="input"                                                                                >Zip Code</th>
                     <th data-field="naicscode"      data-sortable="true" data-filter-control="select"   data-filter-data="url:http://localhost:5000/data_test/naicscode.json"       >NAICS Code</th>
                     <th data-field="businesstype"   data-sortable="true" data-filter-control="select"   data-filter-data="url:http://localhost:5000/data_test/businesstype.json"    >Business Type</th>
@@ -88,7 +101,6 @@
                 </tr>
             </thead>
         </table>
-
 
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
@@ -119,26 +131,7 @@
         <script src="https://unpkg.com/bootstrap-table@1.17.1/dist/extensions/filter-control/bootstrap-table-filter-control.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.14.1/locale/bootstrap-table-en-US.min.js"></script>
 
-        <script>
-            function addOptionToSelectControl(selectControl, _value, text, selected) {
-                var value = _value === undefined || _value === null ? '' : _value.toString().trim();
-                var $selectControl = $(selectControl.get(selectControl.length - 1));
 
-                if (!existOptionInSelectControl(selectControl, value)) {
-                    var option = $("<option value=\"".concat(value, "\">").concat(text, "</option>"));
-                    // +++ comparing value and selected as strings so possible type differences wont make a problem 
-                    if (value.toString() === selected.toString()) {
-                        option.attr('selected', true);
-                    }
-
-                    $selectControl.append(option);
-                    // +++ triggering new filter if a non empy defaultFilter is set.
-                    if (value.toString() === selected.toString() && selected !== '') {
-                        selectControl.change()
-                    }
-                }
-            }
-        </script>
         
         <!-- <script>    
             $('#table').bootstrapTable({
@@ -203,80 +196,187 @@
         })
         </script>
 
+
+
+
+
+
+
+
+
+
+
+        <script>
+            function makeRequest (method, url, data) {
+                return new Promise(function (resolve, reject) {
+                    var xhr = new XMLHttpRequest();
+                    xhr.open(method, url);
+                    xhr.onload = function () {
+                    if (this.status >= 200 && this.status < 300) {
+                        resolve(xhr.response);
+                    } else {
+                        reject({
+                        status: this.status,
+                        statusText: xhr.statusText
+                        });
+                    }
+                    };
+                    xhr.onerror = function () {
+                    reject({
+                        status: this.status,
+                        statusText: xhr.statusText
+                    });
+                    };
+                    if(method=="POST" && data){
+                        xhr.send(data);
+                    }else{
+                        xhr.send();
+                    }
+                });
+                }
+        </script>
+
+        <script>
+        //     var userJobTitles8
+        //     $.get("http://localhost:5000/data_test/businesstype.json", function(data){
+        //         userJobTitles8 = data
+        //         console.log(userJobTitles8)
+         
+        //     })
+        //     userJobTitles8 = {
+        //         'state': {
+        //             Admin: 'Admin',
+        //             IT: randomnum,
+        //             General : 'General',
+        //             Security : 'Security',
+        //             CEO : 'CEO',
+        //         },
+        //         'zip': {
+        //             Admin: 'Admin',
+        //             CEO: randomnum
+        //         },
+        //         'businesstype': {
+        //             BusinessType_1: 'BT 1',
+        //             BusinessType_2: 'BT 2'
+        //         }
+        //     };
+        // </script>
+        <script>
+        //     console.log("OUTSIDE")
+        //     console.log(userJobTitles8)   
+        //     // var userJobTitles7 = new Object()
+
+            // $.getJSON("http://localhost:5000/data_test/businesstype.json").then(
+            //     function(data, userJobTitles7) {
+            //         console.log('MY JSON:')
+            //         console.log(Object.keys(data))
+            //         userJobTitles7 = data
+
+            //     }
+            // )
+            // console.log("OUTSIDE IT")
+            // console.log(userJobTitles7)
+            // var myjson = userJobTitles6
+
+            // GET example
+            // makeRequest('GET', "http://localhost:5000/data_test/businesstype.json").then(function(data){
+            //     var userJobTitles4=JSON.parse(data);
+            // console.log("NEW")
+            // console.log(userJobTitles4)
+            // console.log("NEWEST:")
+            // console.log(userJobTitles6)
+            // });
+        </script>
+
+
+
         <!-- Get data -->
         <script>
-            var userJobTitles = {
-                'state': {
-                    Admin: 'Admin',
-                    IT: randomnum,
-                    General : 'General',
-                    Security : 'Security',
-                    CEO : 'CEO',
-                },
-                'zip': {
-                    Admin: 'Admin',
-                    CEO: randomnum
-                }
-            };
-            function ajaxRequest(params) {
-                // var userJobTitles = {
-                //     'state': {
-                //         Admin: 'Admin',
-                //         IT: randomnum,
-                //         General : 'General',
-                //         Security : 'Security',
-                //         CEO : 'CEO',
-                //     },
-                //     'zip': {
-                //         Admin: 'Admin',
-                //         CEO: randomnum
-                //     }
-                // };
-                // $table.bootstrapTable('refreshOptions', { //Clear column filters
-                // })
-                $table.bootstrapTable('removeAll')
-                var randomnum = Math.random().toString()
-                var url = '/params'
-                console.log("PARAMS REQUEST HERE:")
-                console.log(params)
-                console.log(url + '?' + $.param(params.data))
-                $.get(url + '?' + $.param(params.data))
-                .then(function (res) {
-                    // var randomnum = Math.random().toString()
-                    userJobTitles = {
-                        'state': {
-                            Admin: 'Admin',
-                            IT: randomnum
-                        },
-                        'zip': {
-                            Admin: 'Admin'
-                        }
-                    }
-                    // $table.bootstrapTable('refreshOptions', { //Clear column filters
-                    // })
-                    $(".form-control bootstrap-table-filter-control-zip").trigger("change");
-                    params.success(res)
-                    console.log(res)
+            // let url = 'http://localhost:5000/data_test/businesstype.json';
+            // userJobTitles2 = {
+            //     'state': {
+            //         Admin: 'Admin',
+            //         IT: randomnum,
+            //         General : 'General',
+            //         Security : 'Security',
+            //         CEO : 'CEO',
+            //     },
+            //     'zip': {
+            //         Admin: 'Admin',
+            //         CEO: randomnum
+            //     },
+            //     'businesstype': {
+            //         BusinessType_1: 'BT 1',
+            //         BusinessType_2: 'BT 2'
+            //     }
+            // };
+            // console.log("FIRST PRINT")
+            // console.log(userJobTitles2)
 
-                })
+            // userJobTitles2 = fetch(url)
+            // .then(res => res.json())
+            // .then((out) => {
+            // console.log('Checkout this JSON! ', out);
+            // // userJobTitles2 = out
+            // // console.log("IN METHOD:")
+            // // console.log(userJobTitles2)
+            // // console.log(userJobTitles2.businesstype)
+            // })
+            // .catch(err => { throw err });
+            // console.log("SECOND PRINT")
+            // console.log(userJobTitles2)
+            // console.log("THIS IS THE VARIABLE LOGGED:")
+            // console.log(userJobTitles2)
+            // userJobTitles2 = $.get('http://localhost:5000/data_test/businesstype.json')
+            // console.log("COLUMN JSON:")
+            // console.log(userJobTitles2)
+            // userJobTitles3 = {
+            //     'state': {
+            //         Admin: 'Admin',
+            //         IT: randomnum,
+            //         General : 'General',
+            //         Security : 'Security',
+            //         CEO : 'CEO',
+            //     },
+            //     'zip': {
+            //         Admin: 'Admin',
+            //         CEO: randomnum
+            //     },
+            //     'businesstype': {
+            //         BusinessType_1: 'BT 1',
+            //         BusinessType_2: 'BT 2'
+            //     }
+            // };
+            // var userJobTitles = {
+            //     'state': {
+            //         Admin: 'Admin',
+            //         IT: randomnum,
+            //         General : 'General',
+            //         Security : 'Security',
+            //         CEO : 'CEO',
+            //     },
+            //     'zip': {
+            //         Admin: 'Admin',
+            //         CEO: randomnum
+            //     }
+            // };
 
-
-                // .then(function() {
-                //     // $table.bootstrapTable('removeAll')
-                //     $table.bootstrapTable('resetSearch') // Clear value in global search box
-                //     $table.bootstrapTable('clearFilterControl') //Unfilter results
-                //     $table.bootstrapTable('refreshOptions', { //Clear column filters
-                //     })
-                // })
-
-
-;
-                
-
-
-            }
-
+                function ajaxRequest(params) {
+                    var url = '/params'
+                    $.get(url + '?' + $.param(params.data))
+                    .then(function (res) {
+                        params.success(res)
+                        console.log(res)
+                    });
+                };
         </script>
+
+<!-- <script>
+    $('#table').on('event-name.bs.table', function (e, arg1, arg2) {
+        console.log('LOADING FIRST')
+    })
+    </script> -->
+
 
         <!-- Format loan amount data -->        
         <script>
@@ -344,11 +444,24 @@
             })(jQuery);
         </script>
 
-        <script>
-        $('#table').on('event-name.bs.table', function (e, arg1, arg2) {
+
+<script>
+$('#table').on('pre-body.bs.table', function (e, arg1, arg2) {
             console.log('HELLO END')
-        })
-        </script>
+            var userJobTitles9
+            fetch("http://localhost:5000/data_test/businesstype.json")
+            .then(response => response.json())
+            .then(response => {
+                console.log("JSON IS THIS:")
+                console.log(response);
+                userJobTitles9 = response
+                console.log("ASSIGNED VARIABLE IS THIS:")
+                console.log(userJobTitles9);
+            }, error => {
+                console.error(error);
+            })
+        })    
+</script>
 
 
 <!-- 
@@ -363,7 +476,7 @@ Need to figure out how to return a SQL response to the column headers
 Need to figure out if you can build the new table with the old Params
 Need to re-populate the previous choices in the new table
 
- -->
+-->
 
 
     </div>
