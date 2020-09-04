@@ -520,30 +520,15 @@
                 var orderedColumns = getOrderedColumns()
                 var orderedValues = reorderValues(row)
                 orderedValues = formatValues(orderedValues)
-                // console.log("ORDERED VALUES?")
-                // console.log(orderedColumns)
-                // console.log(orderedValues)
-                // var orderedData = buildColumnsDict(orderedValues)
 
-            // console.log(Object.keys(orderedData))
-            // var re = new RegExp( Object.keys(orderedData).join("|"));
-            var html = ['<div class="detailview">']
-            var i = 0
-            $.each(orderedColumns, function (index, columnName) {
-                html.push('<p><b>' + columnName + ':</b> ' + orderedValues[i] + '</p>')
-                i += 1
-            })
-            // $.each(row, function (key, value) {
-            //     console.log("FINAL EACH")
-            //     console.log(row)
-            //     console.log(key)
-            //     key = key.replace(re, function(m) {      // returning a replace of it's value against our regex /gimme|umabro|lenny/ig
-            //     return orderedData[m];
-            //     });
-            //     html.push('<p><b>' + key + ':</b> ' + value + '</p>')
-            // })
-            html.push('</div>')
-            return html.join('')
+                var html = ['<div class="detailview">']
+                var i = 0
+                $.each(orderedColumns, function (index, columnName) {
+                    html.push('<p><b>' + columnName + ':</b> ' + orderedValues[i] + '</p>')
+                    i += 1
+                })
+                html.push('</div>')
+                return html.join('')
             }
         </script>
 
