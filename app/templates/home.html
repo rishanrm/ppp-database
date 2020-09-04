@@ -179,18 +179,6 @@
             })
         </script>
 
-        <!-- Table reset -->
-        <script>
-        $(function() {
-            $resetButton.click(function () {
-            // $table.bootstrapTable('removeAll')
-            $table.bootstrapTable('resetSearch') // Clear value in global search box
-            $table.bootstrapTable('clearFilterControl') //Unfilter results
-            $table.bootstrapTable('refreshOptions', { //Clear column filters
-            })
-            })
-        })
-        </script>
 
 
 
@@ -202,6 +190,7 @@
 
 
 
+<!-- 
         <script>
             function makeRequest (method, url, data) {
                 return new Promise(function (resolve, reject) {
@@ -230,7 +219,7 @@
                     }
                 });
                 }
-        </script>
+        </script> -->
 
         <script>
         //     var userJobTitles8
@@ -513,7 +502,23 @@
                 html.push('</div>')
                 return html.join('')
             }
-        
+
+<!-- Table reset -->
+            $(function() {
+                $resetButton.click(function () {
+                    $table.bootstrapTable('destroy')
+                    $table.bootstrapTable({
+                    undefinedText: 'N/A'
+                })
+    ////            $table.bootstrapTable('removeAll')
+                // $table.bootstrapTable('resetSearch') // Clear value in global search box
+    ////            $table.bootstrapTable('clearFilterControl') //Unfilter results
+    ////            $table.bootstrapTable('refreshOptions', { //Clear column filters
+    ////            })
+                })
+            })
+
+<!-- Load table -->
             $table.bootstrapTable({
                 undefinedText: 'N/A'
             })
