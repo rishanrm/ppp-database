@@ -246,7 +246,7 @@ class DatabaseConnection():
             search_sql += sql.SQL("{prefix} LOWER({search_column}) LIKE LOWER({search_term}) ").format(
                 prefix = sql.SQL(prefix),
                 search_column = sql.Identifier(header),
-                search_term = sql.Literal('%%' + search_term + '%%')
+                search_term = sql.Literal(search_term + '%%')
             )
             search_term_count += 1
         search_sql += sql.SQL(') ')
@@ -260,7 +260,7 @@ class DatabaseConnection():
         for filter in filter_data:
             filter_sql += sql.SQL("AND LOWER({filter_column}) LIKE LOWER({filter_term}) ").format(
                 filter_column = sql.Identifier(filter),
-                filter_term = sql.Literal('%%' + filter_data[filter] + '%%')
+                filter_term = sql.Literal(filter_data[filter] + '%%')
             )
         return filter_sql
         
