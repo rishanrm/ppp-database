@@ -72,6 +72,7 @@
             data-toolbar="#toolbar"
             data-detail-view="true"
             data-detail-formatter="detailFormatter"
+            data-detail-view-by-click="true"
         >
             <thead>
                 <tr>
@@ -81,7 +82,7 @@
                     <th data-field="loanamount"     data-sortable="true" data-filter-control="input"    data-sort-order="desc" data-formatter="amountFormatter"                     >Loan Amount</th>
                     <th data-field="city"           data-sortable="true" data-filter-control="input"                                                                                >City</th>
                     <th data-field="state"          data-sortable="true" data-filter-control="select"  data-filter-data="url:http://localhost:5000/data_test/state.json"            >State</th>
-                    <th data-field="zip"            data-sortable="true" data-filter-control="input"                                                                                >Zip Code</th>
+                    <th data-field="zip"            data-sortable="true" data-filter-control="input"                                                                                >ZIP Code</th>
                     <th data-field="naicscode"      data-sortable="true" data-filter-control="select"   data-filter-data="url:http://localhost:5000/data_test/naicscode.json"       >NAICS Code</th>
                     <th data-field="businesstype"   data-sortable="true" data-filter-control="select"   data-filter-data="url:http://localhost:5000/data_test/businesstype.json"    >Business Type</th>
                     <th data-field="raceethnicity"  data-sortable="true" data-filter-control="select"   data-filter-data="url:http://localhost:5000/data_test/raceethnicity.json"   >Race &#47; Ethnicity</th>
@@ -437,28 +438,111 @@
         </script>
 
         <script>
-            function detailFormatter(index, row) {
-            var html = ['<div class="detailview fixed-table-container bootstrap-table">']
-            var newValues = {
-                "businesstype": "Business Type",
-                "cd": "Congressional District",
-                "city": "City",
-                "dateapproved": "Date Approved",
-                "gender": "Gender",
-                "jobsretained": "Jobs Retained",
-                "lender": "Lender",
+
+//                  var orderedColumnNames = [
+//                     'loanamount',
+//                     'city',
+//                     'state',
+//                     'zip',
+//                     'naicscode',
+//                     'businesstype',
+//                     'raceethnicity',
+//                     'gender',
+//                     'veteran',
+//                     'nonprofit',
+//                     'jobsretained',
+//                     'dateapproved',
+//                     'lender',
+//                     'cd'];
+
+            var orderedData = {
                 "loanamount": "Loan Amount",
+                "city": "City",
+                "state": "State",                
+                "zip": "ZIP Code",
                 "naicscode": "NAICS Code",
-                "nonprofit": "Nonprofit"
+                "businesstype": "Business Type",
+                "raceethnicity": "Race / Ethnicity",
+                "gender": "Gender",
+                "veteran": "Veteran",
+                "nonprofit": "Nonprofit",
+                "jobsretained": "Jobs Retained",
+                "dateapproved": "Date Approved",
+                "lender": "Lender",
+                "cd": "Congressional District"
             }
-            var re = new RegExp( Object.keys(newValues).join("|"));
-            $.each(row, function (key, value) {
-                key = key.replace(re, function(m) {      // returning a replace of it's value against our regex /gimme|umabro|lenny/ig
-                return newValues[m];
-                });
-                html.push('<p><b>' + key + ':</b> ' + value + '</p>')
+
+            function getOrderedColumns() {
+                return Object.values(orderedData)
+            }
+
+            function reorderValues(row) {
+                // console.log("TRY 1")
+                // console.log(Object.keys(orderedData))
+                var orderedValues = []
+                $.each(Object.keys(orderedData), function(index, value) {
+                    orderedValues.push(row[value])
+                })
+                return orderedValues
+            }
+
+            function formatValues(values) {
+                var i;
+                for (i = 0; i < values.length; i++) { 
+                    if (values[i] == null) {
+                        values[i] = "N/A"
+                    }
+                }
+                return values
+            }
+
+            // function buildColumnsDict(orderedValues) {
+            //     console.log("THIS SHOULD BE A LIST")
+            //     console.log(orderedValues)
+            //     var orderedDict = {}
+            //     var i = 0
+            //     $.each(Object.keys(orderedData), function(index, value) {
+            //         console.log(value)
+            //         // console.log(orderedValues)
+            //         // console.log(i)
+            //         // console.log(orderedValues[i])
+            //         // console.log(orderedDict)
+            //         orderedDict[value] = orderedValues[i]
+            //         i += 1
+            //     })
+            //     // console.log("FINAL DICT:")
+            //     // console.log(orderedDict)
+            //     return orderedDict
+            // }
+
+
+            function detailFormatter(index, row) {
+                var orderedColumns = getOrderedColumns()
+                var orderedValues = reorderValues(row)
+                orderedValues = formatValues(orderedValues)
+                // console.log("ORDERED VALUES?")
+                // console.log(orderedColumns)
+                // console.log(orderedValues)
+                // var orderedData = buildColumnsDict(orderedValues)
+
+            // console.log(Object.keys(orderedData))
+            // var re = new RegExp( Object.keys(orderedData).join("|"));
+            var html = ['<div class="outerdetailview"> <div class="detailview fixed-table-container">']
+            var i = 0
+            $.each(orderedColumns, function (index, columnName) {
+                html.push('<p><b>' + columnName + ':</b> ' + orderedValues[i] + '</p>')
+                i += 1
             })
-            html.push('</div>')
+            // $.each(row, function (key, value) {
+            //     console.log("FINAL EACH")
+            //     console.log(row)
+            //     console.log(key)
+            //     key = key.replace(re, function(m) {      // returning a replace of it's value against our regex /gimme|umabro|lenny/ig
+            //     return orderedData[m];
+            //     });
+            //     html.push('<p><b>' + key + ':</b> ' + value + '</p>')
+            // })
+            html.push('</div></div')
             return html.join('')
             }
         </script>
