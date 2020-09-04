@@ -73,6 +73,7 @@
             data-detail-view="true"
             data-detail-formatter="detailFormatter"
             data-detail-view-by-click="true"
+            data-undefined-text="XXX"
         >
             <thead>
                 <tr>
@@ -161,6 +162,8 @@
         </script>
 
         <script>
+        
+
             var $table = $('#table')
             var $button = $('#button')
             var $button2 = $('#button2')
@@ -511,6 +514,11 @@
                 html.push('</div>')
                 return html.join('')
             }
+        
+            $table.bootstrapTable({
+                undefinedText: 'N/A'
+            })
+            
         </script>
 
 
