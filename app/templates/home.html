@@ -79,20 +79,20 @@
                     <!--
                     loanamount,city,state,zip,naicscode,businesstype,raceethnicity,gender,veteran,nonprofit,jobsretained,dateapproved,lender,cd
                     -->
-                    <th data-field="loanamount"     data-sortable="true" data-filter-control="input"    data-sort-order="desc" data-formatter="amountFormatter"                     >Loan Amount</th>
-                    <th data-field="city"           data-sortable="true" data-filter-control="input"                                                                                >City</th>
-                    <th data-field="state"          data-sortable="true" data-filter-control="select"  data-filter-data="url:http://localhost:5000/data_test/state.json"            >State</th>
-                    <th data-field="zip"            data-sortable="true" data-filter-control="input"                                                                                >ZIP Code</th>
-                    <th data-field="naicscode"      data-sortable="true" data-filter-control="select"   data-filter-data="url:http://localhost:5000/data_test/naicscode.json"       >NAICS Code</th>
-                    <th data-field="businesstype"   data-sortable="true" data-filter-control="select"   data-filter-data="url:http://localhost:5000/data_test/businesstype.json"    >Business Type</th>
-                    <th data-field="raceethnicity"  data-sortable="true" data-filter-control="select"   data-filter-data="url:http://localhost:5000/data_test/raceethnicity.json"   >Race &#47; Ethnicity</th>
-                    <th data-field="gender"         data-sortable="true" data-filter-control="select"   data-filter-data="url:http://localhost:5000/data_test/gender.json"          >Gender</th>
-                    <th data-field="veteran"        data-sortable="true" data-filter-control="select"   data-filter-data="url:http://localhost:5000/data_test/veteran.json"         >Veteran</th>
-                    <th data-field="nonprofit"      data-sortable="true" data-filter-control="select"   data-filter-data="url:http://localhost:5000/data_test/nonprofit.json"       >Nonprofit</th>
-                    <th data-field="jobsretained"   data-sortable="true" data-filter-control="input"                                                                                >Jobs Retained</th>
-                    <th data-field="dateapproved"   data-sortable="true" data-filter-control="select"   data-filter-data="url:http://localhost:5000/data_test/dateapproved.json"    >Date Approved</th>
-                    <th data-field="lender"         data-sortable="true" data-filter-control="input"                                                                                >Lender</th>
-                    <th data-field="cd"             data-sortable="true" data-filter-control="input"                                                                                >Congressional District</th>
+                    <th data-field="loanamount"     data-sortable="true" data-filter-control="input"    data-sort-order="desc" data-formatter="amountFormatter"                                             >Loan Amount</th>
+                    <th data-field="city"           data-sortable="true" data-filter-control="input"                                                                                                        >City</th>
+                    <th data-field="state"          data-sortable="true" data-filter-control="select"   data-filter-data="url:http://localhost:5000/data_test/state.json"                                   >State</th>
+                    <th data-field="zip"            data-sortable="true" data-filter-control="input"                                                                                                        >ZIP Code</th>
+                    <th data-field="naicscode"      data-sortable="true" data-filter-control="select"   data-filter-data="url:http://localhost:5000/data_test/naicscode.json"       data-visible="false"    >NAICS Code</th>
+                    <th data-field="businesstype"   data-sortable="true" data-filter-control="select"   data-filter-data="url:http://localhost:5000/data_test/businesstype.json"    data-visible="false"    >Business Type</th>
+                    <th data-field="raceethnicity"  data-sortable="true" data-filter-control="select"   data-filter-data="url:http://localhost:5000/data_test/raceethnicity.json"                           >Race &#47; Ethnicity</th>
+                    <th data-field="gender"         data-sortable="true" data-filter-control="select"   data-filter-data="url:http://localhost:5000/data_test/gender.json"                                  >Gender</th>
+                    <th data-field="veteran"        data-sortable="true" data-filter-control="select"   data-filter-data="url:http://localhost:5000/data_test/veteran.json"         data-visible="false"    >Veteran</th>
+                    <th data-field="nonprofit"      data-sortable="true" data-filter-control="select"   data-filter-data="url:http://localhost:5000/data_test/nonprofit.json"       data-visible="false"    >Nonprofit</th>
+                    <th data-field="jobsretained"   data-sortable="true" data-filter-control="input"                                                                                                        >Jobs Retained</th>
+                    <th data-field="dateapproved"   data-sortable="true" data-filter-control="select"   data-filter-data="url:http://localhost:5000/data_test/dateapproved.json"    data-visible="false"    >Date Approved</th>
+                    <th data-field="lender"         data-sortable="true" data-filter-control="input"                                                                                data-visible="false"    >Lender</th>
+                    <th data-field="cd"             data-sortable="true" data-filter-control="input"                                                                                                        >Congressional District</th>
                 </tr>
             </thead>
         </table>
@@ -141,6 +141,7 @@
             </script> -->
 
         <script>
+            // $table.bootstrapTable('hideColumn', 'city')
             var randomnum = Math.random().toString()
 
 
