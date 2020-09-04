@@ -28,7 +28,7 @@
             id="table"
             data-toggle="table"
             data-ajax="ajaxRequest"
-            data-height="600"
+            data-height="800"
             data-buttons-align="right"
             data-show-button-text="true"
             data-search="true"
@@ -67,10 +67,12 @@
             data-filter-control="true"
             data-mobile-responsive="true"
             data-show-print="true"
-            data-reorderable-columns="true"
+            data-reorderable-columns="false"
             data-header-style="headerStyle"
             data-toolbar="#toolbar"
-            >
+            data-detail-view="true"
+            data-detail-formatter="detailFormatter"
+        >
             <thead>
                 <tr>
                     <!--
@@ -116,7 +118,7 @@
         <script src="https://unpkg.com/bootstrap-table@1.17.1/dist/extensions/mobile/bootstrap-table-mobile.min.js"></script>
         <script src="https://unpkg.com/bootstrap-table@1.17.1/dist/extensions/page-jump-to/bootstrap-table-page-jump-to.min.js"></script>
         <script src="https://unpkg.com/bootstrap-table@1.17.1/dist/extensions/print/bootstrap-table-print.min.js"></script>
-        <script src="https://unpkg.com/bootstrap-table@1.17.1/dist/extensions/reorder-columns/bootstrap-table-reorder-columns.min.js"></script>
+        <!-- <script src="https://unpkg.com/bootstrap-table@1.17.1/dist/extensions/reorder-columns/bootstrap-table-reorder-columns.min.js"></script> -->
         <script src="https://unpkg.com/bootstrap-table@1.17.1/dist/extensions/filter-control/bootstrap-table-filter-control.min.js"></script>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.14.1/locale/bootstrap-table-en-US.min.js"></script>
@@ -433,6 +435,43 @@
 
             })(jQuery);
         </script>
+
+        <script>
+            function detailFormatter(index, row) {
+            var html = ['<div class="detailview fixed-table-container bootstrap-table">']
+            var newValues = {
+                "businesstype": "Business Type",
+                "cd": "Congressional District",
+                "city": "City",
+                "dateapproved": "Date Approved",
+                "gender": "Gender",
+                "jobsretained": "Jobs Retained",
+                "lender": "Lender",
+                "loanamount": "Loan Amount",
+                "naicscode": "NAICS Code",
+                "nonprofit": "Nonprofit"
+            }
+            var re = new RegExp( Object.keys(newValues).join("|"));
+            $.each(row, function (key, value) {
+                key = key.replace(re, function(m) {      // returning a replace of it's value against our regex /gimme|umabro|lenny/ig
+                return newValues[m];
+                });
+                html.push('<p><b>' + key + ':</b> ' + value + '</p>')
+            })
+            html.push('</div>')
+            return html.join('')
+            }
+        </script>
+
+
+<!-- if (key == 'businesstype'){
+    key = 'Business Type'
+    console.log(key)
+}
+console.log(key) -->
+
+
+
 
 <!-- 
 <script>
