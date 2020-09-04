@@ -527,7 +527,7 @@
 
             // console.log(Object.keys(orderedData))
             // var re = new RegExp( Object.keys(orderedData).join("|"));
-            var html = ['<div class="outerdetailview"> <div class="detailview fixed-table-container">']
+            var html = ['<div class="detailview">']
             var i = 0
             $.each(orderedColumns, function (index, columnName) {
                 html.push('<p><b>' + columnName + ':</b> ' + orderedValues[i] + '</p>')
@@ -542,7 +542,7 @@
             //     });
             //     html.push('<p><b>' + key + ':</b> ' + value + '</p>')
             // })
-            html.push('</div></div')
+            html.push('</div>')
             return html.join('')
             }
         </script>
