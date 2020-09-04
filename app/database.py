@@ -345,8 +345,8 @@ class DatabaseConnection():
         options_dict = {}
         for option in column_options:
             options_dict[option[0]] = option[0]
-        return (options_dict)
-        # return ({column: options_dict}) #Returns result labeled by the column name
+        # return (options_dict)
+        return ({column: options_dict}) #Returns result labeled by the column name
 
     def get_all_column_options(self, column_headers):
         query = sql.SQL("""SELECT """)

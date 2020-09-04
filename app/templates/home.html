@@ -79,20 +79,20 @@
                     <!--
                     loanamount,city,state,zip,naicscode,businesstype,raceethnicity,gender,veteran,nonprofit,jobsretained,dateapproved,lender,cd
                     -->
-                    <th data-field="loanamount"     data-sortable="true" data-filter-control="input"    data-sort-order="desc" data-formatter="amountFormatter"                                             >Loan Amount</th>
-                    <th data-field="city"           data-sortable="true" data-filter-control="input"                                                                                                        >City</th>
-                    <th data-field="state"          data-sortable="true" data-filter-control="select"   data-filter-data="url:http://localhost:5000/data_test/state.json"                                   >State</th>
-                    <th data-field="zip"            data-sortable="true" data-filter-control="input"                                                                                                        >ZIP Code</th>
-                    <th data-field="naicscode"      data-sortable="true" data-filter-control="select"   data-filter-data="url:http://localhost:5000/data_test/naicscode.json"       data-visible="false"    >NAICS Code</th>
-                    <th data-field="businesstype"   data-sortable="true" data-filter-control="select"   data-filter-data="url:http://localhost:5000/data_test/businesstype.json"    data-visible="false"    >Business Type</th>
-                    <th data-field="raceethnicity"  data-sortable="true" data-filter-control="select"   data-filter-data="url:http://localhost:5000/data_test/raceethnicity.json"                           >Race&#47;Ethnicity</th>
-                    <th data-field="gender"         data-sortable="true" data-filter-control="select"   data-filter-data="url:http://localhost:5000/data_test/gender.json"                                  >Gender</th>
-                    <th data-field="veteran"        data-sortable="true" data-filter-control="select"   data-filter-data="url:http://localhost:5000/data_test/veteran.json"         data-visible="false"    >Veteran</th>
-                    <th data-field="nonprofit"      data-sortable="true" data-filter-control="select"   data-filter-data="url:http://localhost:5000/data_test/nonprofit.json"       data-visible="false"    >Nonprofit</th>
-                    <th data-field="jobsretained"   data-sortable="true" data-filter-control="input"                                                                                                        >Jobs Retained</th>
-                    <th data-field="dateapproved"   data-sortable="true" data-filter-control="select"   data-filter-data="url:http://localhost:5000/data_test/dateapproved.json"    data-visible="false"    >Date Approved</th>
-                    <th data-field="lender"         data-sortable="true" data-filter-control="input"                                                                                data-visible="false"    >Lender</th>
-                    <th data-field="cd"             data-sortable="true" data-filter-control="input"                                                                                                        >House District</th>
+                    <th data-field="loanamount"     data-sortable="true" data-filter-control="input"    data-sort-order="desc" data-formatter="amountFormatter"               >Loan Amount</th>
+                    <th data-field="city"           data-sortable="true" data-filter-control="input"                                                                          >City</th>
+                    <th data-field="state"          data-sortable="true" data-filter-control="select"   data-filter-data="obj:newTry.state"                                   >State</th>
+                    <th data-field="zip"            data-sortable="true" data-filter-control="input"                                                                          >ZIP Code</th>
+                    <th data-field="naicscode"      data-sortable="true" data-filter-control="select"   data-filter-data="obj:newTry.naicscode"       data-visible="false"    >NAICS Code</th>
+                    <th data-field="businesstype"   data-sortable="true" data-filter-control="select"   data-filter-data="obj:newTry.businesstype"    data-visible="false"    >Business Type</th>
+                    <th data-field="raceethnicity"  data-sortable="true" data-filter-control="select"   data-filter-data="obj:newTry.raceethnicity"                           >Race&#47;Ethnicity</th>
+                    <th data-field="gender"         data-sortable="true" data-filter-control="select"   data-filter-data="obj:newTry.gender"                                  >Gender</th>
+                    <th data-field="veteran"        data-sortable="true" data-filter-control="select"   data-filter-data="obj:newTry.veteran"         data-visible="false"    >Veteran</th>
+                    <th data-field="nonprofit"      data-sortable="true" data-filter-control="select"   data-filter-data="obj:newTry.nonprofit"       data-visible="false"    >Nonprofit</th>
+                    <th data-field="jobsretained"   data-sortable="true" data-filter-control="input"                                                                          >Jobs Retained</th>
+                    <th data-field="dateapproved"   data-sortable="true" data-filter-control="select"   data-filter-data="obj:newTry.dateapproved"    data-visible="false"    >Date Approved</th>
+                    <th data-field="lender"         data-sortable="true" data-filter-control="input"                                                  data-visible="false"    >Lender</th>
+                    <th data-field="cd"             data-sortable="true" data-filter-control="select"   data-filter-data="obj:newTry.cd"                                      >House District</th>
                 </tr>
             </thead>
         </table>
@@ -120,12 +120,45 @@
         <script src="https://unpkg.com/bootstrap-table@1.17.1/dist/extensions/page-jump-to/bootstrap-table-page-jump-to.min.js"></script>
         <script src="https://unpkg.com/bootstrap-table@1.17.1/dist/extensions/print/bootstrap-table-print.min.js"></script>
         <!-- <script src="https://unpkg.com/bootstrap-table@1.17.1/dist/extensions/reorder-columns/bootstrap-table-reorder-columns.min.js"></script> -->
+
+
+        <!-- <script src="{{ url_for('static',filename='js/bootstrap-table-filter-control.js') }}"></script> -->
         <script src="https://unpkg.com/bootstrap-table@1.17.1/dist/extensions/filter-control/bootstrap-table-filter-control.min.js"></script>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.14.1/locale/bootstrap-table-en-US.min.js"></script>
 
+        <script>var newTry;</script>
+        <script>
+            function getColumnNames() {
+                var request = new XMLHttpRequest();
+                request.open('GET', 'http://localhost:5000/header_options/', false);  // `false` makes the request synchronous
+                request.send(null);
 
-        
+                if (request.status === 200) {
+                    console.log(request.responseText)
+                    newTry = JSON.parse(request.responseText);
+                    console.log('DOT REQUEST:')
+                    console.log(newTry.state)
+                    console.log(newTry)
+                    console.log("PROPERTIES PRINT")
+                    console.log(Object.getOwnPropertyNames(newTry));
+                    // $table.bootstrapTable('removeAll')
+
+                    // console.log("TRYING NEW TRY")
+                    // console.log(newTry)
+                    // $table.bootstrapTable('resetSearch') // Clear value in global search box
+                    // $table.bootstrapTable('clearFilterControl') //Unfilter results
+                    // $table.bootstrapTable('refreshOptions', { //Clear column filters
+                    // })
+                }
+            }
+
+            getColumnNames()
+        </script>
+        <script>
+            console.log('SEPARATE SCRIPT:')
+            console.log(newTry.state)
+        </script>
         <!-- <script>    
             $('#table').bootstrapTable({
                 onAll: function (arg1, arg2) {
