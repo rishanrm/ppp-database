@@ -496,26 +496,6 @@
                 return values
             }
 
-            // function buildColumnsDict(orderedValues) {
-            //     console.log("THIS SHOULD BE A LIST")
-            //     console.log(orderedValues)
-            //     var orderedDict = {}
-            //     var i = 0
-            //     $.each(Object.keys(orderedData), function(index, value) {
-            //         console.log(value)
-            //         // console.log(orderedValues)
-            //         // console.log(i)
-            //         // console.log(orderedValues[i])
-            //         // console.log(orderedDict)
-            //         orderedDict[value] = orderedValues[i]
-            //         i += 1
-            //     })
-            //     // console.log("FINAL DICT:")
-            //     // console.log(orderedDict)
-            //     return orderedDict
-            // }
-
-
             function detailFormatter(index, row) {
                 var orderedColumns = getOrderedColumns()
                 var orderedValues = reorderValues(row)
