@@ -4,3 +4,7 @@
     column-rule: 1px solid #e0e1e5;
     column-gap: 28px;
 }
+
+div.hidden {
+    display: none
+}
