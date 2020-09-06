@@ -446,10 +446,10 @@
                         return 'Doing government work';
                     },
                     formatRecordsPerPage: function (pageNumber) {
-                        return pageNumber + ' results per page';
+                        return pageNumber.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + ' results per page';
                     },
                     formatShowingRows: function (pageFrom, pageTo, totalRows) {
-                        return 'Showing ' + pageFrom + ' to ' + pageTo + ' of ' + totalRows + ' loans';
+                        return 'Showing ' + pageFrom.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + ' to ' + pageTo.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + ' of ' + totalRows.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + ' loans';
                     },
                     formatSearch: function () {
                         return 'Search all columns';
