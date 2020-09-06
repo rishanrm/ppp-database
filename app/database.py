@@ -235,10 +235,10 @@ class DatabaseConnection():
         search_sql = sql.SQL('AND (')
         search_term_count = 0
         column_headers = HeaderNames.get_csv_column_headers(Config.SOURCE_FILE_NAME)
-        excluded_columns = ["loanamount", "jobsretained"]
-        column_headers = [column for column in column_headers if column not in excluded_columns]
+        numeric_headers = ["loanamount", "jobsretained"]
+        string_headers = [column for column in column_headers if column not in numeric_headers]
 
-        for header in column_headers:
+        for header in string_headers:
             if search_term_count == 0:
                 prefix=""
             else:
@@ -249,6 +249,24 @@ class DatabaseConnection():
                 search_term = sql.Literal(search_term + '%%')
             )
             search_term_count += 1
+
+        for header in numeric_headers:
+            #Loan Amount search
+            search_term = search_term.strip("$").replace(',', '').split(".", 1)[0]
+            if search_term.isdigit():
+                search_sql += sql.SQL("OR {search_column} = {search_term} ").format(
+                    search_column = sql.Identifier(header),
+                    search_term = sql.Literal(search_term)
+                )
+
+        # # #Jobs Retained search
+        # jobs_search_term = search_term.strip(",")
+        # if jobs_search_term.isdigit():
+        #     search_sql += sql.SQL("OR jobsretained = {search_term} ").format(
+        #         search_column = sql.Identifier(header),
+        #         search_term = sql.Literal(jobs_search_term)
+        #     )
+
         search_sql += sql.SQL(') ')
         print (search_sql)
         return search_sql
@@ -257,11 +275,23 @@ class DatabaseConnection():
     def sql_field_filter(filter_data):
         filter_sql = sql.SQL("")
         filter_data = json.loads(filter_data)
+        numeric_headers = ["loanamount", "jobsretained"]
         for filter in filter_data:
-            filter_sql += sql.SQL("AND LOWER({filter_column}) LIKE LOWER({filter_term}) ").format(
-                filter_column = sql.Identifier(filter),
-                filter_term = sql.Literal(filter_data[filter] + '%%')
-            )
+            if filter not in numeric_headers:
+                filter_sql += sql.SQL("AND LOWER({filter_column}) LIKE LOWER({filter_term}) ").format(
+                    filter_column = sql.Identifier(filter),
+                    filter_term = sql.Literal(filter_data[filter] + '%%')
+                )
+
+        for filter in numeric_headers:
+            if filter in filter_data:
+                loan_filter_term = filter_data[filter].strip("$").replace(',', '').split(".", 1)[0]
+                if loan_filter_term.isdigit():
+                    filter_sql += sql.SQL("AND {filter_column} = {filter_term} ").format(
+                        filter_column = sql.Identifier(filter),
+                        filter_term = sql.Literal(loan_filter_term)
+                    )
+
         return filter_sql
         
     @staticmethod
