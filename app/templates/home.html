@@ -1,21 +1,5 @@
 {% extends 'layout.html' %}
 {% block content %}
-<!-- <script>
-    var userJobTitles9
-    fetch("http://localhost:5000/data_test/businesstype.json")
-        .then(response => response.json())
-        .then(response => {
-            console.log("JSON IS THIS:")
-            console.log(response);
-            userJobTitles9 = response
-            console.log("ASSIGNED VARIABLE IS THIS:")
-            console.log(userJobTitles9);
-        }, error => {
-            console.error(error);
-        });
-    // console.log("OUTSIDE ASSIGNED VARIABLE IS THIS:")
-    // console.log(userJobTitles9);
-</script> -->
 
 <div class="container hidden">
 <div id="toolbar">
@@ -76,6 +60,7 @@
             data-detail-view="true"
             data-detail-formatter="detailFormatter"
             data-detail-view-by-click="false"
+            data-loading-template="loadingTemplate"
         >
             <thead>
                 <tr>
@@ -570,16 +555,40 @@
             })
 
 <!-- Load table -->
-            $table.bootstrapTable({
-                undefinedText: 'N/A',
-                exportTypes: ['csv', 'txt', 'doc', 'pdf', 'json', 'xml', 'sql'],
-                exportOptions: {
-                    fileName: 'ppp_data',
-                    ignoreColumn: [0]
+            $table.bootstrapTable(
+                {
+                    undefinedText: 'N/A',
+                    exportTypes: ['csv', 'txt', 'doc', 'pdf', 'json', 'xml', 'sql'],
+                    exportOptions: {
+                        fileName: 'ppp_data',
+                        ignoreColumn: [0]
+                    }
                 }
-            })
+            )
         </script>
 
+        <script>
+            var type = 'fa'
+        
+            function loadingTemplate(message) {
+                if (type === 'fa') {
+                    return 'Doing government work...&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-spinner fa-spin fa-fw fa-2x"></i>'
+                }
+                if (type === 'pl') {
+                    return '<div class="ph-item"><div class="ph-picture"></div></div>'
+                }
+            }
+        
+            function rebuild() {
+                $('#table').bootstrapTable('destroy')
+                    .bootstrapTable()
+                    .bootstrapTable('showLoading')
+            }
+            
+            $(function () {
+                rebuild()
+            })
+        </script>
 
 <!-- if (key == 'businesstype'){
     key = 'Business Type'
