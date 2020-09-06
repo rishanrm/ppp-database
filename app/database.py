@@ -296,9 +296,15 @@ class DatabaseConnection():
         
     @staticmethod
     def sql_field_sort(sort_column, sort_order):
-        return sql.SQL("ORDER BY {sort_column} {sort_order} ").format(
+        null_position = ""
+        if sort_order.lower() == "desc":
+            null_position = "LAST"
+        elif sort_order.lower() == "asc":
+            null_position = "FIRST"
+        return sql.SQL("ORDER BY {sort_column} {sort_order} NULLS {null_position} ").format(
             sort_column = sql.Identifier(sort_column),
-            sort_order = sql.SQL(sort_order)
+            sort_order = sql.SQL(sort_order),
+            null_position = sql.SQL(null_position)
             )
         
     @staticmethod

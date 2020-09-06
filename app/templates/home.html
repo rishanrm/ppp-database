@@ -104,6 +104,7 @@
         <script src="https://unpkg.com/tableexport.jquery.plugin/tableExport.min.js"></script>
         <script src="https://unpkg.com/tableexport.jquery.plugin/libs/jsPDF/jspdf.min.js"></script>
         <script src="https://unpkg.com/tableexport.jquery.plugin/libs/jsPDF-AutoTable/jspdf.plugin.autotable.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/file-saver@2.0.2/dist/FileSaver.min.js"></script>
 
         <!-- Reorder columns -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
@@ -405,7 +406,7 @@
 
 
         <!-- Data export -->
-        <script>
+        <!-- <script>
             $(function() {
                 $('#toolbar').find('select').change(function () {
                 $table.bootstrapTable('destroy').bootstrapTable({
@@ -414,7 +415,7 @@
                 })
                 }).trigger('change')
             });
-        </script>
+        </script> -->
 
 
         <!-- Column headers without search or filtering -->
@@ -553,7 +554,11 @@
 
 <!-- Load table -->
             $table.bootstrapTable({
-                undefinedText: 'N/A'
+                undefinedText: 'N/A',
+                exportTypes: ['json', 'xml', 'csv', 'txt', 'sql', 'pdf'],
+                exportOptions: {
+                    fileName: 'ppp_data'
+                }
             })
         </script>
 
