@@ -141,19 +141,7 @@
     <!-- Reset button -->
     <script>
         var $table = $('#table')
-        var $button = $('#button')
-        var $button2 = $('#button2')
         var $resetButton = $('#resetButton')
-    
-        $(function() {
-            
-        $button.click(function () {
-            $table.bootstrapTable('refresh');
-        })
-        $button2.click(function () {
-            $table.bootstrapTable()
-        })
-        })
     </script>
 
     <!-- Get data -->
@@ -274,19 +262,6 @@
         })
     </script>
 
-    <!-- Load table -->
-    <script>
-        $table.bootstrapTable(
-            {
-                exportTypes: ['csv', 'txt', 'doc', 'pdf', 'json', 'xml', 'sql'],
-                exportOptions: {
-                    fileName: 'ppp_data',
-                    ignoreColumn: [0]
-                }
-            }
-        )
-    </script>
-
     <!-- Loading screen overlay -->
         <script>
             var type = 'fa'
@@ -301,6 +276,7 @@
             }
         
             function rebuild() {
+                console.log("IN REBUILD")
                 $('#table')
                     .bootstrapTable('destroy')
                     // .bootstrapTable()
@@ -383,6 +359,19 @@
                     }
                 }[column.field]
             }
+        </script> -->
+
+        <!-- Export Data settings
+        <script>
+            $table.bootstrapTable(
+                {
+                    exportTypes: ['csv', 'txt', 'doc', 'pdf', 'json', 'xml', 'sql'],
+                    exportOptions: {
+                        fileName: 'ppp_data',
+                        ignoreColumn: [0]
+                    }
+                }
+            )
         </script> -->
 
 {% endblock content %}
