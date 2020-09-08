@@ -1,6 +1,6 @@
 {% extends 'layout.html' %}
 {% block content %}
-
+<div class="container_row">
     <div class="container hidden">
         <div id="toolbar">
             <button id="resetButton" class="btn btn-secondary">Reset filters</button>
@@ -80,7 +80,7 @@
             </thead>
         </table>
     </div>
-
+</div>
 
     <!-- JS LIBRARIES -->
 
@@ -117,11 +117,11 @@
 
 
     <!-- Fade in -->
-    <script>
+    <!-- <script>
             $(document).ready(function () {
                 $('div.hidden').fadeIn(2000).removeClass('hidden');
             });
-    </script>
+    </script> -->
 
     <!-- Get column options -->
     <script>var colOptions;</script>
@@ -284,7 +284,13 @@
     </script>
 
 
+    <script>
+        $('#table').on('pre-body.bs.table', function (e, arg1, arg2) {
+            console.log('PRE BODY RAN')
+            $('div.hidden').fadeIn(2000).removeClass('hidden');
 
+        });
+    </script>
 
     <!-- NOT CURRENTLY IN USE: -->
 

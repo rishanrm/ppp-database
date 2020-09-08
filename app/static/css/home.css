@@ -12,3 +12,7 @@ div.hidden {
 .fixed-table-body {
     overflow: scroll;
 }
+
+.container_row{
+    display: grid;
+  }
