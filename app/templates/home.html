@@ -3,8 +3,6 @@
 
 <div class="container hidden">
 <div id="toolbar">
-    <!-- <button id="button" class="btn btn-secondary">destroy</button>
-    <button id="button2" class="btn btn-secondary">build</button> -->
     <button id="resetButton" class="btn btn-secondary">Reset filters</button>
 </div>
         <table
@@ -132,65 +130,12 @@
                 request.send(null);
 
                 if (request.status === 200) {
-                    // console.log(request.responseText)
                     newTry = JSON.parse(request.responseText);
-                    // console.log('DOT REQUEST:')
-                    // console.log(newTry.state)
-                    // console.log(newTry)
-                    // console.log("PROPERTIES PRINT")
-                    // console.log(Object.getOwnPropertyNames(newTry));
-                    // $table.bootstrapTable('removeAll')
-
-                    // console.log("TRYING NEW TRY")
-                    // console.log(newTry)
-                    // $table.bootstrapTable('resetSearch') // Clear value in global search box
-                    // $table.bootstrapTable('clearFilterControl') //Unfilter results
-                    // $table.bootstrapTable('refreshOptions', { //Clear column filters
-                    // })
                 }
             }
-
             getColumnNames()
         </script>
 
-        <!-- 
-        <script>
-            console.log('SEPARATE SCRIPT:')
-            console.log(newTry.state)
-        </script>
-        <script>    
-            $('#table').bootstrapTable({
-                onAll: function (arg1, arg2) {
-                    console.log('HELLO START')
-                },
-                onRefresh: function(params) {
-                    console.log("REFRESH PARAMS:")
-                    params.filter = {}
-                    console.log(params)
-    
-                }
-            })
-            </script> -->
-
-        <script>
-            // $table.bootstrapTable('hideColumn', 'city')
-            var randomnum = Math.random().toString()
-
-
-
-            // var columns = {
-            //     'state': {
-            //         country: randomnum,
-            //         city: 'city'
-            //     }
-            // }
-
-            // function functionName() {
-            //     var randomnum = Math.random().toString()
-            //     return {'state': randomnum,
-            //             'city': 'city'}
-            // }
-        </script>
 
         <script>
         
@@ -211,47 +156,6 @@
             })
         </script>
 
-
-
-
-
-
-
-
-
-
-
-
-<!-- 
-        <script>
-            function makeRequest (method, url, data) {
-                return new Promise(function (resolve, reject) {
-                    var xhr = new XMLHttpRequest();
-                    xhr.open(method, url);
-                    xhr.onload = function () {
-                    if (this.status >= 200 && this.status < 300) {
-                        resolve(xhr.response);
-                    } else {
-                        reject({
-                        status: this.status,
-                        statusText: xhr.statusText
-                        });
-                    }
-                    };
-                    xhr.onerror = function () {
-                    reject({
-                        status: this.status,
-                        statusText: xhr.statusText
-                    });
-                    };
-                    if(method=="POST" && data){
-                        xhr.send(data);
-                    }else{
-                        xhr.send();
-                    }
-                });
-                }
-        </script> -->
 
         <script>
         //     var userJobTitles8
@@ -304,7 +208,6 @@
             // console.log(userJobTitles6)
             // });
         </script>
-
 
 
         <!-- Get data -->
@@ -387,13 +290,6 @@
                     });
                 };
         </script>
-
-<!-- <script>
-    $('#table').on('event-name.bs.table', function (e, arg1, arg2) {
-        console.log('LOADING FIRST')
-    })
-    </script> -->
-
 
         <!-- <script>
             $('#table').on('column-switch.bs.table', function (e, arg1, arg2) {
@@ -516,8 +412,6 @@
             }
 
             function reorderValues(row) {
-                // console.log("TRY 1")
-                // console.log(Object.keys(orderedData))
                 var orderedValues = []
                 $.each(Object.keys(orderedData), function(index, value) {
                     orderedValues.push(row[value])
@@ -601,14 +495,6 @@
             })
         </script>
 
-<!-- 
-<script>
-    // $( ".toggle-all" ).css( "border", "3px solid red" );
-    $( ".toggle-all" ).change(function() {
-        console.log("CHECKED");
-    });
-</script> -->
-
 
 <script>
     $('#table').on('post-body.bs.table', function (e, arg1, arg2) {
@@ -618,23 +504,6 @@
         });
     });
 </script>
-
-
-
-
-
-
-<script>
-    $(".toggle-all").change(function() {
-    if(!this.checked) {
-        //Do stuff
-        console.log("NOT FUNCTION CHECKED")
-    } else {
-        console.log("FUNCTION CHECKED YES!")
-    }
-});
-</script>
-
 
 
 <script>
@@ -676,131 +545,7 @@ $('#table').on('pre-body.bs.table', function (e, arg1, arg2) {
 </script> -->
 
 
-<!-- 
-TO DO NEXT:
-- DESTROY/BUILD looks to be the way to reload the headers
-- To use this, you'll need to:
-1. Save the params
-2. Build the new table with the new params
-
-
-Need to figure out how to return a SQL response to the column headers
-Need to figure out if you can build the new table with the old Params
-Need to re-populate the previous choices in the new table
-
--->
 
 
     </div>
 {% endblock content %}
-
-
-<!-- var url = '/fetch'
-var url= "https://examples.wenzhixin.net.cn/examples/bootstrap_table/data" -->
-
-
-
-
-
-<!-- <h1>Btn2</h1>
-<div id='p2'></div>
-<button id="btn2"> Button2</button>
-<script type="text/javascript">
-    document.getElementById('btn2').addEventListener('click', consoleLog);
-
-    function consoleLog(){
-        console.log('Clicked it')
-        var xhr = new XMLHttpRequest();
-
-        xhr.open('GET', '/data', true);
-
-        xhr.onload = function(){
-            if(this.status == 200){
-                console.log(this.responseText)
-                document.getElementById('p2').innerHTML = 
-                this.responseText;
-            }
-        }
-
-        xhr.send();
-    }
-</script>
-
-<h1>Btn3</h1>
-<div id='p3'></div>
-<button id="btn3"> Button3</button>
-<script type="text/javascript">
-    document.getElementById('btn2').addEventListener('click', consoleLog);
-
-    function consoleLog(){
-        console.log('Clicked it')
-        // your custom ajax request here
-        function ajaxRequest40() {
-            var url = '/data'
-            $.get(url).then(function (res) {
-                params.success(res)
-                console.log($.get(url))
-        })
-    ;
-        }
-    }
-</script> -->
-
-
-
-<!-- 
-<script>
-    function myFunctionCheck() {
-// Get the checkbox
-        var checkBox = document.getElementsByClassName("toggle-all")[0];
-        // If the checkbox is checked, display the output text
-        if (checkBox.checked == false){
-            console.log("CHECKED!")
-            checkBox.addEventListener( 'change', function() {
-                console.log("EVENT LISTENER ADDED: CHANGED")
-            });
-            // text.style.display = "block";
-        } else {
-            console.log("NOT CHECKED!")
-            // text.style.display = "none";
-        }
-
-
-        checkBox.addEventListener( 'change', function() {
-            if(this.checked) {
-                console.log("QUERY1 CHECKED")
-                // Checkbox is checked..
-            } else {
-                // Checkbox is not checked..
-                console.log("QUERY1 UNCHECKED")
-                // checkbox2.checked = true;
-            }
-        });
-        var checkBoxX = document.evaluate("/html/body/div/div[1]/div[1]/div[2]/div/div/label[2]/input", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
-        if (checkBoxX.checked == true){
-            console.log("CHECKED X!")
-            checkBoxX.addEventListener( 'change', function() {
-                console.log("EVENT LISTENER ADDED X: CHANGED")
-            });
-            // text.style.display = "block";
-        } else {
-            console.log("NOT CHECKED X!")
-            // text.style.display = "none";
-        }
-        
-
-
-    }
-</script>
-
-<script>
-    $('input[type=checkbox]').change(function(){
-    if($(this).is(':checked')) {
-        console.log("CHANGED CHECK JQUERY")
-        // Checkbox is checked..
-    } else {
-        // Checkbox is not checked..
-        console.log("CHANGED CHECK JQUERY UNCHECK")
-    }
-});
-</script> -->
