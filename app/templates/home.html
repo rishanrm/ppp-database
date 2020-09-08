@@ -2,7 +2,7 @@
 {% block content %}
     <div class="container hidden">
         <div id="toolbar">
-            <button id="resetButton" class="btn btn-secondary">Reset filters</button>
+            <button id="resetButton" class="btn btn-primary">Reset filters</button>
         </div>
         <table
             id="table"
@@ -10,6 +10,7 @@
             data-ajax="ajaxRequest"
             data-height="600"
             data-buttons-align="right"
+            data-buttons-class="primary"
             data-show-button-text="true"
             data-search="true"
             data-search-align="right"
@@ -113,18 +114,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.14.1/locale/bootstrap-table-en-US.min.js"></script>
 
 
-
-    <!-- Fade in -->
-    <!-- <script>
-            $(document).ready(function () {
-                $('div.hidden').fadeIn(2000).removeClass('hidden');
-            });
-    </script> -->
-
     <!-- Get column options -->
     <script>var colOptions;</script>
     <script>
         function getColumnNames() {
+            console.log("IN GET COLUMNS")
+            // console.log(params)
             var request = new XMLHttpRequest();
             request.open('GET', 'http://localhost:5000/header_options/', false);  // `false` makes the request synchronous
             request.send(null);
@@ -291,6 +286,13 @@
     </script>
 
     <!-- NOT CURRENTLY IN USE: -->
+
+        <!-- Fade in -->
+        <!-- <script>
+                $(document).ready(function () {
+                    $('div.hidden').fadeIn(2000).removeClass('hidden');
+                });
+        </script> -->
 
         <!-- Action before table loads -->
         <!-- <script>
