@@ -255,14 +255,18 @@
 
     <!-- Loading screen overlay -->
         <script>
-            var type = 'fa'
+            var type = 'bsGrow'
         
             function loadingTemplate(message) {
+                
                 if (type === 'fa') {
-                    return '<i style="color:#007aff;font-size:32px;">Doing government work...&nbsp;&nbsp;</i><i style="color:#007aff;" class="fa fa-spinner fa-spin fa-fw fa-2x"></i>'
+                    return '<i class="spinner-text" color:#007aff;font-size:32px;">Doing government work...&nbsp;&nbsp;</i><i style="color:#007aff;" class="fa fa-spinner fa-spin fa-fw fa-2x spinner-spinner"></i>'
                 }
                 if (type === 'pl') {
                     return '<div class="ph-item"><div class="ph-picture"></div></div>'
+                }
+                if (type === 'bsGrow') {
+                    return '<i class="spinner-text text-primary";">Doing government work...&nbsp;&nbsp;</i><i class="spinner-grow text-primary spinner-spinner" role="status"><span class="sr-only">Loading...</span></i>'
                 }
             }
         </script>
