@@ -6,5 +6,9 @@
 }
 
 div.hidden {
-    display: none
+    display: none;
+}
+
+.fixed-table-body {
+    overflow: scroll;
 }

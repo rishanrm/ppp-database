@@ -7,14 +7,11 @@
     <button id="button2" class="btn btn-secondary">build</button> -->
     <button id="resetButton" class="btn btn-secondary">Reset filters</button>
 </div>
-
-
-
         <table
             id="table"
             data-toggle="table"
             data-ajax="ajaxRequest"
-            data-height="1000"
+            data-height="600"
             data-buttons-align="right"
             data-show-button-text="true"
             data-search="true"
@@ -398,7 +395,7 @@
     </script> -->
 
 
-        <script>
+        <!-- <script>
             $('#table').on('column-switch.bs.table', function (e, arg1, arg2) {
                 console.log('COLUMN SWITCH')
                 $table.bootstrapTable('resetView')
@@ -406,6 +403,8 @@
             })
             // onColumnSwitch
         </script>
+ -->
+
 
 
         <!-- Format loan amount data -->        
@@ -602,17 +601,63 @@
             })
         </script>
 
-<!-- if (key == 'businesstype'){
-    key = 'Business Type'
-    console.log(key)
-}
-console.log(key) -->
-
-
-
-
 <!-- 
 <script>
+    // $( ".toggle-all" ).css( "border", "3px solid red" );
+    $( ".toggle-all" ).change(function() {
+        console.log("CHECKED");
+    });
+</script> -->
+
+
+<script>
+    $('#table').on('post-body.bs.table', function (e, arg1, arg2) {
+        console.log('POST BODY RAN')
+        $('input[type=checkbox]').change(function(){
+            $table.bootstrapTable('resetView')
+        });
+    });
+</script>
+
+
+
+
+
+
+<script>
+    $(".toggle-all").change(function() {
+    if(!this.checked) {
+        //Do stuff
+        console.log("NOT FUNCTION CHECKED")
+    } else {
+        console.log("FUNCTION CHECKED YES!")
+    }
+});
+</script>
+
+
+
+<script>
+// var checkbox2 = document.querySelector(".toggle-all");
+var checkbox2 = document.getElementsByClassName("toggle-all")[0];
+console.log("AFTER VARIABLE DECLARATION")
+console.log(checkbox2)
+checkbox2.addEventListener( 'change', function() {
+    if(this.checked) {
+        console.log("QUERY CHECKED")
+        // Checkbox is checked..
+    } else {
+        // Checkbox is not checked..
+        console.log("QUERY UNCHECKED")
+        // checkbox2.checked = true;
+    }
+});
+</script>
+
+
+
+
+<!-- <script>
 $('#table').on('pre-body.bs.table', function (e, arg1, arg2) {
             console.log('HELLO END')
             var userJobTitles9
@@ -627,7 +672,7 @@ $('#table').on('pre-body.bs.table', function (e, arg1, arg2) {
             }, error => {
                 console.error(error);
             })
-        })    
+        });   
 </script> -->
 
 
@@ -699,4 +744,63 @@ var url= "https://examples.wenzhixin.net.cn/examples/bootstrap_table/data" -->
     ;
         }
     }
+</script> -->
+
+
+
+<!-- 
+<script>
+    function myFunctionCheck() {
+// Get the checkbox
+        var checkBox = document.getElementsByClassName("toggle-all")[0];
+        // If the checkbox is checked, display the output text
+        if (checkBox.checked == false){
+            console.log("CHECKED!")
+            checkBox.addEventListener( 'change', function() {
+                console.log("EVENT LISTENER ADDED: CHANGED")
+            });
+            // text.style.display = "block";
+        } else {
+            console.log("NOT CHECKED!")
+            // text.style.display = "none";
+        }
+
+
+        checkBox.addEventListener( 'change', function() {
+            if(this.checked) {
+                console.log("QUERY1 CHECKED")
+                // Checkbox is checked..
+            } else {
+                // Checkbox is not checked..
+                console.log("QUERY1 UNCHECKED")
+                // checkbox2.checked = true;
+            }
+        });
+        var checkBoxX = document.evaluate("/html/body/div/div[1]/div[1]/div[2]/div/div/label[2]/input", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+        if (checkBoxX.checked == true){
+            console.log("CHECKED X!")
+            checkBoxX.addEventListener( 'change', function() {
+                console.log("EVENT LISTENER ADDED X: CHANGED")
+            });
+            // text.style.display = "block";
+        } else {
+            console.log("NOT CHECKED X!")
+            // text.style.display = "none";
+        }
+        
+
+
+    }
+</script>
+
+<script>
+    $('input[type=checkbox]').change(function(){
+    if($(this).is(':checked')) {
+        console.log("CHANGED CHECK JQUERY")
+        // Checkbox is checked..
+    } else {
+        // Checkbox is not checked..
+        console.log("CHANGED CHECK JQUERY UNCHECK")
+    }
+});
 </script> -->
