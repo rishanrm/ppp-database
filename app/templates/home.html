@@ -271,7 +271,8 @@
     <script>
         $('#table').on('post-body.bs.table', function (e, arg1, arg2) {
             console.log('POST BODY RAN')
-                $table.bootstrapTable('resetView')
+            $table.bootstrapTable('resetView')
+            $('div.hidden').fadeIn(2000).removeClass('hidden');
         });
 
         // $('#table').on('toggle.bs.table', function (e, arg1, arg2) {
@@ -281,24 +282,24 @@
         //     });
         // </script>
 
-<script>
+<!-- <script>
 $('#table').on('all.bs.table', function (data, event) {
     console.log(event)
     // console.log(data)
     // $table.bootstrapTable('resetView')
 
     });
-</script>
+</script> -->
 
 
 
-    <script>
+    <!-- <script>
         $('#table').on('pre-body.bs.table', function (e, arg1, arg2) {
             console.log('PRE BODY RAN')
             $('div.hidden').fadeIn(2000).removeClass('hidden');
 
         });
-    </script>
+    </script> -->
 
     <!-- NOT CURRENTLY IN USE: -->
 
