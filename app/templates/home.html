@@ -269,9 +269,7 @@
         $(function() {
             $resetButton.click(function () {
                 $table.bootstrapTable('destroy')
-                $table.bootstrapTable({
-                    undefinedText: 'N/A'
-                })
+                $table.bootstrapTable()
             })
         })
     </script>
@@ -280,7 +278,6 @@
     <script>
         $table.bootstrapTable(
             {
-                undefinedText: 'N/A',
                 exportTypes: ['csv', 'txt', 'doc', 'pdf', 'json', 'xml', 'sql'],
                 exportOptions: {
                     fileName: 'ppp_data',
