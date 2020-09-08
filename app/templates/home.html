@@ -167,7 +167,6 @@
     <script>        
         (function ($) {
             'use strict';
-
             $.fn.bootstrapTable.locales['en-US-custom'] = {
                 formatLoadingMessage: function () {
                     return 'Doing government work';
@@ -188,9 +187,7 @@
                     return 'Export page'
                 }
             };
-
             $.extend($.fn.bootstrapTable.defaults, $.fn.bootstrapTable.locales['en-US-custom']);
-
         })(jQuery);
     </script>
 
@@ -274,18 +271,7 @@
                     return '<div class="ph-item"><div class="ph-picture"></div></div>'
                 }
             }
-        
-            function rebuild() {
-                console.log("IN REBUILD")
-                $('#table')
-                    .bootstrapTable('destroy')
-                    // .bootstrapTable()
-                    .bootstrapTable('showLoading')
-            }
-            
-            rebuild()
         </script>
-
 
     <!-- Fix for Toggle All issue where table overlaps bottom pagination controls -->
     <script>
@@ -530,4 +516,16 @@
                 })
             })
         })
+    </script> -->
+
+    <!-- <script>
+    // function rebuild() {
+        //     console.log("IN REBUILD")
+        //     $('#table')
+        //         .bootstrapTable('destroy')
+        //         // .bootstrapTable()
+        //         .bootstrapTable('showLoading')
+        // }
+        
+        // rebuild()
     </script> -->
