@@ -2,7 +2,7 @@
 {% block content %}
     <div class="container hidden">
         <div id="toolbar">
-            <button id="resetButton" class="btn btn-primary">Reset filters</button>
+            <button id="resetButton" class="btn btn-danger">Reset</button>
         </div>
         <table
             id="table"
@@ -11,6 +11,7 @@
             data-height="600"
             data-buttons-align="right"
             data-buttons-class="primary"
+            data-buttons-order="['columns', 'toggle', 'print']"
             data-show-button-text="true"
             data-search="true"
             data-search-align="right"
@@ -48,7 +49,7 @@
             data-export-data-type="basic"
             data-filter-control="true"
             data-mobile-responsive="true"
-            data-show-print="true"
+            data-show-print="false"
             data-reorderable-columns="false"
             data-header-style="headerStyle"
             data-toolbar="#toolbar"
