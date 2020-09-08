@@ -17,6 +17,12 @@ div.hidden {
     width: 186px;
 }
 
+.no-records-found {
+    font-size:100%;
+    color:#dc3546;
+    /* font-weight: bold; */
+}
+
 /* .spinner-text {
     position: absolute;
     left: 370px;
