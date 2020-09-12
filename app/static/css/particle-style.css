@@ -1,5 +1,36 @@
-#particles-js{
+html, body {
+    margin:0px;
+  }
+
+#first-screen{
     background: #007aff;
-    /* background: gray; */
-    /* height: 400px; */
+    background: gray;
+    height: 400px;
+    width: 50px;
 }
+
+.box1 {
+    background:blue;
+    position: absolute;
+    height:100vh;
+    width:100vw;
+  }
+
+.box2 {
+    background:red;
+    position: absolute;
+    height:100vh;
+    width:100vw;
+    top: 100vh;
+  }
+
+
+/* 
+  .box {
+    background:red;
+    position:absolute;
+    top:0px;
+    right:0px;
+    bottom:0px;
+    left:0px;
+  } */
