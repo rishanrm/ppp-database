@@ -36,6 +36,13 @@ def home():
 
       return render_template('home.html', data="", headers = csv_column_headers)
 
+@main.route("/wf")
+def wf():
+    return render_template('wf.html', title='Table Examples')
+
+
+
+
 @main.route("/table_examples")
 def table_examples():
         return render_template('table_examples.html', title='Table Examples')
