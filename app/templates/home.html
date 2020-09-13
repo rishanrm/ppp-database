@@ -1,6 +1,11 @@
 {% extends 'layout.html' %}
 {% block content %}
-    <div id="particles-js">
+
+    <section class="section-0 child" style="--screen:0">
+        <div id="particles-js"></div>
+    </section>
+
+    <section class="section-1 child" style="--screen:1">
         <div class="container hidden">
             <div id="toolbar">
                 <button id="resetButton" class="btn btn-danger">Reset</button>
@@ -82,5 +87,5 @@
                 </thead>
             </table>
         </div>
-    </div>
+    </section>
 {% endblock content %}
