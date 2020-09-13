@@ -11,17 +11,123 @@
 </head>
 
 <body>
+<!-- 
+
+    <section>
+        <h1>Section One</h1>
+    </section>
+    <section>
+            <h1>Section Two</h1>
+    </section>
+    <section>
+            <h1>Section Three</h1>
+    </section>
+    <section>
+            <h1>Section Four</h1>
+    </section>
+    <section>
+            <h1>Section Five</h1>
+    </section>
+
+<script>
+    const gra = function(min, max) {
+    return Math.random() * (max - min) + min;
+}
+const init = function(){
+    let items = document.querySelectorAll('section');
+    for (let i = 0; i < items.length; i++){
+        items[i].style.background = randomColor({luminosity: 'light'});
+    }
+    cssScrollSnapPolyfill()
+}
+init();
+</script>
+ -->
+
+
+
+<!-- 
+
+    <div class="container snapping" id="container-1">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+        <div>7</div>
+        <div>8</div>
+        <div>9</div>
+        <div>10</div>
+        <div>11</div>
+      </div>
+      
+
+
+ -->
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- <main class="container">
+        <div class="child">
+            <h2>Image 1</h2>
+        </div>
+        <div class="child">
+            <h2>Image 2</h2>
+        </div>
+        <div class="child">
+            <h2>Image 3</h2>
+        </div>
+        <div class="child">
+            <h2>Image 4</h2>
+        </div>
+        <div class="child">
+            <h2>Image 5</h2>
+        </div>
+        <div class="child">
+            <h2>Image 6</h2>
+        </div>
+        <div class="child">
+            <h2>Image 7</h2>
+        </div>
+    </main>
+ -->
+
+<!-- 
+    <div class="testing">
+        <div class="newchild1">
+            <h1>HELLO AGAIN</h1>
+        </div>
+        <div class="newchild2">
+            <h1>HELLO AGAIN</h1>
+        </div>
+        <div class="newchild3">
+            <h1>HELLO AGAIN</h1>
+        </div>
+    </div> -->
+
     <div class="container">
-        <section class="section section-0" style="--screen:0">
+
+        <section class="section-0 child" style="--screen:0">
             <h1>Section 0</h1>
         </section>
-        <section class="section section-1" style="--screen:1">
+
+        <section class="section-1 child" style="--screen:1">
             <h1>Section 1</h1>
         </section>
-        <section class="section section-2" style="--screen:2">
+
+        <section class="section-2 child" style="--screen:2">
             <h1>Section 2</h1>
         </section>
-    </div>
     </div>
 <body>
 </html>

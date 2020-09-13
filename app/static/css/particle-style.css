@@ -1,14 +1,21 @@
-html, body {
+html {
     margin:0px;
-  }
+    scroll-snap-points-y: repeat(100vh);
+    scroll-snap-type: y mandatory;
+}
 
-  .section {
+body {
+    margin:0px;
+}
+
+section {
     position: absolute;
     height:100vh;
     width:100vw;
     top: calc(var(--screen) * 100vh);
-    /* top: 100vh; */
-  }
+    scroll-snap-align: start;
+
+}
 
 .section-0 {
     background:blue;
@@ -17,8 +24,207 @@ html, body {
 .section-1 {
     background:red;
 
-  }
+}
 
 .section-2 {
     background:green;
+}
+/* 
+.containerx {
+    scroll-snap-type: y mandatory;
+    overflow: scroll;
+}
+
+.container {
+    scroll-snap-type: y mandatory;
   }
+  
+  .child {
+    scroll-snap-align: start;
+  }
+
+.testing{
+    height:100vh;
+    width:100vw;
+}
+
+.newchild1{
+    position: absolute;
+    height:100vh;
+    width:100vw;
+    top: calc(var(--screen) * 100vh);
+}
+.newchild2{
+    position: absolute;
+    height:100vh;
+    width:100vw;
+    top: calc(var(--screen) * 100vh);
+}
+.newchild3{
+    position: absolute;
+    height:100vh;
+    width:100vw;
+    top: calc(var(--screen) * 100vh);
+}
+ */
+
+
+/* html { body won't work ¯\_(ツ)_/¯ */
+    /* scroll-snap-type: y mandatory;
+  }
+
+section {
+    height: 100vh;
+    width: 100vw;
+    scroll-snap-align: start;
+  }
+
+
+html {
+    font-family: sans-serif;
+    scroll-snap-type: mandatory;
+    scroll-snap-points-y: repeat(100vh);
+    scroll-snap-type: y mandatory;
+}
+section {
+    border-bottom: 1px solid white;
+    padding: 1rem;
+    height: 100vh;
+    scroll-snap-align: start;
+    text-align: center;
+    position: relative;
+}
+h1  {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+    color: white;
+    width: 100%;
+    left: 0;
+    font-size: calc(1rem + 3vw);
+} */
+
+
+
+/* html, body {
+    margin:0px;
+}
+
+section {
+    position: absolute;
+    height:100vh;
+    width:100vw;
+    top: calc(var(--screen) * 100vh);
+
+}
+
+.section-0 {
+    background:blue;
+    scroll-snap-align: start;
+  }
+
+.section-1 {
+    background:red;
+    scroll-snap-align: start;
+
+}
+
+.section-2 {
+    background:green;
+    scroll-snap-align: start;
+}
+
+.containerx {
+    scroll-snap-type: y mandatory;
+    overflow: scroll;
+}
+
+.container {
+    scroll-snap-type: y mandatory;
+  }
+  
+  .child {
+    scroll-snap-align: start;
+  }
+
+.testing{
+    scroll-snap-type: y mandatory;
+}
+
+.newchild1{
+    position: absolute;
+    height:100vh;
+    width:100vw;
+    top: 0vh;
+    background:green;
+    scroll-snap-align: center;
+}
+.newchild2{
+    position: absolute;
+    height:100vh;
+    width:100vw;
+    top: 100vh;
+    background:orange;
+    scroll-snap-align: center;
+}
+.newchild3{
+    position: absolute;
+    height:100vh;
+    width:100vw;
+    top: 200vh;
+    background:red;
+    scroll-snap-align: center;
+}
+
+
+
+
+
+ */
+
+
+
+/* 
+
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Helvetica', sans-serif;
+}
+
+.container {
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+  color: white;
+  background-color: oldlace;
+}
+.child {
+    height:100vh;
+    width:100vw;
+  }
+  
+  .child:nth-child(1n) {
+      background-color: darkorchid;
+
+  }
+  
+  .child:nth-child(2n) {
+      background-color: indigo;
+      top: 100vh;
+  }
+  
+  .child:nth-child(3n) {
+      background-color: navy;
+      top: 200vh;
+  }
+  
+  .child:nth-child(4n) {
+      background-color: palegreen;
+      top: 300vh;
+  }
+   */
