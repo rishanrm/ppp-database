@@ -40,7 +40,9 @@ def home():
 def wf():
     return render_template('wf.html', title='Table Examples')
 
-
+@main.route("/barba")
+def barba():
+    return render_template('barba.html', title='Barba Implementation')
 
 
 @main.route("/table_examples")

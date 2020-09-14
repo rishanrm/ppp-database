@@ -8,6 +8,7 @@
 
   <title>Particles</title>
   <link rel="stylesheet" href="/css/particle-style.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 </head>
 
 <body>
@@ -121,7 +122,7 @@ init();
             <h1>Section 0</h1>
         </section>
 
-        <section class="section-1 child" style="--screen:1">
+        <section class="section-1 child" style="--screen:1" data-aos="fade-left">
             <h1>Section 1</h1>
         </section>
 
@@ -129,5 +130,14 @@ init();
             <h1>Section 2</h1>
         </section>
     </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init({
+          offset: 400,
+          duration: 1000
+      });
+    </script>
+
 <body>
 </html>
