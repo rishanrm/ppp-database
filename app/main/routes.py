@@ -38,12 +38,15 @@ def home():
 
 @main.route("/wf")
 def wf():
-    return render_template('wf.html', title='Table Examples')
+    return render_template('wf.html')
 
 @main.route("/barba")
 def barba():
-    return render_template('barba.html', title='Barba Implementation')
+    return render_template('barba.html')
 
+@main.route("/barba-services")
+def barba_services():
+    return render_template('barba-services.html')
 
 @main.route("/table_examples")
 def table_examples():
