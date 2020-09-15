@@ -48,6 +48,10 @@ def barba():
 def barba_services():
     return render_template('barba-services.html')
 
+@main.route("/gsap")
+def gsap():
+    return render_template('gsap.html')
+
 @main.route("/table_examples")
 def table_examples():
         return render_template('table_examples.html', title='Table Examples')
