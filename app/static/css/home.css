@@ -2,12 +2,17 @@ html {
     margin:0px;
     scroll-snap-points-y: repeat(100vh);
     scroll-snap-type: y mandatory;
+    background-color: black;
 }
 
 body {
     margin:0px;
+    background-color: black;
 }
 
+.container{
+    margin-top: 200px;
+}
 .bootstrap-table, th, td {
     background:white;
   }
@@ -53,6 +58,10 @@ section {
 
 }
 
+.bootstrap-table {
+    border-radius: 25px;
+    padding: 10px 5px 10px;
+}
 
 /* .spinner-text {
     position: absolute;
