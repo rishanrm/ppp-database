@@ -36,11 +36,11 @@
         }
       },
       "size": {
-        "value": 8,
+        "value": 5,
         "random": false,
         "anim": {
           "enable": true,
-          "speed": 2,
+          "speed": 1,
           "size_min": 1,
           "sync": false
         }

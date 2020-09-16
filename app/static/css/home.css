@@ -2,7 +2,7 @@ html {
     margin:0px;
     scroll-snap-points-y: repeat(100vh);
     scroll-snap-type: y mandatory;
-    background-color: black;
+    background-color: gray;
 }
 
 body {
@@ -11,8 +11,10 @@ body {
 }
 
 .container{
-    margin-top: 200px;
+    margin-top: 10vh;
+    margin-bottom: 10vh;
 }
+
 .bootstrap-table, th, td {
     background:white;
   }
@@ -31,6 +33,12 @@ div.hidden {
 .fixed-table-body {
     overflow: scroll;
 }
+
+
+.fixed-table-container {
+    height:60vh;
+}
+
 
 #resetButton {
     width: 186px;
@@ -61,6 +69,7 @@ section {
 .bootstrap-table {
     border-radius: 25px;
     padding: 10px 5px 10px;
+
 }
 
 /* .spinner-text {
