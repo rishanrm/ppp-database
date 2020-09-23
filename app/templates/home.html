@@ -1,9 +1,74 @@
 {% extends 'layout.html' %}
 {% block content %}
 
-    <section class="section-0 child" style="--screen:0">
-        <div id="particles-js">
-            <a href="{{ url_for('main.data_under_150k') }}" alt='Broken Link'><button type="button" class="btn btn-success">Go to data table</button></a>
+    <a href="{{ url_for('main.data_under_150k') }}" alt='Broken Link'><button type="button" class="btn btn-success">Go to data table 2</button></a>
+
+    <!-- WIPES -->
+    <div class="color-wipes-animate">
+        <div class="color-wipe"></div>
+        <div class="color-wipe"></div>
+        <div class="color-wipe"></div>
+        <div class="color-wipe"></div>
+        <div class="color-wipe"></div>
+    </div>
+    <div class="loader">
+        <p>Milk Is Nice</p>
+    </div>
+
+<!-- content that stays the same on all pages - eg. header -->
+<!-- <div id="intro" data-barba="container"> -->
+    <!-- content that will change from page to page -->
+<!-- </div> -->
+<!-- content that stays the same on all pages - eg. footer -->
+<!-- </div> -->
+
+
+    <!-- put here content that will not change
+  between your pages, like <header> or <nav> -->
+
+
+        <!-- put here the content you wish to change
+    between your pages, like your main content <h1> or <p> -->
+
+
+    <!-- put here content that will not change
+  between your pages, like <footer> -->
+
+
+
+
+
+    <main data-barba="container" data-barba-namespace="home">
+    <div class="container test-table">
+            <div class="row">
+                <div class="col-md">
+                    1 of 2test
+                </div>
+                <div class="col-md">
+                    2 of 2
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm">
+                    1 of 3
+                </div>
+                <div class="col-sm">
+                    2 of 3
+                </div>
+                <div class="col-sm">
+                    3 of 3
+                </div>
+            </div>
         </div>
-    </section>
+    </main>
+
+<script> src="js/barba-stripes.js"</script>
+
 {% endblock content %}
+
+
+<!-- <section class="section-0 child" style="--screen:0">
+        <div id="particles-js">
+            <a href="{{ url_for('main.data_under_150k') }}" alt='Broken Link'><button type="button" class="btn btn-success">Go to data table 2</button></a>
+        </div>
+    </section> -->

@@ -1,3 +1,24 @@
+
+/* GSAP */
+.loader {
+    position: fixed;
+    width: 100vw;
+    height: 200vh;
+    pointer-events: none;
+    background-color: #FFF6ED;
+    z-index: 1;
+    visibility: hidden;
+    opacity: 0;
+}
+
+
+
+/* END GSAP */
+
+
+
+
+
 html {
     margin:0px;
     scroll-snap-points-y: repeat(100vh);
@@ -24,6 +45,7 @@ body {
     column-count: 2;
     column-rule: 1px solid #e0e1e5;
     column-gap: 28px;
+    /* font-family: 'Lato', sans-serif; */
 }
 
 div.hidden {
@@ -70,6 +92,10 @@ section {
     border-radius: 25px;
     padding: 10px 5px 10px;
 
+}
+
+.test-table {
+    background: white;
 }
 
 /* .spinner-text {

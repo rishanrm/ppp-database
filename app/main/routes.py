@@ -75,6 +75,18 @@ def barba():
 def barba_services():
     return render_template('barba-services.html')
 
+@main.route("/barba2")
+def barba2():
+    return render_template('barba2.html')
+
+@main.route("/barba2page2")
+def barba2page2():
+    return render_template('barba2page2.html')
+
+@main.route("/bnew")
+def bnew():
+    return render_template('bnew.html')
+
 @main.route("/gsap")
 def gsap():
     return render_template('gsap.html')
