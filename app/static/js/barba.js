@@ -2,7 +2,7 @@ function pageTransition() {
 
     var tl = gsap.timeline();
 
-    tl.to('ul.transition li', { duration: .5, scaleY: 1, transformOrigin: "bottom left", stagger: .5})
+    tl.to('ul.transition li', { duration: .9, scaleY: 1, transformOrigin: "bottom left", stagger: .5})
     tl.to('ul.transition li', {duration: .5, scaleY: 0, transformOrigin: "bottom left", stagger: .5, delay: .1})
 }
 

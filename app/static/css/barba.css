@@ -58,3 +58,30 @@ ul.transition li {
     background: white;
     width: 20%;
 }
+
+/* ul.transition {
+    height: 100vh;
+    width: 100%;
+    background: #be2829;
+    display: none;
+} */
+
+ul.transition li:nth-child(1) {
+    background-color: #DC3C45;
+}
+
+ul.transition li:nth-child(2) {
+    background-color: #EE9EA2;
+}
+
+ul.transition li:nth-child(3) {
+    background-color: #FFFFFF;
+}
+
+ul.transition li:nth-child(4) {
+    background-color: #81BDFD;
+}
+
+ul.transition li:nth-child(5) {
+    background-color: #037AFB;
+}
