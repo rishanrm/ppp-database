@@ -31,13 +31,21 @@ barba.init({
             pageTransition();
             await delay(1500);
             done();
-        },
-        async enter (data) {
-            contentAnimation(); 
-        },
-        async once (data) {
-            contentAnimation(); 
+        
         }
+
+        // INDIVIDUAL COMPONENT ANIMATION
+        // },
+        // async enter (data) {
+        //     contentAnimation(); 
+        // },
+        // async once (data) {
+        //     contentAnimation(); 
+        // }
+
+
+
+
     }]
 })
 
