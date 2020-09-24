@@ -87,6 +87,10 @@ def barba2page2():
 def bnew():
     return render_template('bnew.html')
 
+@main.route("/bnew2")
+def bnew2():
+    return render_template('bnew2.html')
+
 @main.route("/gsap")
 def gsap():
     return render_template('gsap.html')

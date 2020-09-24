@@ -45,7 +45,7 @@ barba.init({
             contentAnimation(); 
         }
     }]
-// })
+})
 
 
 

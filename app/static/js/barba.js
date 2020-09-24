@@ -21,6 +21,7 @@ function delay(n) {
     });
 }
 
+console.log("HERE IN JS")
 
 // barba.init({
 

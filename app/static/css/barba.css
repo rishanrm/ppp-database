@@ -1,6 +1,7 @@
 html, body {
     margin: 0;
     padding: 0;
+    background-color: gray;
 }
 
 body {
@@ -35,10 +36,10 @@ a {
     font-size: 1.4em
 }
 
-img {
+/* img {
     width: 100%;
     clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
-}
+} */
 
 ul.transition {
     display: flex;
