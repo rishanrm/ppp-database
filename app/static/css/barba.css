@@ -13,12 +13,12 @@ body {
     padding: 1em;
 }
 
-ul {
+/* ul {
     list-style: none;
     display: flex;
     padding: 0;
     margin-right: auto;
-}
+} */
 
 a {
     text-decoration: none;
@@ -42,6 +42,13 @@ a {
 } */
 
 ul.transition {
+
+    list-style: none;
+
+    padding: 0;
+    margin-right: auto;
+
+
     display: flex;
     position: absolute;
     z-index: 10;
@@ -89,7 +96,7 @@ ul.transition li:nth-child(5) {
 .loader {
     font-size: 26px;
     font-weight: 600;
-    /* color: green; */
+    color: green;
     position: fixed;
     top: 50%;
     left: 50%;
