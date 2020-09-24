@@ -3,8 +3,8 @@ function pageTransition() {
     var tl = gsap.timeline();
 
     tl.to('ul.transition li', { duration: .5, scaleY: 1, transformOrigin: "bottom right", stagger: .2 })
-    tl.to('.loader', 2, { autoAlpha: 1})
-    tl.to('.loader', .1, { autoAlpha: 0 })
+    tl.to('.loader', 3, { autoAlpha: 1})
+    tl.to('.loader', .2, { autoAlpha: 0 })
     tl.to('ul.transition li', { duration: .5, scaleY: 0, transformOrigin: "top left", stagger: .1, delay: .1 })
 }
 
