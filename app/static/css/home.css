@@ -117,12 +117,12 @@ ul.transition li:nth-child(5) {
 .loader {
     font-size: 26px;
     font-weight: 600;
-    color: green;
+    color: #037AFB;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 10;
+    z-index: 11;
     opacity: 0;
 }
 
@@ -132,25 +132,10 @@ ul.transition li:nth-child(5) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* TABLE */
 .bootstrap-table, th, td {
     background:white;
+    z-index: 1;
   }
 
 .detailview {
@@ -168,6 +153,10 @@ div.hidden {
 .fixed-table-body {
     overflow: scroll;
 }
+
+/* .table-content {
+    z-index: 1;
+} */
 
 .fixed-table-container {
     height:60vh;
