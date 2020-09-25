@@ -91,6 +91,10 @@ def bnew():
 def bnew2():
     return render_template('bnew2.html')
 
+@main.route("/navbar")
+def bnew2():
+    return render_template('navbar.html')
+
 @main.route("/gsap")
 def gsap():
     return render_template('gsap.html')

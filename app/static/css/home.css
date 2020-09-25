@@ -72,7 +72,7 @@ ul.transition {
 
     display: flex;
     position: absolute;
-    z-index: 10;
+    z-index: 1001;
     height: 100vh;
     width: 100%;
     top: 0;
@@ -122,7 +122,7 @@ ul.transition li:nth-child(5) {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 11;
+    z-index: 1002;
     opacity: 0;
 }
 
@@ -133,6 +133,8 @@ ul.transition li:nth-child(5) {
 
 
 /* TABLE */
+
+
 .bootstrap-table, th, td {
     background:white;
     z-index: 1;
@@ -152,6 +154,7 @@ div.hidden {
 
 .fixed-table-body {
     overflow: scroll;
+
 }
 
 /* .table-content {
