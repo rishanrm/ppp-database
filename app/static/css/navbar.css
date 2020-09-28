@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Varela+Round');
-html, body {
+/* html, body {
     overflow-x: hidden;
     height: 100%;
 }
@@ -8,7 +8,91 @@ body {
     padding: 0;
     margin: 0;
     font-family: 'Varela Round', sans-serif;
+} */
+
+
+
+
+
+
+
+
+
+
+
+html {
+    margin:0px;
+    scroll-snap-points-y: repeat(100vh);
+    scroll-snap-type: y mandatory;
+    background-color: gray;
 }
+
+body {
+    margin:0px;
+    background-color: black;
+    font-family: 'Varela Round', sans-serif;
+}
+
+.container{
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+}
+
+
+
+/* BARBA TRANSITIONS */
+
+html, body {
+    margin: 0;
+    padding: 0;
+    background-color: gray;
+}
+
+body {
+    height: 100vh;
+    background: rgb(240, 240 240);
+}
+
+.wrapper {
+    padding: 1em;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .header {
     display: block;
     margin: 0 auto;
@@ -22,7 +106,7 @@ body {
     z-index: 10;
     font-size: 300px;
 }
-.main {
+/* .main {
     margin: 0 auto;
     display: block;
     height: 100%;
@@ -40,7 +124,7 @@ body {
     font-size: 3em;
     font-weight: bold;
     letter-spacing: 1.25px;
-}
+} */
 #sidebarMenu {
     height: 100%;
     position: fixed;
@@ -54,7 +138,7 @@ body {
 .sidebarMenuInner{
     margin:0;
     padding:0;
-    border-top: 1px solid rgba(255, 255, 255, 0.10);
+    border-top: 2px solid rgba(255, 255, 255, 0.10);
 }
 .sidebarMenuInner li{
     list-style: none;
@@ -63,7 +147,7 @@ body {
     font-weight: bold;
     padding: 20px;
     cursor: pointer;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.10);
 }
 .sidebarMenuInner li span{
     display: block;
