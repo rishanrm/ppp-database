@@ -92,7 +92,7 @@ def bnew2():
     return render_template('bnew2.html')
 
 @main.route("/navbar")
-def bnew2():
+def navbar():
     return render_template('navbar.html')
 
 @main.route("/gsap")
