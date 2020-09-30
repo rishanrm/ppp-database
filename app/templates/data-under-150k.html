@@ -10,10 +10,11 @@
     </label>
 
     <div id="sidebarMenu">
-        <div class="sidebarMenuInner currentTopItem">
-            <a href="https://vanila.io">Home</a>
-            <a class="current" href="https://instagram.com/plavookac">Loans < $150K</a>
-            <a href="https://twitter.com/plavookac">Loans $150K+</a>
+        <div class="sidebarMenuInner">
+            <!-- <a href="https://vanila.io">Home</a> -->
+            <a href="{{ url_for('main.home') }}" alt="Broken Home Link">Home</a>
+            <a class="current" href="https://instagram.com/plavookac">Loans Under $150K</a>
+            <a href="https://twitter.com/plavookac">Loans $150K and Up</a>
             <a href="https://www.youtube.com/channel/UCDfZM0IK6RBgud8HYGFXAJg">About</a>
             <a href="https://www.linkedin.com/in/plavookac/">Contact</a>
         </div>
