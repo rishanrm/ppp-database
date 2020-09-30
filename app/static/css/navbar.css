@@ -45,7 +45,7 @@ body {
 html, body {
     margin: 0;
     padding: 0;
-    background-color: gray;
+    background-color: #f8f9fa;
 }
 
 body {
@@ -175,7 +175,7 @@ body {
 }
 
 .current {
-    background: gray;
+    background:gray;
     cursor: not-allowed;
     border-bottom: 2px solid gray;
     pointer-events: none;

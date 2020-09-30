@@ -1,11 +1,33 @@
 {% extends 'layout.html' %}
 {% block content %}
 
+    <div class="header"></div>
+    <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
+    <label for="openSidebarMenu" class="sidebarIconToggle">
+        <div class="menuIcon diagonal part-1"></div>
+        <div class="menuIcon horizontal"></div>
+        <div class="menuIcon diagonal part-2"></div>
+    </label>
+
+    <div id="sidebarMenu">
+        <div class="sidebarMenuInner currentTopItem">
+            <a href="https://vanila.io">Home</a>
+            <a class="current" href="https://instagram.com/plavookac">Loans < $150K</a>
+            <a href="https://twitter.com/plavookac">Loans $150K+</a>
+            <a href="https://www.youtube.com/channel/UCDfZM0IK6RBgud8HYGFXAJg">About</a>
+            <a href="https://www.linkedin.com/in/plavookac/">Contact</a>
+        </div>
+    </div>
+
     <a href="{{ url_for('main.home') }}" alt='Broken Link'><button type="button" class="btn btn-success">BACK HOME</button></a>
 
     <!-- <section class="section-1 child" style="--screen:1"> -->
     <!-- <div class="container hidden"> -->
+
     <div class="container hidden table-content">
+        <div class="table-title">
+            <h1>Loans under $150,000</h1>
+        </div>
         <div id="toolbar">
             <button id="resetButton" class="btn btn-danger">Reset</button>
         </div>
