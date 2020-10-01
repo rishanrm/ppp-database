@@ -241,7 +241,7 @@ section {
     width: 300px;
     margin-top: 60px;
     transform: translateX(-300px);
-    transition: transform 250ms ease-in-out;
+    transition: transform 300ms ease-in-out;
     background:
         /* linear-gradient(to right, transparent, 90%, var(--current-color)), */
         linear-gradient(180deg, #037AFB 25%, #DC3C45 80%);
@@ -276,6 +276,7 @@ section {
     display: flex;
     padding: 20px;
     border-bottom: 2px solid rgba(255, 255, 255, 0.10);
+    transition: 200ms;
 }
 
 .sidebarMenuInner a:hover {
