@@ -1,0 +1,9 @@
+$example-var: #ff562f;
+
+body {
+    background: green;
+}
+
+example-var-use {
+    background: $example-var;
+}

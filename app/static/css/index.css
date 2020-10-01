@@ -1,4 +1,8 @@
-.container-fluid{
-    background-color: green;
-    text-decoration: greenyellow;
+body {
+  background: green;
 }
+
+example-var-use {
+  background: #ff562f;
+}
+/*# sourceMappingURL=index.css.map */

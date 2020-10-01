@@ -4,11 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <!-- CSS only -->
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/index.css') }}">
 
+    <!-- FLASK CSS -->
+    <!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/index.css') }}"> -->
+
+    <!-- LIVE SERVER CSS -->
+    <link rel="stylesheet" type="text/css" href="../static/css/index.css">
 
 
     <!-- JS, Popper.js, and jQuery -->
@@ -23,7 +27,7 @@
         crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="container-fluid">
+    <div class="container-fluid bg-primary">
         HELLO, WORLD!!
     </div>
 </body>
