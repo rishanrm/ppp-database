@@ -237,11 +237,14 @@ section {
     height: 100%;
     position: fixed;
     left: 0;
-    width: 250px;
+    /* width: 250px; */
+    width: 300px;
     margin-top: 60px;
-    transform: translateX(-250px);
+    transform: translateX(-300px);
     transition: transform 250ms ease-in-out;
-    background: linear-gradient(180deg, #037AFB 25%, #DC3C45 80%);
+    background:
+        /* linear-gradient(to right, transparent, 90%, var(--current-color)), */
+        linear-gradient(180deg, #037AFB 25%, #DC3C45 80%);
     z-index: 1011;
 }
 .sidebarMenuInner{
