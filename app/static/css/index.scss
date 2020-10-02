@@ -10,10 +10,14 @@
 
 .bottom-content {
     height: $bottom-height;
+    transition: 2s;
+    overflow: hidden;
+    position: relative;
 }
 
 .bottom-content:nth-child(1) {
     background-color: #DC3C45;
+    transition: 2s;
 }
 
 .bottom-content:nth-child(2) {
@@ -31,6 +35,50 @@
 // ul.transition li:nth-child(5) {
 //     background-color: #037AFB;
 // }
+
+.img {
+    object-fit:cover;
+}
+
+.image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    // object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: #008CBA;
+}
+
+.tester:hover .overlay {
+  opacity: 1;
+}
+
+
+// .bottom-content:nth-child(1):hover {
+//     background-image: url("../images/open.jpg");
+//     background-size: cover;
+// }
+
+// .bottom-content:nth-child(2):hover {
+//     background-image: url("../images/owners.jpg");
+//     background-size: cover;
+// }
+
+
+
+
+
 
 h1 {
     text-align: center;

@@ -4,10 +4,16 @@
 
 .bottom-content {
   height: 50vh;
+  -webkit-transition: 2s;
+  transition: 2s;
+  overflow: hidden;
+  position: relative;
 }
 
 .bottom-content:nth-child(1) {
   background-color: #DC3C45;
+  -webkit-transition: 2s;
+  transition: 2s;
 }
 
 .bottom-content:nth-child(2) {
@@ -20,6 +26,35 @@
 
 .bottom-content:nth-child(4) {
   background-color: #81BDFD;
+}
+
+.img {
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  -webkit-transition: .5s ease;
+  transition: .5s ease;
+  background-color: #008CBA;
+}
+
+.tester:hover .overlay {
+  opacity: 1;
 }
 
 h1 {
