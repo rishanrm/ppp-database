@@ -1,35 +1,80 @@
 @import './variables';
 
-@function weight($weight-name) {
-    @return map-get($font-weights, $weight-name);
+.top {
+    height: $top-height;
 }
 
-@mixin flexCenter($direction) {
-    display: flex;
-    justify-content: center;
-    flex-direction: $direction;
+// .bottom {
+//     height: $bottom-height;
+// }
+
+.bottom-content {
+    height: $bottom-height;
 }
 
-@mixin theme($light-theme: true) {
-    @if $light-theme {
-        background: lighten($primary-color, 100%)
-        color: darken($text-color, 100%)
-    }
+.bottom-content:nth-child(1) {
+    background-color: #DC3C45;
 }
 
-body {
-    background: green;
+.bottom-content:nth-child(2) {
+    background-color: #EE9EA2;
 }
 
-.example-var-use {
-    background: $example-var;
-    font-weight: weight(bold);
+.bottom-content:nth-child(3) {
+    background-color: #FFFFFF;
 }
 
-.example-main {
-    @include flexCenter(column);
+.bottom-content:nth-child(4) {
+    background-color: #81BDFD;
 }
 
-.example-light {
-    @include theme($light-theme: true);
-}
+// ul.transition li:nth-child(5) {
+//     background-color: #037AFB;
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// @function weight($weight-name) {
+//     @return map-get($font-weights, $weight-name);
+// }
+
+// @mixin flexCenter($direction) {
+//     display: flex;
+//     justify-content: center;
+//     flex-direction: $direction;
+// }
+
+// @mixin theme($light-theme: true) {
+//     @if $light-theme {
+//         background: lighten($primary-color, 100%)
+//         color: darken($text-color, 100%)
+//     }
+// }
+
+// body {
+//     background: green;
+// }
+
+// .example-var-use {
+//     background: $example-var;
+//     font-weight: weight(bold);
+// }
+
+// .example-main {
+//     @include flexCenter(column);
+// }
+
+// .example-light {
+//     @include theme($light-theme: true);
+// }

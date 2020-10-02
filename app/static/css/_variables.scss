@@ -1,7 +1,16 @@
-$example-var: #ff562f;
+$top-height: 50vh;
 
-$font-weights: (
-    "regular": 400,
-    "medium:": 500,
-    "bold": 700
-)
+$bottom-height: 100vh - $top-height;
+
+
+
+
+
+
+// $example-var: #ff562f;
+
+// $font-weights: (
+//     "regular": 400,
+//     "medium:": 500,
+//     "bold": 700
+// )
