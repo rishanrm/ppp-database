@@ -21,4 +21,9 @@
 .bottom-content:nth-child(4) {
   background-color: #81BDFD;
 }
+
+h1 {
+  text-align: center;
+  padding: 2rem .5rem;
+}
 /*# sourceMappingURL=index.css.map */
