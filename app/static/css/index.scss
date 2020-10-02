@@ -1,7 +1,36 @@
 @import './variables';
 
+// body {
+//  background-image: url("../images/us-capitol-building-bw.jpg");
+
+// }
+
+body {
+    background-color: darkgray;
+    background: url("../images/us-capitol-building-bw.jpg") no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+}
+
 .top {
     height: $top-height;
+}
+
+.heading {
+
+    font-size: 2.5em;
+}
+
+.first-line {
+    color: #037AFB;
+    padding-top: $heading-top-padding;
+}
+
+.second-line {
+    color: #DC3C45;
 }
 
 // .bottom {

@@ -1,9 +1,28 @@
+body {
+  background-color: darkgray;
+  background: url("../images/us-capitol-building-bw.jpg") no-repeat center center fixed;
+  background-size: cover;
+}
+
 .top {
-  height: 50vh;
+  height: 100vh;
+}
+
+.heading {
+  font-size: 2.5em;
+}
+
+.first-line {
+  color: #037AFB;
+  padding-top: 10vh;
+}
+
+.second-line {
+  color: #DC3C45;
 }
 
 .bottom-content {
-  height: 50vh;
+  height: 0vh;
   -webkit-transition: 2s;
   transition: 2s;
   overflow: hidden;
