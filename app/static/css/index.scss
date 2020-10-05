@@ -26,6 +26,7 @@ body {
 .heading {
     font-size: calc(1em + 5vw);
     line-height: calc(1em + 1vw);
+    // -webkit-text-stroke: 1px lightgray;
     // background: black;
     // width: 50vw;
 }
@@ -37,7 +38,7 @@ body {
 
 .first-line {
     // color: #037AFB;
-    color: lightgray;
+    color: white;
     padding-top: 10vh;
     padding-left: 0vw !important;
     width: 45vw;
@@ -49,8 +50,8 @@ body {
     // color: #DC3C45;
     color: #FFFFFF;
     padding-top: 5vw;
-    padding-left: 5vw;
-    width: 30vw;
+    padding-left: 0vw;
+    width: 37vw;
     margin-left: 0;
 }
 

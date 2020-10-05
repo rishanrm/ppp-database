@@ -20,7 +20,7 @@ body {
 }
 
 .first-line {
-  color: lightgray;
+  color: white;
   padding-top: 10vh;
   padding-left: 0vw !important;
   width: 45vw;
@@ -30,8 +30,8 @@ body {
 .second-line {
   color: #FFFFFF;
   padding-top: 5vw;
-  padding-left: 5vw;
-  width: 30vw;
+  padding-left: 0vw;
+  width: 37vw;
   margin-left: 0;
 }
 
