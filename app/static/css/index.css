@@ -1,7 +1,9 @@
 body {
   background-color: darkgray;
-  background: url("../images/us-capitol-building-bw.jpg") no-repeat center center fixed;
+  background: url("../images/capitol-bw-flag-colored.png") no-repeat center center fixed;
   background-size: cover;
+  font-family: "SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;
+  font-weight: bold;
 }
 
 .top {
@@ -9,16 +11,28 @@ body {
 }
 
 .heading {
-  font-size: 2.5em;
+  font-size: calc(1em + 5vw);
+  line-height: calc(1em + 1vw);
+}
+
+.left-text {
+  padding-left: 5vw;
 }
 
 .first-line {
-  color: #037AFB;
+  color: lightgray;
   padding-top: 10vh;
+  padding-left: 0vw !important;
+  width: 45vw;
+  margin-left: 0;
 }
 
 .second-line {
-  color: #DC3C45;
+  color: #FFFFFF;
+  padding-top: 5vw;
+  padding-left: 5vw;
+  width: 30vw;
+  margin-left: 0;
 }
 
 .bottom-content {
