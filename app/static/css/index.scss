@@ -19,9 +19,9 @@ body {
 
 }
 
-.main {
-    margin: auto;
-}
+// .main {
+//     margin: auto;
+// }
 
 .row {
     margin: 0;
@@ -31,19 +31,21 @@ body {
     height: $top-height;
 }
 
-.heading {
-    font-size: calc(1em + 5vw);
-    line-height: calc(1em + 1vw);
-    // -webkit-text-stroke: 1px lightgray;
-    // background: black;
-    // width: 50vw;
-}
+// .heading {
+//     font-size: calc(1em + 5vw);
+//     line-height: calc(1em + 1vw);
+//     // -webkit-text-stroke: 1px lightgray;
+//     // background: black;
+//     // width: 50vw;
+// }
 
 .container-fluid {
     padding: 0;
 }
 
 .left {
+    font-size: calc(1em + 5vw);
+    line-height: calc(1em + 1vw);
     padding-left: 5vw;
     margin-left: 0;
     // background: green;
