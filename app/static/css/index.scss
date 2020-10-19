@@ -15,7 +15,6 @@ body {
     -o-background-size: cover;
     background-size: cover;
     font-family: "SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;
-    font-weight: bold;
 
 }
 
@@ -25,6 +24,7 @@ body {
 
 .row {
     margin: 0;
+    font-weight: bold;
 }
 
 .top {
@@ -195,10 +195,10 @@ body {
 
 
 
-h1 {
-    text-align: center;
-    padding: 2rem .5rem;
-}
+// h1 {
+//     text-align: center;
+//     padding: 2rem .5rem;
+// }
 
 
 

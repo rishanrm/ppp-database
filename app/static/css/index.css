@@ -3,24 +3,15 @@ body {
   background: url("../images/capitol-bw-flag-colored.png") no-repeat center center fixed;
   background-size: cover;
   font-family: "SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;
-  font-weight: bold;
-}
-
-.main {
-  margin: auto;
 }
 
 .row {
   margin: 0;
+  font-weight: bold;
 }
 
 .top {
   height: 100vh;
-}
-
-.heading {
-  font-size: calc(1em + 5vw);
-  line-height: calc(1em + 1vw);
 }
 
 .container-fluid {
@@ -28,6 +19,8 @@ body {
 }
 
 .left {
+  font-size: calc(1em + 5vw);
+  line-height: calc(1em + 1vw);
   padding-left: 5vw;
   margin-left: 0;
   width: 50vw;
@@ -114,10 +107,5 @@ body {
 
 .tester:hover .overlay {
   opacity: 1;
-}
-
-h1 {
-  text-align: center;
-  padding: 2rem .5rem;
 }
 /*# sourceMappingURL=index.css.map */
