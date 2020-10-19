@@ -6,14 +6,10 @@
 // }
 
 body {
-    background-color: darkgray;
+    // background-color: darkgray;
     // background: url("../images/us-capitol-building-bw.jpg") no-repeat center center fixed;
-    background: url("../images/capitol-bw-flag-colored.png") no-repeat center center fixed;
+
     
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
     font-family: "SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;
 
 }
@@ -21,6 +17,16 @@ body {
 // .main {
 //     margin: auto;
 // }
+
+#home {
+    height: 100vh;
+    background: url("../images/capitol-bw-flag-colored.png") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+}
 
 .row {
     margin: 0;

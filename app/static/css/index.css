@@ -1,8 +1,11 @@
 body {
-  background-color: darkgray;
+  font-family: "SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;
+}
+
+#home {
+  height: 100vh;
   background: url("../images/capitol-bw-flag-colored.png") no-repeat center center fixed;
   background-size: cover;
-  font-family: "SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;
 }
 
 .row {

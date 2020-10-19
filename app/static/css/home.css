@@ -15,7 +15,13 @@ body {
     margin-bottom: 10vh;
 }
 
+/* .changing-content{
+    height: 100vh;
+}
 
+.blockx-contentx {
+    height: 100vh;
+} */
 
 /* BARBA TRANSITIONS */
 
@@ -30,9 +36,9 @@ body {
     background: rgb(240, 240 240);
 }
 
-.wrapper {
-    /* padding: 1em; */
-}
+/* .wrapper {
+    padding: 1em;
+} */
 
 /* ul {
     list-style: none;
