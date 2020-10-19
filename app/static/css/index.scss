@@ -46,7 +46,7 @@ body {
 .left-text {
     padding-left: 5vw;
     margin-left: 0;
-    background: green;
+    // background: green;
     width: 50vw;
 }
 
@@ -69,16 +69,34 @@ body {
     margin-left: 0;
 }
 
-
-
 .right-text {
     // float: right;
     width: 50vw;
-    color: white;
-    background: black;
-    // padding-right: 10vw;
+    color: rgb(255, 255, 255);
+    // background: black;
+    padding-top: 20vh;
+    padding-right: 10vw;
     list-style-type: none;
     text-align: right;
+    font-size: calc(1em + 1vw);
+    line-height: calc(1em + 3vw);
+
+    display: inline-block;
+
+}
+
+.nav-item {
+    transition: $nav-item-transition-time ease;
+    display: inline-block;
+    // background: orange;
+
+    // width: 100px;
+}
+
+.nav-item:hover {
+    // opacity: 1;
+    color: #037AFB;
+    transition: $nav-item-transition-time ease;
 }
 
 .list-group-item {
