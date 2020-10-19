@@ -27,7 +27,7 @@ body {
   padding: 0;
 }
 
-.left-text {
+.left {
   padding-left: 5vw;
   margin-left: 0;
   width: 50vw;
@@ -49,11 +49,20 @@ body {
   margin-left: 0;
 }
 
-.right-text {
+.right {
   width: 50vw;
+}
+
+.right-nav {
+  margin: auto;
+  max-width: -webkit-fit-content;
+  max-width: -moz-fit-content;
+  max-width: fit-content;
+}
+
+.right-text {
   color: white;
   padding-top: 20vh;
-  padding-right: 10vw;
   list-style-type: none;
   text-align: right;
   font-size: calc(1em + 1vw);

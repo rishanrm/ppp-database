@@ -43,7 +43,7 @@ body {
     padding: 0;
 }
 
-.left-text {
+.left {
     padding-left: 5vw;
     margin-left: 0;
     // background: green;
@@ -69,18 +69,31 @@ body {
     margin-left: 0;
 }
 
-.right-text {
-    // float: right;
+.right{
     width: 50vw;
+    // background: orange;
+}
+.right-nav{
+    // background: green;
+    // display:block;
+    margin:auto;
+    // display: inline-flex;
+    max-width: fit-content;
+    // width:50%;
+    // margin-left: 0vw;
+    // padding-right: 0vw;
+}
+
+.right-text {
+
     color: rgb(255, 255, 255);
     // background: black;
     padding-top: 20vh;
-    padding-right: 10vw;
+    // padding-right: 10vw;
     list-style-type: none;
     text-align: right;
     font-size: calc(1em + 1vw);
     line-height: calc(1em + 3vw);
-
     display: inline-block;
 
 }
