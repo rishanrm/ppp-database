@@ -77,9 +77,13 @@ body {
     color: white;
     background: black;
     // padding-right: 10vw;
-
+    list-style-type: none;
+    text-align: right;
 }
 
+.list-group-item {
+    background-color: none;
+}
 
 // .bottom {
 //     height: $bottom-height;

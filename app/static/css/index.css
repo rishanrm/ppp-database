@@ -54,6 +54,12 @@ body {
   width: 50vw;
   color: white;
   background: black;
+  list-style-type: none;
+  text-align: right;
+}
+
+.list-group-item {
+  background-color: none;
 }
 
 .img {
