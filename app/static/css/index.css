@@ -58,7 +58,7 @@ body {
 
 .right-text {
   color: white;
-  padding-top: 20vh;
+  padding-top: 12vh;
   margin-right: -5vw;
   list-style-type: none;
   text-align: right;
@@ -68,15 +68,29 @@ body {
 }
 
 .nav-item {
-  -webkit-transition: 0.2s ease;
-  transition: 0.2s ease;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
   display: inline-block;
 }
 
-.nav-item:hover {
+.nav-link {
+  color: white;
+  text-align: right;
+  font-size: calc(1em + 0.5vw);
+  line-height: calc(1em + 0.5vw);
+  padding-left: 1em;
+  padding-right: 1em;
+  border-radius: 1em;
+  border: 5px solid transparent;
+  margin: 0;
+}
+
+.nav-link:hover {
   color: #037AFB;
-  -webkit-transition: 0.2s ease;
-  transition: 0.2s ease;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
+  background: white;
+  border: 5px solid #DC3C45;
 }
 
 .list-group-item {
