@@ -18,6 +18,36 @@ body {
 //     margin: auto;
 // }
 
+.header {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 100%;
+    box-shadow: none;
+    background-color: #037AFB;
+    position: fixed;
+    height: 10vh;
+    overflow: hidden;
+    z-index: 1010;
+}
+
+.header-text {
+    width: 100%;
+    position: absolute;
+    font-size: 2em;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* vertical-align: middle; */
+    /* line-height: 100%; */
+    /* top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); */
+}
+
 #home {
     height: 100vh;
     background: url("../images/capitol-bw-flag-colored.png") no-repeat center center fixed;
@@ -25,6 +55,7 @@ body {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    background-position-y: $header-height;
 
 }
 

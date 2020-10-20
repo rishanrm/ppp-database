@@ -207,19 +207,7 @@ section {
   --current-color: white;  
 }
 
-.header {
-    display: block;
-    margin: 0 auto;
-    width: 100%;
-    max-width: 100%;
-    box-shadow: none;
-    background-color: #037AFB;
-    position: fixed;
-    height: 60px!important;
-    overflow: hidden;
-    z-index: 1010;
-    font-size: 300px;
-}
+
 /* .main {
     margin: 0 auto;
     display: block;
