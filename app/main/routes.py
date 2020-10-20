@@ -62,6 +62,18 @@ def data_under_150k():
 
     return render_template('data-under-150k.html', data="", headers = csv_column_headers)
 
+@main.route("/data-150k-and-up")
+def data_150k_and_up():
+    return render_template('data-150k-and-up.html')
+
+@main.route("/about")
+def about():
+    return render_template('about.html')
+
+@main.route("/contact")
+def contact():
+    return render_template('contact.html')
+
 
 @main.route("/wf")
 def wf():
@@ -103,9 +115,6 @@ def gsap():
 def table_examples():
         return render_template('table_examples.html', title='Table Examples')
 
-@main.route("/about")
-def about():
-        return render_template('about.html', title='About')
 
 @main.route("/index")
 def index():
