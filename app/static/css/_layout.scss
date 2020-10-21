@@ -1,0 +1,25 @@
+html {
+    margin:0px;
+    scroll-snap-points-y: repeat(100vh);
+    scroll-snap-type: y mandatory;
+    background-color: gray;
+}
+
+body {
+    margin:0px;
+    background-color: black;
+}
+
+.container{
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+}
+
+body {
+    // background-color: darkgray;
+    // background: url("../images/us-capitol-building-bw.jpg") no-repeat center center fixed;
+
+    
+    font-family: "SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;
+
+}

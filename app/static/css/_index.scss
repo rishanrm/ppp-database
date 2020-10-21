@@ -1,0 +1,246 @@
+.background{
+    position: absolute;
+    padding-top: $header-height - $background-vertical-offset;
+    z-index: 1;
+    // background: url("../images/capitol-bw-flag-colored.png") no-repeat center center fixed;
+    // -webkit-background-size: cover;
+    // -moz-background-size: cover;
+    // -o-background-size: cover;
+    // background-size: cover;
+    // background-position-y: $header-height - 5vh;
+
+}
+
+.background img {
+    width: 100vw;
+    height: 100vh - $header-height + $background-vertical-offset - $footer-height;
+    object-fit: cover;
+}
+
+#home {
+    z-index: 2;
+    position: relative;
+}
+
+.row {
+    margin: 0;
+    font-weight: bold;
+}
+
+.top {
+    height: $top-height;
+}
+
+// .heading {
+//     font-size: calc(1em + 5vw);
+//     line-height: calc(1em + 1vw);
+//     // -webkit-text-stroke: 1px lightgray;
+//     // background: black;
+//     // width: 50vw;
+// }
+
+.container-fluid {
+    padding: 0;
+    padding-top: $header-height - $background-vertical-offset - 5vh;
+}
+
+.left {
+    font-size: calc(1em + 5vw);
+    line-height: calc(1em + 1vw);
+    padding-left: 5vw;
+    margin-left: 0;
+    // background: green;
+    width: 50vw;
+}
+
+.first-line {
+    // color: #037AFB;
+    color: white;
+    padding-top: 15vh;
+    padding-left: 0vw !important;
+    width: 45vw;
+    margin-left: 0;
+
+}
+
+.second-line {
+    // color: #DC3C45;
+    color: #FFFFFF;
+    padding-top: 0vh;
+    padding-left: 0vw;
+    width: 36vw;
+    margin-left: 0;
+}
+
+.right{
+    width: 50vw;
+    // background: orange;
+}
+.right-nav{
+    // background: green;
+    // display:block;
+    margin:auto;
+    // display: inline-flex;
+    max-width: fit-content;
+    // width:50%;
+    // margin-left: 0vw;
+    // padding-right: 0vw;
+}
+
+.right-text {
+
+    color: rgb(255, 255, 255);
+    // background: black;
+    padding-top: 15vh;
+    // padding-right: 10vw;
+    margin-right: -5vw;
+    list-style-type: none;
+    text-align: right;
+    font-size: calc(1em + 1vw);
+    line-height: calc(1em + 1vh);
+    display: inline-block;
+
+}
+
+.nav-item {
+    transition: $nav-item-transition-time ease;
+    display: inline-block;
+    // background: orange;
+
+    // width: 100px;
+}
+
+.nav-link {
+    color: rgb(255, 255, 255);
+    text-align: right;
+    font-size: calc(1em + 0.5vw);
+    line-height: calc(1em + 0.5vw);
+    padding-left: 1em;
+    padding-right: 1em;
+    border-radius: 1em;
+    border: 5px solid transparent;
+    margin: 0;
+}
+
+.nav-link:hover {
+    // opacity: 1;
+    color: #037AFB;
+    transition: $nav-item-transition-time ease;
+    background: white;
+    border: 5px solid #DC3C45;
+    // border-radius: 1em;
+    // padding-left: 1em;
+    // padding-left: 1em;
+}
+
+
+.list-group-item {
+    background-color: none;
+}
+
+// .bottom {
+//     height: $bottom-height;
+// }
+
+// .bottom-content {
+//     height: $bottom-height;
+//     transition: 2s;
+//     overflow: hidden;
+//     position: relative;
+// }
+
+// .bottom-content:nth-child(1) {
+//     background-color: #DC3C45;
+//     transition: 2s;
+// }
+
+// .bottom-content:nth-child(2) {
+//     background-color: #EE9EA2;
+// }
+
+// .bottom-content:nth-child(3) {
+//     background-color: #FFFFFF;
+// }
+
+// .bottom-content:nth-child(4) {
+//     background-color: #81BDFD;
+// }
+
+// ul.transition li:nth-child(5) {
+//     background-color: #037AFB;
+// }
+
+.img {
+    object-fit:cover;
+}
+
+.image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    // object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: #008CBA;
+}
+
+.tester:hover .overlay {
+  opacity: 1;
+}
+
+
+// .bottom-content:nth-child(1):hover {
+//     background-image: url("../images/open.jpg");
+//     background-size: cover;
+// }
+
+// .bottom-content:nth-child(2):hover {
+//     background-image: url("../images/owners.jpg");
+//     background-size: cover;
+// }
+
+
+
+// @function weight($weight-name) {
+//     @return map-get($font-weights, $weight-name);
+// }
+
+// @mixin flexCenter($direction) {
+//     display: flex;
+//     justify-content: center;
+//     flex-direction: $direction;
+// }
+
+// @mixin theme($light-theme: true) {
+//     @if $light-theme {
+//         background: lighten($primary-color, 100%)
+//         color: darken($text-color, 100%)
+//     }
+// }
+
+// body {
+//     background: green;
+// }
+
+// .example-var-use {
+//     background: $example-var;
+//     font-weight: weight(bold);
+// }
+
+// .example-main {
+//     @include flexCenter(column);
+// }
+
+// .example-light {
+//     @include theme($light-theme: true);
+// }
