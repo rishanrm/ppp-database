@@ -12,11 +12,6 @@ body {
   background-color: black;
 }
 
-.container {
-  margin-top: 10vh;
-  margin-bottom: 10vh;
-}
-
 body {
   font-family: "SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;
 }
@@ -45,12 +40,24 @@ div.hidden {
   display: none;
 }
 
+.bootstrap-table {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
 .fixed-table-body {
   overflow: scroll;
 }
 
 .fixed-table-container {
-  height: 60vh;
+  height: 85vh;
+}
+
+.container {
+  position: fixed;
+  top: 10vh;
+  left: 0;
+  padding: 0;
 }
 
 #resetButton {
@@ -67,7 +74,6 @@ section {
   position: absolute;
   height: 100vh;
   width: 100vw;
-  top: calc(var(--screen) * 100vh);
   scroll-snap-align: start;
 }
 
@@ -114,18 +120,16 @@ section {
 }
 
 .footer {
-  display: block;
-  position: absolute;
-  top: 80vh;
-  margin: 0 auto;
-  margin-top: 10vh;
   width: 100%;
-  height: 10vh;
+  height: 5vh;
   overflow: hidden;
   z-index: 1010;
   -webkit-box-shadow: none;
           box-shadow: none;
   background-color: #DC3C45;
+  position: fixed;
+  left: 0;
+  bottom: 0;
 }
 
 html, body {
@@ -534,7 +538,7 @@ input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
 
 .background img {
   width: 100vw;
-  height: 82vh;
+  height: 87vh;
   -o-object-fit: cover;
      object-fit: cover;
 }
