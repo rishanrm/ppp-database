@@ -32,9 +32,10 @@ body {
 }
 
 .header-text {
-    width: 100%;
+    width: 100vw;
+    // height: 100vh - $header-height;
     position: absolute;
-    font-size: 2em;
+    font-size: calc(1em + 2vw);
     font-weight: bold;
     color: white;
     text-align: center;
@@ -48,15 +49,34 @@ body {
     transform: translate(-50%, -50%); */
 }
 
-#home {
-    height: 100vh;
-    background: url("../images/capitol-bw-flag-colored.png") no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    background-position-y: $header-height;
+.main{
+    display:block !important;
 
+}
+
+.background{
+    position: absolute;
+    width: 100vw;
+    height: 90vh;
+    padding-top:10vh;
+    // background: url("../images/capitol-bw-flag-colored.png") no-repeat center center fixed;
+    // -webkit-background-size: cover;
+    // -moz-background-size: cover;
+    // -o-background-size: cover;
+    // background-size: cover;
+    // background-position-y: $header-height - 5vh;
+    z-index: 1;
+}
+
+.background img {
+    width: 100vw;
+    height: 90vh;
+    object-fit: cover;
+}
+
+#home {
+    z-index: 2;
+    position: relative;
 }
 
 .row {
@@ -78,6 +98,7 @@ body {
 
 .container-fluid {
     padding: 0;
+    padding-top: $header-height;
 }
 
 .left {

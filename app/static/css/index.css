@@ -17,9 +17,9 @@ body {
 }
 
 .header-text {
-  width: 100%;
+  width: 100vw;
   position: absolute;
-  font-size: 2em;
+  font-size: calc(1em + 2vw);
   font-weight: bold;
   color: white;
   text-align: center;
@@ -34,11 +34,28 @@ body {
     transform: translate(-50%, -50%); */
 }
 
+.main {
+  display: block !important;
+}
+
+.background {
+  position: absolute;
+  width: 100vw;
+  height: 90vh;
+  padding-top: 10vh;
+  z-index: 1;
+}
+
+.background img {
+  width: 100vw;
+  height: 90vh;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 #home {
-  height: 100vh;
-  background: url("../images/capitol-bw-flag-colored.png") no-repeat center center fixed;
-  background-size: cover;
-  background-position-y: 10vh;
+  z-index: 2;
+  position: relative;
 }
 
 .row {
@@ -52,6 +69,7 @@ body {
 
 .container-fluid {
   padding: 0;
+  padding-top: 10vh;
 }
 
 .left {
