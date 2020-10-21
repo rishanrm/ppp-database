@@ -34,6 +34,21 @@ body {
     transform: translate(-50%, -50%); */
 }
 
+.footer {
+  display: block;
+  position: absolute;
+  top: 80vh;
+  margin: 0 auto;
+  margin-top: 10vh;
+  width: 100%;
+  height: 10vh;
+  overflow: hidden;
+  z-index: 1010;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  background-color: #DC3C45;
+}
+
 .background {
   position: absolute;
   padding-top: 8vh;
@@ -42,7 +57,7 @@ body {
 
 .background img {
   width: 100vw;
-  height: 92vh;
+  height: 82vh;
   -o-object-fit: cover;
      object-fit: cover;
 }

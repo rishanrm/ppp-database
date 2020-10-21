@@ -49,10 +49,40 @@ body {
     transform: translate(-50%, -50%); */
 }
 
-// .main{
-//     display:block !important;
 
+// .footer {
+//     display: block !important;
+//     position: fixed;
+//     // overflow: hidden;
+//     margin-top: 90vh;
+//     // margin-top: 90vh;
+//     width: 100%;
+//     height: $footer-height!important;
+//     box-shadow: none;
+//     background-color: #DC3C45;
+    
+//     z-index: 10110;
 // }
+
+.footer {
+    display: block;
+    position: absolute;
+    top: 100vh - $header-height - $footer-height;
+    margin: 0 auto;
+    margin-top: 10vh;
+    width: 100%;
+    height: 10vh;
+    overflow: hidden;
+    z-index: 1010;
+    box-shadow: none;
+    background-color: #DC3C45;
+    // position: fixed;
+}
+
+
+
+
+
 
 .background{
     position: absolute;
@@ -69,7 +99,7 @@ body {
 
 .background img {
     width: 100vw;
-    height: 100vh - $header-height + $background-vertical-offset;
+    height: 100vh - $header-height + $background-vertical-offset - $footer-height;
     object-fit: cover;
 }
 
