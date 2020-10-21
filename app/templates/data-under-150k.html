@@ -1,7 +1,11 @@
 {% extends 'layout.html' %}
 {% block content %}
 
-    <div class="header"></div>
+    <div class="header">
+        <div class="header-text">
+            Loans under $150,000
+        </div>
+    </div>
     <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
     <label for="openSidebarMenu" class="sidebarIconToggle">
         <div class="menuIcon diagonal part-1"></div>
@@ -26,9 +30,9 @@
     <!-- <div class="container hidden"> -->
 
     <div class="container hidden table-content">
-        <div class="table-title">
+        <!-- <div class="table-title">
             <h1>Loans under $150,000</h1>
-        </div>
+        </div> -->
         <div id="toolbar">
             <button id="resetButton" class="btn btn-danger">Reset</button>
         </div>
