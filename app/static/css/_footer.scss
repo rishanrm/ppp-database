@@ -1,0 +1,14 @@
+.footer {
+    display: block;
+    position: absolute;
+    top: 100vh - $header-height - $footer-height;
+    margin: 0 auto;
+    margin-top: 10vh;
+    width: 100%;
+    height: 10vh;
+    overflow: hidden;
+    z-index: 1010;
+    box-shadow: none;
+    background-color: #DC3C45;
+    // position: fixed;
+}

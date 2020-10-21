@@ -1,0 +1,59 @@
+.table-title {
+    text-align: center;
+}
+
+.bootstrap-table, th, td {
+    background:white;
+    z-index: 1;
+  }
+
+.detailview {
+    max-width:800px;
+    column-count: 2;
+    column-rule: 1px solid #e0e1e5;
+    column-gap: 28px;
+    /* font-family: 'Lato', sans-serif; */
+}
+
+div.hidden {
+    display: none;
+}
+
+.fixed-table-body {
+    overflow: scroll;
+
+}
+
+.fixed-table-container {
+    height:60vh;
+}
+
+#resetButton {
+    width: 186px;
+}
+
+.no-records-found {
+    font-size:100%;
+    color:#dc3546;
+    /* font-weight: bold; */
+}
+
+section {
+    position: absolute;
+    height:100vh;
+    width:100vw;
+    top: calc(var(--screen) * 100vh);
+    scroll-snap-align: start;
+
+}
+
+.bootstrap-table {
+    border-radius: 25px;
+    padding: 10px 5px 10px;
+    /* border: 1px solid black; */
+
+}
+
+.test-table {
+    background: white;
+}
