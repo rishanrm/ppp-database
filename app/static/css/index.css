@@ -185,4 +185,275 @@ body {
 .tester:hover .overlay {
   opacity: 1;
 }
+
+/* NAVIGATION */
+:root {
+  --current-color: white;
+}
+
+/* .main {
+    margin: 0 auto;
+    display: block;
+    height: 100%;
+    margin-top: 60px;
+}
+.mainInner{
+    display: table;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+}
+.mainInner div{
+    display:table-cell;
+    vertical-align: middle;
+    font-size: 3em;
+    font-weight: bold;
+    letter-spacing: 1.25px;
+} */
+#sidebarMenu {
+  height: 100%;
+  position: fixed;
+  left: 0;
+  /* width: 250px; */
+  width: 300px;
+  margin-top: 10vh;
+  -webkit-transform: translateX(-300px);
+          transform: translateX(-300px);
+  -webkit-transition: -webkit-transform 300ms ease-in-out;
+  transition: -webkit-transform 300ms ease-in-out;
+  transition: transform 300ms ease-in-out;
+  transition: transform 300ms ease-in-out, -webkit-transform 300ms ease-in-out;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(25%, #037AFB), color-stop(80%, #DC3C45));
+  background: linear-gradient(180deg, #037AFB 25%, #DC3C45 80%);
+  z-index: 1011;
+}
+
+.sidebarMenuInner {
+  margin: 0;
+  padding: 0;
+  border-top: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebarMenuInner li {
+  list-style: none;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: bold;
+  cursor: pointer;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+  padding: 20px;
+}
+
+.sidebarMenuInner li span {
+  display: block;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.sidebarMenuInner a {
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+  /* background-color: black; */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 20px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+  -webkit-transition: 200ms;
+  transition: 200ms;
+}
+
+.sidebarMenuInner a:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+  font-size: 20px;
+  padding-top: 18;
+  padding-bottom: 18;
+  /* background-color: rgba(255, 255, 255, 0.10); */
+}
+
+.sidebarMenuInner .current {
+  background: var(--current-color);
+  cursor: not-allowed;
+  border-bottom: 2px solid var(--current-color);
+  pointer-events: none;
+  font-size: 20px;
+  color: black;
+}
+
+.currentTopItem {
+  border-top: 2px solid var(--current-color);
+}
+
+/* .aboveCurrent {
+    border-radius: 0px 0px 50px 0px; */
+/* border-right: 20px solid green;
+    border-radius: 0px 0px 100px 0px; TL TR BR BL */
+/* border-right: 2px solid black; */
+/* box-shadow: 25px 0px 0px 25px white inset; */
+/* -webkit-box-shadow: 0px 0px 0px 50px #fff;
+    box-shadow: 0px 0px 0px 50px #fff; */
+/* } */
+/* .aboveCurrent:before {
+    border-radius: 15px 50px 30px 5px; /*TL TR BR BL
+    border: 3px solid black;
+    background: white;
+} */
+a {
+  overflow: hidden;
+}
+
+.sidebarMenuInner {
+  overflow: hidden;
+}
+
+a.current {
+  overflow: hidden;
+}
+
+/* a.current:after {
+  content: "";
+  position:absolute;
+  margin-left:280px;
+  width:30px;
+  height:30px;
+  transform:rotate(45deg);
+  background-color:#000; to see where it is
+  border-radius: 50%;
+  box-shadow: 0 0 0 10px #522d5b;
+} */
+a.current:before {
+  content: "";
+  position: absolute;
+  /* top:-40px; */
+  /* margin-top: -100px; */
+  margin-top: -60px;
+  margin-left: 240px;
+  height: 40px;
+  width: 40px;
+  border-bottom-right-radius: 50%;
+  /* background:#000; */
+  -webkit-box-shadow: 0 20px 0 0 var(--current-color);
+          box-shadow: 0 20px 0 0 var(--current-color);
+}
+
+a.current:after {
+  content: "";
+  position: absolute;
+  /* top:-40px; */
+  /* margin-top: -100px; */
+  margin-top: 52px;
+  margin-left: 240px;
+  height: 40px;
+  width: 40px;
+  border-top-right-radius: 50%;
+  /* background:#000; */
+  -webkit-box-shadow: 0 -20px 0 0 var(--current-color);
+          box-shadow: 0 -20px 0 0 var(--current-color);
+}
+
+/* .belowCurrent {
+    border-radius: 15px 50px 30px 5px; /*TL TR BR BL
+} */
+input[type="checkbox"]:checked ~ #sidebarMenu {
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
+}
+
+input[type=checkbox] {
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  display: none;
+}
+
+.sidebarIconToggle {
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  cursor: pointer;
+  /* position: absolute; */
+  position: fixed;
+  z-index: 1012;
+  height: 100%;
+  width: 100%;
+  top: 22px;
+  left: 15px;
+  height: 22px;
+  width: 22px;
+}
+
+.menuIcon {
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  position: absolute;
+  height: 3px;
+  width: 100%;
+  background-color: #fff;
+}
+
+.horizontal {
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  position: relative;
+  float: left;
+  margin-top: 3px;
+}
+
+.diagonal.part-1 {
+  position: relative;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  float: left;
+}
+
+.diagonal.part-2 {
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  position: relative;
+  float: left;
+  margin-top: 3px;
+}
+
+input[type=checkbox]:checked ~ .sidebarIconToggle > .horizontal {
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  opacity: 0;
+}
+
+input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-1 {
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-transform: rotate(135deg);
+          transform: rotate(135deg);
+  margin-top: 8px;
+}
+
+input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-transform: rotate(-135deg);
+          transform: rotate(-135deg);
+  margin-top: -9px;
+}
+
+/* END NAVIGATION */
 /*# sourceMappingURL=index.css.map */
