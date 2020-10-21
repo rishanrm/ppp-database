@@ -49,28 +49,27 @@ body {
     transform: translate(-50%, -50%); */
 }
 
-.main{
-    display:block !important;
+// .main{
+//     display:block !important;
 
-}
+// }
 
 .background{
     position: absolute;
-    width: 100vw;
-    height: 90vh;
-    padding-top:10vh;
+    padding-top: $header-height - $background-vertical-offset;
+    z-index: 1;
     // background: url("../images/capitol-bw-flag-colored.png") no-repeat center center fixed;
     // -webkit-background-size: cover;
     // -moz-background-size: cover;
     // -o-background-size: cover;
     // background-size: cover;
     // background-position-y: $header-height - 5vh;
-    z-index: 1;
+
 }
 
 .background img {
     width: 100vw;
-    height: 90vh;
+    height: 100vh - $header-height + $background-vertical-offset;
     object-fit: cover;
 }
 
@@ -98,7 +97,7 @@ body {
 
 .container-fluid {
     padding: 0;
-    padding-top: $header-height;
+    padding-top: $header-height - $background-vertical-offset - 5vh;
 }
 
 .left {
@@ -113,7 +112,7 @@ body {
 .first-line {
     // color: #037AFB;
     color: white;
-    padding-top: 10vh;
+    padding-top: 15vh;
     padding-left: 0vw !important;
     width: 45vw;
     margin-left: 0;
@@ -123,7 +122,7 @@ body {
 .second-line {
     // color: #DC3C45;
     color: #FFFFFF;
-    padding-top: 4vw;
+    padding-top: 0vh;
     padding-left: 0vw;
     width: 36vw;
     margin-left: 0;
@@ -148,13 +147,13 @@ body {
 
     color: rgb(255, 255, 255);
     // background: black;
-    padding-top: 12vh;
+    padding-top: 15vh;
     // padding-right: 10vw;
     margin-right: -5vw;
     list-style-type: none;
     text-align: right;
     font-size: calc(1em + 1vw);
-    line-height: calc(1em + 2.5vw);
+    line-height: calc(1em + 1vh);
     display: inline-block;
 
 }
