@@ -24,7 +24,6 @@
 
 .row {
     margin: 0;
-    // font-weight: bold;
 }
 
 .top {
@@ -60,6 +59,7 @@
     padding-left: 0vw !important;
     width: 45vw;
     margin-left: 0;
+    font-weight: bold;
 
 }
 
@@ -70,6 +70,7 @@
     padding-left: 0vw;
     width: 36vw;
     margin-left: 0;
+    font-weight: bold;
 }
 
 .right{
@@ -99,6 +100,7 @@
     font-size: calc(1em + 1vw);
     line-height: calc(1em + 1vh);
     display: inline-block;
+    font-weight: bold;
 
 }
 
