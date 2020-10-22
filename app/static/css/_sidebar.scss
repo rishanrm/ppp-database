@@ -182,10 +182,10 @@ input[type=checkbox] {
     z-index: 1012;
     height: 100%;
     width: 100%;
-    left: 15px;
+    left: 2vw;
     top: 4vh;
-    // height: 50px;
-    width: 4vw;
+    height: 22px;
+    width: 3vw;
 }
 .menuIcon {
     transition: all 0.3s;
@@ -200,7 +200,7 @@ input[type=checkbox] {
     box-sizing: border-box;
     position: relative;
     float: left;
-    margin-top: .5vh;
+    margin-top: 3px;
 }
 .diagonal.part-1 {
     position: relative;
@@ -213,7 +213,7 @@ input[type=checkbox] {
     box-sizing: border-box;
     position: relative;
     float: left;
-    margin-top: .5vh;
+    margin-top: 3px;
 }
 input[type=checkbox]:checked ~ .sidebarIconToggle > .horizontal {
     transition: all 0.3s;
@@ -230,5 +230,5 @@ input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
     transition: all 0.3s;
     box-sizing: border-box;
     transform: rotate(-135deg);
-    margin-top: -1vh;
+    margin-top: -9px;
 }
