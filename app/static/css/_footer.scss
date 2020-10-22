@@ -11,9 +11,13 @@
     box-shadow: none;
     background-color: #DC3C45;
     // position: fixed;
-   position: fixed;
-   left: 0;
-   bottom: 0;
-
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    // justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
 
 }
