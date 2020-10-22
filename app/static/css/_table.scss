@@ -38,9 +38,14 @@ div.hidden {
     padding-top: $header-height + $table-offset-top;
 }
 
+.outside{
+
+}
+
 .bootstrap-table {
     margin: 0 !important;
-    padding: 0 !important;
+    padding: 10px !important;
+    border: 5px solid white;
 }
 
 .fixed-table-body {
