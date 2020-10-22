@@ -48,7 +48,8 @@ div.hidden {
 }
 
 .bootstrap-table {
-  margin: 0 !important;
+  margin-left: 10vw !important;
+  margin-right: 10vw !important;
   padding: 10px !important;
   border: 5px solid white;
 }
