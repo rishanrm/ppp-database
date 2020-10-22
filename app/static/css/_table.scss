@@ -19,6 +19,25 @@ div.hidden {
     display: none;
 }
 
+.table-content {
+    // margin-top: $header-height;
+    // margin-left: auto;
+    // margin-right: auto;
+    // position: fixed;
+    // top: $header-height;
+    // position: relative;
+    width: 100vw;
+    // padding: 0 !important;
+    // padding-top: $header-height;
+    // margin-left: auto !important;
+    // margin-right: auto !important;
+    // margin-top: $header-height / 2;
+    margin-bottom: 0vh;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: $header-height + $table-offset-top;
+}
+
 .bootstrap-table {
     margin: 0 !important;
     padding: 0 !important;
@@ -30,19 +49,8 @@ div.hidden {
 }
 
 .fixed-table-container {
-    height: 100vh - $header-height - $footer-height;
-}
-
-.container{
-    position: fixed;
-    top: $header-height;
-    left: 0;
-    // margin-top: $header-height;
-    // margin-bottom: 10vh;
-    padding: 0;
-
-    // margin: $header-height auto 0 !important;
-    // margin: 0;
+    // height: 100vh - $header-height - $footer-height;
+    height: 100vh - $header-height - $table-offset-top - $footer-height - $table-offset-bottom - $table-height-correction;
 }
 
 #resetButton {

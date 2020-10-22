@@ -1,5 +1,6 @@
 html {
     margin:0px;
+    padding: 0px;
     scroll-snap-points-y: repeat(100vh);
     scroll-snap-type: y mandatory;
     background-color: gray;
@@ -7,14 +8,9 @@ html {
 
 body {
     margin:0px;
+    padding: 0px !important;
     background-color: black;
-}
-
-body {
     // background-color: darkgray;
     // background: url("../images/us-capitol-building-bw.jpg") no-repeat center center fixed;
-
-    
     font-family: "SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;
-
 }

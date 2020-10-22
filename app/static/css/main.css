@@ -1,5 +1,6 @@
 html {
   margin: 0px;
+  padding: 0px;
   -ms-scroll-snap-points-y: repeat(100vh);
       scroll-snap-points-y: repeat(100vh);
   -ms-scroll-snap-type: y mandatory;
@@ -9,10 +10,8 @@ html {
 
 body {
   margin: 0px;
+  padding: 0px !important;
   background-color: black;
-}
-
-body {
   font-family: "SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;
 }
 
@@ -40,6 +39,14 @@ div.hidden {
   display: none;
 }
 
+.table-content {
+  width: 100vw;
+  margin-bottom: 0vh;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 15vh;
+}
+
 .bootstrap-table {
   margin: 0 !important;
   padding: 0 !important;
@@ -50,14 +57,7 @@ div.hidden {
 }
 
 .fixed-table-container {
-  height: 85vh;
-}
-
-.container {
-  position: fixed;
-  top: 10vh;
-  left: 0;
-  padding: 0;
+  height: 55vh;
 }
 
 #resetButton {
