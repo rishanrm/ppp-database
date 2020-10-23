@@ -74,6 +74,9 @@ def about():
 def contact():
     return render_template('contact.html')
 
+@main.route("/privacy")
+def privacy():
+    return render_template('privacy.html')
 
 @main.route("/wf")
 def wf():
