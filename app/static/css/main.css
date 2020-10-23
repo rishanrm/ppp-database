@@ -125,7 +125,7 @@ section {
   width: 100%;
   height: 5vh;
   overflow: hidden;
-  z-index: 1010;
+  z-index: 1013;
   -webkit-box-shadow: none;
           box-shadow: none;
   background-color: #DC3C45;
@@ -764,9 +764,8 @@ input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
   opacity: 1;
 }
 
-[data-custom-class='body'],
-[data-custom-class='body'] * {
-  background: transparent !important;
+.privacy-policy {
+  margin-top: 10vh;
 }
 
 [data-custom-class='title'],
@@ -806,7 +805,7 @@ input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
 
 [data-custom-class='link'],
 [data-custom-class='link'] * {
-  color: #3030F1 !important;
+  color: #037afc !important;
   font-size: 14px !important;
   font-family: Arial !important;
   word-break: break-word !important;
