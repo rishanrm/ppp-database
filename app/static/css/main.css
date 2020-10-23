@@ -144,6 +144,24 @@ section {
   line-height: 1.2;
 }
 
+.footer-link {
+  color: white;
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+  border-radius: 1em;
+  margin: 0;
+}
+
+.footer-link:hover {
+  color: #037AFB;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
+  background: white;
+  text-decoration: none;
+}
+
 .copyright {
   font-size: calc(0.5em + .25vw);
 }
