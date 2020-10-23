@@ -766,6 +766,7 @@ input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
 
 .privacy-policy {
   margin-top: 10vh;
+  margin-bottom: 10vh;
 }
 
 [data-custom-class='title'],

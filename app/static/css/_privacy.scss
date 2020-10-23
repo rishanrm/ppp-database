@@ -1,6 +1,7 @@
 .privacy-policy{
     // margin: 10vw !important;
     margin-top: $header-height;
+    margin-bottom: $footer-height + $privacy-offset-bottom;
 }
 
 [data-custom-class='body'],

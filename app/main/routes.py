@@ -78,6 +78,10 @@ def contact():
 def privacy():
     return render_template('privacy.html')
 
+@main.route("/terms")
+def terms():
+    return render_template('terms.html')
+
 @main.route("/wf")
 def wf():
     return render_template('wf.html')
