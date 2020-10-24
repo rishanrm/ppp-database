@@ -82,11 +82,6 @@ def privacy():
 def terms():
     return render_template('terms.html')
 
-@main.route("/contact")
-def contact():
-    return render_template('contact.html')
-
-
 
 
 
