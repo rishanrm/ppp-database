@@ -13,7 +13,8 @@
         "_sidebar.scss",
         "_index.scss",
         "_privacy.scss",
-        "_terms.scss"
+        "_terms.scss",
+        "_contact.scss"
     ],
     "names": [],
     "file": "main.css"
