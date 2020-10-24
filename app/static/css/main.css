@@ -877,4 +877,9 @@ input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
   font-family: Arial !important;
   word-break: break-word !important;
 }
+
+.contact {
+  margin-top: 10vh;
+  margin-bottom: 10vh;
+}
 /*# sourceMappingURL=main.css.map */
