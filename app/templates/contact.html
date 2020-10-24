@@ -1,0 +1,39 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<div class="header">
+    <div class="header-text">
+        Contact us
+    </div>
+</div>
+<input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
+<label for="openSidebarMenu" class="sidebarIconToggle">
+    <div class="menuIcon diagonal part-1"></div>
+    <div class="menuIcon horizontal"></div>
+    <div class="menuIcon diagonal part-2"></div>
+</label>
+
+<div id="sidebarMenu">
+    <div class="sidebarMenuInner">
+        <a href="{{ url_for('main.index') }}" alt="Broken Home Link" title="Home">Home</a>
+        <a href="{{ url_for('main.data_under_150k') }}" title="Loans Under $150K">Loans Under $150K</a>
+        <a href="{{ url_for('main.data_150k_and_up') }}" title="Loans $150K and Up">Loans $150K and Up</a>
+        <a href="{{ url_for('main.about') }}" title="About">About</a>
+        <a href="{{ url_for('main.contact') }}" title="Contact">Contact</a>
+    </div>
+</div>
+
+<div class="container contact">
+    <form>
+        <div class="row">
+            <div class="col">
+                <input type="text" class="form-control" placeholder="First name">
+            </div>
+            <div class="col">
+                <input type="text" class="form-control" placeholder="Last name">
+            </div>
+        </div>
+    </form>
+
+</div>
+{% endblock content %}
