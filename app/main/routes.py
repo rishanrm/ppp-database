@@ -78,7 +78,7 @@ def about():
 def contact():
     return render_template('contact.html')
 
-@main.route("/contact-flask")
+@main.route("/contact-flask", methods=("GET", "POST"))
 def contact_flask():
     form = ContactForm()
     if form.validate_on_submit():
