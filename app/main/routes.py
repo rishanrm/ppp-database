@@ -1,5 +1,9 @@
 import json
 from flask import render_template, request, Blueprint, current_app, send_from_directory, jsonify
+#from flask import Flask, url_for, render_template, redirect
+from flask import url_for, redirect
+from forms import ContactForm
+
 #from app.models import Post
 from app import db
 #from app import app
@@ -73,6 +77,16 @@ def about():
 @main.route("/contact")
 def contact():
     return render_template('contact.html')
+
+@main.route("/contact-flask")
+def contact_flask():
+    form = ContactForm()
+    if form.validate_on_submit():
+        return redirect(url_for('success'))
+    return render_template('index.html', form=form)
+
+
+
 
 @main.route("/privacy")
 def privacy():
