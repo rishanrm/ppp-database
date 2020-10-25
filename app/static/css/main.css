@@ -882,4 +882,8 @@ input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
   margin-top: 10vh;
   margin-bottom: 10vh;
 }
+
+.form-group {
+  padding-bottom: 1em;
+}
 /*# sourceMappingURL=main.css.map */
