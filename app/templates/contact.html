@@ -55,8 +55,39 @@
                 <button type="submit" class="btn btn-primary">Submit</button>
             </div>
         </div>
-
     </form>
-
 </div>
+
+
+<div class="formwrapper">
+    <!-- <h2 class="title">Contact</h2> -->
+    <form method="POST" action="/">
+        <div class="form-field">{{ form.name.label }} {{ form.name(size=20) }}</div>
+        <div class="form-field">{{ form.email.label }} {{ form.email }}</div>
+        <div class="form-field">{{ form.body.label }} {{ form.body }}</div>
+        {{ form.submit }}
+    </form>
+</div>
+
+
+<div class="formwrapper">
+    <!-- <h2 class="title">Contact</h2> -->
+    <form method="POST" action="/">
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Join Today</legend>
+
+            <dir class-"form-group">
+                {{ form.name.label(class="form-control-label") }}
+            </dir>
+        </fieldset>
+        <div class="form-field">{{ form.name.label }} {{ form.name(size=20) }}</div>
+        <div class="form-field">{{ form.email.label }} {{ form.email }}</div>
+        <div class="form-field">{{ form.body.label }} {{ form.body }}</div>
+        {{ form.submit }}
+    </form>
+</div>
+
+
+
+
 {% endblock content %}
