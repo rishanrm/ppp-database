@@ -886,4 +886,8 @@ input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
 .form-group {
   padding-bottom: 1em;
 }
+
+.content-section {
+  max-width: 641px;
+}
 /*# sourceMappingURL=main.css.map */

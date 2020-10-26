@@ -24,6 +24,60 @@
 </div>
 
 <div class="container contact">
+    <div class="content-section mx-auto">
+
+        <p class="text-center">
+            Questions, comments, or feedback? We'd love to hear from you:
+        </p>
+
+        <form method="POST" action="/">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">                
+                <!-- <legend class="border-bottom mb-4">Join Today</legend> -->
+                <div class="row form-group">
+                    <div class="col">
+                        <!-- {{ form.name.label(class="form-control-label") }} -->
+                        {{ form.name(class="form-control", placeholder="Full Name") }}
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col">
+                        {{ form.email(class="form-control", placeholder="Email") }}
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col">
+                        {{ form.organization(class="form-control", placeholder="Organization") }}
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col">
+                        {{ form.message(class="form-control", rows='10', placeholder="Message") }}
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col">
+                        {{ form.submit(class="btn btn-primary") }}
+                    </div>
+                </div>
+
+
+            </fieldset>
+        </form>
+    </div>
+</div>
+{% endblock content %}
+
+
+
+
+
+<!-- 
+
     <form>
         <div class="row form-group">
             <div class="col">
@@ -34,6 +88,7 @@
         <div class="row form-group">
             <div class="col">
                 <input type="text" class="form-control" placeholder="Organization (optional)">
+                <div class="form-control">{{ form.name(size=20) }}</div>
             </div>
         </div>
 
@@ -45,7 +100,7 @@
 
         <div class="row form-group">
             <div class="col">
-                <!-- <label for="exampleFormControlTextarea1">Example textarea</label> -->
+                <!- - <label for="exampleFormControlTextarea1">Example textarea</label> -- >
                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="10" placeholder="Message"></textarea>
             </div>
         </div>
@@ -56,22 +111,22 @@
             </div>
         </div>
     </form>
-</div>
+
 
 
 <div class="formwrapper">
-    <!-- <h2 class="title">Contact</h2> -->
+    <! -- <h2 class="title">Contact</h2> - ->
     <form method="POST" action="/">
-        <div class="form-field">{{ form.name.label }} {{ form.name(size=20) }}</div>
-        <div class="form-field">{{ form.email.label }} {{ form.email }}</div>
-        <div class="form-field">{{ form.body.label }} {{ form.body }}</div>
+        <div class="form-group">{{ form.name.label }} {{ form.name(size=20) }}</div>
+        <div class="form-group">{{ form.email.label }} {{ form.email }}</div>
+        <div class="form-group">{{ form.message.label }} {{ form.message }}</div>
         {{ form.submit }}
     </form>
 </div>
 
 
 <div class="formwrapper">
-    <!-- <h2 class="title">Contact</h2> -->
+    <!- - <h2 class="title">Contact</h2> - ->
     <form method="POST" action="/">
         <fieldset class="form-group">
             <legend class="border-bottom mb-4">Join Today</legend>
@@ -82,12 +137,7 @@
         </fieldset>
         <div class="form-field">{{ form.name.label }} {{ form.name(size=20) }}</div>
         <div class="form-field">{{ form.email.label }} {{ form.email }}</div>
-        <div class="form-field">{{ form.body.label }} {{ form.body }}</div>
+        <div class="form-field">{{ form.message.label }} {{ form.message }}</div>
         {{ form.submit }}
     </form>
-</div>
-
-
-
-
-{% endblock content %}
+</div> -->

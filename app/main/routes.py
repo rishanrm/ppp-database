@@ -78,8 +78,7 @@ def about():
 # def contact():
 #     return render_template('contact.html')
 
-# @main.route("/contact", methods=("GET", "POST"))
-@main.route("/contact")
+@main.route("/contact", methods=("GET", "POST"))
 def contact():
     form = ContactForm()
     # if form.validate_on_submit():
