@@ -31,9 +31,19 @@
             We'd love to hear from you.
         </p>
 
-        <form method="POST" action="/">
+        <form method="POST" action="">
+            <!-- {{ form.csrf_token() }} -->
             {{ form.hidden_tag() }}
-            <fieldset class="form-group">                
+            <fieldset class="form-group">
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        {% for category, message in messages %}
+                            <div class="alert alert-{{ category }}">
+
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
                 <!-- <legend class="border-bottom mb-4">Join Today</legend> -->
                 <div class="row form-group">
                     <div class="col">

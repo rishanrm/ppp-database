@@ -1,7 +1,7 @@
 import json
-from flask import render_template, request, Blueprint, current_app, send_from_directory, jsonify
+from flask import render_template, request, Blueprint, current_app, send_from_directory, jsonify, url_for, flash, redirect
 #from flask import Flask, url_for, render_template, redirect
-from flask import url_for, redirect
+# from flask import url_for, redirect
 from ..forms import ContactForm
 
 #from app.models import Post
@@ -13,8 +13,8 @@ import os
 
 main = Blueprint('main', __name__)
 
-@main.route("/")
-@main.route("/home")
+@main.route("/", methods=['POST'])
+@main.route("/home", methods=['POST'])
 def home():
   # print('IN THE HOME')
   # search = request.args.get("search")
@@ -78,12 +78,13 @@ def about():
 # def contact():
 #     return render_template('contact.html')
 
-@main.route("/contact", methods=("GET", "POST"))
+@main.route("/contact", methods=["GET", "POST"])
 def contact():
     form = ContactForm()
-    # if form.validate_on_submit():
-    #     return redirect(url_for('success'))
-    return render_template('contact.html', form=form)
+    if form.validate_on_submit():
+        flash("Your message has been sent!", "success")
+        return redirect(url_for('main.index'))
+    return render_template('contact.html', title='Contact', form=form)
 
 
 
@@ -145,8 +146,7 @@ def gsap():
 def table_examples():
         return render_template('table_examples.html', title='Table Examples')
 
-
-@main.route("/index")
+@main.route("/index", methods=['GET', 'POST'])
 def index():
         return render_template('index.html')
 
