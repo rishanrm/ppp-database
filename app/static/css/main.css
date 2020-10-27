@@ -565,7 +565,7 @@ input[type=checkbox] {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   cursor: pointer;
-  position: absolute;
+  position: fixed;
   z-index: 1012;
   height: 100%;
   width: 100%;
@@ -881,6 +881,11 @@ input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
 .contact {
   margin-top: 10vh;
   margin-bottom: 10vh;
+}
+
+.contact-text {
+  margin-top: 12.5vh;
+  margin-bottom: 5vh;
 }
 
 .form-group {
