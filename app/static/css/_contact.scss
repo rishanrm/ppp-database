@@ -15,3 +15,23 @@
 .content-section {
     max-width: 641px;
 }
+
+.contact-success {
+    z-index: 10000;
+    position: absolute;
+    left: 50%;
+    margin-top: $header-height;
+}
+
+.inner-contact-success{
+    position: relative;
+    left: -50%;
+}
+
+.alert{
+    margin-top: 2vh;
+}
+
+.close-alert{
+    margin-top: -1%;
+}

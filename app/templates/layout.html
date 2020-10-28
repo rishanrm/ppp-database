@@ -105,18 +105,6 @@
 		</div>
 
 		<div class="changing-content" data-barba="container" data-barba-namespace="home">
-			<div class="flashed-messages">
-				{% with messages = get_flashed_messages(with_categories=true) %}
-				{% if messages %}
-									<p>HERE IS WHERE THE MESSAGE SHOULD BE</p>
-				{% for category, message in messages %}
-				<div class="alert alert-{{ category }}">
-					{{ message }}
-				</div>
-				{% endfor %}
-				{% endif %}
-				{% endwith %}
-			</div>
 			{% block content %}{% endblock %}
 		</div>
 

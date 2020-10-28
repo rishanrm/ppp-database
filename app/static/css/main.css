@@ -96,7 +96,7 @@ section {
   max-width: 100%;
   -webkit-box-shadow: none;
           box-shadow: none;
-  background-color: transparent;
+  background-color: #037AFB;
   position: fixed;
   height: 10vh;
   overflow: hidden;
@@ -894,5 +894,25 @@ input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
 
 .content-section {
   max-width: 641px;
+}
+
+.contact-success {
+  z-index: 10000;
+  position: absolute;
+  left: 50%;
+  margin-top: 10vh;
+}
+
+.inner-contact-success {
+  position: relative;
+  left: -50%;
+}
+
+.alert {
+  margin-top: 2vh;
+}
+
+.close-alert {
+  margin-top: -1%;
 }
 /*# sourceMappingURL=main.css.map */

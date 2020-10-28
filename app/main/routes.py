@@ -83,6 +83,7 @@ def contact():
     form = ContactForm()
     if form.validate_on_submit():
         flash("Your message has been sent!", "success")
+        # return redirect(url_for('main.contact'))
         return redirect(url_for('main.index'))
     return render_template('contact.html', title='Contact', form=form)
 
