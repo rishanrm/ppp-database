@@ -45,6 +45,9 @@ class Config:
     DEBUG_STATUS =  os.environ.get("DEBUG_STATUS")
     SSL_REDIRECT = True
     SECRET_KEY = os.environ.get("SECRET_KEY")
+    RECAPTCHA_PUBLIC_KEY = "6LcVnNwZAAAAAKvTGcDvoZv2ZgutD6s3RYFH4beq"
+    RECAPTCHA_PRIVATE_KEY = "6LcVnNwZAAAAADF8Mwi45_zInKW0doneW2eTCXTa"
+#    TESTING = True #Turn on or off ReCAPTCHA
 
     """GOOGLE CLOUD"""
     GCLOUD_CREDENTIALS = "service_account.json"
