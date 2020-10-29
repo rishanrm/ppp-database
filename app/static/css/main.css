@@ -898,7 +898,7 @@ input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
 }
 
 .contact-success {
-  z-index: 10000;
+  z-index: 1100;
   position: absolute;
   left: 50%;
   margin-top: 10vh;

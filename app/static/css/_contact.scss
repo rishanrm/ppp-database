@@ -17,7 +17,7 @@
 }
 
 .contact-success {
-    z-index: 10000;
+    z-index: 1100;
     position: absolute;
     left: 50%;
     margin-top: $header-height;
@@ -35,3 +35,7 @@
 .close-alert{
     margin-top: -1%;
 }
+
+// .inner-contact-success{
+//     z-index: 1100;
+// }

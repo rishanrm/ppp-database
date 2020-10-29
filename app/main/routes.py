@@ -97,6 +97,8 @@ def contact():
 
         # Create the plain-text and HTML version of your message
         text = f"""\
+PPP Data Contact Form Submission
+
 Name: {form.name.data}
 
 Email: {form.email.data}
@@ -104,14 +106,16 @@ Email: {form.email.data}
 Organization: {form.organization.data}
 
 Message: {form.message.data}"""
+
         html = f"""\
         <html>
         <body>
+            <h2>PPP Data Contact Form Submission</h2>
             <p>
-                Name: {form.name.data}<br><br>
-                Email: {form.email.data}<br><br>
-                Organization: {form.organization.data}<br><br>
-                Message: {form.message.data}
+                <b style='color: #037AFB;'>Name:</b> {form.name.data}<br><br>
+                <b style='color: #037AFB;'>Email:</b> {form.email.data}<br><br>
+                <b style='color: #037AFB;'>Organization:</b> {form.organization.data}<br><br>
+                <b style='color: #037AFB;'>Message:</b> {form.message.data}
             </p>
         </body>
         </html>
