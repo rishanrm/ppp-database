@@ -162,6 +162,14 @@ section {
   text-decoration: none;
 }
 
+.social-icon {
+  width: 4vh;
+  height: 4vh;
+  padding: 0;
+  margin-top: 0.5vh;
+  margin-bottom: 0.5vh;
+}
+
 .copyright {
   font-size: calc(0.5em + .25vw);
 }

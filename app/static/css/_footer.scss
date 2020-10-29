@@ -47,7 +47,13 @@
     text-decoration: none;
 }
 
-
+.social-icon{
+     width: $social-icon-dim;
+     height: $social-icon-dim;
+     padding: 0;
+     margin-top: ($footer-height - $social-icon-dim)/2;
+     margin-bottom: ($footer-height - $social-icon-dim)/2;
+    }
 
 // .nav-link {
 //     color: rgb(255, 255, 255);
