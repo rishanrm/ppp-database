@@ -32,21 +32,3 @@ class ContactForm(FlaskForm):
         validators=[DataRequired(), Length(min=4, message=('Your message is too short.'))])
     recaptcha = RecaptchaField()
     submit = SubmitField('Submit')
-
-    email_message = f"""Message from the PPP Contact Form:
-
-Name: {name}
-
-Email: {email}
-
-Organization: {organization}
-
-Message: {message}
-"""
-    server = smtplib.SMTP("smtp.gmail.com", 587)
-    server.starttls()
-    server.login(Config.CONTACT_EMAIL_ADDR, Config.CONTACT_EMAIL_PASS)
-    # server.sendmail(Config.CONTACT_EMAIL_ADDR, Config.CONTACT_EMAIL_ADDR, email_message)
-    # server.login('rishanrm@gmail.com', Config.CONTACT_EMAIL_PASS)
-    server.sendmail(Config.CONTACT_EMAIL_ADDR,
-                    Config.CONTACT_EMAIL_ADDR, email_message)
