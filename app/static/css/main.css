@@ -173,10 +173,6 @@ section {
   border-radius: 0.25em;
 }
 
-.copyright {
-  font-size: calc(0.5em + .25vw);
-}
-
 html, body {
   margin: 0;
   padding: 0;
