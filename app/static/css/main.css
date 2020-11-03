@@ -139,7 +139,7 @@ section {
       -ms-flex-align: center;
           align-items: center;
   text-align: center;
-  font-size: 1em;
+  font-size: calc(0.5em + .25vw);
   color: white;
   line-height: 1.2;
 }
@@ -163,11 +163,14 @@ section {
 }
 
 .social-icon {
-  width: 4vh;
-  height: 4vh;
+  width: 3vh;
+  height: 3vh;
   padding: 0;
-  margin-top: 0.5vh;
-  margin-bottom: 0.5vh;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
+  margin-left: 0.6vh;
+  margin-right: 0.6vh;
+  border-radius: 0.25em;
 }
 
 .copyright {
