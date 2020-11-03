@@ -59,7 +59,7 @@ div.hidden {
 }
 
 .fixed-table-container {
-  height: 55vh;
+  height: 57vh;
 }
 
 #resetButton {
@@ -123,7 +123,7 @@ section {
 
 .footer {
   width: 100%;
-  height: 5vh;
+  height: 3vh;
   overflow: hidden;
   z-index: 1013;
   -webkit-box-shadow: none;
@@ -148,8 +148,8 @@ section {
   color: white;
   padding-left: 1em;
   padding-right: 1em;
-  padding-top: 1vh;
-  padding-bottom: 1vh;
+  padding-top: 0.5vh;
+  padding-bottom: 0.5vh;
   border-radius: 1em;
   margin: 0;
 }
@@ -166,8 +166,8 @@ section {
   width: 3vh;
   height: 3vh;
   padding: 0;
-  margin-top: 1vh;
-  margin-bottom: 1vh;
+  margin-top: 0vh;
+  margin-bottom: 0vh;
   margin-left: 0.6vh;
   margin-right: 0.6vh;
   border-radius: 0.25em;
@@ -658,7 +658,7 @@ input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
 
 .background img {
   width: 100vw;
-  height: 87vh;
+  height: 89vh;
   -o-object-fit: cover;
      object-fit: cover;
 }
@@ -792,7 +792,7 @@ input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
 
 .privacy-policy {
   margin-top: 10vh;
-  margin-bottom: 10vh;
+  margin-bottom: 8vh;
 }
 
 [data-custom-class='title'],
@@ -840,7 +840,7 @@ input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
 
 .terms {
   margin-top: 10vh;
-  margin-bottom: 10vh;
+  margin-bottom: 8vh;
 }
 
 [data-custom-class='title'],
@@ -888,7 +888,7 @@ input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
 
 .contact {
   margin-top: 10vh;
-  margin-bottom: 10vh;
+  margin-bottom: 8vh;
 }
 
 .contact-text {
