@@ -17,8 +17,8 @@ from email.mime.multipart import MIMEMultipart
 
 main = Blueprint('main', __name__)
 
-@main.route("/", methods=['POST'])
-@main.route("/home", methods=['POST'])
+@main.route("/", methods=['GET', 'POST'])
+@main.route("/home", methods=['GET', 'POST'])
 def home():
   # print('IN THE HOME')
   # search = request.args.get("search")
