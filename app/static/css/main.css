@@ -923,4 +923,8 @@ input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
 .close-alert {
   margin-top: -1%;
 }
+
+.cards {
+  margin-top: 10vh;
+}
 /*# sourceMappingURL=main.css.map */
