@@ -924,7 +924,11 @@ input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
   margin-top: -1%;
 }
 
-.cards {
+.card-group {
   margin-top: 10vh;
+}
+
+.card {
+  height: 100%;
 }
 /*# sourceMappingURL=main.css.map */
