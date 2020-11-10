@@ -162,6 +162,12 @@ section {
   text-decoration: none;
 }
 
+.disclaimer {
+  -webkit-box-flex: 1;
+      -ms-flex: auto;
+          flex: auto;
+}
+
 .social-icon {
   width: 3vh;
   height: 3vh;
