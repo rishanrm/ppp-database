@@ -1,6 +1,19 @@
+.about-content{
+    margin-top: $header-height + $about-offset-top;
+    text-align: center;
+    font-size: 1.25rem !important;
+}
+
+.about-disclaimer{
+    font-size: 1rem !important;
+    font-style: italic;
+    text-align: center;
+    margin-top: -1vh;
+    margin-bottom: 3vh;
+}
 
 .card-group {
-    margin-top: $header-height;
+    margin-top: $about-offset-top;
 }
 
 .card {
