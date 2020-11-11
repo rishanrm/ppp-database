@@ -47,16 +47,16 @@ barba.init({
 
     }],
     
-    views: [{
-        namespace: 'home',
-        beforeEnter({ next }) {
-            // load your script
-            let script = document.createElement('script');
-            script.src = '/js/index.js'; // location of your draggable js file that is responsible for that image loading and dragging functionality
-            next.container.appendChild(script);
-            console.log("RAN INIT ON BARBA");
-            }, 
-    }]
+    // views: [{
+    //     namespace: 'home',
+    //     beforeEnter({ next }) {
+    //         // load your script
+    //         let script = document.createElement('script');
+    //         script.src = '/js/index.js'; // location of your draggable js file that is responsible for that image loading and dragging functionality
+    //         next.container.appendChild(script);
+    //         console.log("RAN INIT ON BARBA");
+    //         }, 
+    // }]
 })
 
 
