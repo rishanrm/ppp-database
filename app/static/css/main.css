@@ -15,6 +15,29 @@ body {
   font-family: "SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;
 }
 
+.source {
+  margin-top: -1vh;
+  margin-left: 10vw;
+  margin-right: 10vw;
+  margin-bottom: 4vh;
+  padding-left: 5px;
+  padding-right: 5px;
+  font-style: italic;
+  font-size: smaller;
+  -webkit-box-sizing: unset !important;
+          box-sizing: unset !important;
+}
+
+.source:before {
+  -webkit-box-sizing: unset !important;
+          box-sizing: unset !important;
+}
+
+.source:after {
+  -webkit-box-sizing: unset !important;
+          box-sizing: unset !important;
+}
+
 .table-title {
   text-align: center;
 }
@@ -50,8 +73,6 @@ div.hidden {
 .bootstrap-table {
   margin-left: 10vw !important;
   margin-right: 10vw !important;
-  padding: 10px !important;
-  border: 5px solid white;
 }
 
 .fixed-table-body {

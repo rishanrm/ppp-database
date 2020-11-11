@@ -1,3 +1,23 @@
+.source{
+    margin-top: -1vh;
+    margin-left: 10vw;
+    margin-right: 10vw;
+    margin-bottom: $footer-height + 1vh;
+    padding-left: 5px;
+    padding-right: 5px;    
+    font-style: italic;
+    font-size: smaller;
+    box-sizing: unset !important;
+}
+
+.source:before{
+    box-sizing: unset !important;
+}
+
+.source:after{
+    box-sizing: unset !important;
+}
+
 .table-title {
     text-align: center;
 }
@@ -41,8 +61,8 @@ div.hidden {
 .bootstrap-table {
     margin-left: $table-side-margin !important;
     margin-right: $table-side-margin !important;
-    padding: 10px !important;
-    border: 5px solid white;
+    // padding: 10px !important;
+    // border: 5px solid white;
 }
 
 .fixed-table-body {
