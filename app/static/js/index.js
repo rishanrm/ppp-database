@@ -75,7 +75,7 @@
     
 
         var orderedData = {
-            "loanamount": "Loan Amount",
+            "loanamount": "Loan Amount ($)",
             "city": "City",
             "state": "State",                
             "zip": "ZIP Code",
@@ -120,8 +120,14 @@
 
             var html = ['<div class="detailview">']
             var i = 0
+            var value
             $.each(orderedColumns, function (index, columnName) {
-                html.push('<p><b>' + columnName + ':</b> ' + orderedValues[i] + '</p>')
+                if (columnName == "Loan Amount ($)") {
+                    value = amountFormatter(orderedValues[i]);
+                } else {
+                    value = orderedValues[i]
+                }
+                html.push('<p><b>' + columnName + ':</b> ' + value + '</p>')
                 i += 1
             })
             html.push('</div>')
