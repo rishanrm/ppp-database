@@ -17,32 +17,13 @@ from email.mime.multipart import MIMEMultipart
 
 main = Blueprint('main', __name__)
 
+
 @main.route("/", methods=['GET', 'POST'])
+@main.route("/index", methods=['GET', 'POST'])
 @main.route("/home", methods=['GET', 'POST'])
-def home():
-  # print('IN THE HOME')
-  # search = request.args.get("search")
-  # sort = request.args.get("sort")
-  # order = request.args.get("order")
-  # offset = request.args.get("offset")
-  # limit = request.args.get("limit")
+def index():
+    return render_template('index.html')
 
-  # print(limit)
-
-  # with current_app.app_context():
-  #     db = DatabaseInitialization.initialize_database("local")
-  #     db = DatabaseConnection("local", Config.DB_NAME, Config.TABLE_NAME)
-  #     total_count = db.fetch_total_count()
-  #     total_count_str = db.get_json_component(total_count, "total")
-  #     results_data = db.fetch_from_db(search, sort, order, offset, limit)
-  #     results_str = db.get_json_component(results_data, "data")
-
-  #     table_data_json = db.build_table_json(total_count_str, len(results_data), results_str)
-      csv_column_headers = HeaderNames.get_csv_column_headers(Config.SOURCE_FILE_NAME)
-      print(csv_column_headers)
-      print("THOSE WERE COLUMN HEADERS")
-
-      return render_template('home.html', data="", headers = csv_column_headers)
 
 @main.route("/data-under-150k")
 def data_under_150k():
@@ -174,14 +155,6 @@ def terms():
     return render_template('terms.html')
 
 
-
-
-
-
-
-
-    
-
 @main.route("/wf")
 def wf():
     return render_template('wf.html')
@@ -221,10 +194,6 @@ def gsap():
 @main.route("/table_examples")
 def table_examples():
         return render_template('table_examples.html', title='Table Examples')
-
-@main.route("/index", methods=['GET', 'POST'])
-def index():
-        return render_template('index.html')
 
 @main.route('/<int:number>/')
 def incrementer(number):
@@ -346,6 +315,32 @@ def data2():
 def get_datax():
         import collections
         return render_template('get_datax.html')
+
+def home():
+  # print('IN THE HOME')
+  # search = request.args.get("search")
+  # sort = request.args.get("sort")
+  # order = request.args.get("order")
+  # offset = request.args.get("offset")
+  # limit = request.args.get("limit")
+
+  # print(limit)
+
+  # with current_app.app_context():
+  #     db = DatabaseInitialization.initialize_database("local")
+  #     db = DatabaseConnection("local", Config.DB_NAME, Config.TABLE_NAME)
+  #     total_count = db.fetch_total_count()
+  #     total_count_str = db.get_json_component(total_count, "total")
+  #     results_data = db.fetch_from_db(search, sort, order, offset, limit)
+  #     results_str = db.get_json_component(results_data, "data")
+
+  #     table_data_json = db.build_table_json(total_count_str, len(results_data), results_str)
+      csv_column_headers = HeaderNames.get_csv_column_headers(Config.SOURCE_FILE_NAME)
+      print(csv_column_headers)
+      print("THOSE WERE COLUMN HEADERS")
+
+      return render_template('home.html', data="", headers = csv_column_headers)
+
 
 @main.route("/get_data")
 def get_data():
