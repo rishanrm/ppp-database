@@ -38,7 +38,8 @@
     // <!-- Format loan amount data -->        
     
         function amountFormatter(value) {
-            return value.substring(0, value.length - 3)
+            // return value.substring(0, value.length - 3)
+            return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         }
     
 

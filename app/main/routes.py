@@ -323,6 +323,7 @@ def header_options():
     column_headers = HeaderNames.get_csv_column_headers(Config.SOURCE_FILE_NAME)
     column_options = db.get_all_column_options(column_headers)
     options_dict = db.format_column_options_json(column_headers, column_options)
+    print(column_headers)
     return json.loads(json.dumps(options_dict))
 
 @main.route("/data", methods=['GET'])
