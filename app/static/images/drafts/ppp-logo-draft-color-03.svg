@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="210mm" height="297mm" version="1.1" viewBox="0 0 210 297" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+ <metadata>
+  <rdf:RDF>
+   <cc:Work rdf:about="">
+    <dc:format>image/svg+xml</dc:format>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:title/>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <g fill-rule="evenodd" stroke-width=".26458">
+  <circle cx="92.604" cy="92.604" r="92.604" fill="#037afb"/>
+  <circle cx="92.604" cy="92.604" r="66.146" fill="#fff"/>
+  <ellipse cx="92.604" cy="92.604" r="39.688" fill="#f00"/>
+  <ellipse cx="92.604" cy="92.604" r="13.229" fill="#fff"/>
+ </g>
+ <rect y="92.604" width="26.458" height="185.21" fill="#037afb" stroke-width=".26458"/>
+ <rect x="26.458" y="92.604" width="26.458" height="158.75" fill="#fff" stroke-width=".24496"/>
+ <rect x="52.917" y="92.604" width="26.458" height="132.29" fill="#dc3c45" stroke-width=".22361"/>
+ <g fill-rule="evenodd">
+  <circle cx="92.604" cy="92.604" r="13.229" fill="#fff" stroke-width=".037798"/>
+  <circle cx="92.604" cy="92.604" r="0" fill="#f00" stroke-width=".26458"/>
+  <circle cx="92.604" cy="92.604" r="39.688" fill="#dc3c45" stroke-width=".15875"/>
+  <circle cx="92.604" cy="92.604" r="13.229" fill="#fff" stroke-width=".052916"/>
+ </g>
+</svg>
