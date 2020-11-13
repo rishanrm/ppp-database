@@ -516,6 +516,18 @@ ul.transition li:nth-child(5) {
   color: black;
 }
 
+#left-nav-cover-inner {
+  background-color: green;
+  opacity: 50%;
+  z-index: 10000;
+  position: fixed;
+  left: 2vw;
+  top: 1vh;
+  height: 8vh;
+  width: 3vw;
+  cursor: pointer;
+}
+
 .currentTopItem {
   border-top: 2px solid var(--current-color);
 }

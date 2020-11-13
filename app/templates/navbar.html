@@ -18,103 +18,39 @@
 </div>
 
 <script>
-    var checkbox = document.querySelector(".openSidebarMenu");
+    var checkbox = document.querySelector("input[id=openSidebarMenu]");
     document.addEventListener('click', function (e) {
         e = e || window.event;
         var target = e.target || e.srcElement;
-            // text = target.textContent || target.innerText;
-        // console.log(target);
-        // console.log(target.getAttribute("id"));
-        // // console.log(target.getAttribute("id") == "sidebarMenu")
-        // console.log(target.getAttribute("id") != "sidebarMenu")
-        // // console.log(target.getAttribute("id") == null)
-        // console.log(target.getAttribute("id") != "sidebarMenu" || target.getAttribute("id") == "openSidebarMenu")
-        // console.log("Checked? :")
-        // console.log(document.getElementById("openSidebarMenu").checked)
         if ((target.getAttribute("id") != "sidebarMenu" && target.getAttribute("id") != "openSidebarMenu") && document.getElementById("openSidebarMenu").checked == true) {
             document.getElementById("openSidebarMenu").checked = false;
             triggerEvent(checkbox, 'change');
         };
-
-        // console.log('Second set:')
-        // console.log(target.getAttribute("id") == "openSidebarMenu")
-        // console.log(document.getElementById("openSidebarMenu").checked == true)
         if (target.getAttribute("id") == "openSidebarMenu" && document.getElementById("openSidebarMenu").checked == false) {
             document.getElementById("openSidebarMenu").checked = false;
-            // var manualEvent = document.createEvent("HTMLEvents");
-            // manualEvent.initEvent('change', false, true);
             triggerEvent(checkbox, 'change');
         };
-        // if (target.getAttribute("id") == "openSidebarMenu" && document.getElementById("openSidebarMenu").checked == false) {
-        //     document.getElementById("openSidebarMenu").checked = false;
-        // };
     }, false);
 
-        function triggerEvent(element, eventName) {
-            var manualEvent = document.createEvent("HTMLEvents");
-            manualEvent.initEvent(eventName, false, true);
-            element.dispatchEvent(manualEvent);
-            }
+    function triggerEvent(element, eventName) {
+        var manualEvent = document.createEvent("HTMLEvents");
+        manualEvent.initEvent(eventName, false, true);
+        element.dispatchEvent(manualEvent);
+        }
 
-        var div = document.createElement('div');
-        div.id = 'left-nav-cover';
-        document.getElementsByTagName('body')[0].appendChild(div);
-
-        checkbox.addEventListener('change', function () {
-            if (this.checked) {
-                console.log('CHECKED!')
-                var ok = true;
-                if (ok === true) {
-                    div.innerHTML = "<div id='left-nav-cover-inner'></div>";
-                    // console.log(document.getElementsByTagName('body')[0])
-                    console.log("created!")
-                    // console.log(div.parentElement.nodeName);
-                    // parent.removeChild(div);
-                    // console.log("deleted!!")
-                // Checkbox is checked..
-                }
-            } else {
-                console.log('UNCHECKED!')
-                // var element = document.getElementsByClassName('new-rect');
-                // console.log(element)
-                // console.log(element.parentNode)
-                // console.log(parent)
-                console.log(div)
-                // var myCoolDiv = document.getElementsByClassName('new-rect');
-                var leftNavCoverInner = document.getElementById("left-nav-cover-inner");
-                // console.log(myCoolDiv)
-                // var parent2 = document.getElementsByClassName('new-rect')
-                document.getElementById('left-nav-cover').removeChild(leftNavCoverInner);
-                // Checkbox is not checked..
-            }
-        });
-</script>
-
-<!-- 
-<script>
-    $(document).click(function (event) {
-        console.log('clicked!')
-        var $target = $(event.target);
-        if (!$target.closest('#openSidebarMenu').length &&
-            document.getElementById("openSidebarMenu").checked == true) {
-            document.getElementById("openSidebarMenu").checked = false;
+    var div = document.createElement('div');
+    div.id = 'left-nav-cover';
+    document.getElementsByTagName('body')[0].appendChild(div);
+    checkbox.addEventListener('change', function () {
+        if (this.checked) {
+            div.innerHTML = "<div id='left-nav-cover-inner'></div>";
+        } else {
+            // var leftNavCoverInner = document.getElementById("left-nav-cover-inner");
+            div.removeChild(document.getElementById("left-nav-cover-inner"));
         }
     });
-    document.addEventListener('click', function (event) {
+</script>
 
-            // If the clicked element doesn't have the right selector, bail
-            if (!event.target.matches('#sidebarMenu')) {
-                console.log(event.target);
-            };
-
-            // // Don't follow the link
-            // event.preventDefault();
-
-            // Log the clicked element in the console
-
-
-        }, false);
-</script> -->
 
 
 <!-- 
