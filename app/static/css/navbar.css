@@ -12,7 +12,15 @@ body {
 
 
 
-
+.new-rect {
+    background-color: black;
+    z-index: 200000;
+    height: 30px;
+    width: 30px;
+    position: fixed;
+    left: 0;
+    top:0;
+}
 
 
 
