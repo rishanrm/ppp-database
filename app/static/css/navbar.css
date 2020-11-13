@@ -12,14 +12,17 @@ body {
 
 
 
-#MyCoolDiv {
-    background-color: black;
-    z-index: 200000;
+#left-nav-cover-inner {
+    background-color: transparent;
+    z-index: 1000;
     height: 30px;
     width: 30px;
     position: fixed;
-    left: 0;
-    top:0;
+    left: 13px;
+    top: 18px;
+    height: 26px;
+    width: 26px;
+    cursor: pointer;
 }
 
 

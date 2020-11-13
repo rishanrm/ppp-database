@@ -57,17 +57,16 @@
             }
 
         var div = document.createElement('div');
-        div.id = 'new-rect';
+        div.id = 'left-nav-cover';
         document.getElementsByTagName('body')[0].appendChild(div);
 
         checkbox.addEventListener('change', function () {
-            // var parent = document.getElementsByTagName('body')[0]
             if (this.checked) {
                 console.log('CHECKED!')
                 var ok = true;
                 if (ok === true) {
-                    div.innerHTML = "<div id='MyCoolDiv'></div>";
-                    console.log(document.getElementsByTagName('body')[0])
+                    div.innerHTML = "<div id='left-nav-cover-inner'></div>";
+                    // console.log(document.getElementsByTagName('body')[0])
                     console.log("created!")
                     // console.log(div.parentElement.nodeName);
                     // parent.removeChild(div);
@@ -82,10 +81,10 @@
                 // console.log(parent)
                 console.log(div)
                 // var myCoolDiv = document.getElementsByClassName('new-rect');
-                var myCoolDiv = document.getElementById("MyCoolDiv");
-                console.log(myCoolDiv)
+                var leftNavCoverInner = document.getElementById("left-nav-cover-inner");
+                // console.log(myCoolDiv)
                 // var parent2 = document.getElementsByClassName('new-rect')
-                document.getElementById('new-rect').removeChild(myCoolDiv);
+                document.getElementById('left-nav-cover').removeChild(leftNavCoverInner);
                 // Checkbox is not checked..
             }
         });
