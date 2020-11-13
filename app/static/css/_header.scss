@@ -29,3 +29,12 @@
     left: 50%;
     transform: translate(-50%, -50%); */
 }
+
+.ppp-logo {
+    width: $header-height * 0.8;
+    height: $header-height * 0.8;
+    z-index: 1011;
+    position: absolute;
+    margin-top: $header-height * 0.1;
+    right: 2vw;
+}
