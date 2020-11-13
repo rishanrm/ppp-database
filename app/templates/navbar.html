@@ -56,20 +56,20 @@
             element.dispatchEvent(manualEvent);
             }
 
-
+        var div = document.createElement('div');
+        div.id = 'new-rect';
+        document.getElementsByTagName('body')[0].appendChild(div);
 
         checkbox.addEventListener('change', function () {
-            var div = document.createElement('div');
-            var parent = document.getElementsByTagName('body')[0]
+            // var parent = document.getElementsByTagName('body')[0]
             if (this.checked) {
                 console.log('CHECKED!')
                 var ok = true;
                 if (ok === true) {
-                    div.className = 'new-rect';
-                    parent.appendChild(div);
+                    div.innerHTML = "<div id='MyCoolDiv'></div>";
                     console.log(document.getElementsByTagName('body')[0])
                     console.log("created!")
-                    console.log(div.parentElement.nodeName);
+                    // console.log(div.parentElement.nodeName);
                     // parent.removeChild(div);
                     // console.log("deleted!!")
                 // Checkbox is checked..
@@ -79,10 +79,13 @@
                 // var element = document.getElementsByClassName('new-rect');
                 // console.log(element)
                 // console.log(element.parentNode)
-                console.log(parent)
+                // console.log(parent)
                 console.log(div)
-                console.log(div.parentElement);
-                parent.removeChild(div);
+                // var myCoolDiv = document.getElementsByClassName('new-rect');
+                var myCoolDiv = document.getElementById("MyCoolDiv");
+                console.log(myCoolDiv)
+                // var parent2 = document.getElementsByClassName('new-rect')
+                document.getElementById('new-rect').removeChild(myCoolDiv);
                 // Checkbox is not checked..
             }
         });

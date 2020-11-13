@@ -12,7 +12,7 @@ body {
 
 
 
-.new-rect {
+#MyCoolDiv {
     background-color: black;
     z-index: 200000;
     height: 30px;
