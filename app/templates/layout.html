@@ -109,6 +109,12 @@
 		<p>Loading...</p>
 		</div>
 
+		<a href="{{ url_for('main.index') }}">
+			<div>
+				<img class="ppp-logo" src="../images/ppp-logo-circle.svg" />
+			</div>
+		</a>
+			
 		<div class="changing-content" data-barba="container" data-barba-namespace="home">
 			{% block content %}{% endblock %}
 		</div>

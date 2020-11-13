@@ -722,7 +722,7 @@ input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
   line-height: calc(1em + 1vw);
   padding-left: 5vw;
   margin-left: 0;
-  width: 50vw;
+  width: 45vw;
 }
 
 .first-line {
@@ -747,6 +747,7 @@ input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
   width: 50vw;
   float: right;
   overflow: hidden;
+  margin-left: 5vw;
 }
 
 .right-nav {
