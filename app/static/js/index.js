@@ -201,24 +201,24 @@ var checkbox = document.querySelector("input[id=openSidebarMenu]");
 var div = document.createElement('div');
 div.id = 'left-nav-cover';
 
-function triggerEvent(element, eventName) {
+function sidebarMenuClick(element, eventName) {
     if (typeof checkbox != null) {
         document.addEventListener('click', function (e) {
             e = e || window.event;
             var target = e.target || e.srcElement;
             if ((target.getAttribute("id") != "sidebarMenu" && target.getAttribute("id") != "openSidebarMenu") && document.getElementById("openSidebarMenu").checked == true) {
                 document.getElementById("openSidebarMenu").checked = false;
-                triggerEvent(checkbox, 'change');
+                sidebarMenuClick(checkbox, 'change');
                 console.log("CHANGE")
             };
             if (target.getAttribute("id") == "openSidebarMenu" && document.getElementById("openSidebarMenu").checked == false) {
                 document.getElementById("openSidebarMenu").checked = false;
-                triggerEvent(checkbox, 'change');
+                sidebarMenuClick(checkbox, 'change');
                 console.log("CHANGE")
             };
         }, false);
 
-        // function triggerEvent(element, eventName) {
+        // function sidebarMenuClick(element, eventName) {
         //     var manualEvent = document.createEvent("HTMLEvents");
         //     manualEvent.initEvent(eventName, false, true);
         //     element.dispatchEvent(manualEvent);

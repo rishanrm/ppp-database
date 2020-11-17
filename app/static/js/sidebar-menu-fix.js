@@ -4,17 +4,17 @@ document.addEventListener('click', function (e) {
     var target = e.target || e.srcElement;
     if ((target.getAttribute("id") != "sidebarMenu" && target.getAttribute("id") != "openSidebarMenu") && document.getElementById("openSidebarMenu").checked == true) {
         document.getElementById("openSidebarMenu").checked = false;
-        triggerEvent(checkbox, 'change');
+        sidebarMenuClick(checkbox, 'change');
         console.log("CHANGE")
     };
     if (target.getAttribute("id") == "openSidebarMenu" && document.getElementById("openSidebarMenu").checked == false) {
         document.getElementById("openSidebarMenu").checked = false;
-        triggerEvent(checkbox, 'change');
+        sidebarMenuClick(checkbox, 'change');
         console.log("CHANGE")
     };
 }, false);
 
-function triggerEvent(element, eventName) {
+function sidebarMenuClick(element, eventName) {
     var manualEvent = document.createEvent("HTMLEvents");
     manualEvent.initEvent(eventName, false, true);
     element.dispatchEvent(manualEvent);

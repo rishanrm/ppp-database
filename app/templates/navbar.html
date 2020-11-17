@@ -1,6 +1,6 @@
 <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/navbar.css') }}">
 <div class="header"></div>
-<input type="checkbox" class="openSidebarMenu" id="openSidebarMenu">
+<input type="checkbox" class="openSidebarMenu" id="openSidebarMenu" onclick="sidebarMenuClick()">
 <label for="openSidebarMenu" class="sidebarIconToggle">
     <div class="menuIcon diagonal part-1"></div>
     <div class="menuIcon horizontal"></div>
@@ -24,15 +24,15 @@
         var target = e.target || e.srcElement;
         if ((target.getAttribute("id") != "sidebarMenu" && target.getAttribute("id") != "openSidebarMenu") && document.getElementById("openSidebarMenu").checked == true) {
             document.getElementById("openSidebarMenu").checked = false;
-            triggerEvent(checkbox, 'change');
+            sidebarMenuClick(checkbox, 'change');
         };
         if (target.getAttribute("id") == "openSidebarMenu" && document.getElementById("openSidebarMenu").checked == false) {
             document.getElementById("openSidebarMenu").checked = false;
-            triggerEvent(checkbox, 'change');
+            sidebarMenuClick(checkbox, 'change');
         };
     }, false);
 
-    function triggerEvent(element, eventName) {
+    function sidebarMenuClick(element, eventName) {
         var manualEvent = document.createEvent("HTMLEvents");
         manualEvent.initEvent(eventName, false, true);
         element.dispatchEvent(manualEvent);
@@ -49,28 +49,3 @@
         }
     });
 </script>
-
-
-
-<!-- 
-<div id="sidebarMenu">
-    <ul class="sidebarMenuInner">
-        <li>PPP Menu <span>Web Developer</span></li>
-        <li><a href="https://vanila.io" target="_blank">Company</a></li>
-        <li><a href="https://instagram.com/plavookac" target="_blank">Instagram</a></li>
-        <li><a href="https://twitter.com/plavookac" target="_blank">Twitter</a></li>
-        <li><a href="https://www.youtube.com/channel/UCDfZM0IK6RBgud8HYGFXAJg" target="_blank">YouTube</a></li>
-        <li><a href="https://www.linkedin.com/in/plavookac/" target="_blank">Linkedin</a></li>
-    </ul>
-</div> -->
-<!-- <div id='center' class="main center">
-    <div class="mainInner">
-        <div>PURE CSS SIDEBAR TOGGLE MENU</div>
-    </div>
-    <div class="mainInner">
-        <div>PURE CSS SIDEBAR TOGGLE MENU</div>
-    </div>
-    <div class="mainInner">
-        <div>PURE CSS SIDEBAR TOGGLE MENU</div>
-    </div>
-</div> -->
