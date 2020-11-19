@@ -53,7 +53,12 @@ def data_under_150k():
 
 @main.route("/data-150k-and-up")
 def data_150k_and_up():
-    return render_template('data-150k-and-up.html')
+    csv_column_headers = HeaderNames.get_csv_column_headers(
+        Config.SOURCE_FILE_NAME_2)
+    print(csv_column_headers)
+    print("THOSE WERE COLUMN HEADERS")
+
+    return render_template('data-150k-and-up.html', data="", headers=csv_column_headers)
 
 @main.route("/about")
 def about():

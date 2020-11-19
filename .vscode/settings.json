@@ -6,5 +6,5 @@
         "detailview",
         "myjson"
     ],
-    "python.pythonPath": "bs_table/bin/python"
+    "python.pythonPath": "venv\\Scripts\\python.exe"
 }
