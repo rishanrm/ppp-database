@@ -242,86 +242,86 @@ function sidebarMenuClick(element, eventName) {
 
 
 
-    // // <!-- NOT CURRENTLY IN USE: -->
+    // <!-- NOT CURRENTLY IN USE: -->
 
-    //     // <!-- Fade in -->
-    //     <!-- 
-    //             $(document).ready(function () {
-    //                 $('div.hidden').fadeIn(2000).removeClass('hidden');
-    //             });
-    //      -->
+        // <!-- Fade in -->
+        <!-- 
+                $(document).ready(function () {
+                    $('div.hidden').fadeIn(2000).removeClass('hidden');
+                });
+         -->
 
-    //     // <!-- Action before table loads -->
-    //     <!-- 
-    //     $('#table').on('pre-body.bs.table', function (e, arg1, arg2) {
-    //                 console.log('HELLO END')
-    //                 var userJobTitles9
-    //                 fetch("http://localhost:5000/data_test/businesstype.json")
-    //                 .then(response => response.json())
-    //                 .then(response => {
-    //                     console.log("JSON IS THIS:")
-    //                     console.log(response);
-    //                     userJobTitles9 = response
-    //                     console.log("ASSIGNED VARIABLE IS THIS:")
-    //                     console.log(userJobTitles9);
-    //                 }, error => {
-    //                     console.error(error);
-    //                 })
-    //             });   
-    //      -->
+        // <!-- Action before table loads -->
+        <!-- 
+        $('#table').on('pre-body.bs.table', function (e, arg1, arg2) {
+                    console.log('HELLO END')
+                    var userJobTitles9
+                    fetch("http://localhost:5000/data_test/businesstype.json")
+                    .then(response => response.json())
+                    .then(response => {
+                        console.log("JSON IS THIS:")
+                        console.log(response);
+                        userJobTitles9 = response
+                        console.log("ASSIGNED VARIABLE IS THIS:")
+                        console.log(userJobTitles9);
+                    }, error => {
+                        console.error(error);
+                    })
+                });   
+         -->
 
-    //     // <!-- Action on change to columns -->
-    //     <!-- 
-    //         $('#table').on('column-switch.bs.table', function (e, arg1, arg2) {
-    //             console.log('COLUMN SWITCH')
-    //             $table.bootstrapTable('resetView')
-    //             $table.bootstrapTable()
-    //         })
-    //         // onColumnSwitch
+        // <!-- Action on change to columns -->
+        <!-- 
+            $('#table').on('column-switch.bs.table', function (e, arg1, arg2) {
+                console.log('COLUMN SWITCH')
+                $table.bootstrapTable('resetView')
+                $table.bootstrapTable()
+            })
+            // onColumnSwitch
         
-    //     -->
+        -->
 
-    //     // <!-- Data export -->
-    //     <!-- 
-    //         $(function() {
-    //             $('#toolbar').find('select').change(function () {
-    //             $table.bootstrapTable('destroy').bootstrapTable({
-    //                 exportDataType: $(this).val(),
-    //                 exportTypes: ['json', 'xml', 'csv', 'txt', 'sql', 'pdf']
-    //             })
-    //             }).trigger('change')
-    //         });
-    //      -->
+        // <!-- Data export -->
+        <!-- 
+            $(function() {
+                $('#toolbar').find('select').change(function () {
+                $table.bootstrapTable('destroy').bootstrapTable({
+                    exportDataType: $(this).val(),
+                    exportTypes: ['json', 'xml', 'csv', 'txt', 'sql', 'pdf']
+                })
+                }).trigger('change')
+            });
+         -->
 
-    //     // <!-- Column headers without search or filtering -->
-    //     <!-- 
-    //         $( "div:contains('Loan Amount'):last" ).parent().css({"vertical-align":"top"});
-    //         $( "div:contains('Jobs Retained'):last" ).parent().css({"vertical-align":"top"});
+        // <!-- Column headers without search or filtering -->
+        <!-- 
+            $( "div:contains('Loan Amount'):last" ).parent().css({"vertical-align":"top"});
+            $( "div:contains('Jobs Retained'):last" ).parent().css({"vertical-align":"top"});
 
-    //         function headerStyle(column) {
-    //             return {
-    //                 loanamount: {
-    //                 css: {'vertical-align': 'top'}
-    //                 },
-    //                 jobsretained: {
-    //                 css: {'vertical-align': 'top'}
-    //                 }
-    //             }[column.field]
-    //         }
-    //      -->
+            function headerStyle(column) {
+                return {
+                    loanamount: {
+                    css: {'vertical-align': 'top'}
+                    },
+                    jobsretained: {
+                    css: {'vertical-align': 'top'}
+                    }
+                }[column.field]
+            }
+         -->
 
-    //     <!-- Export Data settings
+        <!-- Export Data settings
         
-    //         $table.bootstrapTable(
-    //             {
-    //                 exportTypes: ['csv', 'txt', 'doc', 'pdf', 'json', 'xml', 'sql'],
-    //                 exportOptions: {
-    //                     fileName: 'ppp_data',
-    //                     ignoreColumn: [0]
-    //                 }
-    //             }
-    //         )
-    //      -->
+            $table.bootstrapTable(
+                {
+                    exportTypes: ['csv', 'txt', 'doc', 'pdf', 'json', 'xml', 'sql'],
+                    exportOptions: {
+                        fileName: 'ppp_data',
+                        ignoreColumn: [0]
+                    }
+                }
+            )
+         -->
 
 
 
