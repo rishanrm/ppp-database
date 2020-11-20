@@ -54,7 +54,7 @@ def data_under_150k():
 @main.route("/data-150k-and-up")
 def data_150k_and_up():
     csv_column_headers = HeaderNames.get_csv_column_headers(
-        Config.SOURCE_FILE_NAME_2)
+        Config.SOURCE_FILE_NAME)
     print(csv_column_headers)
     print("THOSE WERE COLUMN HEADERS")
 
