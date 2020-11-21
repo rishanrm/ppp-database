@@ -25,15 +25,22 @@
     
 
     // <!-- Get data -->
-    
-            function ajaxRequest(params) {
-                var url = '/params'
-                $.get(url + '?' + $.param(params.data))
-                .then(function (res) {
-                    params.success(res)
-                    console.log(res)
-                });
-            };
+        var $requestCount = 0
+        function ajaxRequest(params) {
+            console.log('Request Count: ' + $requestCount)
+            var url = '/params'
+            console.log("HERE ARE THE PARAMS IN THE REQUEST:")
+            console.log($.param(params.data))
+            console.log("END PARAMS")
+            $requestCount++;
+            // $.get(url + '?' + $.param(params.data))
+            $.get(url + '?' + 'search=&sort=loanrange&order=asc&offset=0&limit=10&filter=%7B%22state%22%3A%22AK%22%7D')
+            
+            .then(function (res) {
+                params.success(res)
+                console.log(res)
+            });
+        };
     
 
     // <!-- Format loan amount data -->        
