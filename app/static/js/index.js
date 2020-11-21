@@ -253,23 +253,23 @@ function sidebarMenuClick(element, eventName) {
          -->
 
         // <!-- Action before table loads -->
-        <!-- 
-        $('#table').on('pre-body.bs.table', function (e, arg1, arg2) {
-                    console.log('HELLO END')
-                    var userJobTitles9
-                    fetch("http://localhost:5000/data_test/businesstype.json")
-                    .then(response => response.json())
-                    .then(response => {
-                        console.log("JSON IS THIS:")
-                        console.log(response);
-                        userJobTitles9 = response
-                        console.log("ASSIGNED VARIABLE IS THIS:")
-                        console.log(userJobTitles9);
-                    }, error => {
-                        console.error(error);
-                    })
-                });   
-         -->
+        // <!-- 
+        // $('#table').on('pre-body.bs.table', function (e, arg1, arg2) {
+        //             console.log('HELLO END')
+        //             var userJobTitles9
+        //             fetch("http://localhost:5000/data_test/businesstype.json")
+        //             .then(response => response.json())
+        //             .then(response => {
+        //                 console.log("JSON IS THIS:")
+        //                 console.log(response);
+        //                 userJobTitles9 = response
+        //                 console.log("ASSIGNED VARIABLE IS THIS:")
+        //                 console.log(userJobTitles9);
+        //             }, error => {
+        //                 console.error(error);
+        //             })
+        //         });   
+        //  -->
 
         // <!-- Action on change to columns -->
         <!-- 
