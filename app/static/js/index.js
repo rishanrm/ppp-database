@@ -3,19 +3,20 @@
     // <!-- Get column options -->
     var colOptions;
     
-        function getColumnNames() {
-            console.log("IN GET COLUMNS")
-            // console.log(params)
-            var request = new XMLHttpRequest();
-            request.open('GET', 'http://localhost:5000/header_options/', false);  // `false` makes the request synchronous
-            request.send(null);
+    function getColumnNames() {
+        console.log("IN GET COLUMNS")
+        // console.log(params)
+        var request = new XMLHttpRequest();
+        request.open('GET', 'http://localhost:5000/header_options/', false);  // `false` makes the request synchronous
+        request.send(null);
 
-            if (request.status === 200) {
-                colOptions = JSON.parse(request.responseText);
-            }
+        if (request.status === 200) {
+            colOptions = JSON.parse(request.responseText);
         }
-        getColumnNames()
-    
+        console.log("Got column names.")
+    }
+    getColumnNames()
+
 
     // <!-- Reset button -->
     

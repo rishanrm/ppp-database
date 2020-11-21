@@ -1,5 +1,5 @@
 import json
-from flask import render_template, request, Blueprint, current_app, send_from_directory, jsonify, url_for, flash, redirect
+from flask import render_template, request, Blueprint, current_app, send_from_directory, jsonify, url_for, flash, redirect, send_file
 #from flask import Flask, url_for, render_template, redirect
 # from flask import url_for, redirect
 from ..forms import ContactForm
@@ -293,12 +293,31 @@ def data_test(column):
 
 @main.route('/header_options/')
 def header_options():
-    db = DatabaseConnection("local", Config.DB_NAME, Config.TABLE_NAME)
-    column_headers = HeaderNames.get_csv_column_headers(Config.SOURCE_FILE_NAME)
-    column_options = db.get_all_column_options(column_headers)
-    options_dict = db.format_column_options_json(column_headers, column_options)
-    print(column_headers)
-    return json.loads(json.dumps(options_dict))
+    # db = DatabaseConnection("local", Config.DB_NAME, Config.TABLE_NAME)
+    # column_headers = HeaderNames.get_csv_column_headers(Config.SOURCE_FILE_NAME)
+    # column_options = db.get_all_column_options(column_headers)
+    # options_dict = db.format_column_options_json(column_headers, column_options)
+    # print(column_headers)
+    # print("HERE IS THE JSON")
+    # # print(json.loads(json.dumps(options_dict)))
+    # print("THAT WAS THE JSON")
+
+    # return json.loads(json.dumps(options_dict))
+
+    # with open("data.json", "r") as read_file:
+    #     data = json.load(read_file)
+    # return data
+
+    print("In new header_options")
+    try:
+        return send_file('static\data\data.json')
+        # return send_file('images\open.jpg')
+        # THIS_FOLDER = os.path.dirname(os.path.abspath(__file__))
+        # my_file = os.path.join(THIS_FOLDER, '.\data\data.json')
+        return send_file(my_file, as_attachment=True)
+    except Exception as e:
+        return str(e)
+
 
 @main.route("/data", methods=['GET'])
 def data():
