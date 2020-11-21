@@ -54,14 +54,8 @@ barba.init({
         afterLeave({ next }) {
             var indexJS = $("script[src*='" + 'index.js' + "']")
             if (indexJS) {
-                console.log('found it!')
                 indexJS.remove();
-            } else {
-                let script = document.createElement('script');
-                script.src = '/js/index.js';
-                next.container.appendChild(script);
-                console.log("RAN INIT ON BARBA");
-        }
+            }
         },
 
         afterEnter({ next }) {
