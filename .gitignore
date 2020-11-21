@@ -1,6 +1,7 @@
 /venv
 /bs_table
 PPP Data 150k and up.csv
+app/static/data/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
