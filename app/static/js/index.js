@@ -28,6 +28,12 @@
         var $requestCount = 0
         console.log("COUNT REQUEST RESET TO 0")
         function ajaxRequest(params) {
+            
+            $('select[class*="bootstrap-table-filter-control-state"]').each(function(i) {
+                if ($(this).children('option[selected="selected"]').length != 0) {
+                    alert("has a selection");
+                }
+            });
             console.log('Request Count: ' + $requestCount)
             var url = '/params'
             console.log("HERE ARE THE PARAMS IN THE REQUEST:")
