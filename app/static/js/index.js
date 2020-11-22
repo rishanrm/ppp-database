@@ -31,7 +31,7 @@
             
             $('select[class*="bootstrap-table-filter-control-state"]').each(function(i) {
                 if ($(this).children('option[selected="selected"]').length != 0) {
-                    alert("has a selection");
+                    alert($(this).children('option[selected="selected"]').attr('value'));
                 }
             });
             console.log('Request Count: ' + $requestCount)
