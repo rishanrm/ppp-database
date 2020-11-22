@@ -23,6 +23,8 @@ function delay(n) {
     });
 }
 
+var indexJS = $("script[src*='" + 'index.js' + "']")
+
 barba.init({
     sync: true,
     transitions: [{
@@ -47,18 +49,20 @@ barba.init({
 
     }],
     
-
+    
     // Load index.js file before entering next page
     views: [{
         namespace: 'home',
         afterLeave({ next }) {
-            var indexJS = $("script[src*='" + 'index.js' + "']")
             if (indexJS) {
                 indexJS.remove();
             }
         },
 
         afterEnter({ next }) {
+            if (indexJS) {
+                console.log("FOUND IT");
+            }
             let script = document.createElement('script');
             script.src = '/js/index.js';
             next.container.appendChild(script);

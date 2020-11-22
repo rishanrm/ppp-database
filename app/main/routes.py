@@ -313,8 +313,8 @@ def header_options():
         return send_file('static\data\data.json')
         # return send_file('images\open.jpg')
         # THIS_FOLDER = os.path.dirname(os.path.abspath(__file__))
-        # my_file = os.path.join(THIS_FOLDER, '.\data\data.json')
-        return send_file(my_file, as_attachment=True)
+        # # my_file = os.path.join(THIS_FOLDER, '.\data\data.json')
+        # return send_file(my_file, as_attachment=True)
     except Exception as e:
         return str(e)
 

@@ -141,6 +141,17 @@
             // indexScript2.setAttribute('src', 'js/test.js');
             // document.body.appendChild(indexScript2);
     </script>
+    <!-- <script>
+        var indexJS2 = $("script[src*='" + 'index.js' + "']")
+        if (indexJS2) {
+            indexJS2.remove();
+        }
+        
+        let script2 = document.createElement('script');
+        script2.src = '/js/index.js';
+        next.container.appendChild(script2);
+        console.log("ADDED JS DIRECT IN HTML");
+    </script> -->
 <script src="{{ url_for('static',filename='js/index.js') }}"></script>
 <!-- <script src="{{ url_for('static',filename='js/sidebar-menu-fix.js') }}"></script> -->
 

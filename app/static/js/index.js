@@ -26,20 +26,38 @@
 
     // <!-- Get data -->
         var $requestCount = 0
+        console.log("COUNT REQUEST RESET TO 0")
         function ajaxRequest(params) {
             console.log('Request Count: ' + $requestCount)
             var url = '/params'
             console.log("HERE ARE THE PARAMS IN THE REQUEST:")
             console.log($.param(params.data))
             console.log("END PARAMS")
-            $requestCount++;
             // $.get(url + '?' + $.param(params.data))
-            $.get(url + '?' + 'search=&sort=loanrange&order=asc&offset=0&limit=10&filter=%7B%22state%22%3A%22AK%22%7D')
+            var requestParams
+            var sortColumn = 'loanrange'
+            var filterColumn = 'state'
+            var filterValue = 'AK'
+            if ($requestCount == 0) {
+                requestParams = 'search=&sort='
+                                + sortColumn
+                                + '&order=asc&offset=0&limit=10&filter=%7B%22'
+                                + filterColumn
+                                + '%22%3A%22'
+                                + filterValue
+                                + '%22%7D'
+                console.log("Manual params:")
+                console.log(requestParams)
+            } else {
+                requestParams = $.param(params.data)
+            }
+            $.get(url + '?' + requestParams)
             
             .then(function (res) {
                 params.success(res)
                 console.log(res)
             });
+            $requestCount++;
         };
     
 
@@ -148,6 +166,8 @@
         $(function() {
             $resetButton.click(function () {
                 $table.bootstrapTable('destroy')
+                $requestCount = 0
+                console.log("REQUEST COUNT RESET TO 0 FROM RESET BUTTON")
                 $table.bootstrapTable()
             })
         })
