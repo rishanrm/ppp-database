@@ -1,6 +1,6 @@
 {% extends 'layout.html' %}
 {% block content %}
-
+<div class="changing-content" data-barba="container" data-barba-namespace="about">
     <div class="header">
         <div class="header-text">
             About the Paycheck Protection Program
@@ -31,115 +31,116 @@
 
 
 
-<div class="card-group">
-    <div class="col-sm-6 col-lg-4 col-xl-2 mb-4">
-        <div class="card text-center">
-            <img src="{{ url_for('static', filename='images/about-sba-logo.svg') }}" class="card-img-top" alt="SBA logo">
-            <div class="card-body">
-                <h5 class="card-title">SBA</h5>
-                <p class="card-text">The Small Business Administration (SBA) implements the PPP and has the most up-to-date information on the program:</p>
-                <a href="https://www.sba.gov/funding-programs/loans/coronavirus-relief-options/paycheck-protection-program" class="btn btn-primary" target="_blank">Go to the SBA</a>
+    <div class="card-group">
+        <div class="col-sm-6 col-lg-4 col-xl-2 mb-4">
+            <div class="card text-center">
+                <img src="{{ url_for('static', filename='images/about-sba-logo.svg') }}" class="card-img-top" alt="SBA logo">
+                <div class="card-body">
+                    <h5 class="card-title">SBA</h5>
+                    <p class="card-text">The Small Business Administration (SBA) implements the PPP and has the most up-to-date information on the program:</p>
+                    <a href="https://www.sba.gov/funding-programs/loans/coronavirus-relief-options/paycheck-protection-program" class="btn btn-primary" target="_blank">Go to the SBA</a>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="col-sm-6 col-lg-4 col-xl-2 mb-4">
-        <div class="card text-center">
-            <img src="{{ url_for('static', filename='images/about-treasury-logo.svg') }}" class="card-img-top"
-                alt="U.S. Treasury seal">
-            <div class="card-body">
-                <h5 class="card-title">U.S. Treasury</h5>
-                <p class="card-text">The U.S. Treasury Department supports the PPP. Here you can find loan reports and resources for program participants:</p>
-                <a href="https://home.treasury.gov/policy-issues/cares/assistance-for-small-businesses"
-                    class="btn btn-primary" target="_blank">Go to the Treasury</a>
+        <div class="col-sm-6 col-lg-4 col-xl-2 mb-4">
+            <div class="card text-center">
+                <img src="{{ url_for('static', filename='images/about-treasury-logo.svg') }}" class="card-img-top"
+                    alt="U.S. Treasury seal">
+                <div class="card-body">
+                    <h5 class="card-title">U.S. Treasury</h5>
+                    <p class="card-text">The U.S. Treasury Department supports the PPP. Here you can find loan reports and resources for program participants:</p>
+                    <a href="https://home.treasury.gov/policy-issues/cares/assistance-for-small-businesses"
+                        class="btn btn-primary" target="_blank">Go to the Treasury</a>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="col-sm-6 col-lg-4 col-xl-2 mb-4">
-        <div class="card text-center">
-            <img src="{{ url_for('static', filename='images/about-ap-logo.svg') }}" class="card-img-top"
-                alt="AP logo">
-            <div class="card-body">
-                <h5 class="card-title">Associated Press</h5>
-                <p class="card-text">Read a basic overview of the most important elements of the PPP along with a set of frequently-asked questions:</p>
-                <a href="https://apnews.com/article/b0d2a36521f39010273317fa3562c2e4"
-                    class="btn btn-primary" target="_blank">Go to the AP</a>
+        <div class="col-sm-6 col-lg-4 col-xl-2 mb-4">
+            <div class="card text-center">
+                <img src="{{ url_for('static', filename='images/about-ap-logo.svg') }}" class="card-img-top"
+                    alt="AP logo">
+                <div class="card-body">
+                    <h5 class="card-title">Associated Press</h5>
+                    <p class="card-text">Read a basic overview of the most important elements of the PPP along with a set of frequently-asked questions:</p>
+                    <a href="https://apnews.com/article/b0d2a36521f39010273317fa3562c2e4"
+                        class="btn btn-primary" target="_blank">Go to the AP</a>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="col-sm-6 col-lg-4 col-xl-2 mb-4">
-        <div class="card text-center">
-            <img src="{{ url_for('static', filename='images/about-wapo-logo.svg') }}" class="card-img-top"
-                alt="Washington Post logo">
-            <div class="card-body">
-                <h5 class="card-title">Washington Post</h5>
-                <p class="card-text">See a map of where PPP loan recipients are based across the country in this searchable data visualization:</p>
-                <a href="https://www.washingtonpost.com/graphics/2020/business/sba-ppp-data/"
-                    class="btn btn-primary" target="_blank">Go to the Post</a>
+        <div class="col-sm-6 col-lg-4 col-xl-2 mb-4">
+            <div class="card text-center">
+                <img src="{{ url_for('static', filename='images/about-wapo-logo.svg') }}" class="card-img-top"
+                    alt="Washington Post logo">
+                <div class="card-body">
+                    <h5 class="card-title">Washington Post</h5>
+                    <p class="card-text">See a map of where PPP loan recipients are based across the country in this searchable data visualization:</p>
+                    <a href="https://www.washingtonpost.com/graphics/2020/business/sba-ppp-data/"
+                        class="btn btn-primary" target="_blank">Go to the Post</a>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="col-sm-6 col-lg-4 col-xl-2 mb-4">
-        <div class="card text-center">
-            <img src="{{ url_for('static', filename='images/about-congress-logo.png') }}" class="card-img-top"
-                alt="Congress seal">
-            <div class="card-body">
-                <h5 class="card-title">Legal Text</h5>
-                <p class="card-text">See the final text of the Coronavirus Aid, Relief, and Economic Security (CARES) Act, including Section 1102 which defines the PPP:</p>
-                <a href="https://www.congress.gov/116/bills/hr748/BILLS-116hr748enr.pdf"
-                    class="btn btn-primary" target="_blank">Go to the bill</a>
+        <div class="col-sm-6 col-lg-4 col-xl-2 mb-4">
+            <div class="card text-center">
+                <img src="{{ url_for('static', filename='images/about-congress-logo.png') }}" class="card-img-top"
+                    alt="Congress seal">
+                <div class="card-body">
+                    <h5 class="card-title">Legal Text</h5>
+                    <p class="card-text">See the final text of the Coronavirus Aid, Relief, and Economic Security (CARES) Act, including Section 1102 which defines the PPP:</p>
+                    <a href="https://www.congress.gov/116/bills/hr748/BILLS-116hr748enr.pdf"
+                        class="btn btn-primary" target="_blank">Go to the bill</a>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="col-sm-6 col-lg-4 col-xl-2 mb-4">
-        <div class="card text-center">
-            <img src="{{ url_for('static', filename='images/about-data-logo.svg') }}" class="card-img-top"
-                alt="Data logo">
-            <div class="card-body">
-                <h5 class="card-title">PPP Data</h5>
-                <p class="card-text">Explore the data on your own by downloading it directly from the U.S. Treasury, including the option to see the data by state:</p>
-                <a href="https://home.treasury.gov/policy-issues/cares-act/assistance-for-small-businesses/sba-paycheck-protection-program-loan-level-data"
-                    class="btn btn-primary" target="_blank">Go to the data</a>
+        <div class="col-sm-6 col-lg-4 col-xl-2 mb-4">
+            <div class="card text-center">
+                <img src="{{ url_for('static', filename='images/about-data-logo.svg') }}" class="card-img-top"
+                    alt="Data logo">
+                <div class="card-body">
+                    <h5 class="card-title">PPP Data</h5>
+                    <p class="card-text">Explore the data on your own by downloading it directly from the U.S. Treasury, including the option to see the data by state:</p>
+                    <a href="https://home.treasury.gov/policy-issues/cares-act/assistance-for-small-businesses/sba-paycheck-protection-program-loan-level-data"
+                        class="btn btn-primary" target="_blank">Go to the data</a>
+                </div>
             </div>
+        </div>
+
+        <div class="container">
+            <!-- <p>The Paycheck Protection Program (PPP) is a loan program aimed at helping U.S. businesses impacted by the
+                Coronavirus crisis. Under the auspices of the Small Business Administration and the U.S. Treasury Department,
+                loans were provided to companies via the U.S. banking system. These loans had the potential to be forgiven if
+                they were used toward certain expenses, primarily payroll, to incentivize business owners to retain employees.
+            </p>
+            <p>See the resources below to learn more:</p> -->
+            <p class="about-disclaimer">Note: This site is not affiliated with any government agency or news organization.</p>
         </div>
     </div>
 
-    <div class="container">
-        <!-- <p>The Paycheck Protection Program (PPP) is a loan program aimed at helping U.S. businesses impacted by the
-            Coronavirus crisis. Under the auspices of the Small Business Administration and the U.S. Treasury Department,
-            loans were provided to companies via the U.S. banking system. These loans had the potential to be forgiven if
-            they were used toward certain expenses, primarily payroll, to incentivize business owners to retain employees.
-        </p>
-        <p>See the resources below to learn more:</p> -->
-        <p class="about-disclaimer">Note: This site is not affiliated with any government agency or news organization.</p>
+    <!-- <div class="row" style="background-color: burlywood;">
+        <div class="col-sm-6 col-md-4 col-lg-2">1</div>
+        <div class="col-sm-6 col-md-4 col-lg-2">1</div>
+        <div class="col-sm-6 col-md-4 col-lg-2">1</div>
+        <div class="col-sm-6 col-md-4 col-lg-2">1</div>
+        <div class="col-sm-6 col-md-4 col-lg-2">1</div>
+        <div class="col-sm-6 col-md-4 col-lg-2">1</div>
     </div>
+
+
+    SBA Website:
+    https://www.sba.gov/funding-programs/loans/coronavirus-relief-options/paycheck-protection-program
+
+    Treasury:
+    https://home.treasury.gov/policy-issues/cares/assistance-for-small-businesses
+
+    Associated Press Q&A:
+    https://apnews.com/article/b0d2a36521f39010273317fa3562c2e4
+
+    Washington Post
+    https://www.washingtonpost.com/graphics/2020/business/sba-ppp-data/
+
+    Text of Bill: SEC. 1102.
+    https://www.congress.gov/116/bills/hr748/BILLS-116hr748enr.pdf
+
+    PPP Data:
+    https://home.treasury.gov/policy-issues/cares-act/assistance-for-small-businesses/sba-paycheck-protection-program-loan-level-data
+    -->
 </div>
-
-<!-- <div class="row" style="background-color: burlywood;">
-    <div class="col-sm-6 col-md-4 col-lg-2">1</div>
-    <div class="col-sm-6 col-md-4 col-lg-2">1</div>
-    <div class="col-sm-6 col-md-4 col-lg-2">1</div>
-    <div class="col-sm-6 col-md-4 col-lg-2">1</div>
-    <div class="col-sm-6 col-md-4 col-lg-2">1</div>
-    <div class="col-sm-6 col-md-4 col-lg-2">1</div>
-</div>
-
-
-SBA Website:
-https://www.sba.gov/funding-programs/loans/coronavirus-relief-options/paycheck-protection-program
-
-Treasury:
-https://home.treasury.gov/policy-issues/cares/assistance-for-small-businesses
-
-Associated Press Q&A:
-https://apnews.com/article/b0d2a36521f39010273317fa3562c2e4
-
-Washington Post
-https://www.washingtonpost.com/graphics/2020/business/sba-ppp-data/
-
-Text of Bill: SEC. 1102.
-https://www.congress.gov/116/bills/hr748/BILLS-116hr748enr.pdf
-
-PPP Data:
-https://home.treasury.gov/policy-issues/cares-act/assistance-for-small-businesses/sba-paycheck-protection-program-loan-level-data
--->
 {% endblock content %}

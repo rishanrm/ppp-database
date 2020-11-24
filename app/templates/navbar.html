@@ -1,51 +1,53 @@
-<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/navbar.css') }}">
-<div class="header"></div>
-<input type="checkbox" class="openSidebarMenu" id="openSidebarMenu" onclick="sidebarMenuClick()">
-<label for="openSidebarMenu" class="sidebarIconToggle">
-    <div class="menuIcon diagonal part-1"></div>
-    <div class="menuIcon horizontal"></div>
-    <div class="menuIcon diagonal part-2"></div>
-</label>
+<div class="changing-content" data-barba="container" data-barba-namespace="navbar">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/navbar.css') }}">
+    <div class="header"></div>
+    <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu" onclick="sidebarMenuClick()">
+    <label for="openSidebarMenu" class="sidebarIconToggle">
+        <div class="menuIcon diagonal part-1"></div>
+        <div class="menuIcon horizontal"></div>
+        <div class="menuIcon diagonal part-2"></div>
+    </label>
 
-<div id="sidebarMenu">
-    <div class="sidebarMenuInner currentTopItem">
-        <a class="current" href="https://vanila.io" target="_blank">Company</a>
-        <a href="https://instagram.com/plavookac" target="_blank">Instagram</a>
-        <a href="https://twitter.com/plavookac" target="_blank">Twitter</a>
-        <a href="https://www.youtube.com/channel/UCDfZM0IK6RBgud8HYGFXAJg" target="_blank">YouTube</a>
-        <a href="https://www.linkedin.com/in/plavookac/" target="_blank">Linkedin</a>
+    <div id="sidebarMenu">
+        <div class="sidebarMenuInner currentTopItem">
+            <a class="current" href="https://vanila.io" target="_blank">Company</a>
+            <a href="https://instagram.com/plavookac" target="_blank">Instagram</a>
+            <a href="https://twitter.com/plavookac" target="_blank">Twitter</a>
+            <a href="https://www.youtube.com/channel/UCDfZM0IK6RBgud8HYGFXAJg" target="_blank">YouTube</a>
+            <a href="https://www.linkedin.com/in/plavookac/" target="_blank">Linkedin</a>
+        </div>
     </div>
+
+    <script>
+        var checkbox = document.querySelector("input[id=openSidebarMenu]");
+        document.addEventListener('click', function (e) {
+            e = e || window.event;
+            var target = e.target || e.srcElement;
+            if ((target.getAttribute("id") != "sidebarMenu" && target.getAttribute("id") != "openSidebarMenu") && document.getElementById("openSidebarMenu").checked == true) {
+                document.getElementById("openSidebarMenu").checked = false;
+                sidebarMenuClick(checkbox, 'change');
+            };
+            if (target.getAttribute("id") == "openSidebarMenu" && document.getElementById("openSidebarMenu").checked == false) {
+                document.getElementById("openSidebarMenu").checked = false;
+                sidebarMenuClick(checkbox, 'change');
+            };
+        }, false);
+
+        function sidebarMenuClick(element, eventName) {
+            var manualEvent = document.createEvent("HTMLEvents");
+            manualEvent.initEvent(eventName, false, true);
+            element.dispatchEvent(manualEvent);
+            }
+
+        var div = document.createElement('div');
+        div.id = 'left-nav-cover';
+        document.getElementsByTagName('body')[0].appendChild(div);
+        checkbox.addEventListener('change', function () {
+            if (this.checked) {
+                div.innerHTML = "<div id='left-nav-cover-inner'></div>";
+            } else {
+                div.removeChild(document.getElementById("left-nav-cover-inner"));
+            }
+        });
+    </script>
 </div>
-
-<script>
-    var checkbox = document.querySelector("input[id=openSidebarMenu]");
-    document.addEventListener('click', function (e) {
-        e = e || window.event;
-        var target = e.target || e.srcElement;
-        if ((target.getAttribute("id") != "sidebarMenu" && target.getAttribute("id") != "openSidebarMenu") && document.getElementById("openSidebarMenu").checked == true) {
-            document.getElementById("openSidebarMenu").checked = false;
-            sidebarMenuClick(checkbox, 'change');
-        };
-        if (target.getAttribute("id") == "openSidebarMenu" && document.getElementById("openSidebarMenu").checked == false) {
-            document.getElementById("openSidebarMenu").checked = false;
-            sidebarMenuClick(checkbox, 'change');
-        };
-    }, false);
-
-    function sidebarMenuClick(element, eventName) {
-        var manualEvent = document.createEvent("HTMLEvents");
-        manualEvent.initEvent(eventName, false, true);
-        element.dispatchEvent(manualEvent);
-        }
-
-    var div = document.createElement('div');
-    div.id = 'left-nav-cover';
-    document.getElementsByTagName('body')[0].appendChild(div);
-    checkbox.addEventListener('change', function () {
-        if (this.checked) {
-            div.innerHTML = "<div id='left-nav-cover-inner'></div>";
-        } else {
-            div.removeChild(document.getElementById("left-nav-cover-inner"));
-        }
-    });
-</script>
