@@ -1,4 +1,13 @@
+for (let i = 0; i < 10; i++) {
+    callTable(i)
+}
 
+function callTable(i) {
+    setTimeout(function() {
+        $table.bootstrapTable();
+        console.log('Table called time #' + i);
+    }, 2000 * i);
+}
 
     // <!-- Get column options -->
     var colOptions;

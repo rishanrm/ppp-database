@@ -53,11 +53,11 @@ barba.init({
     // Load index.js file before entering next page
     views: [
         {namespace: 'data',
-        // afterLeave({ next }) {
-        //     if (indexJS) {
-        //         indexJS.remove();
-        //     }
-        // },
+        afterLeave({ next }) {
+            if (indexJS) {
+                indexJS.remove();
+            }
+        },
             afterLeave({ next }) {
                 if (indexJS) {
                     console.log("FOUND IT");
@@ -68,14 +68,14 @@ barba.init({
                 console.log("RAN INIT ON BARBA");
                 $table.bootstrapTable();
             },
-            // afterEnter({ next }) {
-            //     // console.log('BEFORE ENTER')
-            //     // let scriptz = document.createElement('script');
-            //     // scriptz.src = '/js/index.js';
-            //     // document.body.appendChild(scriptz);
-            //     // console.log('After enter')
-            //     $table.bootstrapTable();
-            // },
+            afterEnter({ next }) {
+                // console.log('BEFORE ENTER')
+                // let scriptz = document.createElement('script');
+                // scriptz.src = '/js/index.js';
+                // document.body.appendChild(scriptz);
+                // console.log('After enter')
+                // $table.bootstrapTable();
+            },
             // beforeEnter({ next }) {
             //     $table.bootstrapTable();
             // },
@@ -103,15 +103,6 @@ barba.init({
                         console.log("TIMEOUT FUNCTION");
                     }, 500);
                 });
-                // if (true) {
-                //     console.log("FOUND IT TRUE");
-                // } else {
-                //     console.log('that was made up')
-                // }
-            // setTimeout(() => {
-            //     $table.bootstrapTable();
-            //     console.log("TIMEOUT FUNCTION");
-            // }, 500);
             },
         }
     ]
