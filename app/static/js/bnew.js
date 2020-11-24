@@ -52,7 +52,7 @@ barba.init({
     
     // Load index.js file before entering next page
     views: [{
-        namespace: 'home',
+        namespace: 'data',
         afterLeave({ next }) {
             if (indexJS) {
                 indexJS.remove();
@@ -67,6 +67,7 @@ barba.init({
             script.src = '/js/index.js';
             next.container.appendChild(script);
             console.log("RAN INIT ON BARBA");
+            
             }, 
     }]
 })
