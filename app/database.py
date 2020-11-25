@@ -235,7 +235,7 @@ class DatabaseConnection():
         search_sql = sql.SQL('AND (')
         search_term_count = 0
         column_headers = HeaderNames.get_csv_column_headers(Config.SOURCE_FILE_NAME)
-        numeric_headers = ["loanamount", "jobsretained"]
+        numeric_headers = ["loanamount", "loanrange", "jobsretained"]
         string_headers = [column for column in column_headers if column not in numeric_headers]
 
         for header in string_headers:
@@ -251,21 +251,14 @@ class DatabaseConnection():
             search_term_count += 1
 
         for header in numeric_headers:
-            #Loan Amount search
-            search_term = search_term.strip("$").replace(',', '').split(".", 1)[0]
-            if search_term.isdigit():
-                search_sql += sql.SQL("OR {search_column} = {search_term} ").format(
-                    search_column = sql.Identifier(header),
-                    search_term = sql.Literal(search_term)
-                )
-
-        # # #Jobs Retained search
-        # jobs_search_term = search_term.strip(",")
-        # if jobs_search_term.isdigit():
-        #     search_sql += sql.SQL("OR jobsretained = {search_term} ").format(
-        #         search_column = sql.Identifier(header),
-        #         search_term = sql.Literal(jobs_search_term)
-        #     )
+            if header in column_headers:
+                #Loan Amount search
+                search_term = search_term.strip("$").replace(',', '').split(".", 1)[0]
+                if search_term.isdigit():
+                    search_sql += sql.SQL("OR {search_column} = {search_term} ").format(
+                        search_column = sql.Identifier(header),
+                        search_term = sql.Literal(search_term)
+                    )
 
         search_sql += sql.SQL(') ')
         print (search_sql)
