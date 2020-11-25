@@ -16,12 +16,11 @@ body {
 }
 
 .source {
-  margin-top: -1vh;
   margin-left: 10vw;
   margin-right: 10vw;
-  margin-bottom: 4vh;
   padding-left: 5px;
   padding-right: 5px;
+  padding-bottom: 3vh;
   font-style: italic;
   font-size: smaller;
   -webkit-box-sizing: unset !important;

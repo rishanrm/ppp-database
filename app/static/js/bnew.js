@@ -85,6 +85,33 @@ barba.init({
                 //     }, 500);
                 // });
             },
+        },
+        {namespace: 'contact',
+            beforeEnter({ next }) {
+                const myPromise = new Promise((resolve, reject) => {
+                    let script = document.createElement('script');
+                    script.src = 'https://www.google.com/recaptcha/api.js';
+                    next.container.appendChild(script);
+                    resolve("Success!")
+                })
+                function onSubmit(token) {
+                    document.getElementById("demo-form").submit();
+                    }
+                const myPromise2 = new Promise((resolve, reject) => {
+                    let script2 = document.createElement('script');
+                    script2.src = 'https://www.google.com/recaptcha/api.js?render=reCAPTCHA_site_key';
+                    next.container.appendChild(script2);
+                    resolve("Success!")
+                })
+                function onClick(e) {
+                    e.preventDefault();
+                    grecaptcha.ready(function () {
+                        grecaptcha.execute('reCAPTCHA_site_key', { action: 'submit' }).then(function (token) {
+                            // Add your logic to submit to your backend server here.
+                        });
+                    });
+                }
+            }
         }
     ]
 })

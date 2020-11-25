@@ -1,10 +1,9 @@
 .source{
-    margin-top: -1vh;
     margin-left: 10vw;
     margin-right: 10vw;
-    margin-bottom: $footer-height + 1vh;
     padding-left: 5px;
-    padding-right: 5px;    
+    padding-right: 5px;
+    padding-bottom: $footer-height;    
     font-style: italic;
     font-size: smaller;
     box-sizing: unset !important;

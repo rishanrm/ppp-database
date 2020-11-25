@@ -205,11 +205,11 @@
 
 
 
-	<!-- BARBA.JS -->
+<!-- BARBA.JS -->
 	<script src="https://unpkg.com/@barba/core"></script>
 	
 	
-	<!-- GSAP -->
+<!-- GSAP -->
 	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script> -->
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
@@ -223,10 +223,33 @@
 	        // }
 	</script>
 
-	<script src="{{ url_for('static',filename='js/bnew.js') }}"></script>
+<!-- RECAPTCHA -->
+	<script src="https://www.google.com/recaptcha/api.js"></script>
+	
+	<script>
+		function onSubmit(token) {
+			document.getElementById("demo-form").submit();
+		}
+	</script>
+	
+	<script src="https://www.google.com/recaptcha/api.js?render=reCAPTCHA_site_key"></script>
+	
+	<script>
+		function onClick(e) {
+			e.preventDefault();
+			grecaptcha.ready(function () {
+				grecaptcha.execute('reCAPTCHA_site_key', { action: 'submit' }).then(function (token) {
+					// Add your logic to submit to your backend server here.
+				});
+			});
+		}
+	</script>
 
+
+	<script src="{{ url_for('static',filename='js/bnew.js') }}"></script>
+	<script src="{{ url_for('static',filename='js/index.js') }}"></script>
 	<!-- <script src="{{ url_for('static',filename='js/sidebar-menu-fix.js') }}"></script> -->
 
-	<script src="{{ url_for('static',filename='js/index.js') }}"></script>
+
 </body>
 </html>
