@@ -5,7 +5,7 @@ for (let i = 0; i < 10; i++) {
 function callTable(i) {
     setTimeout(function() {
         $table.bootstrapTable();
-        console.log('Table called time #' + i);
+        // console.log('Table called time #' + i);
     }, 2000 * i);
 }
 
@@ -34,45 +34,76 @@ function callTable(i) {
     
 
     // <!-- Get data -->
-        var $requestCount = 0
+        var requestCount = 0
+        var initial_state = true
+        var requestParams
+        var initialSortColumn = 'loanrange'
+        var initialFilterColumn = 'state'
+        var initialFilterValue = 'AK'
+        var initialStateAddition
         console.log("COUNT REQUEST RESET TO 0")
         function ajaxRequest(params) {
-            
             $('select[class*="bootstrap-table-filter-control-state"]').each(function(i) {
                 if ($(this).children('option[selected="selected"]').length != 0) {
-                    alert($(this).children('option[selected="selected"]').attr('value'));
+                    // alert($(this).children('option[selected="selected"]').attr('value'));
+                    console.log('there\'s a state!')
+                    // console.log($(this).children('option[selected="selected"]').attr('value'))
+                    // console.log(initialFilterValue)
+                    // console.log(($(this).children('option[selected="selected"]').attr('value') != initialFilterValue))
+                    if ($(this).children('option[selected="selected"]').attr('value') != initialFilterValue) {
+                        initial_state = false;
+                        console.log('Initial state set to false because a new state is chosen.');
+                    }
+                } else {
+                    initial_state = false;
+                    console.log('Initial state is false because no state is chosen.')
                 }
             });
-            console.log('Request Count: ' + $requestCount)
+            console.log('Request Count: ' + requestCount)
             var url = '/params'
             console.log("HERE ARE THE PARAMS IN THE REQUEST:")
             console.log($.param(params.data))
             console.log("END PARAMS")
             // $.get(url + '?' + $.param(params.data))
-            var requestParams
-            var sortColumn = 'loanrange'
-            var filterColumn = 'state'
-            var filterValue = 'AK'
-            if ($requestCount == 0) {
+
+            if (requestCount == 0) {
                 requestParams = 'search=&sort='
-                                + sortColumn
+                                + initialSortColumn
                                 + '&order=asc&offset=0&limit=10&filter=%7B%22'
-                                + filterColumn
+                                + initialFilterColumn
                                 + '%22%3A%22'
-                                + filterValue
+                                + initialFilterValue
                                 + '%22%7D'
                 console.log("Manual params:")
                 console.log(requestParams)
             } else {
+                if (initial_state){
+                    console.log('STILL INITIAL STATE')
+                    console.log($.param(params.data))
+                    console.log($.param(params.data).includes('filter'))
+                    if ($.param(params.data).includes('filter')){
+                        initialStateAddition = '%2C%22' + initialFilterColumn + '%22%3A%22' + initialFilterValue + '%22'
+                    } else {
+                        initialStateAddition = '&filter=%7B%22' + initialFilterColumn + '%22%3A%22' + initialFilterValue + '%22%7D'
+                    }
+                    console.log()
+                    console.log()
+                    console.log()
+                    console.log()
+                    requestParams = $.param(params.data).substring(0, $.param(params.data).length - 3) + initialStateAddition + $.param(params.data).substring($.param(params.data).length - 3, $.param(params.data).length);
+                } else {
+                console.log('NOT INITIAL STATE ANYMORE')
                 requestParams = $.param(params.data)
+                }
             }
+            console.log('The request params are: \r\n' + requestParams)
             $.get(url + '?' + requestParams)
             
             .then(function (res) {
                 params.success(res)
                 console.log(res)
             });
-            $requestCount++;
+            requestCount++;
         };
     
 
@@ -181,7 +212,8 @@ function callTable(i) {
         $(function() {
             $resetButton.click(function () {
                 $table.bootstrapTable('destroy')
-                $requestCount = 0
+                requestCount = 0
+                initial_state = true
                 console.log("REQUEST COUNT RESET TO 0 FROM RESET BUTTON")
                 $table.bootstrapTable()
             })
