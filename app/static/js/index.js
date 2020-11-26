@@ -83,14 +83,11 @@ function callTable(i) {
                     console.log($.param(params.data).includes('filter'))
                     if ($.param(params.data).includes('filter')){
                         initialStateAddition = '%2C%22' + initialFilterColumn + '%22%3A%22' + initialFilterValue + '%22'
+                        requestParams = $.param(params.data).substring(0, $.param(params.data).length - 3) + initialStateAddition + $.param(params.data).substring($.param(params.data).length - 3, $.param(params.data).length);
                     } else {
                         initialStateAddition = '&filter=%7B%22' + initialFilterColumn + '%22%3A%22' + initialFilterValue + '%22%7D'
+                        requestParams = $.param(params.data) + initialStateAddition;
                     }
-                    console.log()
-                    console.log()
-                    console.log()
-                    console.log()
-                    requestParams = $.param(params.data).substring(0, $.param(params.data).length - 3) + initialStateAddition + $.param(params.data).substring($.param(params.data).length - 3, $.param(params.data).length);
                 } else {
                 console.log('NOT INITIAL STATE ANYMORE')
                 requestParams = $.param(params.data)
