@@ -211,17 +211,28 @@ def specific_person():
 
 @main.route('/params/')
 def params():
+    print("REQUEST START:")
+    print(request.args)
+    if "filter" in request.args:
+        print(request.args["filter"])
+        # print(type(request.args["filter"]))
+        # str = '{"loanrange":"b $2-5 million","state":"AK"}'
+        substr = 'state":"'
+        state_index = request.args["filter"].index(substr)+len(substr)
+        # print(str)
+        # print(request.args["filter"].index(substr))
+        print(request.args["filter"][state_index:state_index+2])
+    else:
+        print("NO STATE")
 
-  with current_app.app_context():
-#    db = DatabaseInitialization.initialize_database("local")
-    db = DatabaseConnection("local", Config.DB_NAME, Config.TABLE_NAME)
+    print("REQUEST END")
+
+    with current_app.app_context():
+        db = DatabaseConnection("local", Config.DB_NAME, Config.TABLE_NAME)
+#        db = DatabaseInitialization.initialize_database("local")
 
     total_count = db.fetch_total_count()
     total_count_str = db.get_json_component(total_count, "total")
-
-    print("REQUEST START:")
-    print(request.args)
-    print("REQUEST END")
 
     filtered_results_count = db.run_sql_query(request.args, ["search", "filter"], "count")
     filtered_count_str = "\"total\": " + str(filtered_results_count)
