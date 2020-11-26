@@ -93,7 +93,8 @@ function callTable(i) {
             }
         }
         console.log('The request params are: \r\n' + requestParams)
-        $.get(url + '?' + requestParams)
+        console.log(url + '?' + 'url=' + window.location.href + '&' + requestParams)
+        $.get(url + '?' + 'url=' + window.location.href + '&' + requestParams)
         
         .then(function (res) {
             params.success(res)

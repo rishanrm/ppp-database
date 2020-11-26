@@ -211,6 +211,9 @@ def specific_person():
 
 @main.route('/params/')
 def params():
+    print(request.args["url"])
+    db_name = request.args["url"].split('//')[1].split('/')[1]
+
     print("REQUEST START:")
     print(request.args)
     if "filter" in request.args:
