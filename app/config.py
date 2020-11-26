@@ -42,6 +42,9 @@ class Config:
 #    SQLALCHEMY_DATABASE_URI = f'postgresql://{POSTGRES_USER_FOR_LOCAL}:{POSTGRES_PASSWORD_FOR_LOCAL}@localhost/{DB_NAME}'
 #    SQLALCHEMY_TRACK_MODIFICATIONS = False
 
+
+    NUMERIC_HEADERS = ["loanamount", "loanrange", "jobsretained"]
+
     """CONTACT FORM"""
     CONTACT_EMAIL_ADDR = os.environ.get("CONTACT_EMAIL_ADDR")
     CONTACT_EMAIL_PASS = os.environ.get("CONTACT_EMAIL_PASS")

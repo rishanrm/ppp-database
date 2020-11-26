@@ -235,7 +235,7 @@ class DatabaseConnection():
         search_sql = sql.SQL('AND (')
         search_term_count = 0
         column_headers = HeaderNames.get_csv_column_headers(Config.SOURCE_FILE_NAME)
-        numeric_headers = ["loanamount", "loanrange", "jobsretained"]
+        numeric_headers = Config.NUMERIC_HEADERS
         string_headers = [column for column in column_headers if column not in numeric_headers]
 
         for header in string_headers:
