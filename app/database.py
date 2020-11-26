@@ -234,7 +234,7 @@ class DatabaseConnection():
 
         search_sql = sql.SQL('AND (')
         search_term_count = 0
-        column_headers = HeaderNames.get_csv_column_headers(Config.SOURCE_FILE_NAME)
+        column_headers = DatabaseNames.get_csv_column_headers(Config.SOURCE_FILE_NAME)
         numeric_headers = Config.NUMERIC_HEADERS
         string_headers = [column for column in column_headers if column not in numeric_headers]
 
@@ -352,7 +352,7 @@ class DatabaseConnection():
     @staticmethod
     def build_table_json(results_len_str, total_count_str, results_str):
 
-#        results_len_str = "\"total\": " + str(results_len)
+        #results_len_str = "\"total\": " + str(results_len)
         table_json_str = "{ " + results_len_str + ", " + total_count_str + ", " + results_str + " }"
         return table_json_str
 
@@ -591,9 +591,9 @@ class DatabaseInitialization():
                     sentiment	    NUMERIC(7, 3));"""\
                 .format(table_name=table_name))
         else:
-            csv_headers = HeaderNames.get_csv_column_headers(
+            csv_headers = DatabaseNames.get_csv_column_headers(
                 Config.SOURCE_FILE_NAME)
-            sql_column_names = HeaderNames.format_sql_column_names(csv_headers)
+            sql_column_names = DatabaseNames.format_sql_column_names(csv_headers)
             create_table_sql_query =\
                 f"CREATE TABLE IF NOT EXISTS {table_name}(\n"
             for i in range(len(sql_column_names)):
@@ -638,7 +638,7 @@ class DatabaseInitialization():
         db.close_connection()
 
 """Functionality for initial data population in a database"""
-class HeaderNames():
+class DatabaseNames():
 
     @staticmethod
     def get_csv_column_headers(source_file_name=Config.SOURCE_FILE_NAME):

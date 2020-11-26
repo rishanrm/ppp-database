@@ -8,7 +8,7 @@ from ..forms import ContactForm
 from app import db
 #from app import app
 from app.config import Config
-from app.database import DatabaseConnection, DatabaseInitialization, HeaderNames
+from app.database import DatabaseConnection, DatabaseInitialization, DatabaseNames
 import os
 import smtplib
 import ssl
@@ -45,7 +45,7 @@ def data_under_150k():
     #     results_str = db.get_json_component(results_data, "data")
 
     #     table_data_json = db.build_table_json(total_count_str, len(results_data), results_str)
-    csv_column_headers = HeaderNames.get_csv_column_headers(Config.SOURCE_FILE_NAME)
+    csv_column_headers = DatabaseNames.get_csv_column_headers(Config.SOURCE_FILE_NAME)
     print(csv_column_headers)
     print("THOSE WERE COLUMN HEADERS")
 
@@ -53,7 +53,7 @@ def data_under_150k():
 
 @main.route("/data-150k-and-up")
 def data_150k_and_up():
-    csv_column_headers = HeaderNames.get_csv_column_headers(
+    csv_column_headers = DatabaseNames.get_csv_column_headers(
         Config.SOURCE_FILE_NAME)
     print(csv_column_headers)
     print("THOSE WERE COLUMN HEADERS")
@@ -245,7 +245,7 @@ def params():
 
     table_data_json = db.build_table_json(filtered_count_str, total_count_str, results_str)
     print(type(table_data_json))
-    csv_column_headers = HeaderNames.get_csv_column_headers(Config.SOURCE_FILE_NAME)
+    csv_column_headers = DatabaseNames.get_csv_column_headers(Config.SOURCE_FILE_NAME)
 
     print("PARAMS ROUTE")
     print(type(json.loads(table_data_json)))
@@ -300,7 +300,7 @@ def data_test(column):
     # """Method for returning all data for all columns at once:
     #    This will not work until you figure out how to load this
     #    before the table loads."""
-    # column_headers = HeaderNames.get_csv_column_headers(Config.SOURCE_FILE_NAME)
+    # column_headers = DatabaseNames.get_csv_column_headers(Config.SOURCE_FILE_NAME)
     # column_options = db.get_all_column_options(column_headers)
     # options_dict = db.format_column_options_json(column_headers, column_options)
     # return json.loads(json.dumps(options_dict))
@@ -308,7 +308,7 @@ def data_test(column):
 @main.route('/header_options/')
 def header_options():
     # db = DatabaseConnection("local", Config.DB_NAME, Config.TABLE_NAME)
-    # column_headers = HeaderNames.get_csv_column_headers(Config.SOURCE_FILE_NAME)
+    # column_headers = DatabaseNames.get_csv_column_headers(Config.SOURCE_FILE_NAME)
     # column_options = db.get_all_column_options(column_headers)
     # options_dict = db.format_column_options_json(column_headers, column_options)
     # print(column_headers)
@@ -373,7 +373,7 @@ def home():
   #     results_str = db.get_json_component(results_data, "data")
 
   #     table_data_json = db.build_table_json(total_count_str, len(results_data), results_str)
-      csv_column_headers = HeaderNames.get_csv_column_headers(Config.SOURCE_FILE_NAME)
+      csv_column_headers = DatabaseNames.get_csv_column_headers(Config.SOURCE_FILE_NAME)
       print(csv_column_headers)
       print("THOSE WERE COLUMN HEADERS")
 
