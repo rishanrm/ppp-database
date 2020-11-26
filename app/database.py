@@ -665,6 +665,15 @@ class DatabaseNames():
         sql_columns = format_sql_column_names(headers)
         return sql_columns
 
+    @staticmethod
+    def get_postgres_name_root():
+        return os.path.basename(Config.SOURCE_FILE_NAME)\
+            .split(".")[0]\
+            .replace(" ", "_")\
+            .replace("-", "")\
+            .lower()
+        # DB_NAME = name_root + "_db"
+        # TABLE_NAME = name_root + "_table"
 
 """
 #p355491811298-swj734@gcp-sa-cloud-sql.iam.gserviceaccount.com
