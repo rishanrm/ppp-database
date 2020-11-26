@@ -246,7 +246,7 @@ class DatabaseConnection():
             search_sql += sql.SQL("{prefix} LOWER({search_column}) LIKE LOWER({search_term}) ").format(
                 prefix = sql.SQL(prefix),
                 search_column = sql.Identifier(header),
-                search_term = sql.Literal(search_term + '%%')
+                search_term=sql.Literal('%%' + search_term + '%%')
             )
             search_term_count += 1
 
