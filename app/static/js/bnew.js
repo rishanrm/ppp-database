@@ -61,17 +61,6 @@ barba.init({
                     console.log("RAN INIT ON BARBA RIGHT HERE");
                     resolve("Success!")
                 })
-                
-                // myPromise.then((successMessage) => {
-                //     $table.bootstrapTable();
-                //     console.log(successMessage)
-                // }).catch((message) => {
-                //     console.log("Error")
-                //     setTimeout(() => {
-                //         $table.bootstrapTable();
-                //         console.log("TIMEOUT FUNCTION");
-                //     }, 500);
-                // });
             },
         },
         {namespace: 'home',
@@ -121,8 +110,61 @@ barba.init({
                         });
                     });
                 }
-            }
-        }
+            },
+            afterLeave({ next }) {
+                const myPromise = new Promise((resolve, reject) => {
+                    let script = document.createElement('script');
+                    script.src = '/js/index.js';
+                    next.container.appendChild(script);
+                    console.log("RAN INIT ON BARBA RIGHT HERE");
+                    resolve("Success!")
+                })
+            },
+        },
+        {namespace: 'about',
+            afterLeave({ next }) {
+                const myPromise = new Promise((resolve, reject) => {
+                    let script = document.createElement('script');
+                    script.src = '/js/index.js';
+                    next.container.appendChild(script);
+                    console.log("RAN INIT ON BARBA RIGHT HERE");
+                    resolve("Success!")
+                })
+            },
+        },
+        {namespace: 'privacy',
+            afterLeave({ next }) {
+                const myPromise = new Promise((resolve, reject) => {
+                    let script = document.createElement('script');
+                    script.src = '/js/index.js';
+                    next.container.appendChild(script);
+                    console.log("RAN INIT ON BARBA RIGHT HERE");
+                    resolve("Success!")
+                })
+            },
+        },
+        {namespace: 'terms',
+            afterLeave({ next }) {
+                const myPromise = new Promise((resolve, reject) => {
+                    let script = document.createElement('script');
+                    script.src = '/js/index.js';
+                    next.container.appendChild(script);
+                    console.log("RAN INIT ON BARBA RIGHT HERE");
+                    resolve("Success!")
+                })
+            },
+        },
+        {namespace: 'sitemap',
+            afterLeave({ next }) {
+                const myPromise = new Promise((resolve, reject) => {
+                    let script = document.createElement('script');
+                    script.src = '/js/index.js';
+                    next.container.appendChild(script);
+                    console.log("RAN INIT ON BARBA RIGHT HERE");
+                    resolve("Success!")
+                })
+            },
+        },
     ]
 })
 
