@@ -45,20 +45,21 @@ def data_under_150k():
     #     results_str = db.get_json_component(results_data, "data")
 
     #     table_data_json = db.build_table_json(total_count_str, len(results_data), results_str)
-    csv_column_headers = DatabaseNames.get_csv_column_headers(Config.SOURCE_FILE_NAME)
-    print(csv_column_headers)
-    print("THOSE WERE COLUMN HEADERS")
+    # csv_column_headers = DatabaseNames.get_csv_column_headers(Config.SOURCE_FILE_NAME)
+    # print(csv_column_headers)
+    # print("THOSE WERE COLUMN HEADERS")
 
-    return render_template('data-under-150k.html', data="", headers = csv_column_headers)
+    return render_template('data-under-150k.html', data="", headers = Config.HEADERS_UNDER_150K)
 
 @main.route("/data-150k-and-up")
 def data_150k_and_up():
-    csv_column_headers = DatabaseNames.get_csv_column_headers(
-        Config.SOURCE_FILE_NAME)
-    print(csv_column_headers)
-    print("THOSE WERE COLUMN HEADERS")
+    # csv_column_headers = DatabaseNames.get_csv_column_headers(
+    #     Config.SOURCE_FILE_NAME)
+    # csv_column_headers
+    # print(csv_column_headers)
+    # print("THOSE WERE COLUMN HEADERS")
 
-    return render_template('data-150k-and-up.html', data="", headers=csv_column_headers)
+    return render_template('data-150k-and-up.html', data="", headers=Config.HEADERS_150K_AND_UP)
 
 @main.route("/about")
 def about():

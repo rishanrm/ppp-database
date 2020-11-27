@@ -6,9 +6,13 @@ class Config:
 #    SOURCE_FILE_NAME = 'data/test_data.csv'
 #    SOURCE_FILE_NAME = './test_data.csv'
     # SOURCE_FILE_NAME = './PPP Data up to 150K - RI.csv'
-    # SOURCE_FILE_NAME = './PPP Data 150k and up.csv'
+    SOURCE_FILE_NAME = './PPP Data 150k and up.csv'
     DB_NAME_ROOT_UNDER_150K = 'ppp_data_under_150k'
     DB_NAME_ROOT_150K_AND_UP = 'ppp_data_150k_and_up_080820'
+    HEADERS_UNDER_150K = ['loanamount', 'city', 'state', 'zip', 'naicscode', 'businesstype',
+                      'raceethnicity', 'gender', 'veteran', 'nonprofit', 'jobsretained', 'dateapproved', 'lender', 'cd']
+    HEADERS_150K_AND_UP = ['loanrange', 'businessname', 'address', 'city', 'state', 'zip', 'naicscode',
+                                'businesstype', 'raceethnicity', 'gender', 'veteran', 'nonprofit', 'jobsreported', 'dateapproved', 'lender', 'cd']
 
     """POSTGRES DATABASE RESET SETTINGS"""
     RESET_DB = False
@@ -30,13 +34,13 @@ class Config:
 
     POSTGRES_PORT_FOR_CLOUD = 5431
 
-    # POSTGRES_NAME_ROOT = os.path.basename(SOURCE_FILE_NAME)\
-    #     .split(".")[0]\
-    #     .replace(" ", "_")\
-    #     .replace("-", "")\
-    #     .lower()
-    # DB_NAME = POSTGRES_NAME_ROOT + "_db"
-    # TABLE_NAME = POSTGRES_NAME_ROOT + "_table"
+    POSTGRES_NAME_ROOT = os.path.basename(SOURCE_FILE_NAME)\
+        .split(".")[0]\
+        .replace(" ", "_")\
+        .replace("-", "")\
+        .lower()
+    DB_NAME = POSTGRES_NAME_ROOT + "_db"
+    TABLE_NAME = POSTGRES_NAME_ROOT + "_table"
 
 #    DB_URL = f"postgresql://localhost/{DB_NAME}"\
 #        + f"?user={POSTGRES_USER_FOR_LOCAL}"\

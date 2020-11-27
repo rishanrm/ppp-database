@@ -46,7 +46,7 @@ class DatabaseConnection():
             self.my_cursor = self.my_connection.cursor()
             self.database_name = database_name
             self.table_name = table_name
-            self.file_name = Config.SOURCE_FILE_NAME
+            # self.file_name = Config.SOURCE_FILE_NAME
             print("\nNew database connection active.")
         except (Exception, psycopg2.Error) as error:
             print("Error while fetching data from PostgreSQL", error)
@@ -647,6 +647,9 @@ class DatabaseNames():
             d_reader = csv.DictReader(f)
             headers = d_reader.fieldnames
             headers = [x.lower() for x in headers]
+            print("Headers:")
+            print(headers)
+            quit()
             return headers
 
     @staticmethod
@@ -666,8 +669,8 @@ class DatabaseNames():
         return sql_columns
 
     @staticmethod
-    def get_postgres_name_root():
-        return os.path.basename(Config.SOURCE_FILE_NAME)\
+    def postgres_name(name):
+        return name\
             .split(".")[0]\
             .replace(" ", "_")\
             .replace("-", "")\
