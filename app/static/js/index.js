@@ -36,12 +36,19 @@ function callTable(i) {
     var requestCount = 0
     var initial_state = true
     var requestParams
-    var initialSortColumn = 'loanrange'
+    var initialSortColumn
     var initialFilterColumn = 'state'
     var initialFilterValue = 'AK'
     var initialStateAddition
+
     console.log("COUNT REQUEST RESET TO 0")
     function ajaxRequest(params) {
+        if(window.location.href.includes('data-150k-and-up')) {
+            initialSortColumn = 'loanrange'
+        } else if(window.location.href.includes('data-under-150k')) {
+            initialSortColumn = 'loanamount'
+        }
+
         $('select[class*="bootstrap-table-filter-control-state"]').each(function(i) {
             if ($(this).children('option[selected="selected"]').length != 0) {
                 // alert($(this).children('option[selected="selected"]').attr('value'));

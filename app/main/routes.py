@@ -228,7 +228,7 @@ def params():
     sub_url = request.args["url"].split('//')[1].split('/')[1]
     if sub_url == "data-under-150k":
         db_name = Config.DB_NAME_ROOT_UNDER_150K
-        table_name = Config.DB_NAME_ROOT_UNDER_150K + state
+        table_name = Config.DB_NAME_ROOT_UNDER_150K + "_" + state.lower()
     elif sub_url == "data-150k-and-up":
         db_name = Config.DB_NAME_ROOT_150K_AND_UP
         table_name = Config.DB_NAME_ROOT_150K_AND_UP
