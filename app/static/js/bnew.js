@@ -53,16 +53,26 @@ barba.init({
     // Load index.js file before entering next page
     views: [
         {namespace: 'data',
-            // afterLeave({ next }) {
-            //     // if (indexJS) {
-            //     //     console.log("FOUND IT");
-            //     // }
-            //     let script = document.createElement('script');
-            //     script.src = '/js/index.js';
-            //     next.container.appendChild(script);
-            //     console.log("RAN INIT ON BARBA");
-            //     $table.bootstrapTable();
-            // },
+            afterLeave({ next }) {
+                const myPromise = new Promise((resolve, reject) => {
+                    let script = document.createElement('script');
+                    script.src = '/js/index.js';
+                    next.container.appendChild(script);
+                    console.log("RAN INIT ON BARBA RIGHT HERE");
+                    resolve("Success!")
+                })
+                
+                // myPromise.then((successMessage) => {
+                //     $table.bootstrapTable();
+                //     console.log(successMessage)
+                // }).catch((message) => {
+                //     console.log("Error")
+                //     setTimeout(() => {
+                //         $table.bootstrapTable();
+                //         console.log("TIMEOUT FUNCTION");
+                //     }, 500);
+                // });
+            },
         },
         {namespace: 'home',
             afterLeave({ next }) {
