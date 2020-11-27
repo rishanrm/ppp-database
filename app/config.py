@@ -7,7 +7,7 @@ class Config:
 #    SOURCE_FILE_NAME = './test_data.csv'
     # SOURCE_FILE_NAME = './PPP Data up to 150K - RI.csv'
     SOURCE_FILE_NAME = './PPP Data 150k and up.csv'
-    DB_NAME_ROOT_UNDER_150K = 'ppp_data_under_150k'
+    DB_NAME_ROOT_UNDER_150K = 'ppp_data_up_to_150k_080820'
     DB_NAME_ROOT_150K_AND_UP = 'ppp_data_150k_and_up_080820'
     HEADERS_UNDER_150K = ['loanamount', 'city', 'state', 'zip', 'naicscode', 'businesstype',
                       'raceethnicity', 'gender', 'veteran', 'nonprofit', 'jobsretained', 'dateapproved', 'lender', 'cd']

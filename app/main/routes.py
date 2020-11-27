@@ -212,31 +212,32 @@ def specific_person():
 
 @main.route('/params/')
 def params():
-    print(request.args["url"])
-    sub_url = request.args["url"].split('//')[1].split('/')[1]
+    state = ""
     db_name = ""
     table_name = ""
+
+    if "filter" in request.args:
+        print(request.args["filter"])
+        substr = 'state":"'
+        state_index = request.args["filter"].index(substr)+len(substr)
+        state = request.args["filter"][state_index:state_index+2]
+    else:
+        print("NO STATE")
+
+    print(request.args["url"])
+    sub_url = request.args["url"].split('//')[1].split('/')[1]
     if sub_url == "data-under-150k":
-        db_name = Config.DB_NAME_ROOT_UNDER_150K + "_db"
+        db_name = Config.DB_NAME_ROOT_UNDER_150K
+        table_name = Config.DB_NAME_ROOT_UNDER_150K + state
     elif sub_url == "data-150k-and-up":
-        db_name = Config.DB_NAME_ROOT_150K_AND_UP + "_db"
-        table_name = Config.DB_NAME_ROOT_150K_AND_UP + "_table"
+        db_name = Config.DB_NAME_ROOT_150K_AND_UP
+        table_name = Config.DB_NAME_ROOT_150K_AND_UP
     print(db_name)
     print(table_name)
 
     print("REQUEST START:")
     print(request.args)
-    if "filter" in request.args:
-        print(request.args["filter"])
-        # print(type(request.args["filter"]))
-        # str = '{"loanrange":"b $2-5 million","state":"AK"}'
-        substr = 'state":"'
-        state_index = request.args["filter"].index(substr)+len(substr)
-        # print(str)
-        # print(request.args["filter"].index(substr))
-        print(request.args["filter"][state_index:state_index+2])
-    else:
-        print("NO STATE")
+
 
     print("REQUEST END")
 
