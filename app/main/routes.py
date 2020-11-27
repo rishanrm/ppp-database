@@ -214,10 +214,15 @@ def specific_person():
 def params():
     print(request.args["url"])
     sub_url = request.args["url"].split('//')[1].split('/')[1]
+    db_name = ""
+    table_name = ""
     if sub_url == "data-under-150k":
-        db_name = Config.DB_NAME_UNDER_150K + "_db"
+        db_name = Config.DB_NAME_ROOT_UNDER_150K + "_db"
     elif sub_url == "data-150k-and-up":
-        db_name = Config.DB_NAME_150K_AND_UP + "_db"
+        db_name = Config.DB_NAME_ROOT_150K_AND_UP + "_db"
+        table_name = Config.DB_NAME_ROOT_150K_AND_UP + "_table"
+    print(db_name)
+    print(table_name)
 
     print("REQUEST START:")
     print(request.args)
@@ -236,7 +241,8 @@ def params():
     print("REQUEST END")
 
     with current_app.app_context():
-        db = DatabaseConnection("local", Config.DB_NAME, Config.TABLE_NAME)
+        db = DatabaseConnection("local", db_name, table_name)
+        # db = DatabaseConnection("local", Config.DB_NAME, Config.TABLE_NAME)
 #        db = DatabaseInitialization.initialize_database("local")
 
     total_count = db.fetch_total_count()
@@ -250,7 +256,7 @@ def params():
 
     table_data_json = db.build_table_json(filtered_count_str, total_count_str, results_str)
     print(type(table_data_json))
-    csv_column_headers = DatabaseNames.get_csv_column_headers(Config.SOURCE_FILE_NAME)
+    # csv_column_headers = DatabaseNames.get_csv_column_headers(Config.SOURCE_FILE_NAME)
 
     print("PARAMS ROUTE")
     print(type(json.loads(table_data_json)))
