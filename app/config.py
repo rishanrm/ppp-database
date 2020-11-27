@@ -30,13 +30,13 @@ class Config:
 
     POSTGRES_PORT_FOR_CLOUD = 5431
 
-    POSTGRES_NAME_ROOT = os.path.basename(SOURCE_FILE_NAME)\
-        .split(".")[0]\
-        .replace(" ", "_")\
-        .replace("-", "")\
-        .lower()
-    DB_NAME = POSTGRES_NAME_ROOT + "_db"
-    TABLE_NAME = POSTGRES_NAME_ROOT + "_table"
+    # POSTGRES_NAME_ROOT = os.path.basename(SOURCE_FILE_NAME)\
+    #     .split(".")[0]\
+    #     .replace(" ", "_")\
+    #     .replace("-", "")\
+    #     .lower()
+    # DB_NAME = POSTGRES_NAME_ROOT + "_db"
+    # TABLE_NAME = POSTGRES_NAME_ROOT + "_table"
 
 #    DB_URL = f"postgresql://localhost/{DB_NAME}"\
 #        + f"?user={POSTGRES_USER_FOR_LOCAL}"\

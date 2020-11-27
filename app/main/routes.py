@@ -212,7 +212,11 @@ def specific_person():
 @main.route('/params/')
 def params():
     print(request.args["url"])
-    db_name = request.args["url"].split('//')[1].split('/')[1]
+    sub_url = request.args["url"].split('//')[1].split('/')[1]
+    if sub_url == "data-under-150k":
+        db_name = Config.DB_NAME_UNDER_150K + "_db"
+    elif sub_url == "data-150k-and-up":
+        db_name = Config.DB_NAME_150K_AND_UP + "_db"
 
     print("REQUEST START:")
     print(request.args)
@@ -354,30 +358,30 @@ def get_datax():
         import collections
         return render_template('get_datax.html')
 
-def home():
-  # print('IN THE HOME')
-  # search = request.args.get("search")
-  # sort = request.args.get("sort")
-  # order = request.args.get("order")
-  # offset = request.args.get("offset")
-  # limit = request.args.get("limit")
+# def home():
+#   # print('IN THE HOME')
+#   # search = request.args.get("search")
+#   # sort = request.args.get("sort")
+#   # order = request.args.get("order")
+#   # offset = request.args.get("offset")
+#   # limit = request.args.get("limit")
 
-  # print(limit)
+#   # print(limit)
 
-  # with current_app.app_context():
-  #     db = DatabaseInitialization.initialize_database("local")
-  #     db = DatabaseConnection("local", Config.DB_NAME, Config.TABLE_NAME)
-  #     total_count = db.fetch_total_count()
-  #     total_count_str = db.get_json_component(total_count, "total")
-  #     results_data = db.fetch_from_db(search, sort, order, offset, limit)
-  #     results_str = db.get_json_component(results_data, "data")
+#   # with current_app.app_context():
+#   #     db = DatabaseInitialization.initialize_database("local")
+#   #     db = DatabaseConnection("local", Config.DB_NAME, Config.TABLE_NAME)
+#   #     total_count = db.fetch_total_count()
+#   #     total_count_str = db.get_json_component(total_count, "total")
+#   #     results_data = db.fetch_from_db(search, sort, order, offset, limit)
+#   #     results_str = db.get_json_component(results_data, "data")
 
-  #     table_data_json = db.build_table_json(total_count_str, len(results_data), results_str)
-      csv_column_headers = DatabaseNames.get_csv_column_headers(Config.SOURCE_FILE_NAME)
-      print(csv_column_headers)
-      print("THOSE WERE COLUMN HEADERS")
+#   #     table_data_json = db.build_table_json(total_count_str, len(results_data), results_str)
+#       csv_column_headers = DatabaseNames.get_csv_column_headers(Config.SOURCE_FILE_NAME)
+#       print(csv_column_headers)
+#       print("THOSE WERE COLUMN HEADERS")
 
-      return render_template('home.html', data="", headers = csv_column_headers)
+#       return render_template('home.html', data="", headers = csv_column_headers)
 
 
 @main.route("/get_data")
