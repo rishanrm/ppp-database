@@ -224,11 +224,12 @@ function callTable(i) {
             var i = 0
             var value
             $.each(orderedColumns, function (index, columnName) {
-                if (columnName == "Loan Amount") {
-                    value = amountFormatter(orderedValues[i]);
-                } else {
-                    value = orderedValues[i]
-                }
+                // if (columnName == "Loan Amount") {
+                //     value = amountFormatter(orderedValues[i]);
+                // } else {
+                //     value = orderedValues[i]
+                // }
+                value = orderedValues[i]
                 html.push('<p><b>' + columnName + ':</b> ' + value + '</p>')
                 i += 1
             })

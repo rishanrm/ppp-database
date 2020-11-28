@@ -11,6 +11,8 @@ class Config:
     HEADERS_150K_AND_UP = ['loanrange', 'businessname', 'address', 'city', 'state', 'zip', 'naicscode',
                                 'businesstype', 'raceethnicity', 'gender', 'veteran', 'nonprofit', 'jobsreported', 'dateapproved', 'lender', 'cd']
 
+
+    NAMES_TO_CAPITALIZE = ['businessname', 'address', 'city', 'lender']
     # """POSTGRES DATABASE RESET SETTINGS"""
     # RESET_DB = False
     # RESET_TABLE = False
