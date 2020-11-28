@@ -43,9 +43,10 @@ function callTable(i) {
 
     console.log("COUNT REQUEST RESET TO 0")
     function ajaxRequest(params) {
-        if(window.location.href.includes('data-150k-and-up')) {
+        var page = window.location.href.split('//')[1].split('/')[1]
+        if(page.includes('data-150k-and-up')) {
             initialSortColumn = 'loanrange'
-        } else if(window.location.href.includes('data-under-150k')) {
+        } else if(page.includes('data-under-150k')) {
             initialSortColumn = 'loanamount'
         }
 
@@ -100,8 +101,8 @@ function callTable(i) {
             }
         }
         console.log('The request params are: \r\n' + requestParams)
-        console.log(url + '?' + 'url=' + window.location.href + '&' + requestParams)
-        $.get(url + '?' + 'url=' + window.location.href + '&' + requestParams)
+        console.log(url + '?' + 'page=' + page + '&' + requestParams)
+        $.get(url + '?' + 'page=' + page + '&' + requestParams)
         
         .then(function (res) {
             params.success(res)
