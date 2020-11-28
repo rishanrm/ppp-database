@@ -650,17 +650,17 @@ class DatabaseConnection():
 """Functionality for initial data population in a database"""
 class DatabaseNames():
 
-    @staticmethod
-    def get_csv_column_headers(source_file_name=Config.SOURCE_FILE_NAME):
+    # @staticmethod
+    # def get_csv_column_headers(source_file_name=Config.SOURCE_FILE_NAME):
 
-        with open(source_file_name, 'r', encoding='utf-8-sig') as f:
-            d_reader = csv.DictReader(f)
-            headers = d_reader.fieldnames
-            headers = [x.lower() for x in headers]
-            print("Headers:")
-            print(headers)
-            quit()
-            return headers
+    #     with open(source_file_name, 'r', encoding='utf-8-sig') as f:
+    #         d_reader = csv.DictReader(f)
+    #         headers = d_reader.fieldnames
+    #         headers = [x.lower() for x in headers]
+    #         print("Headers:")
+    #         print(headers)
+    #         quit()
+    #         return headers
 
     # @staticmethod
     # def format_sql_column_names(headers):
