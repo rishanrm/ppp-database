@@ -199,25 +199,24 @@ class DatabaseConnection():
         )
 
     def get_query_body(self, args, query_features):
-        print("ARGS:")
-        print(args)
-        print("QUERY FEATURES:")
-        print(query_features)
-        print("URL GIVEN:")
-        print(args["page"])
+        # print("ARGS:")
+        # print(args)
+        # print("QUERY FEATURES:")
+        # print(query_features)
+        # print("URL GIVEN:")
+        # print(args["page"])
         query_body = sql.SQL("")
         data = ()
         
         args_order = ["page", "search", "filter", "sort", "order", "offset", "limit"]
         args_dict = OrderedDict((arg, args.get(arg)) for arg in args_order)
-        print("ARGS:")
-        print(args)
+        # print("ARGS:")
+        # print(args)
         for arg in args_dict:
             if args_dict[arg] != "" and args_dict[arg] != "undefined" and args_dict[arg] != None and arg in query_features:
                 if arg == "search":
-
-                    print(args_dict["search"])
-                    print(args_dict["page"])
+                    # print(args_dict["search"])
+                    # print(args_dict["page"])
                     query_body += self.sql_field_search(args_dict["page"], args_dict["search"])
                 if arg == "filter":
                     query_body += self.sql_field_filter(args_dict["filter"])
@@ -238,8 +237,6 @@ class DatabaseConnection():
 
     @staticmethod
     def sql_field_search(page, search_term):
-        print("HERE'S THE URL:")
-        print("page")
         search_sql = sql.SQL('AND (')
         search_term_count = 0
         if page == "data-150k-and-up":

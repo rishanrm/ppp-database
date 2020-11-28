@@ -195,6 +195,7 @@ def params():
         state = request.args["filter"][state_index:state_index+2]
     else:
         print("NO STATE")
+        state = "unstated"
 
     print(request.args["page"])
     # sub_url = request.args["page"]
