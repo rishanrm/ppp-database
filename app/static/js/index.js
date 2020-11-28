@@ -155,7 +155,7 @@ function callTable(i) {
         function getOrderedData() {
             if(page.includes('data-150k-and-up')) {
                 orderedData = {
-                    "loanrange": "Loan Range ($)",
+                    "loanrange": "Loan Range",
                     "businessname": "Business Name",
                     "address": "Address",
                     "city": "City",
@@ -174,7 +174,7 @@ function callTable(i) {
                 }
             } else if(page.includes('data-under-150k')) {
                 orderedData = {
-                    "loanamount": "Loan Amount ($)",
+                    "loanamount": "Loan Amount",
                     "city": "City",
                     "state": "State",                
                     "zip": "ZIP Code",
@@ -224,7 +224,7 @@ function callTable(i) {
             var i = 0
             var value
             $.each(orderedColumns, function (index, columnName) {
-                if (columnName == "Loan Amount ($)") {
+                if (columnName == "Loan Amount") {
                     value = amountFormatter(orderedValues[i]);
                 } else {
                     value = orderedValues[i]

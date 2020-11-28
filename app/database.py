@@ -169,6 +169,8 @@ class DatabaseConnection():
 
         self.my_cursor.execute(stmt)
         results = self.my_cursor.fetchall()
+        print("TOTAL FETCH COUNT:")
+        print(results)
         return results
 
     def run_sql_query(self, args, query_features, return_type):
