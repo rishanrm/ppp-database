@@ -41,9 +41,10 @@ function callTable(i) {
     var initialFilterValue = 'AK'
     var initialStateAddition
 
+    var page = window.location.href.split('//')[1].split('/')[1]
+
     console.log("COUNT REQUEST RESET TO 0")
     function ajaxRequest(params) {
-        var page = window.location.href.split('//')[1].split('/')[1]
         if(page.includes('data-150k-and-up')) {
             initialSortColumn = 'loanrange'
         } else if(page.includes('data-under-150k')) {
@@ -149,24 +150,48 @@ function callTable(i) {
     
 
     // <!-- Format data when a row is expanded -->
-    
 
-        var orderedData = {
-            "loanamount": "Loan Amount ($)",
-            "city": "City",
-            "state": "State",                
-            "zip": "ZIP Code",
-            "naicscode": "NAICS Code",
-            "businesstype": "Business Type",
-            "raceethnicity": "Race/Ethnicity",
-            "gender": "Gender",
-            "veteran": "Veteran",
-            "nonprofit": "Nonprofit",
-            "jobsretained": "Jobs Retained",
-            "dateapproved": "Date Approved",
-            "lender": "Lender",
-            "cd": "House District"
+        var orderedData
+        function getOrderedData() {
+            if(page.includes('data-150k-and-up')) {
+                orderedData = {
+                    "loanrange": "Loan Range ($)",
+                    "businessname": "Business Name",
+                    "address": "Address",
+                    "city": "City",
+                    "state": "State",
+                    "zip": "ZIP Code",
+                    "naicscode": "NAICS Code",
+                    "businesstype": "Business Type",
+                    "raceethnicity": "Race/Ethnicity",
+                    "gender": "Gender",
+                    "veteran": "Veteran",
+                    "nonprofit": "Nonprofit",
+                    "jobsreported": "Jobs Reported",
+                    "dateapproved": "Date Approved",
+                    "lender": "Lender",
+                    "cd": "House District"
+                }
+            } else if(page.includes('data-under-150k')) {
+                orderedData = {
+                    "loanamount": "Loan Amount ($)",
+                    "city": "City",
+                    "state": "State",                
+                    "zip": "ZIP Code",
+                    "naicscode": "NAICS Code",
+                    "businesstype": "Business Type",
+                    "raceethnicity": "Race/Ethnicity",
+                    "gender": "Gender",
+                    "veteran": "Veteran",
+                    "nonprofit": "Nonprofit",
+                    "jobsretained": "Jobs Retained",
+                    "dateapproved": "Date Approved",
+                    "lender": "Lender",
+                    "cd": "House District"
+                }
             }
+        }
+        getOrderedData()
 
         function getOrderedColumns() {
             return Object.values(orderedData)
