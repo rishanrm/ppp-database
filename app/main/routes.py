@@ -209,8 +209,6 @@ def params():
 
     print("REQUEST START:")
     print(request.args)
-
-
     print("REQUEST END")
 
     with current_app.app_context():
