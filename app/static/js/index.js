@@ -184,7 +184,7 @@ function callTable(i) {
                     "gender": "Gender",
                     "veteran": "Veteran",
                     "nonprofit": "Nonprofit",
-                    "jobsretained": "Jobs Retained",
+                    "jobsreported": "Jobs Reported",
                     "dateapproved": "Date Approved",
                     "lender": "Lender",
                     "cd": "House District"

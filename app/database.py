@@ -278,7 +278,7 @@ class DatabaseConnection():
     def sql_field_filter(filter_data):
         filter_sql = sql.SQL("")
         filter_data = json.loads(filter_data)
-        numeric_headers = ["loanamount", "jobsretained"]
+        numeric_headers = Config.NUMERIC_HEADERS
         for filter in filter_data:
             if filter not in numeric_headers:
                 filter_sql += sql.SQL("AND LOWER({filter_column}) LIKE LOWER({filter_term}) ").format(
