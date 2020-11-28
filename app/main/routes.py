@@ -8,7 +8,7 @@ from ..forms import ContactForm
 from app import db
 #from app import app
 from app.config import Config
-from app.database import DatabaseConnection, DatabaseInitialization, DatabaseNames
+from app.database import DatabaseConnection
 import os
 import smtplib
 import ssl
@@ -224,12 +224,12 @@ def params():
     else:
         print("NO STATE")
 
-    print(request.args["url"])
-    sub_url = request.args["url"].split('//')[1].split('/')[1]
-    if sub_url == "data-under-150k":
+    print(request.args["page"])
+    # sub_url = request.args["page"]
+    if request.args["page"] == "data-under-150k":
         db_name = Config.DB_NAME_ROOT_UNDER_150K
         table_name = Config.DB_NAME_ROOT_UNDER_150K + "_" + state.lower()
-    elif sub_url == "data-150k-and-up":
+    elif request.args["page"] == "data-150k-and-up":
         db_name = Config.DB_NAME_ROOT_150K_AND_UP
         table_name = Config.DB_NAME_ROOT_150K_AND_UP
     print(db_name)
