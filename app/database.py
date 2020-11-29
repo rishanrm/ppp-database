@@ -348,10 +348,11 @@ class DatabaseConnection():
         if data_type == "total":
             chars_to_strip = 3
         elif data_type == "data":
-            for result in results[0][0]:
-                for key, value in result.items():
-                    if key in Config.NAMES_TO_CAPITALIZE:
-                        result[key] = value.title()
+            if (results[0][0]) != None:
+                for result in results[0][0]:
+                    for key, value in result.items():
+                        if key in Config.NAMES_TO_CAPITALIZE:
+                            result[key] = value.title()
             chars_to_strip = 2
         results_str = json.dumps(results)[chars_to_strip:-chars_to_strip]
         if results_str == "null":
