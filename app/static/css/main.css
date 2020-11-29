@@ -969,10 +969,6 @@ input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
   margin-top: 2vh;
 }
 
-.close-alert {
-  margin-top: -1%;
-}
-
 .about-content {
   margin-top: 11vh;
   text-align: center;
