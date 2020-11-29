@@ -9,9 +9,6 @@ class Data():
 
     @staticmethod
     def get_data(request):
-        state = ""
-        db_name = ""
-        table_name = ""
 
         if "filter" in request.args:
             print(request.args["filter"])
