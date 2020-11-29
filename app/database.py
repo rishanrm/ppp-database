@@ -287,12 +287,19 @@ class DatabaseConnection():
 
         for filter in numeric_headers:
             if filter in filter_data:
-                loan_filter_term = filter_data[filter].strip("$").replace(',', '').split(".", 1)[0]
-                if loan_filter_term.isdigit():
-                    filter_sql += sql.SQL("AND {filter_column} = {filter_term} ").format(
-                        filter_column = sql.Identifier(filter),
-                        filter_term = sql.Literal(loan_filter_term)
-                    )
+                loan_filter_term = filter_data[filter].strip("$").replace(',', '')
+                if not loan_filter_term.replace('.', '').isdigit():
+                    loan_filter_term = "999999999" # Will search for hardcoded num which should not return results
+                filter_sql += sql.SQL("AND {filter_column} = {filter_term} ").format(
+                    filter_column = sql.Identifier(filter),
+                    filter_term = sql.Literal(loan_filter_term)
+                )
+                # loan_filter_term = filter_data[filter].strip("$").replace(',', '').split(".", 1)[0]
+                # if loan_filter_term.isdigit():
+                #     filter_sql += sql.SQL("AND {filter_column} = {filter_term} ").format(
+                #         filter_column = sql.Identifier(filter),
+                #         filter_term = sql.Literal(loan_filter_term)
+                #     )
 
         return filter_sql
         
