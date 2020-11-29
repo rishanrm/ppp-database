@@ -1,20 +1,10 @@
 import json
-from flask import render_template, request, Blueprint, current_app, send_from_directory, jsonify, url_for, flash, redirect, send_file
-#from flask import Flask, url_for, render_template, redirect
-# from flask import url_for, redirect
+from flask import render_template, request, Blueprint, current_app, url_for, flash, redirect, send_file
 from ..forms import ContactForm
 
-#from app.models import Post
-from app import db
-#from app import app
 from app.config import Config
 from app.database import DatabaseConnection
 from app.email import Email
-# import os
-import smtplib
-import ssl
-from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
 
 main = Blueprint('main', __name__)
 
