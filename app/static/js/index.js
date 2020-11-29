@@ -68,7 +68,7 @@ function callTable(i) {
             }
         });
         console.log('Request Count: ' + requestCount)
-        var url = '/params'
+        var url = '/data'
         console.log("HERE ARE THE PARAMS IN THE REQUEST:")
         console.log($.param(params.data))
         console.log("END PARAMS")

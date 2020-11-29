@@ -43,8 +43,8 @@ def privacy():
 def terms():
     return render_template('terms.html')
 
-@main.route('/params/')
-def params():
+@main.route('/data/')
+def data():
     state = ""
     db_name = ""
     table_name = ""
