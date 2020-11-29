@@ -14,6 +14,8 @@ from psycopg2.extensions import quote_ident
 from flask import current_app
 from collections import OrderedDict
 
+from psycopg2.sql import NULL
+
 
 # from psycopg2.extras import RealDictCursor
 
@@ -287,11 +289,17 @@ class DatabaseConnection():
 
         for filter in numeric_headers:
             if filter in filter_data:
+                equality_type = "="
                 loan_filter_term = filter_data[filter].strip("$").replace(',', '')
                 if not loan_filter_term.replace('.', '').isdigit():
-                    loan_filter_term = "999999999" # Will search for hardcoded num which should not return results
-                filter_sql += sql.SQL("AND {filter_column} = {filter_term} ").format(
+                    if loan_filter_term.replace('/', '').lower() == "na":
+                        equality_type = "IS"
+                        loan_filter_term = None
+                    else:
+                        loan_filter_term = "999999999" # Will search for hardcoded num which should not return results
+                filter_sql += sql.SQL("AND {filter_column} {equality_type} {filter_term} ").format(
                     filter_column = sql.Identifier(filter),
+                    equality_type = sql.SQL(equality_type),
                     filter_term = sql.Literal(loan_filter_term)
                 )
                 # loan_filter_term = filter_data[filter].strip("$").replace(',', '').split(".", 1)[0]
