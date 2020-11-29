@@ -1,9 +1,9 @@
 import json
 from flask import render_template, request, Blueprint, current_app, url_for, flash, redirect, send_file
-from ..forms import ContactForm
 
 from app.config import Config
 from app.database import DatabaseConnection
+from app.forms import ContactForm
 from app.email import Email
 
 main = Blueprint('main', __name__)
