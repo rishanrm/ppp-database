@@ -212,14 +212,18 @@ class DatabaseConnection():
         
         args_order = ["page", "search", "filter", "sort", "order", "offset", "limit"]
         args_dict = OrderedDict((arg, args.get(arg)) for arg in args_order)
-        print("\n\n\n\n\n")
+
+        print("\n")
         print("ARGS DICT:")
         print(args_dict)
+        print("\n")
+
         if(args_dict["filter"] == None):
             args_dict["filter"] = {"state": None}
         else:
             args_dict["filter"] = json.loads(args_dict["filter"])
-        # print(filter_data)
+            if "state" not in args_dict["filter"]:
+                args_dict["filter"]["state"] = None
         print("\nARGS DICT, is there a filter?")
         print(args_dict)
         print("filter" in args_dict)

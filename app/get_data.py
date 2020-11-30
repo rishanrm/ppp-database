@@ -13,30 +13,29 @@ class Data():
         # print(request)
         # print("\n\n\n\n\n\n\n\n\n\n\n")
         if "filter" in request.args:
-            print(request.args["filter"])
-            substr = 'state":"'
-            state_index = request.args["filter"].index(substr)+len(substr)
-            state = request.args["filter"][state_index:state_index+2]
+            if request.args["page"] == "data-under-150k":
+                substr = 'state":"'
+                state_index = request.args["filter"].index(substr)+len(substr)
+                state = request.args["filter"][state_index:state_index+2]
+            elif request.args["page"] == "data-150k-and-up":
+                state = "unstated"
         else:
-            print("NO STATE")
             state = "unstated"
 
+        print("Page:")
         print(request.args["page"])
-        # sub_url = request.args["page"]
+        print("\n")
+
         if request.args["page"] == "data-under-150k":
             db_name = Config.DB_NAME_ROOT_UNDER_150K
             table_name = Config.DB_NAME_ROOT_UNDER_150K + "_" + state.lower()
         elif request.args["page"] == "data-150k-and-up":
             db_name = Config.DB_NAME_ROOT_150K_AND_UP
             table_name = Config.DB_NAME_ROOT_150K_AND_UP
-            # if state == "unstated":
-            #     if "filter" in request.args.keys:
-        # print(db_name)
-        # print(table_name)
 
-        print("REQUEST START:")
+        print("REQUEST:")
         print(request.args)
-        print("REQUEST END")
+        print("\n")
 
         with current_app.app_context():
             db = DatabaseConnection("local", db_name, table_name)
