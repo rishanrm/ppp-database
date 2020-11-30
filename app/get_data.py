@@ -9,9 +9,6 @@ class Data():
 
     @staticmethod
     def get_data(request):
-        # print("REQUEST:")
-        # print(request)
-        # print("\n\n\n\n\n\n\n\n\n\n\n")
         if "filter" in request.args:
             if request.args["page"] == "data-under-150k":
                 substr = 'state":"'
@@ -25,20 +22,12 @@ class Data():
         else:
             state = "unstated"
 
-        print("Page:")
-        print(request.args["page"])
-        print("\n")
-
         if request.args["page"] == "data-under-150k":
             db_name = Config.DB_NAME_ROOT_UNDER_150K
             table_name = Config.DB_NAME_ROOT_UNDER_150K + "_" + state.lower()
         elif request.args["page"] == "data-150k-and-up":
             db_name = Config.DB_NAME_ROOT_150K_AND_UP
             table_name = Config.DB_NAME_ROOT_150K_AND_UP
-
-        print("REQUEST:")
-        print(request.args)
-        print("\n")
 
         with current_app.app_context():
             db = DatabaseConnection("local", db_name, table_name)
