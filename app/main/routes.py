@@ -42,7 +42,7 @@ def privacy():
 def terms():
     return render_template('terms.html')
 
-@main.route('/params/')
+@main.route('/data/')
 def params():
     return Data.get_data(request)
 
