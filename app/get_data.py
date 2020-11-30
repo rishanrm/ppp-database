@@ -9,7 +9,9 @@ class Data():
 
     @staticmethod
     def get_data(request):
-
+        # print("REQUEST:")
+        # print(request)
+        # print("\n\n\n\n\n\n\n\n\n\n\n")
         if "filter" in request.args:
             print(request.args["filter"])
             substr = 'state":"'
@@ -27,6 +29,8 @@ class Data():
         elif request.args["page"] == "data-150k-and-up":
             db_name = Config.DB_NAME_ROOT_150K_AND_UP
             table_name = Config.DB_NAME_ROOT_150K_AND_UP
+            # if state == "unstated":
+            #     if "filter" in request.args.keys:
         # print(db_name)
         # print(table_name)
 

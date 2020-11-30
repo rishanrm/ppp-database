@@ -212,15 +212,37 @@ class DatabaseConnection():
         
         args_order = ["page", "search", "filter", "sort", "order", "offset", "limit"]
         args_dict = OrderedDict((arg, args.get(arg)) for arg in args_order)
+        print("\n\n\n\n\n")
+        print("ARGS DICT:")
+        print(args_dict)
+        if(args_dict["filter"] == None):
+            args_dict["filter"] = {"state": None}
+        else:
+            args_dict["filter"] = json.loads(args_dict["filter"])
+        # print(filter_data)
+        print("\nARGS DICT, is there a filter?")
+        print(args_dict)
+        print("filter" in args_dict)
+        print("DID THAT SAY TRUE?")
         # print("ARGS:")
         # print(args)
+
+        # print(args_dict.keys)
         for arg in args_dict:
+            print("ARG:")
+            print(arg)
+            if (arg == "filter"):
+                print(arg)
+                print(args_dict[arg])
+                print("THAT WAS THE FILTER")
             if args_dict[arg] != "" and args_dict[arg] != "undefined" and args_dict[arg] != None and arg in query_features:
                 if arg == "search":
                     # print(args_dict["search"])
                     # print(args_dict["page"])
                     query_body += self.sql_field_search(args_dict["page"], args_dict["search"])
                 if arg == "filter":
+                    print("THERE'S A FILTER\n\n\n\n\n\n")
+                    # print(filter_data)
                     query_body += self.sql_field_filter(args_dict["filter"])
                 if arg == "sort":
                     query_body += self.sql_field_sort(args_dict["sort"], args_dict["order"])
@@ -277,36 +299,54 @@ class DatabaseConnection():
 
     @staticmethod
     def sql_field_filter(filter_data):
+        print("FILTER DATA:\n\n\n\n\n\n")
+        print(filter_data)
         filter_sql = sql.SQL("")
-        filter_data = json.loads(filter_data)
+        # filter_data = json.loads(filter_data)
         numeric_headers = Config.NUMERIC_HEADERS
         for filter in filter_data:
+            print("FILTER:")
+            print(filter)
+            print("END FILTER\n\n\n\n")
             if filter not in numeric_headers:
-                filter_sql += sql.SQL("AND LOWER({filter_column}) LIKE LOWER({filter_term}) ").format(
-                    filter_column = sql.Identifier(filter),
+                if filter =="state" and filter_data[filter] == None:
+                    print("THIS FILTER IS A STATE AND IS EMPTY")
+                    equality_type = "IS"
+                    modifier_opening = ""
+                    filter_term = sql.Literal(filter_data[filter])
+                    modifier_closing = ""
+                else:
+                    equality_type = "LIKE"
+                    modifier_opening = "LOWER("
                     filter_term = sql.Literal(filter_data[filter] + '%%')
+                    modifier_closing = ")"
+
+                filter_sql += sql.SQL("AND LOWER({filter_column}) {equality_type} {modifier_opening}{filter_term}{modifier_closing} ").format(
+                    filter_column = sql.Identifier(filter),
+                    modifier_opening = sql.SQL(modifier_opening),
+                    equality_type = sql.SQL(equality_type),
+                    filter_term = filter_term,
+                    modifier_closing = sql.SQL(modifier_closing)
                 )
             elif filter in numeric_headers:
-        # for filter in numeric_headers:
-        #     if filter in filter_data:
-                equality_type = "="
-                loan_filter_term = filter_data[filter].strip("$").replace(',', '')
-                if not loan_filter_term.replace('.', '').isdigit():
-                    if loan_filter_term.replace('/', '').lower() == "na":
+                filter_term = filter_data[filter].strip("$").replace(',', '')
+                if not filter_term.replace('.', '').isdigit():
+                    if filter_term.replace('/', '').lower() == "na":
                         equality_type = "IS"
-                        loan_filter_term = None
+                        filter_term = None
                     else:
-                        loan_filter_term = "999999999" # Will search for this hardcoded num which should not return results
+                        filter_term = "999999999" # Will search for this hardcoded num which should not return results
+                
                 filter_sql += sql.SQL("AND {filter_column} {equality_type} {filter_term} ").format(
                     filter_column = sql.Identifier(filter),
                     equality_type = sql.SQL(equality_type),
-                    filter_term = sql.Literal(loan_filter_term)
+                    filter_term = sql.Literal(filter_term)
                 )
-                # loan_filter_term = filter_data[filter].strip("$").replace(',', '').split(".", 1)[0]
-                # if loan_filter_term.isdigit():
+                # filter_term = filter_data[filter].strip("$").replace(',', '').split(".", 1)[0]
+                # if filter_term.isdigit():
                 #     filter_sql += sql.SQL("AND {filter_column} = {filter_term} ").format(
                 #         filter_column = sql.Identifier(filter),
-                #         filter_term = sql.Literal(loan_filter_term)
+                #         filter_term = sql.Literal(filter_term)
                 #     )
 
         return filter_sql
