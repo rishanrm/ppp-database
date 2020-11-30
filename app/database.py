@@ -313,11 +313,21 @@ class DatabaseConnection():
             print(filter)
             print("END FILTER\n\n\n\n")
             if filter not in numeric_headers:
-                if filter =="state" and filter_data[filter] == None:
-                    print("THIS FILTER IS A STATE AND IS EMPTY")
+
+                if (filter == "address" or filter == "city") and (filter_data[filter].replace('/', '').lower() == "na"):
+                    equality_type = "LIKE"
+                    modifier_opening = "LOWER("
+                    filter_term = sql.Literal("N/A")
+                    modifier_closing = ")"
+                elif filter =="state" and filter_data[filter] == None:
                     equality_type = "IS"
                     modifier_opening = ""
                     filter_term = sql.Literal(filter_data[filter])
+                    modifier_closing = ""
+                elif (filter == "zip" or filter == "naicscode") and (filter_data[filter].replace('/', '').lower() == "na"):
+                    equality_type = "IS"
+                    modifier_opening = ""
+                    filter_term = sql.Literal(None)
                     modifier_closing = ""
                 else:
                     equality_type = "LIKE"
@@ -339,6 +349,7 @@ class DatabaseConnection():
                 modifier_closing = ""
                 if not filter_term.replace('.', '').isdigit():
                     if filter_term.replace('/', '').lower() == "na":
+                        equality_type = "IS"
                         filter_term = None
                     else:
                         filter_term = "999999999" # Will search for this hardcoded num which should not return results
