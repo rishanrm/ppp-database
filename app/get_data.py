@@ -15,8 +15,11 @@ class Data():
         if "filter" in request.args:
             if request.args["page"] == "data-under-150k":
                 substr = 'state":"'
-                state_index = request.args["filter"].index(substr)+len(substr)
-                state = request.args["filter"][state_index:state_index+2]
+                if substr in request.args["filter"]:
+                    state_index = request.args["filter"].index(substr)+len(substr)
+                    state = request.args["filter"][state_index:state_index+2]
+                else:
+                    state = "unstated"
             elif request.args["page"] == "data-150k-and-up":
                 state = "unstated"
         else:

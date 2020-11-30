@@ -333,10 +333,12 @@ class DatabaseConnection():
                     modifier_closing = sql.SQL(modifier_closing)
                 )
             elif filter in numeric_headers:
+                equality_type = "="
+                modifier_opening = ""
                 filter_term = filter_data[filter].strip("$").replace(',', '')
+                modifier_closing = ""
                 if not filter_term.replace('.', '').isdigit():
                     if filter_term.replace('/', '').lower() == "na":
-                        equality_type = "IS"
                         filter_term = None
                     else:
                         filter_term = "999999999" # Will search for this hardcoded num which should not return results
