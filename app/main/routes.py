@@ -43,12 +43,11 @@ def terms():
     return render_template('terms.html')
 
 @main.route('/data/')
-def params():
+def data():
     return Data.get_data(request)
 
 @main.route('/header_options/')
 def header_options():
-    print("In new header_options")
     try:
         return send_file('static\data\data.json')
     except Exception as e:
