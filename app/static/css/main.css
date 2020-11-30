@@ -145,7 +145,7 @@ section {
   width: 8vh;
   height: 8vh;
   z-index: 1011;
-  position: absolute;
+  position: fixed;
   margin-top: 1vh;
   right: 2vw;
 }
