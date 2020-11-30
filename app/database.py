@@ -286,9 +286,9 @@ class DatabaseConnection():
                     filter_column = sql.Identifier(filter),
                     filter_term = sql.Literal(filter_data[filter] + '%%')
                 )
-
-        for filter in numeric_headers:
-            if filter in filter_data:
+            elif filter in numeric_headers:
+        # for filter in numeric_headers:
+        #     if filter in filter_data:
                 equality_type = "="
                 loan_filter_term = filter_data[filter].strip("$").replace(',', '')
                 if not loan_filter_term.replace('.', '').isdigit():
@@ -296,7 +296,7 @@ class DatabaseConnection():
                         equality_type = "IS"
                         loan_filter_term = None
                     else:
-                        loan_filter_term = "999999999" # Will search for hardcoded num which should not return results
+                        loan_filter_term = "999999999" # Will search for this hardcoded num which should not return results
                 filter_sql += sql.SQL("AND {filter_column} {equality_type} {filter_term} ").format(
                     filter_column = sql.Identifier(filter),
                     equality_type = sql.SQL(equality_type),
