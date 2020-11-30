@@ -49,6 +49,6 @@ def data():
 @main.route('/header_options/')
 def header_options():
     try:
-        return send_file('static\data\data.json')
+        return send_file('static\data\column_options.json')
     except Exception as e:
         return str(e)
