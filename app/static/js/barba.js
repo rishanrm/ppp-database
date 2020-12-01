@@ -1,19 +1,20 @@
 function pageTransition() {
 
     var tl = gsap.timeline();
-    console.log('BARBA TL')
-    tl.to('ul.transition li', { duration: 10, scaleY: 1, transformOrigin: "top left", stagger: .2})
-    tl.to('ul.transition li', {duration: .5, scaleY: 0, transformOrigin: "top right", stagger: .1, delay: .1})
+
+    tl.to('ul.transition li', { duration: .5, scaleY: 1, transformOrigin: "bottom right", stagger: .2 })
+    tl.to('.loader', 3, { autoAlpha: 1})
+    tl.to('.loader', .2, { autoAlpha: 0 })
+    tl.to('ul.transition li', { duration: .5, scaleY: 0, transformOrigin: "top left", stagger: .1, delay: .1 })
 }
 
-// function contentAnimation() {
-//     var tl = gsap.timeline();
-//     tl.from('.left', {duration: 1.5, translateY: 50, opacity: 0})
-//     tl.to('img', {clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)"}, "-=1.1")
-// }
+function contentAnimation() {
+    var tl = gsap.timeline();
+    tl.from('.left', { duration: 1.5, translateY: 50, opacity: 0 })
+    tl.to('img', { clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }, "-=1.1")
+}
 
 function delay(n) {
-    console.log('BARBA DELAY')
     n = n || 2000;
     return new Promise(done => {
         setTimeout(() => {
@@ -22,8 +23,9 @@ function delay(n) {
     });
 }
 
+var indexJS = $("script[src*='" + 'index.js' + "']")
+
 barba.init({
-    console.log('BARBA INIT')
     sync: true,
     transitions: [{
         async leave(data) {
@@ -31,108 +33,226 @@ barba.init({
             pageTransition();
             await delay(1500);
             done();
-        },
-        async enter (data) {
-            contentAnimation(); 
-        },
-        async once (data) {
-            contentAnimation(); 
+        
         }
-    }]
+
+
+        
+        // INDIVIDUAL COMPONENT ANIMATION
+        // },
+        // async enter (data) {
+        //     contentAnimation(); 
+        // },
+        // async once (data) {
+        //     contentAnimation(); 
+        // }
+
+    }],
+    
+    
+    // Load index.js file before entering next page
+    views: [
+        {namespace: 'data',
+            afterLeave({ next }) {
+                const myPromise = new Promise((resolve, reject) => {
+                    let script = document.createElement('script');
+                    script.src = '/js/index.js';
+                    next.container.appendChild(script);
+                    console.log("RAN INIT ON BARBA RIGHT HERE");
+                    resolve("Success!")
+                })
+            },
+        },
+        {namespace: 'home',
+            afterLeave({ next }) {
+                const myPromise = new Promise((resolve, reject) => {
+                    let script = document.createElement('script');
+                    script.src = '/js/index.js';
+                    next.container.appendChild(script);
+                    console.log("RAN INIT ON BARBA RIGHT HERE");
+                    resolve("Success!")
+                })
+                
+                // myPromise.then((successMessage) => {
+                //     $table.bootstrapTable();
+                //     console.log(successMessage)
+                // }).catch((message) => {
+                //     console.log("Error")
+                //     setTimeout(() => {
+                //         $table.bootstrapTable();
+                //         console.log("TIMEOUT FUNCTION");
+                //     }, 500);
+                // });
+            },
+        },
+        {namespace: 'contact',
+            beforeEnter({ next }) {
+                const myPromise = new Promise((resolve, reject) => {
+                    let script = document.createElement('script');
+                    script.src = 'https://www.google.com/recaptcha/api.js';
+                    next.container.appendChild(script);
+                    resolve("Success!")
+                })
+                function onSubmit(token) {
+                    document.getElementById("demo-form").submit();
+                    }
+                const myPromise2 = new Promise((resolve, reject) => {
+                    let script2 = document.createElement('script');
+                    script2.src = 'https://www.google.com/recaptcha/api.js?render=reCAPTCHA_site_key';
+                    next.container.appendChild(script2);
+                    resolve("Success!")
+                })
+                function onClick(e) {
+                    e.preventDefault();
+                    grecaptcha.ready(function () {
+                        grecaptcha.execute('reCAPTCHA_site_key', { action: 'submit' }).then(function (token) {
+                            // Add your logic to submit to your backend server here.
+                        });
+                    });
+                }
+            },
+            afterLeave({ next }) {
+                const myPromise = new Promise((resolve, reject) => {
+                    let script = document.createElement('script');
+                    script.src = '/js/index.js';
+                    next.container.appendChild(script);
+                    console.log("RAN INIT ON BARBA RIGHT HERE");
+                    resolve("Success!")
+                })
+            },
+        },
+        {namespace: 'about',
+            afterLeave({ next }) {
+                const myPromise = new Promise((resolve, reject) => {
+                    let script = document.createElement('script');
+                    script.src = '/js/index.js';
+                    next.container.appendChild(script);
+                    console.log("RAN INIT ON BARBA RIGHT HERE");
+                    resolve("Success!")
+                })
+            },
+        },
+        {namespace: 'privacy',
+            afterLeave({ next }) {
+                const myPromise = new Promise((resolve, reject) => {
+                    let script = document.createElement('script');
+                    script.src = '/js/index.js';
+                    next.container.appendChild(script);
+                    console.log("RAN INIT ON BARBA RIGHT HERE");
+                    resolve("Success!")
+                })
+            },
+        },
+        {namespace: 'terms',
+            afterLeave({ next }) {
+                const myPromise = new Promise((resolve, reject) => {
+                    let script = document.createElement('script');
+                    script.src = '/js/index.js';
+                    next.container.appendChild(script);
+                    console.log("RAN INIT ON BARBA RIGHT HERE");
+                    resolve("Success!")
+                })
+            },
+        },
+        {namespace: 'sitemap',
+            afterLeave({ next }) {
+                const myPromise = new Promise((resolve, reject) => {
+                    let script = document.createElement('script');
+                    script.src = '/js/index.js';
+                    next.container.appendChild(script);
+                    console.log("RAN INIT ON BARBA RIGHT HERE");
+                    resolve("Success!")
+                })
+            },
+        },
+    ]
 })
 
 
 
 
-// GSAP 2ND TUTORIAL
-// reset position of the loading screen
-// gsap.set(loader, {
-//     scaleX: 0,
-//     rotation: 10,
-//     xPercent: -5,
-//     yPercent: -50,
-//     transformOrigin: 'left center',
-//     autoAlpha: 1
-// });
+// Barba.Pjax.start();
+// Barba.Prefetch.init()
 
-// barba.init({
-//     transitions: [{
-//         async leave() {
-//             await loaderIn();
-//         },
-//         enter() {
-//             loaderAway();
-//         }
-//     }]
-// });
 
-// function loaderIn() {
-//     // GSAP tween to stretch the loading screen across the whole screen
-//     return gsap.fromTo(loader,
-//         {
-//             rotation: 10,
-//             scaleX: 0,
-//             xPercent: -5
-//         },
-//         {
-//             duration: 0.8,
-//             xPercent: 0,
-//             scaleX: 1,
-//             rotation: 0,
-//             ease: 'power4.inOut',
-//             transformOrigin: 'left center'
+// var transitionAnimation = Barba.BaseTransition.extend({
+
+//     start: function () {
+
+//         Promise
+//             .all([this.newContainerLoading, this.startTransition()])
+//             .then(this.fadeIn.bind(this));
+
+//     },
+
+//     startTransition: function () {
+
+//         var transitionPromise = new Promise(function (resolve) {
+
+//             var outTransition = new TimelineMax();
+
+
+//             outTransition
+
+//                 .to(".title", 1, { y: -50, autoAlpha: 0, ease: Power2.easeOut })
+//                 .set(".color-wipe", { display: 'block', y: "100%" }, "-=0.7")
+//                 .staggerFromTo(".color-wipe", 1, { y: "100%" }, { y: "-100%", ease: Expo.easeOut }, 0.2, "-=0.7")
+
+//                 .to(".loader", 1, {
+//                     autoAlpha: 1, onComplete: function () {
+//                         resolve();
+//                     }
+//                 })
+
+
+
+//                 .staggerFromTo(".color-wipe", 1, { y: "-100%" }, { y: "-200%", ease: Expo.easeIn }, 0.2, "-=0.5")
+//                 .set(".color-wipe", { display: 'none' })
+
+
+
 //         });
-// }
 
-// function loaderAway() {
-//     // GSAP tween to hide loading screen
-//     return gsap.to(loader, {
-//         duration: 0.8,
-//         scaleX: 0,
-//         xPercent: 5,
-//         rotation: -10,
-//         transformOrigin: 'right center',
-//         ease: 'power4.inOut'
-//     });
-// }
 
-// // do something before the transition starts
-// barba.hooks.before(() => {
-//     document.querySelector('html').classList.add('is-transitioning');
+
+//         return transitionPromise;
+
+//     },
+
+
+
+
+
+//     fadeIn: function () {
+
+//         $(window).scrollTop(0);
+
+//         var _this = this;
+//         var $el = $(this.newContainer);
+
+//         TweenMax.set($(this.oldContainer), { display: "none" });
+//         TweenMax.set($el, { visibility: "visible", opacity: 0, });
+
+
+//         TweenMax.to(".loader", 1, { y: -50, autoAlpha: 0, ease: Expo.easeOut })
+//         TweenMax.fromTo(".title", 1.5, { y: 30, autoAlpha: 0 }, { delay: 0.8, y: 0, autoAlpha: 1, ease: Expo.easeOut })
+
+//         TweenMax.to($el, 0.1, {
+//             opacity: 1,
+//             onComplete: function () {
+//                 _this.done();
+//                 console.log("done");
+//             }
+//         });
+//     }
 // });
-// // do something after the transition finishes
-// barba.hooks.after(() => {
-//     document.querySelector('html').classList.remove('is-transitioning');
-// });
-
-// .is - transitioning {
-//     pointer - events: none;
-//     cursor: progress;
-// }
-
-// // scroll to the top of the page
-// barba.hooks.enter(() => {
-//     window.scrollTo(0, 0);
-// });
 
 
+// Barba.Pjax.getTransition = function () {
+//     /**
+//      * Here you can use your own logic!
+//      * For example you can use different Transition based on the current page or link...
+//      */
+//     return transitionAnimation;
 
-
-
-
-
-// barba.init({
-//     transitions: [{
-//         name: 'opacity-transition',
-//         leave(data) {
-//             return gsap.to(data.current.container, {
-//                 opacity: 0
-//             });
-//         },
-//         enter(data) {
-//             return gsap.from(data.next.container, {
-//                 opacity: 0
-//             });
-//         }
-//     }]
-// });
+// };
