@@ -30,8 +30,8 @@ class Data():
             table_name = Config.DB_NAME_ROOT_150K_AND_UP
 
         with current_app.app_context():
-            db = DatabaseConnection("local", db_name, table_name)
-            # db = DatabaseConnection("local", Config.DB_NAME, Config.TABLE_NAME)
+            db = DatabaseConnection(Config.DB_LOCATION, db_name, table_name)
+            # db = DatabaseConnection(Config.DB_LOCATION, Config.DB_NAME, Config.TABLE_NAME)
     #        db = DatabaseInitialization.initialize_database("local")
 
         total_count = db.fetch_total_count()

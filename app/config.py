@@ -2,6 +2,9 @@ import os
 
 class Config:
 
+    """CONFIGURATION LOCATION"""
+    DB_LOCATION = "local" # "local" or "cloud"
+
     """FILENAME"""
     # SOURCE_FILE_NAME = './PPP Data 150k and up.csv'
     DB_NAME_ROOT_UNDER_150K = 'ppp_data_up_to_150k_080820'
@@ -30,7 +33,6 @@ class Config:
 #    POSTGRES_PASSWORD_FOR_CLOUD = "postgres"
     POSTGRES_USER_FOR_CLOUD = "initial_setup_user"
     POSTGRES_PASSWORD_FOR_CLOUD = "initial_setup_password"
-
     POSTGRES_PORT_FOR_CLOUD = 5431
 
     # POSTGRES_NAME_ROOT = os.path.basename(SOURCE_FILE_NAME)\
