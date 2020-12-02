@@ -3,7 +3,7 @@ import os
 class Config:
 
     """CONFIGURATION LOCATION"""
-    DB_LOCATION = "local" # "local" or "cloud"
+    DB_LOCATION = "cloud" # "local" or "cloud"
 
     """FILENAME"""
     # SOURCE_FILE_NAME = './PPP Data 150k and up.csv'
