@@ -21,7 +21,7 @@ from psycopg2.sql import NULL
 
 
 #from config import Config
-from app.config import Config
+from config import Config
 
 """Functionality for connecting to and storing data in a database"""
 class DatabaseConnection():

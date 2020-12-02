@@ -2,8 +2,8 @@ import json
 
 from flask import current_app
 
-from app.config import Config
-from app.database import DatabaseConnection
+from config import Config
+from database import DatabaseConnection
 
 class Data():
 
