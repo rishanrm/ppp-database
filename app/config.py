@@ -4,9 +4,6 @@ from cloud_secrets import CloudSecrets
 
 class Config:
 
-    """CONFIGURATION LOCATION"""
-    DB_LOCATION = "cloud" # "local" or "cloud"
-
     """FILENAME"""
     # SOURCE_FILE_NAME = './PPP Data 150k and up.csv'
     DB_NAME_ROOT_UNDER_150K = 'ppp_data_up_to_150k_080820'
@@ -26,42 +23,54 @@ class Config:
     """POSTGRES DATABASE CONNECTION"""
     POSTGRES_HOST = "localhost"
 
-    """CONTACT FORM"""
-    CONTACT_EMAIL_ADDR = os.environ.get("CONTACT_EMAIL_ADDR")
-    CONTACT_EMAIL_PASS = os.environ.get("CONTACT_EMAIL_PASS")
-    
-    """SECURITY"""
-    # SSL_REDIRECT = True
-    SECRET_KEY = os.environ.get("SECRET_KEY")
-    RECAPTCHA_PUBLIC_KEY = "6LcVnNwZAAAAAKvTGcDvoZv2ZgutD6s3RYFH4beq"
-    RECAPTCHA_PRIVATE_KEY = "6LcVnNwZAAAAADF8Mwi45_zInKW0doneW2eTCXTa"
-#    TESTING = True #Turn on or off ReCAPTCHA
-
-class ProductionConfig(Config):
-
     """GOOGLE CLOUD"""
-    DEBUG_STATUS = False
-    
-    GCLOUD_CREDENTIALS = "service_account.json"
-    GCLOUD_PROJECT_ID = "ppp-test-283923"
-    GCLOUD_INSTANCE_ID = "ppp-test-8-1-02"
+    GCLOUD_CREDENTIALS = "ppp-data-us-service-account.json"
+    GCLOUD_PROJECT_ID = "ppp-data-us"
+    GCLOUD_INSTANCE_ID = "ppp-data"
     GCLOUD_REGION = "us-central"
+    GCLOUD_ZONE = "us-central1-a"
     GCLOUD_MACHINE_TYPE = "db-custom-1-3840"
     GCLOUD_REQUIRE_SIGNED_URL = False
 #   Machine types: https://cloud.google.com/sql/docs/postgres/create-instance
 
-#    POSTGRES_USER_FOR_CLOUD = "postgres"
-#    POSTGRES_PASSWORD_FOR_CLOUD = "postgres"
+class ProductionConfig(Config):
+
+    DEBUG_STATUS = False
     POSTGRES_USER = CloudSecrets.get_cloud_secret(
-        GCLOUD_PROJECT_ID, "POSTGRES_USER")
+        Config.GCLOUD_PROJECT_ID, "POSTGRES_USER")
     POSTGRES_PASSWORD = CloudSecrets.get_cloud_secret(
-        GCLOUD_PROJECT_ID, "POSTGRES_PASSWORD")
+        Config.GCLOUD_PROJECT_ID, "POSTGRES_PASSWORD")
     POSTGRES_PORT = 5431
 
+    """CONTACT FORM"""
+    CONTACT_EMAIL_ADDR = CloudSecrets.get_cloud_secret(
+        Config.GCLOUD_PROJECT_ID, "CONTACT_EMAIL_ADDR")
+    CONTACT_EMAIL_PASS = CloudSecrets.get_cloud_secret(
+        Config.GCLOUD_PROJECT_ID, "CONTACT_EMAIL_PASS")
+
+    """SECURITY"""
+    # SSL_REDIRECT = True
+    SECRET_KEY = os.environ.get("SECRET_KEY")
+    RECAPTCHA_PUBLIC_KEY = CloudSecrets.get_cloud_secret(
+        Config.GCLOUD_PROJECT_ID, "RECAPTCHA_PUBLIC_KEY")
+    RECAPTCHA_PRIVATE_KEY = CloudSecrets.get_cloud_secret(
+        Config.GCLOUD_PROJECT_ID, "RECAPTCHA_PRIVATE_KEY")
+#    TESTING = True #Turn on or off ReCAPTCHA
 
 class DevelopmentConfig(Config):
-    DEBUG_STATUS = True
 
+    DEBUG_STATUS = True
     POSTGRES_USER = os.environ.get("POSTGRES_USER")
     POSTGRES_PASSWORD = os.environ.get("POSTGRES_PASSWORD")
     POSTGRES_PORT = 5432
+
+    """CONTACT FORM"""
+    CONTACT_EMAIL_ADDR = os.environ.get("CONTACT_EMAIL_ADDR")
+    CONTACT_EMAIL_PASS = os.environ.get("CONTACT_EMAIL_PASS")
+
+    """SECURITY"""
+    # SSL_REDIRECT = True
+    SECRET_KEY = os.environ.get("SECRET_KEY")
+    RECAPTCHA_PUBLIC_KEY = os.environ.get("RECAPTCHA_PUBLIC_KEY")
+    RECAPTCHA_PRIVATE_KEY = os.environ.get("RECAPTCHA_PRIVATE_KEY")
+    # TESTING = True #Turn on or off ReCAPTCHA
