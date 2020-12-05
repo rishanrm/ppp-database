@@ -1,6 +1,5 @@
 from flask import current_app, render_template, request, Blueprint, url_for, flash, redirect, send_file
 
-# from config import Config
 from get_data import Data
 from forms import ContactForm
 from send_email import Email

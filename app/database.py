@@ -11,7 +11,7 @@ from collections import OrderedDict
 """Functionality for connecting to and storing data in a database"""
 class DatabaseConnection():
 
-    def __init__(self, database_location='local', database_name='postgres', table_name='postgres'):
+    def __init__(self, database_name='postgres', table_name='postgres'):
 
         user = current_app.config["POSTGRES_USER"]
         password = current_app.config["POSTGRES_PASSWORD"]

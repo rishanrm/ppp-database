@@ -118,8 +118,7 @@ def form_example():
 @main.route('/fetch')
 def fetch():
     #    db = DatabaseInitialization.initialize_database("local")
-    db = DatabaseConnection(
-        current_app.config.DB_LOCATION, current_app.config.DB_NAME, current_app.config.TABLE_NAME)
+    db = DatabaseConnection(current_app.config.DB_NAME, current_app.config.TABLE_NAME)
 #    db.fetch_most_recent(5)
 
 #    db.fetch_json(5)
@@ -159,7 +158,7 @@ def get_datax():
 
 @main.route('/data_test/<column>.json')
 def data_test(column):
-    db = DatabaseConnection(current_app.config.DB_LOCATION, current_app.config.DB_NAME, current_app.config.TABLE_NAME)
+    db = DatabaseConnection(current_app.config.DB_NAME, current_app.config.TABLE_NAME)
 
     column_options = db.get_column_options(column)
     options_dict = db.get_column_options_dict(column_options, column)

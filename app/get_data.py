@@ -29,7 +29,7 @@ class Data():
             table_name = current_app.config["DB_NAME_ROOT_150K_AND_UP"]
 
         with current_app.app_context():
-            db = DatabaseConnection(current_app.config["DB_LOCATION"], db_name, table_name)
+            db = DatabaseConnection(db_name, table_name)
 
         total_count = db.fetch_total_count()
         total_count_str = db.get_json_component(total_count, "total")
