@@ -5,8 +5,6 @@ from flask import current_app
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
-from config import Config
-
 class Email():
 
     @staticmethod

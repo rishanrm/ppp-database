@@ -2,7 +2,6 @@ import json
 
 from flask import current_app
 
-from config import Config
 from database import DatabaseConnection
 
 class Data():
