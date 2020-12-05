@@ -1,27 +1,12 @@
 #!/usr/bin/env python
 
-# import os
-import re
-import subprocess
-import csv
 import json
 
-# import time
 import psycopg2
 from psycopg2 import sql
-from psycopg2.extensions import quote_ident
-# from google.cloud import storage
+from psycopg2.sql import NULL
 from flask import current_app
 from collections import OrderedDict
-
-from psycopg2.sql import NULL
-
-
-# from psycopg2.extras import RealDictCursor
-
-
-#from config import Config
-from config import Config
 
 """Functionality for connecting to and storing data in a database"""
 class DatabaseConnection():
@@ -47,108 +32,6 @@ class DatabaseConnection():
             print("Error while fetching data from PostgreSQL", error)
             quit("Exiting program.")
 
-    # def close_connection(self):
-    #     self.my_connection.commit()
-    #     self.my_cursor.close()
-    #     self.my_connection.close()
-    #     print("Database connection closed.")
-
-    # def check_data_present_in_table(self):
-    #     sql_query = f"SELECT exists(\
-	#                     SELECT  *\
-    #                     FROM    {self.table_name}\
-    #                     LIMIT   1);"
-    #     self.my_cursor.execute(sql_query)
-    #     data_present = self.my_cursor.fetchone()[0]
-    #     return data_present
-
-    # def import_csv_data_to_db(self):
-    #     sql_query = f"  COPY      {self.table_name}\
-    #                     FROM      STDIN\
-    #                     DELIMITER ','\
-    #                     CSV       HEADER;"
-
-    #     with open(self.file_name,  'rb') as csv_file:
-    #         self.my_cursor.copy_expert(sql_query, csv_file)
-    #     self.my_connection.commit()
-    #     print(f"Data uploaded from {self.file_name} to {self.table_name}.")
-
-    # def delete_data(self):
-    #     self.my_cursor.execute(f'TRUNCATE {self.table_name}')
-    #     self.my_connection.commit()
-    #     print("The data has been deleted but the table still exists.")
-    
-    # def delete_table(self):
-    #     self.my_cursor.execute(f'DROP TABLE {self.table_name}')
-    #     self.my_connection.commit()
-    #     print("The table has been deleted.")
-
-    # """Deprecated method for auto-creating tables in PostgreSQL"""
-    # @staticmethod
-    # def create_table_from_csv(db_name, db_url, table_name, file_url):
-
-    #     subprocess.run([db_name,
-    #                     "--db",
-    #                     db_url,
-    #                     f"{table_name}",
-    #                     f"{file_url}"])
-
-    # def store_data(self, status): #Data saving needs to be customized
-    #     # Get retweet count and tweet text regardless of RT status and length
-    #     if hasattr(status, "retweeted_status"):
-    #         retweet_count = status.retweeted_status.retweet_count
-    #         try:
-    #             text = status.retweeted_status.extended_tweet["full_text"]
-    #         except AttributeError:
-    #             text = status.retweeted_status.text
-    #     else:
-    #         retweet_count = status.retweet_count
-    #         try:
-    #             text = status.extended_tweet["full_text"]
-    #         except AttributeError:
-    #             text = status.text
-
-    #     tweet_analyzer = TweetAnalyzer()
-    #     sentiment = tweet_analyzer.analyze_sentiment(text)
-
-    #     print(f"{status.id}\
-    #             {status.created_at}\
-    #             {status.user.screen_name}\
-    #             {text}\
-    #             {retweet_count}\
-    #         {sentiment}")
-
-    #     self.my_cursor.execute(
-    #         "insert into %s values (%%s, %%s, %%s, %%s, %%s, %%s)"\
-    #             % quote_ident(table_name, self.my_cursor),
-    #         [status.id, status.created_at, status.user.screen_name, text,
-    #             retweet_count, sentiment])
-    #     self.my_connection.commit()
-
-    # def fetch_most_recent(self, limit=5):
-    #     """Reads the most recent entry of the tweet database
-    #     Args:
-    #         self
-    #         limit: Number of entries to retrieve in reverse chronological order
-    #                Default: 1
-    #     Returns:
-    #         results: List of results
-    #     """
-
-    #     self.my_cursor.execute(
-    #         "SELECT *\
-    #         FROM %s\
-    #        LIMIT %%s"
-    #          % quote_ident(self.table_name, self.my_cursor),
-    #         [limit])
-    #     results = self.my_cursor.fetchall()
-
-    #     for result in results:
-    #         print("")
-    #         for item in result:
-    #             print(item)
-
-    #     return results
 
     def fetch_total_count(self):
 

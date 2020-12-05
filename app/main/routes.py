@@ -19,7 +19,6 @@ def data_under_150k():
 
 @main.route("/data-150k-and-up")
 def data_150k_and_up():
-    print(current_app.config)
     return render_template("data-150k-and-up.html", data="", headers=current_app.config["HEADERS_150K_AND_UP"])
 
 @main.route("/about")
