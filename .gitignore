@@ -1,7 +1,12 @@
+/.vscode
 /venv
 /bs_table
 PPP Data 150k and up.csv
+app/__pycache__
+app/.vscode
+app/deprecated_files
 app/static/data/
+.bash_profile
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
