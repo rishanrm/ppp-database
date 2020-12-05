@@ -12,9 +12,9 @@ main = Blueprint('main', __name__)
 def home():
 
     with current_app.app_context():
-        all_data = db.Table(Config.TABLE_NAME, db.metadata, autoload=True, autoload_with=db.engine)
+        all_data = db.Table(current_app.config.TABLE_NAME, db.metadata, autoload=True, autoload_with=db.engine)
         data = db.session.query(all_data).all()
-        csv_column_headers = DatabasePopulation.get_csv_column_headers(Config.SOURCE_FILE_NAME)
+        csv_column_headers = DatabasePopulation.get_csv_column_headers(current_app.config.SOURCE_FILE_NAME)
 #        for r in data:
 #            print(r)
 #    page = request.args.get('page', 1, type=int)
@@ -119,7 +119,7 @@ def form_example():
 def fetch():
     #    db = DatabaseInitialization.initialize_database("local")
     db = DatabaseConnection(
-        Config.DB_LOCATION, Config.DB_NAME, Config.TABLE_NAME)
+        current_app.config.DB_LOCATION, current_app.config.DB_NAME, current_app.config.TABLE_NAME)
 #    db.fetch_most_recent(5)
 
 #    db.fetch_json(5)
@@ -159,7 +159,7 @@ def get_datax():
 
 @main.route('/data_test/<column>.json')
 def data_test(column):
-    db = DatabaseConnection(Config.DB_LOCATION, Config.DB_NAME, Config.TABLE_NAME)
+    db = DatabaseConnection(current_app.config.DB_LOCATION, current_app.config.DB_NAME, current_app.config.TABLE_NAME)
 
     column_options = db.get_column_options(column)
     options_dict = db.get_column_options_dict(column_options, column)
@@ -170,7 +170,7 @@ def data_test(column):
 def data():
     # path = './static/example_copy.json'
     # return path
-    all_data = db.Table(Config.TABLE_NAME, db.metadata,
+    all_data = db.Table(current_app.config.TABLE_NAME, db.metadata,
                         autoload=True, autoload_with=db.engine)
     data = db.session.query(all_data).all()
     return jsonify(data)

@@ -1,6 +1,6 @@
-from flask import render_template, request, Blueprint, url_for, flash, redirect, send_file
+from flask import current_app, render_template, request, Blueprint, url_for, flash, redirect, send_file
 
-from config import Config
+# from config import Config
 from get_data import Data
 from forms import ContactForm
 from send_email import Email
@@ -15,11 +15,12 @@ def index():
 
 @main.route("/data-under-150k")
 def data_under_150k():
-    return render_template('data-under-150k.html', data="", headers = Config.HEADERS_UNDER_150K)
+    return render_template('data-under-150k.html', data="", headers=current_app.config["HEADERS_UNDER_150K"])
 
 @main.route("/data-150k-and-up")
 def data_150k_and_up():
-    return render_template('data-150k-and-up.html', data="", headers=Config.HEADERS_150K_AND_UP)
+    print(current_app.config)
+    return render_template("data-150k-and-up.html", data="", headers=current_app.config["HEADERS_150K_AND_UP"])
 
 @main.route("/about")
 def about():

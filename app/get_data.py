@@ -23,16 +23,14 @@ class Data():
             state = "unstated"
 
         if request.args["page"] == "data-under-150k":
-            db_name = Config.DB_NAME_ROOT_UNDER_150K
-            table_name = Config.DB_NAME_ROOT_UNDER_150K + "_" + state.lower()
+            db_name = current_app.config["DB_NAME_ROOT_UNDER_150K"]
+            table_name = current_app.config["DB_NAME_ROOT_UNDER_150K"] + "_" + state.lower()
         elif request.args["page"] == "data-150k-and-up":
-            db_name = Config.DB_NAME_ROOT_150K_AND_UP
-            table_name = Config.DB_NAME_ROOT_150K_AND_UP
+            db_name = current_app.config["DB_NAME_ROOT_150K_AND_UP"]
+            table_name = current_app.config["DB_NAME_ROOT_150K_AND_UP"]
 
         with current_app.app_context():
-            db = DatabaseConnection(Config.DB_LOCATION, db_name, table_name)
-            # db = DatabaseConnection(Config.DB_LOCATION, Config.DB_NAME, Config.TABLE_NAME)
-    #        db = DatabaseInitialization.initialize_database("local")
+            db = DatabaseConnection(current_app.config["DB_LOCATION"], db_name, table_name)
 
         total_count = db.fetch_total_count()
         total_count_str = db.get_json_component(total_count, "total")

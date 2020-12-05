@@ -1,6 +1,7 @@
 import smtplib
 import ssl
 
+from flask import current_app
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
@@ -10,8 +11,8 @@ class Email():
 
     @staticmethod
     def send_email(form):
-        sender_email = Config.CONTACT_EMAIL_ADDR
-        receiver_email = Config.CONTACT_EMAIL_ADDR
+        sender_email = current_app.config["CONTACT_EMAIL_ADDR"]
+        receiver_email = current_app.config["CONTACT_EMAIL_ADDR"]
 
         message = MIMEMultipart("alternative")
         message["Subject"] = f"PPP Data Contact Form Submission: {form.email.data}"
@@ -57,7 +58,7 @@ Message: {form.message.data}"""
         context = ssl.create_default_context()
         with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
             # with smtplib.SMTP_SSL("smtp.gmail.com", 587, context=context) as server:
-            server.login(Config.CONTACT_EMAIL_ADDR, Config.CONTACT_EMAIL_PASS)
+            server.login(current_app.config["CONTACT_EMAIL_ADDR"], current_app.config["CONTACT_EMAIL_PASS"])
             server.sendmail(
                 sender_email, receiver_email, message.as_string()
             )

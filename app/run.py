@@ -3,7 +3,9 @@
 # from app import create_app, db
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from config import Config
+
+from config import ProductionConfig, DevelopmentConfig
+from main.routes import main
 
 db = SQLAlchemy()
 
@@ -12,18 +14,15 @@ def create_app():
 
     app = Flask(__name__, static_url_path='')
     if env == "production":
-        app.config.from_object("config.ProductionConfig")
+        app.config.from_object(ProductionConfig)
     elif env == "development":
-        app.config.from_object("config.DevelopmentConfig")
+        app.config.from_object(DevelopmentConfig)
     else:
         raise ValueError('Invalid environment name')
 
     db.init_app(app)
-
-    from main.routes import main
     app.register_blueprint(main)
     return app
-
 
 app = create_app()
 
