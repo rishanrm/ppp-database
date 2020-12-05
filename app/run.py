@@ -7,14 +7,22 @@ from config import Config
 
 db = SQLAlchemy()
 
-def create_app(config_class=Config):
-    created_app = Flask(__name__, static_url_path='')
-    created_app.config.from_object(Config)
-    db.init_app(created_app)
+def create_app():
+    env = "development"
+
+    app = Flask(__name__, static_url_path='')
+    if env == "production":
+        app.config.from_object("config.ProductionConfig")
+    elif env == "development":
+        app.config.from_object("config.DevelopmentConfig")
+    else:
+        raise ValueError('Invalid environment name')
+
+    db.init_app(app)
 
     from main.routes import main
-    created_app.register_blueprint(main)
-    return created_app
+    app.register_blueprint(main)
+    return app
 
 
 app = create_app()
