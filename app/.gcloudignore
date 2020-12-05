@@ -11,10 +11,18 @@
 # from your .gitignore file, remove the corresponding line
 # below:
 .git
-.gitignore
-#!include:.gitignore
+# .gitignore
+# #!include:.gitignore
 
 # Python pycache:
 __pycache__/
 # Ignored by the build system
 /setup.cfg
+
+
+PPP Data 150k and up.csv
+__pycache__
+.vscode
+deprecated_files
+main/__pycache__
+static/data/all_data

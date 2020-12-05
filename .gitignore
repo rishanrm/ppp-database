@@ -5,7 +5,8 @@ PPP Data 150k and up.csv
 app/__pycache__
 app/.vscode
 app/deprecated_files
-app/static/data/
+app/main/__pycache__
+app/static/data/all_data
 .bash_profile
 
 # Byte-compiled / optimized / DLL files
