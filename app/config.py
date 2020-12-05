@@ -1,5 +1,7 @@
 import os
 
+from cloud_secrets import CloudSecrets
+
 class Config:
 
     """CONFIGURATION LOCATION"""
@@ -50,8 +52,10 @@ class ProductionConfig(Config):
 
 #    POSTGRES_USER_FOR_CLOUD = "postgres"
 #    POSTGRES_PASSWORD_FOR_CLOUD = "postgres"
-    POSTGRES_USER = "initial_setup_user"
-    POSTGRES_PASSWORD = "initial_setup_password"
+    POSTGRES_USER = CloudSecrets.get_cloud_secret(
+        GCLOUD_PROJECT_ID, "POSTGRES_USER")
+    POSTGRES_PASSWORD = CloudSecrets.get_cloud_secret(
+        GCLOUD_PROJECT_ID, "POSTGRES_PASSWORD")
     POSTGRES_PORT = 5431
 
 
