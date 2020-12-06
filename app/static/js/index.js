@@ -16,11 +16,13 @@ function callTable(i) {
         console.log("IN GET COLUMNS")
         // console.log(params)
         var request = new XMLHttpRequest();
-        request.open('GET', 'http://localhost:5000/header_options/', false);  // `false` makes the request synchronous
+        // request.open('GET', '/header_options', false);  // `false` makes the request synchronous
+        request.open('GET', '/data/column_options.json', false);  // `false` makes the request synchronous
         request.send(null);
 
         if (request.status === 200) {
             colOptions = JSON.parse(request.responseText);
+            console.log("GOT THEM...")
         }
         console.log("Got column names.")
     }
