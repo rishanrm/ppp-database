@@ -23,8 +23,6 @@ def create_app():
 
     db.init_app(app)
     app.register_blueprint(main)
-    print(app.config["RECAPTCHA_PUBLIC_KEY"])
-    print(app.config["RECAPTCHA_PRIVATE_KEY"])
     return app
 
 app = create_app()

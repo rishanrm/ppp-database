@@ -50,13 +50,14 @@ class ProductionConfig(Config):
 
     """SECURITY"""
     # SSL_REDIRECT = True
-    SECRET_KEY = os.environ.get("SECRET_KEY")
+    SECRET_KEY = CloudSecrets.get_cloud_secret(
+        Config.GCLOUD_PROJECT_ID, "SECRET_KEY")
     RECAPTCHA_PUBLIC_KEY = CloudSecrets.get_cloud_secret(
         Config.GCLOUD_PROJECT_ID, "RECAPTCHA_PUBLIC_KEY")
     RECAPTCHA_PRIVATE_KEY = CloudSecrets.get_cloud_secret(
         Config.GCLOUD_PROJECT_ID, "RECAPTCHA_PRIVATE_KEY")
 
-#    TESTING = True #Turn on or off ReCAPTCHA
+    #    TESTING = True #Turn on or off ReCAPTCHA
 
 class DevelopmentConfig(Config):
 
