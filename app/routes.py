@@ -30,7 +30,7 @@ def contact():
     if form.validate_on_submit():
         Email.send_email(form)
         flash("Your message has been sent!", "success")
-        return redirect(url_for('main.index'))
+        return redirect(url_for('index'))
     return render_template('contact.html', title='Contact', form=form)
 
 @main.route("/privacy")
