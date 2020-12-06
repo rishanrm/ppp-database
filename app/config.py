@@ -55,6 +55,7 @@ class ProductionConfig(Config):
         Config.GCLOUD_PROJECT_ID, "RECAPTCHA_PUBLIC_KEY")
     RECAPTCHA_PRIVATE_KEY = CloudSecrets.get_cloud_secret(
         Config.GCLOUD_PROJECT_ID, "RECAPTCHA_PRIVATE_KEY")
+
 #    TESTING = True #Turn on or off ReCAPTCHA
 
 class DevelopmentConfig(Config):
@@ -73,4 +74,8 @@ class DevelopmentConfig(Config):
     SECRET_KEY = os.environ.get("SECRET_KEY")
     RECAPTCHA_PUBLIC_KEY = os.environ.get("RECAPTCHA_PUBLIC_KEY")
     RECAPTCHA_PRIVATE_KEY = os.environ.get("RECAPTCHA_PRIVATE_KEY")
+    # RECAPTCHA_PUBLIC_KEY = "6LdH9_oZAAAAAPr6GNAc6-ylfVEHc0AHzc4UhwwU"
+    # RECAPTCHA_PRIVATE_KEY = "6LdH9_oZAAAAAE2iY2dKeUHqiq-4Jb7SFnOK1Tvu"
+
+    
     # TESTING = True #Turn on or off ReCAPTCHA

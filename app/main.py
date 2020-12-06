@@ -11,7 +11,7 @@ from routes import main
 db = SQLAlchemy()
 
 def create_app():
-    env = "development"
+    env = "production"
 
     app = Flask(__name__, static_url_path='')
     if env == "production":
@@ -23,6 +23,8 @@ def create_app():
 
     db.init_app(app)
     app.register_blueprint(main)
+    print(app.config["RECAPTCHA_PUBLIC_KEY"])
+    print(app.config["RECAPTCHA_PRIVATE_KEY"])
     return app
 
 app = create_app()
