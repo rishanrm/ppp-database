@@ -44,9 +44,5 @@ class Data():
 
         table_data_json = db.build_table_json(
             filtered_count_str, total_count_str, results_str)
-        print(type(table_data_json))
-
-        print("PARAMS ROUTE")
-        print(type(json.loads(table_data_json)))
 
         return json.loads(table_data_json)

@@ -77,22 +77,14 @@ class DatabaseConnection():
         )
 
     def get_query_body(self, args, query_features):
-        # print("ARGS:")
-        # print(args)
-        # print("QUERY FEATURES:")
-        # print(query_features)
-        # print("URL GIVEN:")
-        # print(args["page"])
         query_body = sql.SQL("")
         data = ()
         
         args_order = ["page", "search", "filter", "sort", "order", "offset", "limit"]
         args_dict = OrderedDict((arg, args.get(arg)) for arg in args_order)
 
-        print("\n")
         print("ARGS DICT:")
         print(args_dict)
-        print("\n")
 
         if(args_dict["filter"] == None):
             args_dict["filter"] = {"state": None}
@@ -100,29 +92,13 @@ class DatabaseConnection():
             args_dict["filter"] = json.loads(args_dict["filter"])
             if "state" not in args_dict["filter"]:
                 args_dict["filter"]["state"] = None
-        print("\nARGS DICT, is there a filter?")
-        print(args_dict)
-        print("filter" in args_dict)
-        print("DID THAT SAY TRUE?")
-        # print("ARGS:")
-        # print(args)
 
-        # print(args_dict.keys)
         for arg in args_dict:
-            print("ARG:")
-            print(arg)
-            if (arg == "filter"):
-                print(arg)
-                print(args_dict[arg])
-                print("THAT WAS THE FILTER")
+
             if args_dict[arg] != "" and args_dict[arg] != "undefined" and args_dict[arg] != None and arg in query_features:
                 if arg == "search":
-                    # print(args_dict["search"])
-                    # print(args_dict["page"])
                     query_body += self.sql_field_search(args_dict["page"], args_dict["search"])
                 if arg == "filter":
-                    print("THERE'S A FILTER\n\n\n\n\n\n")
-                    # print(filter_data)
                     query_body += self.sql_field_filter(args_dict["filter"])
                 if arg == "sort":
                     query_body += self.sql_field_sort(args_dict["sort"], args_dict["order"])
@@ -179,15 +155,12 @@ class DatabaseConnection():
 
     @staticmethod
     def sql_field_filter(filter_data):
-        print("FILTER DATA:\n\n\n\n\n\n")
+        print("FILTER DATA:")
         print(filter_data)
         filter_sql = sql.SQL("")
         # filter_data = json.loads(filter_data)
         numeric_headers = current_app.config["NUMERIC_HEADERS"]
         for filter in filter_data:
-            print("FILTER:")
-            print(filter)
-            print("END FILTER\n\n\n\n")
             if filter not in numeric_headers:
 
                 if (filter == "address" or filter == "city") and (filter_data[filter].replace('/', '').lower() == "na"):
@@ -276,8 +249,10 @@ class DatabaseConnection():
         return sql.SQL(") t;")
 
     def fetch_from_db(self, sql_query_data, return_type):
-        print("SQL QUERY:")
+        print("SQL QUERY - QUERY PARAMETER:")
         print(sql_query_data["query"])
+        print("\n")
+        print("SQL QUERY - DATA PARAMETER:")
         print(sql_query_data["data"])
         self.my_cursor.execute(sql_query_data["query"], sql_query_data["data"])
         results = self.my_cursor.fetchall()
@@ -319,7 +294,6 @@ class DatabaseConnection():
         return table_json_str
 
     def get_column_options(self, column):
-        print('IN COLUMN OPTIONS')
         query= sql.SQL("""
             SELECT DISTINCT {column}
             FROM            {table_name}
