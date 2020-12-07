@@ -2,16 +2,16 @@
 
 # from app import create_app, db
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
+# from flask_sqlalchemy import SQLAlchemy
 
 # from config import ProductionConfig, DevelopmentConfig
 import config
 from routes import main
 
-db = SQLAlchemy()
+# db = SQLAlchemy()
 
 def create_app():
-    env = "production"
+    env = "development"
 
     app = Flask(__name__, static_url_path='')
     if env == "production":
@@ -21,7 +21,7 @@ def create_app():
     else:
         raise ValueError('Invalid environment name')
 
-    db.init_app(app)
+    # db.init_app(app)
     app.register_blueprint(main)
     return app
 
