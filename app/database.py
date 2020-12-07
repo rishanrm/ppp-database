@@ -8,29 +8,108 @@ from psycopg2.sql import NULL
 from flask import current_app
 from collections import OrderedDict
 
+import sqlalchemy
+import pg8000
+
 """Functionality for connecting to and storing data in a database"""
 class DatabaseConnection():
 
     def __init__(self, database_name='postgres', table_name='postgres'):
+        db_config = {
+            # [START cloud_sql_postgres_sqlalchemy_limit]
+            # Pool size is the maximum number of permanent connections to keep.
+            "pool_size": 5,
+            # Temporarily exceeds the set pool_size if no connections are available.
+            "max_overflow": 2,
+            # The total number of concurrent connections for your application will be
+            # a total of pool_size and max_overflow.
+            # [END cloud_sql_postgres_sqlalchemy_limit]
+
+            # [START cloud_sql_postgres_sqlalchemy_backoff]
+            # SQLAlchemy automatically uses delays between failed connection attempts,
+            # but provides no arguments for configuration.
+            # [END cloud_sql_postgres_sqlalchemy_backoff]
+
+            # [START cloud_sql_postgres_sqlalchemy_timeout]
+            # 'pool_timeout' is the maximum number of seconds to wait when retrieving a
+            # new connection from the pool. After the specified amount of time, an
+            # exception will be thrown.
+            "pool_timeout": 30,  # 30 seconds
+            # [END cloud_sql_postgres_sqlalchemy_timeout]
+
+            # [START cloud_sql_postgres_sqlalchemy_lifetime]
+            # 'pool_recycle' is the maximum number of seconds a connection can persist.
+            # Connections that live longer than the specified amount of time will be
+            # reestablished
+            "pool_recycle": 1800,  # 30 minutes
+            # [END cloud_sql_postgres_sqlalchemy_lifetime]
+        }
+        # user = current_app.config["POSTGRES_USER"]
+        # password = current_app.config["POSTGRES_PASSWORD"]
+        # port = current_app.config["POSTGRES_PORT"]
+        # try:
+        #     self.my_connection = psycopg2.connect(
+        #         host=current_app.config["POSTGRES_HOST"],
+        #         database=database_name,
+        #         user=user,
+        #         password=password,
+        #         port=port
+        #     )
+        #     self.my_cursor = self.my_connection.cursor()
+        #     self.database_name = database_name
+        #     self.table_name = table_name
+        #     print("\nNew database connection active.")
+        # except (Exception, psycopg2.Error) as error:
+        #     print("Error while fetching data from PostgreSQL", error)
+        #     quit("Exiting program.")
 
         user = current_app.config["POSTGRES_USER"]
         password = current_app.config["POSTGRES_PASSWORD"]
         port = current_app.config["POSTGRES_PORT"]
-        try:
-            self.my_connection = psycopg2.connect(
-                host=current_app.config["POSTGRES_HOST"],
-                database=database_name,
-                user=user,
-                password=password,
-                port=port
-            )
-            self.my_cursor = self.my_connection.cursor()
-            self.database_name = database_name
-            self.table_name = table_name
-            print("\nNew database connection active.")
-        except (Exception, psycopg2.Error) as error:
-            print("Error while fetching data from PostgreSQL", error)
-            quit("Exiting program.")
+        # try:
+        #     self.my_connection = psycopg2.connect(
+        #         host="",
+        #         database=database_name,
+        #         user=user,
+        #         password=password,
+        #         port=port
+        #     )
+        #     self.my_cursor = self.my_connection.cursor()
+        #     self.database_name = database_name
+        #     self.table_name = table_name
+        #     print("\nNew database connection active.")
+        # except (Exception, psycopg2.Error) as error:
+        #     print("Error while fetching data from PostgreSQL", error)
+        #     quit("Exiting program.")
+
+        db_user = current_app.config["POSTGRES_USER"]
+        db_pass = current_app.config["POSTGRES_PASSWORD"]
+        # db_name = os.environ["DB_NAME"]
+        db_socket_dir = "/cloudsql"
+        cloud_sql_connection_name = "ppp-data-us:us-central1:ppp-data"
+
+        self.my_engine = sqlalchemy.create_engine(
+            sqlalchemy.engine.url.URL(
+                drivername="postgresql+psycopg2",
+                username=db_user,  # e.g. "my-database-user"
+                password=db_pass,  # e.g. "my-database-password"
+                database=database_name,  # e.g. "my-database-name"
+                query={
+                    "unix_sock": "{}/{}/.s.PGSQL.5432".format(
+                        db_socket_dir,  # e.g. "/cloudsql"
+                        cloud_sql_connection_name)  # i.e "<PROJECT-NAME>:<INSTANCE-REGION>:<INSTANCE-NAME>"
+                }
+            ),
+            **db_config
+        )
+
+        self.my_cursor = self.my_engine.connect()
+        self.database_name = database_name
+        self.table_name = table_name
+        print("\nNew database connection active.")
+
+
+
 
 
     def fetch_total_count(self):
