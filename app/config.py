@@ -5,7 +5,6 @@ from cloud_secrets import CloudSecrets
 class Config:
 
     """FILENAME"""
-    # SOURCE_FILE_NAME = './PPP Data 150k and up.csv'
     DB_NAME_ROOT_UNDER_150K = 'ppp_data_up_to_150k_080820'
     DB_NAME_ROOT_150K_AND_UP = 'ppp_data_150k_and_up_080820'
 
@@ -76,6 +75,4 @@ class DevelopmentConfig(Config):
     SECRET_KEY = os.environ.get("SECRET_KEY")
     RECAPTCHA_PUBLIC_KEY = os.environ.get("RECAPTCHA_PUBLIC_KEY")
     RECAPTCHA_PRIVATE_KEY = os.environ.get("RECAPTCHA_PRIVATE_KEY")
-    # RECAPTCHA_PUBLIC_KEY = "6LdH9_oZAAAAAPr6GNAc6-ylfVEHc0AHzc4UhwwU"
-    # RECAPTCHA_PRIVATE_KEY = "6LdH9_oZAAAAAE2iY2dKeUHqiq-4Jb7SFnOK1Tvu"
     TESTING = False # True to turn off ReCAPTCHA for testing
