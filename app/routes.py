@@ -51,3 +51,8 @@ def header_options():
         return send_file('static\data\column_options.json')
     except Exception as e:
         return str(e)
+
+
+@main.route("/robots.txt")
+def robots():
+    return render_template('robots.txt')
