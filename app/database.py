@@ -13,25 +13,20 @@ class DatabaseConnection():
 
     def __init__(self, database_name='postgres', table_name='postgres'):
 
+        host = current_app.config["POSTGRES_HOST"]
         user = current_app.config["POSTGRES_USER"]
         password = current_app.config["POSTGRES_PASSWORD"]
         port = current_app.config["POSTGRES_PORT"]
-        instance = "ppp-data-us:us-central1:ppp-data"
-        #TODO: TRY INSTANCE: ppp-data-us:us-central1:ppp-data
-        DATABASE_URL = "postgres://initial_setup_user:initial_setup_password@/ppp_data_150k_and_up_080820?host=/cloudsql/ppp-data-us:us-central1:ppp-data"
-        # DATABASE_URL = f"postgres://{user}:{password}@/{database_name}?host=/cloudsql/{instance}"
-        # DATABASE_URL = f"postgres://{user}:{password}@/{database_name}?unix_socket=/cloudsql/{instance}"
-        # set SQLALCHEMY_DATABASE_URI=postgresql+psycopg2://initial_setup_user:initial_setup_password@127.0.0.1: 5432/ppp_data_150k_and_up_080820
-        try:
-            # self.my_connection = psycopg2.connect(
-            #     host=current_app.config["POSTGRES_HOST"],
-            #     database=database_name,
-            #     user=user,
-            #     password=password,
-            #     port=port
-            # )
 
-            self.my_connection = psycopg2.connect(DATABASE_URL)
+        try:
+            self.my_connection = psycopg2.connect(
+                host=host,
+                database=database_name,
+                user=user,
+                password=password,
+                port=port
+            )
+
             self.my_cursor = self.my_connection.cursor()
             self.database_name = database_name
             self.table_name = table_name
