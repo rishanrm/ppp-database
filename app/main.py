@@ -1,17 +1,12 @@
 #!/usr/bin/env python
 
-# from app import create_app, db
 from flask import Flask
-# from flask_sqlalchemy import SQLAlchemy
 
-# from config import ProductionConfig, DevelopmentConfig
 import config
 from routes import main
 
-# db = SQLAlchemy()
-
 def create_app():
-    env = "development"
+    env = "production"
 
     app = Flask(__name__, static_url_path='')
     if env == "production":
