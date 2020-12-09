@@ -52,13 +52,10 @@ def header_options():
     except Exception as e:
         return str(e)
 
-
 @main.route("/robots.txt")
 def robots():
     return render_template('robots.txt')
 
-
-@main.route("/sitemap")
 @main.route("/sitemap.xml")
 def sitemap():
     return render_template('sitemap.xml')
