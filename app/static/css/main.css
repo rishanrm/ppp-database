@@ -742,6 +742,7 @@ input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
   width: 45vw;
   margin-left: 0;
   font-weight: bold;
+  opacity: 0;
 }
 
 .second-line {
@@ -751,6 +752,7 @@ input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
   width: 36vw;
   margin-left: 0;
   font-weight: bold;
+  opacity: 0;
 }
 
 .right {
@@ -780,9 +782,10 @@ input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
 }
 
 .nav-item {
-  -webkit-transition: 0.3s ease;
-  transition: 0.3s ease;
+  -webkit-transition: 0.3s ease-out;
+  transition: 0.3s ease-out;
   display: inline-block;
+  opacity: 0;
 }
 
 .nav-link {

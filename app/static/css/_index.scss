@@ -60,7 +60,7 @@
     width: 45vw;
     margin-left: 0;
     font-weight: bold;
-
+    opacity: 0;
 }
 
 .second-line {
@@ -71,6 +71,7 @@
     width: 36vw;
     margin-left: 0;
     font-weight: bold;
+    opacity: 0;
 }
 
 .right{
@@ -108,8 +109,9 @@
 }
 
 .nav-item {
-    transition: $nav-item-transition-time ease;
+    transition: $nav-item-transition-time ease-out;
     display: inline-block;
+    opacity: 0;
     // background: orange;
 
     // width: 100px;
