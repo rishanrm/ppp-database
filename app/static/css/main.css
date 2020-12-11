@@ -109,6 +109,10 @@ section {
   background: white;
 }
 
+[title="Clear filters"] {
+  display: none;
+}
+
 .header {
   display: block;
   margin: 0 auto;

@@ -244,15 +244,13 @@ function callTable(i) {
     
         $(function() {
             $resetButton.click(function () {
-                $table.bootstrapTable('destroy')
                 requestCount = 0
                 initial_state = true
-                console.log("REQUEST COUNT RESET TO 0 FROM RESET BUTTON")
-                $table.bootstrapTable()
+                $('table').bootstrapTable('clearFilterControl')
+                $('select[class*="bootstrap-table-filter-control-' + initialFilterColumn + '"]').val(initialFilterValue);
             })
         })
     
-
     // <!-- Loading screen overlay -->
         
             var type = 'bsGrow'
