@@ -123,7 +123,7 @@ function callTable(i) {
         }
     
         function naicsFormatter(value) {
-            return colOptions["naicscode"][value]
+            return colOptions["naicscode"][value].replace(' ', '<br>')
         }
 
     // <!-- Custom text for loading message, footer, search box placeholder, no match found -->
