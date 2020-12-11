@@ -119,6 +119,17 @@ barba.init({
                     next.container.appendChild(script2);
                     resolve("Success!")
                 })
+                // function onClick(e) {
+                //     e.preventDefault();
+                //     grecaptcha.ready(function () {
+                //         grecaptcha.execute('reCAPTCHA_site_key', { action: 'submit' }).then(function (token) {
+                //             // Add your logic to submit to your backend server here.
+                //         });
+                //     });
+                // }
+                function onSubmit(token) {
+                    document.getElementById("demo-form").submit();
+                }
                 function onClick(e) {
                     e.preventDefault();
                     grecaptcha.ready(function () {
