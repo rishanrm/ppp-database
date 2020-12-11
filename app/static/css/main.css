@@ -318,6 +318,11 @@ ul.transition li:nth-child(5) {
     opacity: 0;
 } */
 /* END GSAP */
+.spinner-transition {
+  width: 5vw;
+  height: 5vw;
+}
+
 @-webkit-keyframes ldio-bvr6pqhlkhj {
   0% {
     top: 41.6px;
@@ -334,6 +339,7 @@ ul.transition li:nth-child(5) {
     opacity: 0;
   }
 }
+
 @keyframes ldio-bvr6pqhlkhj {
   0% {
     top: 41.6px;
