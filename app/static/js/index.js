@@ -122,6 +122,9 @@ function callTable(i) {
             return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         }
     
+        function naicsFormatter(value) {
+            return colOptions["naicscode"][value]
+        }
 
     // <!-- Custom text for loading message, footer, search box placeholder, no match found -->
             
@@ -163,7 +166,7 @@ function callTable(i) {
                     "city": "City",
                     "state": "State",
                     "zip": "ZIP Code",
-                    "naicscode": "NAICS Code",
+                    "naicscode": "Industry (NAICS Code)",
                     "businesstype": "Business Type",
                     "raceethnicity": "Race/Ethnicity",
                     "gender": "Gender",
@@ -180,7 +183,7 @@ function callTable(i) {
                     "city": "City",
                     "state": "State",                
                     "zip": "ZIP Code",
-                    "naicscode": "NAICS Code",
+                    "naicscode": "Industry (NAICS Code)",
                     "businesstype": "Business Type",
                     "raceethnicity": "Race/Ethnicity",
                     "gender": "Gender",
@@ -228,10 +231,11 @@ function callTable(i) {
             $.each(orderedColumns, function (index, columnName) {
                 // if (columnName == "Loan Amount") {
                 //     value = amountFormatter(orderedValues[i]);
-                // } else {
-                //     value = orderedValues[i]
-                // }
-                value = orderedValues[i]
+                if (columnName == "Industry (NAICS Code)") {
+                    value = colOptions["naicscode"][orderedValues[i]]
+                } else {
+                    value = orderedValues[i]
+                }
                 html.push('<p><b>' + columnName + ':</b> ' + value + '</p>')
                 i += 1
             })
@@ -239,7 +243,6 @@ function callTable(i) {
             return html.join('')
         }
     
-
     // <!-- Reset table button -->
     
         $(function() {
