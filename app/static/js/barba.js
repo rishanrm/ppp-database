@@ -3,8 +3,8 @@ function pageTransition() {
     var tl = gsap.timeline();
 
     tl.to('ul.transition li', { duration: .5, scaleY: 1, transformOrigin: "bottom right", stagger: .2 })
-    tl.to('.loader', 3, { autoAlpha: 1})
-    tl.to('.loader', .2, { autoAlpha: 0 })
+    tl.to('.loader', 0.5, { autoAlpha: 1})
+    tl.to('.loader', .25, { autoAlpha: 0, delay: 0.5 })
     tl.to('ul.transition li', { duration: .5, scaleY: 0, transformOrigin: "top left", stagger: .1, delay: .1 })
 }
 
@@ -24,6 +24,8 @@ function delay(n) {
 }
 
 var indexJS = $("script[src*='" + 'index.js' + "']")
+
+sessionStorage.setItem("visitedHome", false)
 
 barba.init({
     sync: true,
@@ -71,8 +73,7 @@ barba.init({
                     next.container.appendChild(script);
                     console.log("RAN INIT ON BARBA RIGHT HERE");
                     resolve("Success!")
-                })
-                
+                })                
                 // myPromise.then((successMessage) => {
                 //     $table.bootstrapTable();
                 //     console.log(successMessage)
@@ -84,6 +85,22 @@ barba.init({
                 //     }, 500);
                 // });
             },
+            beforeEnter() {
+                var visitedHome = sessionStorage.getItem("visitedHome")
+                if (visitedHome == 'true') {
+                    console.log('script ran')
+                    var tl = gsap.timeline();
+                    tl.to('.first-line', { translateY: 0, translateX: 0, opacity: 1, duration: 0.0, ease: 'Power2.easeOut', delay: 0.0})
+                    tl.to('.second-line', { translateY: 0, translateX: 0, opacity: 1, duration: 0.0, ease: 'Power2.easeOut', delay: 0.0})
+                    tl.staggerFromTo('.nav-item', 0.8, { translateY: 0, translateX: 0, scaleY: .5, scaleX: .5, opacity: 0 }, { translateY: 0, translateX: 0, scaleY: 1, scaleX: 1, opacity: 1 }, 0.1);
+                } else {
+                    var tl = gsap.timeline();
+                    tl.fromTo('.first-line', { translateY: -50, translateX: 0, opacity: 0 }, { translateY: 0, translateX: 0, opacity: 1, duration: 1.0, ease: 'Power2.easeOut', delay: 1.0})
+                    tl.fromTo('.second-line', { translateY: 100, translateX: 0, opacity: 0 }, { translateY: 0, translateX: 0, opacity: 1, duration: 1.0, ease: 'Power2.easeOut', delay: 0.0})
+                    tl.staggerFromTo('.nav-item', 0.8, { translateY: 0, translateX: 0, scaleY: .5, scaleX: .5, opacity: 0 }, { translateY: 0, translateX: 0, scaleY: 1, scaleX: 1, opacity: 1 }, 0.1);
+                    sessionStorage.setItem("visitedHome", true)
+                }
+            }
         },
         {namespace: 'contact',
             beforeEnter({ next }) {
