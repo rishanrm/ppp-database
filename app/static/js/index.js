@@ -123,12 +123,11 @@ function callTable(i) {
         }
     
         function naicsFormatter(value) {
-            if (value == null) {
-                return "N/A";
+            if (colOptions["naicscode"][value]) {
+                return colOptions["naicscode"][value].replace(' ', '<br>');
             } else {
-            return colOptions["naicscode"][value].replace(' ', '<br>');
+                return "N/A";
             }
-            return 1
         }
 
     // <!-- Custom text for loading message, footer, search box placeholder, no match found -->
