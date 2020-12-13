@@ -37,4 +37,11 @@
     position: fixed;
     margin-top: $header-height * 0.1;
     right: 2vw;
+    display: none;
+}
+
+@media all and (max-width: 800px) {
+    .ppp-logo {
+        display: none;
+    }
 }

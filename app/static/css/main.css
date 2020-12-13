@@ -128,7 +128,9 @@ section {
 }
 
 .header-text {
-  width: 100vw;
+  width: 80vw;
+  padding-left: 10vw;
+  padding-right: 10vw;
   position: absolute;
   font-size: calc(1em + 2vw);
   font-weight: bold;
@@ -153,6 +155,12 @@ section {
   margin-top: 1vh;
   right: 2vw;
 }
+
+/* @media all and (max-width: 550px) {
+  .ppp-logo {
+    display: none;
+  }
+} */
 
 .footer {
   width: 100%;
