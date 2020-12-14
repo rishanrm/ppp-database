@@ -1052,6 +1052,12 @@ input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
   height: 100%;
 }
 
+.card-img-top {
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 @media all and (max-width: 800px) {
   .about-disclaimer {
     margin-bottom: 6vh;
