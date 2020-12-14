@@ -196,8 +196,8 @@ section {
 
 .footer-link {
   color: white;
-  padding-left: 1em;
-  padding-right: 1em;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
   padding-top: 0.5vh;
   padding-bottom: 0.5vh;
   border-radius: 1em;
@@ -210,6 +210,10 @@ section {
   transition: 0.3s ease;
   background: white;
   text-decoration: none;
+}
+
+.copyright-link-short {
+  display: none;
 }
 
 .disclaimer {
@@ -227,6 +231,22 @@ section {
   margin-left: 0.6vh;
   margin-right: 0.6vh;
   border-radius: 0.25em;
+}
+
+@media all and (max-width: 800px) {
+  .footer {
+    height: 5vh;
+    font-size: calc(1em + 0.25vw);
+    font-weight: bold;
+  }
+  .copyright-link-full {
+    display: none;
+  }
+  .copyright-link-short {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+  }
 }
 
 html, body {

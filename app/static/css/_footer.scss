@@ -23,14 +23,12 @@
     font-size: calc(0.5em + .25vw);
     color: white;
     line-height: 1.2;
-
-
 }
 
 .footer-link{
     color: white;
-    padding-left: 1em;
-    padding-right: 1em;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
     // padding-top: 0.0625em * 3;
     // padding-bottom: 0.0625em * 3;
     padding-top: 0.5vh;
@@ -48,6 +46,10 @@
     text-decoration: none;
 }
 
+.copyright-link-short {
+    display: none;
+}
+
 .disclaimer {
     flex: auto;
 }
@@ -63,7 +65,19 @@
     border-radius: 0.25em;
     }
 
-// @media screen and ()
+@media all and (max-width: 800px) {
+    .footer {
+        height: $header-height * 0.5;
+        font-size: calc(1em + 0.25vw);
+        font-weight: bold;
+    }
+    .copyright-link-full {
+        display: none;
+    }
+    .copyright-link-short {
+        display: inline-flex;
+    }
+}
 
 // .nav-link {
 //     color: rgb(255, 255, 255);
