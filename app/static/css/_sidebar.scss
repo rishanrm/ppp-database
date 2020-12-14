@@ -88,14 +88,14 @@
 }
 
 #left-nav-cover-inner {
-    background-color: green;
+    // background-color: green;
     opacity: 50%;
     z-index: 10000;
     position: fixed;
     left: 2vw;
-    top: 1vh;
-    height: $header-height - 2vh;
-    width: 3vw;
+    top: 3vh;
+    height: 4vh;
+    width: 4vh;
     cursor: pointer;
 }
 
