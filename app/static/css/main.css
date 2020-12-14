@@ -1051,4 +1051,10 @@ input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
 .card {
   height: 100%;
 }
+
+@media all and (max-width: 800px) {
+  .about-disclaimer {
+    margin-bottom: 6vh;
+  }
+}
 /*# sourceMappingURL=main.css.map */
