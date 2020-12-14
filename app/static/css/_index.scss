@@ -98,7 +98,7 @@
     // background: black;
     padding-top: 15vh;
     // padding-right: 10vw;
-    margin-right: -5vw;
+    // margin-right: -5vw;
     list-style-type: none;
     text-align: right;
     font-size: calc(1em + 1vw);
@@ -144,6 +144,31 @@
 .list-group-item {
     background-color: none;
 }
+
+@media all and (max-width: 905px) {
+    .first-line {
+        padding-top: 10vh;
+    }
+    .right-text {
+        padding-top: 9vh;
+    }
+    .nav-link {
+        padding: 0.25rem 1rem;
+    }
+}
+
+@media all and (max-width: 441px) {
+    .first-line {
+    font-size: calc(0.75em + 5vw);
+    }
+    .second-line {
+    font-size: calc(0.75em + 5vw);
+    }
+    .nav-link {
+        font-size: 0.9em;
+    }
+}
+
 
 // .bottom {
 //     height: $bottom-height;

@@ -156,15 +156,6 @@ section {
   right: 2vw;
 }
 
-@media all and (max-width: 905px) {
-  .first-line {
-    padding-top: 10vh;
-  }
-  .right-text {
-    padding-top: 10vh;
-  }
-}
-
 @media all and (max-width: 441px) {
   .header-text {
     font-size: calc(1em + 1vw);
@@ -818,7 +809,6 @@ input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
 .right-text {
   color: white;
   padding-top: 15vh;
-  margin-right: -5vw;
   list-style-type: none;
   text-align: right;
   font-size: calc(1em + 1vw);
@@ -856,6 +846,30 @@ input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
 
 .list-group-item {
   background-color: none;
+}
+
+@media all and (max-width: 905px) {
+  .first-line {
+    padding-top: 10vh;
+  }
+  .right-text {
+    padding-top: 9vh;
+  }
+  .nav-link {
+    padding: 0.25rem 1rem;
+  }
+}
+
+@media all and (max-width: 441px) {
+  .first-line {
+    font-size: calc(0.75em + 5vw);
+  }
+  .second-line {
+    font-size: calc(0.75em + 5vw);
+  }
+  .nav-link {
+    font-size: 0.9em;
+  }
 }
 
 .img {
