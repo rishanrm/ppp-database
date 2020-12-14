@@ -246,3 +246,20 @@ input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
     transform: rotate(-135deg);
     margin-top: -1.7vh;
 }
+
+@media all and (max-width: 450px) {
+    #sidebarMenu {
+        width: 100vw;
+        transform: translateX(-100vw);
+    }
+    #sidebarLink {
+        margin: 0 auto;
+        display: block;
+    }
+    a.current:before {
+        display: none;
+    }
+    a.current:after {
+        display: none;
+    }
+}
