@@ -746,9 +746,9 @@ input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
     -webkit-transform: translateX(-100vw);
             transform: translateX(-100vw);
   }
-  #sidebarLink {
-    margin: 0 auto;
-    display: block;
+  .sidebarMenuInner a {
+    display: block !important;
+    text-align: center;
   }
   a.current:before {
     display: none;
