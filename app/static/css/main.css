@@ -554,6 +554,7 @@ ul.transition li:nth-child(5) {
 }
 
 #left-nav-cover-inner {
+  background-color: green;
   opacity: 50%;
   z-index: 10000;
   position: fixed;
