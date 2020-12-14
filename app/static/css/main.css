@@ -1032,6 +1032,7 @@ input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
 
 .about-content {
   margin-top: 11vh;
+  margin-bottom: 2vh;
   text-align: center;
   font-size: 1.25rem !important;
 }
