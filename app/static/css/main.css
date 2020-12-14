@@ -128,9 +128,9 @@ section {
 }
 
 .header-text {
-  width: 80vw;
-  padding-left: 10vw;
-  padding-right: 10vw;
+  width: 100vw;
+  padding-left: 10vh;
+  padding-right: 10vh;
   position: absolute;
   font-size: calc(1em + 2vw);
   font-weight: bold;
@@ -140,8 +140,8 @@ section {
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
+  line-height: 1.0 !important;
   /* vertical-align: middle; */
-  /* line-height: 100%; */
   /* top: 50%;
     left: 50%;
     transform: translate(-50%, -50%); */
@@ -156,11 +156,20 @@ section {
   right: 2vw;
 }
 
-/* @media all and (max-width: 550px) {
-  .ppp-logo {
-    display: none;
+@media all and (max-width: 905px) {
+  .first-line {
+    padding-top: 10vh;
   }
-} */
+  .right-text {
+    padding-top: 10vh;
+  }
+}
+
+@media all and (max-width: 441px) {
+  .header-text {
+    font-size: calc(1em + 1vw);
+  }
+}
 
 .footer {
   width: 100%;

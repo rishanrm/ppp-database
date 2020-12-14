@@ -14,6 +14,8 @@
 
 .header-text {
     width: 100vw;
+    padding-left: 10vh;
+    padding-right: 10vh;
     // height: 100vh - $header-height;
     position: absolute;
     font-size: calc(1em + 2vw);
@@ -23,8 +25,9 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    line-height: 1.0 !important;
     /* vertical-align: middle; */
-    /* line-height: 100%; */
+
     /* top: 50%;
     left: 50%;
     transform: translate(-50%, -50%); */
@@ -37,11 +40,25 @@
     position: fixed;
     margin-top: $header-height * 0.1;
     right: 2vw;
-    display: none;
 }
 
-@media all and (max-width: 800px) {
-    .ppp-logo {
-        display: none;
+// @media all and (max-width: 800px) {
+//     .ppp-logo {
+//         display: none;
+//     }
+// }
+
+@media all and (max-width: 905px) {
+    .first-line {
+        padding-top: 10vh;
+    }
+    .right-text {
+        padding-top: 10vh;
+    }
+}
+
+@media all and (max-width: 441px) {
+    .header-text {
+        font-size: calc(1em + 1vw);
     }
 }
