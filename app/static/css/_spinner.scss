@@ -3,6 +3,13 @@
   height: 5vw;
 }
 
+@media all and (max-width: 800px) {
+  .spinner-transition {
+    width: 10vw;
+    height: 10vw;
+  }
+}
+
 //   <style type="text/css">
     @keyframes ldio-bvr6pqhlkhj {
       0% {

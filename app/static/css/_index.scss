@@ -158,11 +158,14 @@
 }
 
 @media all and (max-width: 441px) {
+    .left {
+        line-height: calc(1em + 1vw)
+    }
     .first-line {
-    font-size: calc(0.75em + 5vw);
+    font-size: calc(0.75em + 1vw);
     }
     .second-line {
-    font-size: calc(0.75em + 5vw);
+    font-size: calc(0.75em + 1vw);
     }
     .nav-link {
         font-size: 0.9em;
