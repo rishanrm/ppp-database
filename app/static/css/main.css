@@ -923,6 +923,10 @@ input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
   margin-bottom: 8vh;
 }
 
+.lastElementPrivacy {
+  padding-bottom: 10vh;
+}
+
 [data-custom-class='title'],
 [data-custom-class='title'] * {
   font-family: Arial !important;
@@ -1088,6 +1092,9 @@ input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
 @media all and (max-width: 800px) {
   .about-disclaimer {
     margin-bottom: 10vh;
+  }
+  .about-content {
+    font-size: 1rem !important;
   }
 }
 /*# sourceMappingURL=main.css.map */

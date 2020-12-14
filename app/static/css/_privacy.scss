@@ -4,6 +4,10 @@
     margin-bottom: $footer-height + $privacy-offset-bottom;
 }
 
+.lastElementPrivacy {
+    padding-bottom: 10vh;
+}
+
 [data-custom-class='body'],
     [data-custom-class='body'] * {
         // background: transparent !important;
