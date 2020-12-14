@@ -1030,6 +1030,10 @@ input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
   margin-top: 2vh;
 }
 
+#submit {
+  margin-bottom: 5vh;
+}
+
 .about-content {
   margin-top: 11vh;
   margin-bottom: 2vh;
