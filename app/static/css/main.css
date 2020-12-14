@@ -971,6 +971,10 @@ input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
   margin-bottom: 8vh;
 }
 
+.lastElement {
+  margin-bottom: 10vh;
+}
+
 [data-custom-class='title'],
 [data-custom-class='title'] * {
   font-family: Arial !important;
