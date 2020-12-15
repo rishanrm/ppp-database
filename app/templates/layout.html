@@ -18,7 +18,19 @@
 
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<title>PPP Loan Data - {% block title %}{% endblock %}</title>
+		<title>{% block title %}{% endblock %}</title>
+
+		<!-- Logo for Google Knowledge Graph -->
+		<script type="application/ld+json">
+			{
+				"@context": "https://schema.org",
+				"@type": "Organization",
+				"url": "https://www.pppdata.us",
+				"logo": "https://pppdata.us/images/ppp-logo-circle.svg"
+			}
+		</script>
+		<!-- End Logo for Google Knowledge Graph -->
+
 		<meta name="description" content="">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<!-- <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}"> -->

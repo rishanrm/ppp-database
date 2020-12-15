@@ -1,8 +1,26 @@
 {% extends 'layout.html' %}
 
-{% block title %}Loans under $150K{% endblock %}
+{% block title %}PPP Loans Under $150K{% endblock %}
 
 {% block content %}
+
+    <script type="application/ld+json">
+            {
+                "@context":"https://schema.org/",
+                "@type":"Dataset",
+                "name": "Paycheck Protection Program Loan Data for loans under $150K",
+                "description": "Loan-level data on the recipients of Paycheck Protection Program loans that are below $150,000",
+                "alternateName": ["PPP Data for Loans Under $150K", "PPP Data for Loans <$150K"],
+                "creator": [
+                    {
+                        "@type": "Organization",
+                        "sameAs": "http://ror.org/015t55b95",
+                        "name": "Small Business Administration"
+                    }
+                ],
+                "url": "https://home.treasury.gov/policy-issues/cares-act/assistance-for-small-businesses/sba-paycheck-protection-program-loan-level-data"
+            }
+        </script>
 
 <div class="changing-content" data-barba="container" data-barba-namespace="data">
     <div class="header">
