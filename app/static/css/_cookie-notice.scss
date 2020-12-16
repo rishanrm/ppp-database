@@ -16,7 +16,8 @@
 //   opacity: 50%;
   border-radius: 5px;
 //   box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
-  z-index: 10001
+  z-index: 1100;
+  display:none;
 }
 
 .cookie-text {
@@ -44,6 +45,12 @@
     background-color: #DC3C45;
     border-color: #DC3545;
 }
+
+cookie-close:active {
+    background-color: #DC3C45;
+    border-color: #DC3545;
+}
+
 
 // .close {
 //   height: 20px;

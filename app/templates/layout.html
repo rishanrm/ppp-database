@@ -243,21 +243,26 @@
 
 
 		<script>
+			console.log("SEEN?")
+			console.log(localStorage.getItem('cookieSeen'))
+			console.log(localStorage.getItem('cookieSeen') != 'shown')
 			if (localStorage.getItem('cookieSeen') != 'shown') {
-					$('.cookie-banner').delay(2000).fadeIn();
-					localStorage.setItem('cookieSeen', 'shown')
+					$('.cookie-box').delay(2500).fadeIn();
 				};
-				$('.close').click(function () {
-					$('.cookie-banner').fadeOut();
+				$('.cookie-close').click(function () {
+					$('.cookie-box').fadeOut();
+					localStorage.setItem('cookieSeen', 'shown')
 				})
+				console.log("LOCAL STORAGE:")
+				console.log(localStorage)
 
-				$.cookie("example", "foo", { path: '/', domain: 'pppdata.us', expires: 7 });
+				// $.cookie("example", "foo", { path: '/', domain: 'pppdata.us', expires: 7 });
 
-				$(function () {
-					$('.example-popover').popover({
-						container: 'body'
-					})
-				})
+				// $(function () {
+				// 	$('.example-popover').popover({
+				// 		container: 'body'
+				// 	})
+				// })
 		</script>
 
 

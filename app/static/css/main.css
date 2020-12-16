@@ -777,7 +777,8 @@ input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
   background: rgba(0, 0, 0, 0.8);
   color: white;
   border-radius: 5px;
-  z-index: 10001;
+  z-index: 1100;
+  display: none;
 }
 
 .cookie-text {
@@ -804,6 +805,11 @@ input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2 {
 }
 
 .cookie-close:hover {
+  background-color: #DC3C45;
+  border-color: #DC3545;
+}
+
+cookie-close:active {
   background-color: #DC3C45;
   border-color: #DC3545;
 }
