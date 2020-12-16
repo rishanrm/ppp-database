@@ -352,3 +352,4 @@ function sidebarMenuClick(element, eventName) {
     }
 }
 // End sidebar menu closing fix
+
