@@ -6,7 +6,7 @@
 }
 
 .cookie-box {
-    position: absolute;
+    position: fixed;
     bottom: $footer-height + $footer-height;
     //   left: 10%;
     // right: $footer-height;
@@ -16,13 +16,14 @@
     align-items: center;
     text-align: center;
     justify-content: space-between;
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.85);
     color: white;
     //   opacity: 50%;
     border-radius: 5px;
     //   box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
     z-index: 1100;
     display:none;
+    font-size: small;
 }
 
 .cookie-text {
@@ -55,6 +56,25 @@ cookie-close:active {
     background-color: #DC3C45;
     border-color: #DC3545;
 }
+
+
+// @media all and (max-width: 800px) {
+//     .footer {
+//         height: $header-height * 0.5;
+//         font-size: calc(1em + 0.25vw);
+//         font-weight: bold;
+//     }
+//     .copyright-link-full {
+//         display: none;
+//     }
+//     .copyright-link-short {
+//         display: inline-flex;
+//     }
+// }
+
+
+
+
 
 
 // .close {
