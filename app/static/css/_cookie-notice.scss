@@ -1,23 +1,28 @@
 
+.cookie-holder {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
 
 .cookie-box {
-  position: fixed;
-  bottom: $footer-height + $footer-height;
-//   left: 10%;
-  right: $footer-height;
-  width: 203px;
-  padding: 5px 10px;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  justify-content: space-between;
-  background: rgba(0, 0, 0, 0.8);
-  color: white;
-//   opacity: 50%;
-  border-radius: 5px;
-//   box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
-  z-index: 1100;
-  display:none;
+    position: absolute;
+    bottom: $footer-height + $footer-height;
+    //   left: 10%;
+    // right: $footer-height;
+    width: 203px;
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: space-between;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    //   opacity: 50%;
+    border-radius: 5px;
+    //   box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+    z-index: 1100;
+    display:none;
 }
 
 .cookie-text {

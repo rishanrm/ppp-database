@@ -229,23 +229,22 @@
 
 		<!-- <button type="button" class="btn btn-lg btn-danger close2" data-toggle="popover" title="Popover title"
 			data-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
- -->
+-->
 
-		<div class="cookie-box">
-			<p class="cookie-text">
-				By using our website, you agree to our
-				<a class="cookie-link" href="{{ url_for('main.privacy') }}" target="_blank">cookie policy</a>
-			<button type="button" class="btn btn-primary cookie-close">Close</button>
-			</p>
+		<div class="cookie-holder">
+			<div class="cookie-box">
+				<p class="cookie-text">
+					By using our website, you agree to our
+					<a class="cookie-link" href="{{ url_for('main.privacy') }}" target="_blank">cookie policy</a>
+				<button type="button" class="btn btn-primary cookie-close">Close</button>
+				</p>
 
-			<!-- <button type="button" class="btn btn-primary">Primary</button> -->
+				<!-- <button type="button" class="btn btn-primary">Primary</button> -->
+			</div>
 		</div>
 
 
 		<script>
-			console.log("SEEN?")
-			console.log(localStorage.getItem('cookieSeen'))
-			console.log(localStorage.getItem('cookieSeen') != 'shown')
 			if (localStorage.getItem('cookieSeen') != 'shown') {
 					$('.cookie-box').delay(2500).fadeIn();
 				};
@@ -253,16 +252,6 @@
 					$('.cookie-box').fadeOut();
 					localStorage.setItem('cookieSeen', 'shown')
 				})
-				console.log("LOCAL STORAGE:")
-				console.log(localStorage)
-
-				// $.cookie("example", "foo", { path: '/', domain: 'pppdata.us', expires: 7 });
-
-				// $(function () {
-				// 	$('.example-popover').popover({
-				// 		container: 'body'
-				// 	})
-				// })
 		</script>
 
 
