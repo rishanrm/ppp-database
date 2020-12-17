@@ -896,8 +896,8 @@ cookie-close:active {
 
 .right {
   width: 50vw;
-  float: right;
-  overflow: hidden;
+  position: fixed;
+  right: 0;
 }
 
 .right-nav {

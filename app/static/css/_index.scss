@@ -76,10 +76,13 @@
 
 .right{
     width: 50vw;
-    float: right;
+    // float: right;
     // background: orange;
-    overflow:hidden;
+    // overflow:hidden;
     // margin-left: 5vw;
+    position: fixed;
+    right: 0;
+
 }
 .right-nav{
     // background: green;
