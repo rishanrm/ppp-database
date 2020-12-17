@@ -358,3 +358,13 @@ function sidebarMenuClick(element, eventName) {
 }
 // End sidebar menu closing fix
 
+    // Cookie notification
+        if (localStorage.getItem('cookieSeen') != 'shown') {
+            $('.cookie-box').delay(5000).fadeIn();
+        };
+
+        $('.cookie-close').click(function () {
+            $('.cookie-box').fadeOut();
+            localStorage.setItem('cookieSeen', 'shown')
+        })
+    // End cookie notification

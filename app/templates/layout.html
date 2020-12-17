@@ -170,6 +170,16 @@
 			
 			{% block content %}{% endblock %}
 
+		<div class="cookie-holder">
+			<div class="cookie-box">
+				<p class="cookie-text">
+					By using our website, you agree to our
+					<a class="cookie-link" href="{{ url_for('main.privacy') }}" target="_blank">cookie policy</a>
+					<button type="button" class="btn btn-primary cookie-close">Close</button>
+				</p>
+			</div>
+		</div>
+		
 		<div class="footer">
 			<div class="container bs-reset">
 				<!-- <div class="row align-items-center no-gutters footer-items">
