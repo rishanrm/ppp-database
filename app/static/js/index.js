@@ -281,7 +281,7 @@ function callTable(i) {
         $('#table').on('post-body.bs.table', function (e, arg1, arg2) {
             console.log('POST BODY RAN')
             $table.bootstrapTable('resetView')
-            $('div.hidden').fadeIn(2000).removeClass('hidden');
+            // $('div.hidden').fadeIn(2000).removeClass('hidden');
         });
 
         // $('#table').on('toggle.bs.table', function (e, arg1, arg2) {
@@ -300,11 +300,16 @@ function callTable(i) {
 //     });
 //  -->
 
-
+        var preBodyRanCount = 0
         $('#table').on('pre-body.bs.table', function (e, arg1, arg2) {
             console.log('PRE BODY RAN')
-            $('div.hidden').fadeIn(2000).removeClass('hidden');
-
+            // $('div.hidden').fadeIn(7000).removeClass('hidden');
+            if (preBodyRanCount > 0) {
+                $('div.hidden').fadeIn(1000).removeClass('hidden');
+            // setTimeout(() => { $('div.hidden').fadeIn(1000).removeClass('hidden'); }, 1);
+            }
+            console.log(preBodyRanCount)
+            preBodyRanCount++;
         });
 
 
