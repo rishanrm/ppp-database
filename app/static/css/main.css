@@ -914,7 +914,9 @@ cookie-close:active {
   text-align: right;
   font-size: calc(1em + 1vw);
   line-height: calc(1em + 1vh);
-  display: inline-block;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   font-weight: bold;
 }
 
