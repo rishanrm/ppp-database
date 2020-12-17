@@ -923,7 +923,6 @@ cookie-close:active {
 .nav-item {
   -webkit-transition: 0.3s ease-out;
   transition: 0.3s ease-out;
-  display: inline-block;
   opacity: 0;
 }
 
