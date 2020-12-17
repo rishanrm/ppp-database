@@ -841,7 +841,7 @@ cookie-close:active {
   z-index: 1;
 }
 
-.background img {
+.background-image {
   width: 100vw;
   height: 89vh;
   -o-object-fit: cover;
