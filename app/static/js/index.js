@@ -305,7 +305,7 @@ function callTable(i) {
             console.log('PRE BODY RAN')
             // $('div.hidden').fadeIn(7000).removeClass('hidden');
             if (preBodyRanCount > 0) {
-                $('div.hidden').fadeIn(1000).removeClass('hidden');
+                $('div.hidden').fadeIn(500).removeClass('hidden');
             // setTimeout(() => { $('div.hidden').fadeIn(1000).removeClass('hidden'); }, 1);
             }
             console.log(preBodyRanCount)
