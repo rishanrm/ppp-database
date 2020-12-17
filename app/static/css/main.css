@@ -113,6 +113,17 @@ section {
   display: none;
 }
 
+.pre-table-spinner-container {
+  position: absolute;
+  margin-left: calc((100vw - 10vh) / 2);
+  margin-top: calc((100vh - 10vh) / 2);
+}
+
+.pre-table-spinner {
+  width: 10vh;
+  height: 10vh;
+}
+
 .header {
   display: block;
   margin: 0 auto;
