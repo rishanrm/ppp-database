@@ -31,8 +31,8 @@ class Data():
         with current_app.app_context():
             db = DatabaseConnection(db_name, table_name)
 
-        total_count = db.fetch_total_count()
-        total_count_str = db.get_json_component(total_count, "total")
+        # total_count = db.fetch_total_count()
+        # total_count_str = db.get_json_component(total_count, "total")
 
         print("GETTING FILTERED COUNT STR...")
         # filtered_results_count = db.run_sql_query(
@@ -44,6 +44,14 @@ class Data():
         filtered_count = db.fetch_filtered_count(request.args, ["search", "filter"])
         filtered_count_str = db.get_json_component(filtered_count, "total")
         # print("GOT FILTERED COUNT STR")
+
+        total_count = db.fetch_count(
+            request.args, ["search", "filter"], "totalNotFiltered")
+        total_count_str = db.get_json_component(total_count, "total")
+
+        total_count = db.fetch_count(
+            request.args, ["search", "filter"], "total")
+        filtered_count_str = db.get_json_component(filtered_count, "total")
 
         print("GETTING RESULTS STR...")
         results_data = db.run_sql_query(

@@ -54,6 +54,39 @@ class DatabaseConnection():
         print(results)
         return results
 
+    def fetch_count(self, args, query_features, count_type):
+        query_start = sql.SQL("""            
+            SELECT row_to_json(t)
+            FROM (
+                SELECT COUNT(*) as "{count_type}"
+                FROM {table_name}
+                WHERE ''=''
+        """).format(
+            table_name=sql.Identifier(self.table_name),
+            count_type=sql.Literal(count_type)
+        )
+
+        if count_type == "totalNotFiltered":
+            query_body = {
+                "query": sql.SQL(""),
+                "data": ()
+            }
+        elif count_type == "total":
+            query_body = self.get_query_body(args, query_features)
+
+        query_end = self.get_query_end()
+
+        sql_query_data = {
+            "query": query_start + query_body["query"] + query_end,
+            "data": query_body["data"]
+        }
+        print("HERE'S THE QUERY:")
+        print(sql_query_data)
+        print("THAT WAS THE QUERY")
+        self.my_cursor.execute(sql_query_data["query"], sql_query_data["data"])
+        results = self.my_cursor.fetchall()
+        return results
+
     def fetch_filtered_count(self, args, query_features):
 
         query_start = sql.SQL("""            
@@ -66,7 +99,6 @@ class DatabaseConnection():
             table_name=sql.Identifier(self.table_name)
         )
 
-        # query_start = self.get_query_start()
         query_body = self.get_query_body(args, query_features)
         query_end = self.get_query_end()
 
