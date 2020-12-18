@@ -37,6 +37,7 @@ function callTable(i) {
     // <!-- Get data -->
     var requestCount = 0
     var initial_state = true
+    var resetButtonClicked = false
     var requestParams
     var initialSortColumn
     var initialFilterColumn = 'state'
@@ -53,14 +54,12 @@ function callTable(i) {
             initialSortColumn = 'loanamount'
         }
 
-        $('select[class*="bootstrap-table-filter-control-state"]').each(function(i) {
-            if ($(this).children('option[selected="selected"]').length != 0) {
-                // alert($(this).children('option[selected="selected"]').attr('value'));
-                console.log('there\'s a state!')
-                // console.log($(this).children('option[selected="selected"]').attr('value'))
-                // console.log(initialFilterValue)
-                // console.log(($(this).children('option[selected="selected"]').attr('value') != initialFilterValue))
-                if ($(this).children('option[selected="selected"]').attr('value') != initialFilterValue) {
+        if(!resetButtonClicked) {
+            var stateDropdownValue = document.querySelector("#table > thead > tr > th:nth-child(6) > div.fht-cell > div > select").value;
+            console.log("STATE:")
+            console.log(stateDropdownValue)
+            if (stateDropdownValue.length != 0) {
+                if(stateDropdownValue != initialFilterValue) {
                     initial_state = false;
                     console.log('Initial state set to false because a new state is chosen.');
                 }
@@ -68,8 +67,8 @@ function callTable(i) {
                 initial_state = false;
                 console.log('Initial state is false because no state is chosen.')
             }
-        });
-        console.log('Request Count: ' + requestCount)
+        }
+            console.log('Request Count: ' + requestCount)
         var url = '/data'
         console.log("HERE ARE THE PARAMS IN THE REQUEST:")
         console.log($.param(params.data))
@@ -251,10 +250,42 @@ function callTable(i) {
     
         $(function() {
             $resetButton.click(function () {
+                resetButtonClicked = true
                 requestCount = 0
                 initial_state = true
                 $('table').bootstrapTable('clearFilterControl')
-                $('select[class*="bootstrap-table-filter-control-' + initialFilterColumn + '"]').val(initialFilterValue);
+                var stateSelected = document.querySelector("#table > thead > tr > th:nth-child(6) > div.fht-cell > div > select").value;
+                var pagination = document.querySelector("body > div.changing-content > div.outside > div.bootstrap-table.bootstrap4 > div.fixed-table-pagination > div.float-right.pagination");
+
+
+                if((stateSelected == '') && (getComputedStyle(pagination).display == 'flex')) {
+                    $('table').bootstrapTable('clearFilterControl')
+                    $('select[class*="bootstrap-table-filter-control-' + initialFilterColumn + '"]').val(initialFilterValue);
+                    document.querySelector("body > div.changing-content > div.outside > div.bootstrap-table.bootstrap4 > div.fixed-table-pagination > div.float-right.pagination > div > button").click(); 
+                } else {
+                    console.log("CLEARING FILTER AND SETTING AK AS THE STATE")
+                    $('table').bootstrapTable('clearFilterControl')
+                    $('select[class*="bootstrap-table-filter-control-' + initialFilterColumn + '"]').val(initialFilterValue);
+
+                }
+
+                // $('table').bootstrapTable('clearFilterControl')
+                // $('select[class*="bootstrap-table-filter-control-' + initialFilterColumn + '"]').val(initialFilterValue);
+
+
+
+
+
+                // pagination.getAttribute("display")
+                console.log("STATE:")
+                console.log(stateSelected)
+                console.log(stateSelected == '')
+                console.log("GO BUTTON?")
+                console.log(getComputedStyle(pagination).display == 'flex')
+                console.log((stateSelected == '') && (getComputedStyle(pagination).display == 'flex'))
+
+                // if ((stateSelected == '') && (getComputedStyle(pagination).display) == 'flex')
+                // document.querySelector("body > div.changing-content > div.outside > div.bootstrap-table.bootstrap4 > div.fixed-table-pagination > div.float-right.pagination > div > button").click();
             })
         })
     
@@ -281,6 +312,10 @@ function callTable(i) {
         $('#table').on('post-body.bs.table', function (e, arg1, arg2) {
             console.log('POST BODY RAN')
             $table.bootstrapTable('resetView')
+            if (resetButtonClicked) {
+                resetButtonClicked = false;
+                $('select[class*="bootstrap-table-filter-control-' + initialFilterColumn + '"]').val(initialFilterValue);
+            }
             // $('div.hidden').fadeIn(2000).removeClass('hidden');
         });
 
