@@ -253,19 +253,25 @@ function callTable(i) {
                 resetButtonClicked = true
                 requestCount = 0
                 initial_state = true
+
+                // Manually clear global search box since clearFilterControl doesn't always work
+                document.querySelector("body > div.changing-content > div.outside > div.bootstrap-table.bootstrap4 > div.fixed-table-toolbar > div.float-right.search.btn-group > div > input").value = ''
+
+                // Clear all other inputs
                 $('table').bootstrapTable('clearFilterControl')
+
                 var stateSelected = document.querySelector("#table > thead > tr > th:nth-child(6) > div.fht-cell > div > select").value;
                 var pagination = document.querySelector("body > div.changing-content > div.outside > div.bootstrap-table.bootstrap4 > div.fixed-table-pagination > div.float-right.pagination");
 
-
+                // If no state is selected but there are enough results for pagination, "click" 'Go' button to refresh the page (regular refresh won't work in this case)
                 if((stateSelected == '') && (getComputedStyle(pagination).display == 'flex')) {
-                    $('table').bootstrapTable('clearFilterControl')
-                    $('select[class*="bootstrap-table-filter-control-' + initialFilterColumn + '"]').val(initialFilterValue);
+                    // $('table').bootstrapTable('clearFilterControl')
+                    // $('select[class*="bootstrap-table-filter-control-' + initialFilterColumn + '"]').val(initialFilterValue);
                     document.querySelector("body > div.changing-content > div.outside > div.bootstrap-table.bootstrap4 > div.fixed-table-pagination > div.float-right.pagination > div > button").click(); 
                 } else {
-                    console.log("CLEARING FILTER AND SETTING AK AS THE STATE")
-                    $('table').bootstrapTable('clearFilterControl')
-                    $('select[class*="bootstrap-table-filter-control-' + initialFilterColumn + '"]').val(initialFilterValue);
+                    // console.log("CLEARING FILTER AND SETTING AK AS THE STATE")
+                    // $('table').bootstrapTable('clearFilterControl')
+                    // $('select[class*="bootstrap-table-filter-control-' + initialFilterColumn + '"]').val(initialFilterValue);
 
                 }
 
