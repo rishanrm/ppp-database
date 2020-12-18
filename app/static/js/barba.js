@@ -14,6 +14,10 @@ function contentAnimation() {
     tl.to('img', { clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)" }, "-=1.1")
 }
 
+// Barba.Dispatcher.on('newPageReady', function(current, prev, container) {
+//     history.scrollRestoration = 'manual';
+// });
+
 function delay(n) {
     n = n || 2000;
     return new Promise(done => {
@@ -196,7 +200,7 @@ barba.init({
     ]
 })
 
-
+Barba.Prefetch.init()
 
 
 // Barba.Pjax.start();
