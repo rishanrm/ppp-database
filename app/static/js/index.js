@@ -47,8 +47,6 @@ function callTable(i) {
 
     console.log("COUNT REQUEST RESET TO 0")
     function ajaxRequest(params) {
-        console.log(params)
-        console.log("THOSE WERE THE PARAMS")
         if(page.includes('data-150k-and-up')) {
             initialSortColumn = 'loanrange'
         } else if(page.includes('data-under-150k')) {
@@ -256,11 +254,7 @@ function callTable(i) {
                 requestCount = 0
                 initial_state = true
                 $('table').bootstrapTable('clearFilterControl')
-                console.log("YOU JUST HIT RESET, IS THE COUNT ZERO and INITIAL STATE TRUE?")
-                console.log(requestCount)
-                console.log(initial_state)
-                // $table.bootstrapTable('destroy')
-                $table.bootstrapTable('refresh')
+                $('select[class*="bootstrap-table-filter-control-' + initialFilterColumn + '"]').val(initialFilterValue);
             })
         })
     
@@ -285,12 +279,8 @@ function callTable(i) {
     // <!-- Fix for Toggle All issue where table overlaps bottom pagination controls -->
     
         $('#table').on('post-body.bs.table', function (e, arg1, arg2) {
-            console.log('POST BODY RAN, WHATS THE INITIAL STATE?')
-            console.log(initial_state)
+            console.log('POST BODY RAN')
             $table.bootstrapTable('resetView')
-            if (initial_state) {
-                $('select[class*="bootstrap-table-filter-control-' + initialFilterColumn + '"]').val(initialFilterValue);
-            }
             // $('div.hidden').fadeIn(2000).removeClass('hidden');
         });
 
