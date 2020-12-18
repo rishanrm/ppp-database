@@ -34,15 +34,25 @@ class Data():
         total_count = db.fetch_total_count()
         total_count_str = db.get_json_component(total_count, "total")
 
-        filtered_results_count = db.run_sql_query(
-            request.args, ["search", "filter"], "count")
-        filtered_count_str = "\"total\": " + str(filtered_results_count)
+        print("GETTING FILTERED COUNT STR...")
+        # filtered_results_count = db.run_sql_query(
+        #     request.args, ["search", "filter"], "count")
+        # filtered_count_str = "\"total\": " + str(filtered_results_count)
+        # filtered_count_str = "\"total\": " + "555429"
 
+        # filtered_query = db.build_query(request.args, ["search", "filter"])
+        filtered_count = db.fetch_filtered_count(request.args, ["search", "filter"])
+        filtered_count_str = db.get_json_component(filtered_count, "total")
+        # print("GOT FILTERED COUNT STR")
+
+        print("GETTING RESULTS STR...")
         results_data = db.run_sql_query(
             request.args, ["search", "filter", "sort", "offset", "limit"], "data")
         results_str = db.get_json_component(results_data, "data")
+        print("GOT RESULTS STR")
 
         table_data_json = db.build_table_json(
             filtered_count_str, total_count_str, results_str)
+        print("GOT TABLE JSON")
 
         return json.loads(table_data_json)
