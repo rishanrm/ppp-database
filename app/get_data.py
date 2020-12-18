@@ -43,15 +43,24 @@ class Data():
         # filtered_query = db.build_query(request.args, ["search", "filter"])
         filtered_count = db.fetch_filtered_count(request.args, ["search", "filter"])
         filtered_count_str = db.get_json_component(filtered_count, "total")
-        # print("GOT FILTERED COUNT STR")
+        print(filtered_count_str)
+
+        print("GOT FILTERED COUNT STR")
 
         total_count = db.fetch_count(
             request.args, ["search", "filter"], "totalNotFiltered")
         total_count_str = db.get_json_component(total_count, "total")
+        print(total_count_str)
+        print("GOT TOTAL COUNT STR")
 
-        total_count = db.fetch_count(
-            request.args, ["search", "filter"], "total")
-        filtered_count_str = db.get_json_component(filtered_count, "total")
+        filtered_count_str = total_count_str.replace("'totalNotFiltered'", "total")
+
+        # filtered_count = db.fetch_count(
+        #     request.args, ["search", "filter"], "total")
+        # # filtered_count_str = db.get_json_component(filtered_count, "total")
+        # print(filtered_count_str)
+        # print("GOT FILTERED COUNT STR")
+        # # filtered_count_str = total_count_str.replace('NotFiltered', '')
 
         print("GETTING RESULTS STR...")
         results_data = db.run_sql_query(

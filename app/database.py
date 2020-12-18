@@ -121,8 +121,8 @@ class DatabaseConnection():
 
     def run_sql_query(self, args, query_features, return_type):
         sql_query_data = self.build_query(args, query_features)
-        print("\n\n\nQUERY DATA:")
-        print(sql_query_data)
+        # print("\n\n\nQUERY DATA:")
+        # print(sql_query_data)
         # quit()
         return self.fetch_from_db(sql_query_data, return_type)
 
@@ -154,8 +154,8 @@ class DatabaseConnection():
         args_order = ["page", "search", "filter", "sort", "order", "offset", "limit"]
         args_dict = OrderedDict((arg, args.get(arg)) for arg in args_order)
 
-        print("ARGS DICT:")
-        print(args_dict)
+        # print("ARGS DICT:")
+        # print(args_dict)
 
         if(args_dict["filter"] == None):
             args_dict["filter"] = {"state": None}
@@ -226,8 +226,8 @@ class DatabaseConnection():
 
     @staticmethod
     def sql_field_filter(filter_data):
-        print("FILTER DATA:")
-        print(filter_data)
+        # print("FILTER DATA:")
+        # print(filter_data)
         filter_sql = sql.SQL("")
         # filter_data = json.loads(filter_data)
         numeric_headers = current_app.config["NUMERIC_HEADERS"]
@@ -340,6 +340,8 @@ class DatabaseConnection():
     def get_json_component(results, data_type):
 
         if data_type == "total":
+            print("RESULTS")
+            print(results)
             chars_to_strip = 3
         elif data_type == "data":
             if (results[0][0]) != None:
