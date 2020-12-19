@@ -358,13 +358,21 @@ function sidebarMenuClick(element, eventName) {
 }
 // End sidebar menu closing fix
 
-    // Cookie notification
-        if (localStorage.getItem('cookieSeen') != 'shown') {
-            $('.cookie-box').delay(5000).fadeIn();
-        };
+// Cookie notification
+    if (localStorage.getItem('cookieSeen') != 'shown') {
+        $('.cookie-box').delay(5000).fadeIn();
+    };
 
-        $('.cookie-close').click(function () {
-            $('.cookie-box').fadeOut();
-            localStorage.setItem('cookieSeen', 'shown')
-        })
-    // End cookie notification
+    $('.cookie-close').click(function () {
+        $('.cookie-box').fadeOut();
+        localStorage.setItem('cookieSeen', 'shown')
+    })
+// End cookie notification
+
+// Hide initial page loader
+
+$('#table').on('load-success.bs.table', function () {
+    document.querySelector(".pre-table-spinner").style.display = "none";
+});
+
+// End hide initial page loader
