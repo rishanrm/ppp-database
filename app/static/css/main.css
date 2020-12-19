@@ -124,6 +124,18 @@ section {
   height: 10vh;
 }
 
+@media all and (max-width: 450px) {
+  .float-right.search.btn-group {
+    width: 100%;
+  }
+  .columns.columns-right.btn-group.float-right {
+    width: 100%;
+  }
+  .bs-bars.float-left, #toolbar, #resetButton {
+    width: 100%;
+  }
+}
+
 .header {
   display: block;
   margin: 0 auto;

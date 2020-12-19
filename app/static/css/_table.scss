@@ -113,9 +113,24 @@ section {
     position: absolute;
     margin-left: calc((100vw - #{$pre-table-spinner-radius}) / 2);
     margin-top: calc((100vh - #{$pre-table-spinner-radius}) / 2);
+
 }
 
 .pre-table-spinner {
     width: $pre-table-spinner-radius;
     height: $pre-table-spinner-radius;
+}
+
+@media all and (max-width: 450px) {
+    .float-right.search.btn-group {
+        width: 100%;
+    }
+
+    .columns.columns-right.btn-group.float-right {
+        width: 100%;
+    }
+
+    .bs-bars.float-left, #toolbar, #resetButton{
+        width: 100%;
+    }
 }
