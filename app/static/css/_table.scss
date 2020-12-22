@@ -26,6 +26,11 @@
     z-index: 1;
   }
 
+.fixed-table-body {
+    border-top: 1px solid #dee2e6;
+    border-bottom: 1px solid #dee2e6;
+}
+
 .detailview {
     max-width:800px;
     column-count: 2;
@@ -128,9 +133,91 @@ section {
 
     .columns.columns-right.btn-group.float-right {
         width: 100%;
+        margin-bottom: 0px;
     }
 
     .bs-bars.float-left, #toolbar, #resetButton{
         width: 100%;
+        margin-bottom: 0px !important;
     }
+
+    .table-content {
+        padding-top: 5vh;
+    }
+
+    .form-control.search-input {
+        border-radius: 0rem;
+        margin-right: 1px;
+    }
+
+    .card-view-title {
+        padding-right: 10px;
+    }
+
+    .bootstrap-table {
+        margin-left: 0px !important;
+        margin-right: 0px !important;
+    }
+
+    .card-view-title {
+        min-width: 45% !important;
+        max-width: 45%;
+    }
+
+    .pagination-detail {
+        text-align: center;
+        width: 100%;
+    }
+
+    .fixed-table-pagination {
+        text-align: center;
+        display: flex;
+        flex-direction: column-reverse;
+        font-size: $small-screen-pagination-font-size;
+    }
+
+    .pagination {
+        // margin-bottom: 10px !important;
+        font-size: $small-screen-pagination-font-size;
+        margin: auto;
+    }
+
+    .float-right.pagination {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 0px;
+    }
+
+    .pagination ul.pagination a {
+        line-height: 2.4;
+    }
+
+    .page-jump-to.btn-group {
+        margin: 10px auto 0px;
+    }
+
+    // div.float-right.pagination > div > input {
+    //     font-size: $small-screen-pagination-font-size !important;        
+    // }
+
+    .page-jump-to .btn {
+        flex: 0 1 auto;
+        line-height: $small-screen-pagination-font-size;
+    }
+
+    .float-left.pagination-detail {
+        margin-top: 0px !important;
+        margin-bottom: 0px !important;
+    }
+
+    .pagination-info, .page-list {
+        font-size: $small-screen-pagination-font-size !important;
+    }
+
+    .source {
+        padding-bottom: $header-height * 0.5 + 1vh;
+        text-align: center;
+        font-size: $small-screen-pagination-font-size !important;
+    }
+
 }

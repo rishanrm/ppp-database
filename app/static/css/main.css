@@ -46,6 +46,11 @@ body {
   z-index: 1;
 }
 
+.fixed-table-body {
+  border-top: 1px solid #dee2e6;
+  border-bottom: 1px solid #dee2e6;
+}
+
 .detailview {
   max-width: 800px;
   -webkit-column-count: 2;
@@ -66,7 +71,7 @@ div.hidden {
   margin-bottom: 0vh;
   margin-left: auto;
   margin-right: auto;
-  padding-top: 15vh;
+  padding-top: 10vh;
 }
 
 .bootstrap-table {
@@ -79,7 +84,7 @@ div.hidden {
 }
 
 .fixed-table-container {
-  height: 57vh;
+  height: 62vh;
 }
 
 #resetButton {
@@ -130,9 +135,82 @@ section {
   }
   .columns.columns-right.btn-group.float-right {
     width: 100%;
+    margin-bottom: 0px;
   }
   .bs-bars.float-left, #toolbar, #resetButton {
     width: 100%;
+    margin-bottom: 0px !important;
+  }
+  .table-content {
+    padding-top: 5vh;
+  }
+  .form-control.search-input {
+    border-radius: 0rem;
+    margin-right: 1px;
+  }
+  .card-view-title {
+    padding-right: 10px;
+  }
+  .bootstrap-table {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+  }
+  .card-view-title {
+    min-width: 45% !important;
+    max-width: 45%;
+  }
+  .pagination-detail {
+    text-align: center;
+    width: 100%;
+  }
+  .fixed-table-pagination {
+    text-align: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+    font-size: 1rem;
+  }
+  .pagination {
+    font-size: 1rem;
+    margin: auto;
+  }
+  .float-right.pagination {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    margin-bottom: 0px;
+  }
+  .pagination ul.pagination a {
+    line-height: 2.4;
+  }
+  .page-jump-to.btn-group {
+    margin: 10px auto 0px;
+  }
+  .page-jump-to .btn {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 1 auto;
+            flex: 0 1 auto;
+    line-height: 1rem;
+  }
+  .float-left.pagination-detail {
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+  }
+  .pagination-info, .page-list {
+    font-size: 1rem !important;
+  }
+  .source {
+    padding-bottom: 6vh;
+    text-align: center;
+    font-size: 1rem !important;
   }
 }
 
