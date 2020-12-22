@@ -258,6 +258,19 @@ function callTable(i) {
             })
         })
     
+    // <!-- Navigate back to Page 1 when the results per page selection changes -->
+        var currentPageSize = 10
+        var pageOneButton
+        
+        $('#table').on('page-change.bs.table', function (pageSize, pageNumber) {
+            selectedSize = document.querySelector("body > div.changing-content > div.outside > div.bootstrap-table.bootstrap4 > div.fixed-table-pagination > div.float-left.pagination-detail > span.page-list > span > button > span.page-size").textContent.trim();
+            if (currentPageSize != selectedSize) {
+                document.querySelector(".fixed-table-body").scrollTop = 0;
+                currentPageSize = selectedSize;
+                $("[aria-label='to page 1']").click();
+            }
+        });
+
     // <!-- Loading screen overlay -->
         
             var type = 'bsGrow'
