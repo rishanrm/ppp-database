@@ -8,6 +8,10 @@ class Config:
     DB_NAME_ROOT_UNDER_150K = 'ppp_data_up_to_150k_080820'
     DB_NAME_ROOT_150K_AND_UP = 'ppp_data_150k_and_up_080820'
 
+    HEADERS_ALL_DATA = ['loanrange', 'businessname', 'address', 'city',
+                        'state', 'zip', 'naicscode', 'businesstype',
+                        'raceethnicity', 'gender', 'veteran', 'nonprofit',
+                        'jobsreported', 'dateapproved', 'lender', 'cd']
     HEADERS_UNDER_150K = ['loanamount', 'city', 'state', 'zip', 'naicscode',
                         'businesstype', 'raceethnicity', 'gender', 'veteran',
                         'nonprofit', 'jobsreported', 'dateapproved', 'lender',

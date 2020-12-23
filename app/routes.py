@@ -12,6 +12,11 @@ main = Blueprint('main', __name__)
 def index():
     return render_template('index.html')
 
+
+@main.route("/all-data")
+def all_data():
+    return render_template("all-data.html", data="", headers=current_app.config["HEADERS_ALL_DATA"])
+
 @main.route("/data-under-150k")
 def data_under_150k():
     return render_template('data-under-150k.html', data="", headers=current_app.config["HEADERS_UNDER_150K"])
