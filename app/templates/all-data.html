@@ -1,0 +1,143 @@
+{% extends 'layout.html' %}
+
+{% block head %}
+<link rel="canonical" href="https://pppdata.us/all-data.html" />
+<meta name="description"
+    content="Easily search and sort PPP loan data by any of the 16 categories, including industry, geography, race, and gender." />
+{% endblock %}
+
+{% block title %}All PPP Loan Data{% endblock %}
+
+{% block content %}
+
+<script type="application/ld+json">
+        {
+            "@context":"https://schema.org/",
+            "@type":"Dataset",
+            "name": "Paycheck Protection Program Loan Data",
+            "description": "Full set of loan-level data on the recipients of Paycheck Protection Program loans",
+            "alternateName": ["PPP Loan Data", "PPP Data for All Loans"],
+            "creator": [
+                {
+                    "@type": "Organization",
+                    "sameAs": "http://ror.org/015t55b95",
+                    "name": "Small Business Administration"
+                }
+            ],
+            "url": "https://home.treasury.gov/policy-issues/cares-act/assistance-for-small-businesses/sba-paycheck-protection-program-loan-level-data",
+            "license":"http://creativecommons.org/publicdomain/zero/1.0/"
+        }
+    </script>
+
+<div class="changing-content" data-barba="container" data-barba-namespace="data">
+    <div class="header">
+        <h1 class="header-text">Loans $150,000 and up</h1>
+    </div>
+    <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu" onclick="sidebarMenuClick()">
+    <label for="openSidebarMenu" class="sidebarIconToggle">
+        <div class="menuIcon diagonal part-1"></div>
+        <div class="menuIcon horizontal"></div>
+        <div class="menuIcon diagonal part-2"></div>
+    </label>
+
+    <div id="sidebarMenu">
+        <div class="sidebarMenuInner">
+            <a class="sidebarLink" href="{{ url_for('main.index') }}" alt="Broken Home Link" title="Home">Home</a>
+            <a class="sidebarLink" href="{{ url_for('main.data_under_150k') }}" title="Loans Under $150K">Loans Under
+                $150K</a>
+            <a class="sidebarLink current" href="{{ url_for('main.data_150k_and_up') }}"
+                title="Loans $150K and Up">Loans $150K and Up</a>
+            <a class="sidebarLink" href="{{ url_for('main.about') }}" title="About">About</a>
+            <a class="sidebarLink" href="{{ url_for('main.contact') }}" title="Contact">Contact</a>
+        </div>
+    </div>
+
+    <div class="text-center text-primary pre-table-spinner-container">
+        <div class="spinner-grow pre-table-spinner" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+
+    <!-- Enable nav menu to close with a click outside of the menu -->
+
+
+    <!-- <section class="section-1 child" style="--screen:1"> -->
+    <!-- <div class="container hidden"> -->
+
+    <div class="container table-content"></div>
+    <div class="outside hidden">
+
+        <!-- <div class="table-title">
+            <h1>Loans under $150,000</h1>
+        </div> -->
+        <div id="toolbar">
+            <button id="resetButton" class="btn btn-danger">Reset</button>
+        </div>
+        <table id="table" data-toggle="table" data-ajax="ajaxRequest" data-buttons-align="right"
+            data-buttons-class="primary" data-buttons-order="['columns', 'toggle', 'print']"
+            data-show-button-text="true" data-search="true" data-search-align="right"
+            data-search-accent-neutralise="true" data-search-on-enter-key="false" data-search-text=""
+            data-search-time-out="500" visible-search="true" data-sort-reset="false" data-silent-sort="true"
+            data-side-pagination="server" data-pagination="true" data-pagination-pre-text="Previous"
+            data-pagination-next-text="Next" data-pagination-successively-size="3" data-pagination-v-align="bottom"
+            data-pagination-loop="false" data-page-list="[10, 25, 50, 100, 200, 500, 1000]"
+            data-show-pagination-switch="false" data-show-extended-pagination="false" data-show-jump-to="true"
+            data-remember-order="true" data-show-columns="true" data-show-columns-search="true"
+            data-show-columns-toggle-all="true" data-show-header="true" data-show-footer="false"
+            data-show-fullscreen="false" data-show-refresh="false" data-show-toggle="true" data-smart-display="true"
+            data-undefined-text="N/A" data-virtual-scroll="true" data-addrbar="false" data-show-export="false"
+            data-export-data-type="basic" data-filter-control="true" data-show-search-clear-button="true"
+            data-mobile-responsive="true" data-show-print="false" data-reorderable-columns="false"
+            data-header-style="headerStyle" data-toolbar="#toolbar" data-detail-view="true"
+            data-detail-formatter="detailFormatter" data-detail-view-by-click="false"
+            data-loading-template="loadingTemplate">
+            <thead>
+                <tr>
+                    <!--
+                    loanrange,businessname,address,city,state,zip,naicscode,businesstype,raceethnicity,gender,veteran,nonprofit,jobsretained,dateapproved,lender,cd
+                    -->
+                    <th data-field="loanrange" data-sortable="true" data-filter-control="select"
+                        data-filter-data="obj:colOptions.loanrange" data-sort-order="asc">Loan Range</th>
+                    <th data-field="businessname" data-sortable="true" data-filter-control="input">Business Name</th>
+                    <th data-field="address" data-sortable="true" data-filter-control="input">Address</th>
+                    <th data-field="city" data-sortable="true" data-filter-control="input">City</th>
+                    <th data-field="state" data-sortable="true" data-filter-control="select"
+                        data-filter-data="obj:colOptions.state" data-filter-default="AK">State</th>
+                    <th data-field="zip" data-sortable="true" data-filter-control="input">ZIP Code</th>
+                    <th data-field="naicscode" data-sortable="true" data-filter-control="select"
+                        data-filter-data="obj:colOptions.naicscode" data-visible="true" data-formatter="naicsFormatter">
+                        Industry (NAICS Code)</th>
+                    <th data-field="businesstype" data-sortable="true" data-filter-control="select"
+                        data-filter-data="obj:colOptions.businesstype" data-visible="false">Business Type</th>
+                    <th data-field="raceethnicity" data-sortable="true" data-filter-control="select"
+                        data-filter-data="obj:colOptions.raceethnicity">Race&#47;Ethnicity</th>
+                    <th data-field="gender" data-sortable="true" data-filter-control="select"
+                        data-filter-data="obj:colOptions.gender">Gender</th>
+                    <th data-field="veteran" data-sortable="true" data-filter-control="select"
+                        data-filter-data="obj:colOptions.veteran" data-visible="false">Veteran</th>
+                    <th data-field="nonprofit" data-sortable="true" data-filter-control="select"
+                        data-filter-data="obj:colOptions.nonprofit" data-visible="false">Nonprofit</th>
+                    <th data-field="jobsreported" data-sortable="true" data-filter-control="input"
+                        data-sorter="alphanum">Jobs Reported</th>
+                    <th data-field="dateapproved" data-sortable="true" data-filter-control="select"
+                        data-filter-data="obj:colOptions.dateapproved" data-visible="false">Date Approved</th>
+                    <th data-field="lender" data-sortable="true" data-filter-control="input" data-visible="false">Lender
+                    </th>
+                    <th data-field="cd" data-sortable="true" data-filter-control="select"
+                        data-filter-data="obj:colOptions.cd">House District</th>
+                </tr>
+            </thead>
+        </table>
+        <div class="source">
+            Source: <a
+                href="https://home.treasury.gov/policy-issues/cares-act/assistance-for-small-businesses/sba-paycheck-protection-program-loan-level-data"
+                rel="noopener" target="_blank">U.S. Treasury</a>
+        </div>
+    </div>
+
+    <!-- <script src="{{ url_for('static',filename='js/index.js') }}"></script> -->
+    <!-- <script>
+        $table.bootstrapTable()
+    </script> -->
+</div>
+{% endblock content %}
