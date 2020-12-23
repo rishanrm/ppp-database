@@ -13,7 +13,7 @@ class Email():
         receiver_email = current_app.config["CONTACT_EMAIL_ADDR"]
 
         message = MIMEMultipart("alternative")
-        message["Subject"] = f"PPP Data Contact Form Submission: {form.email.data}"
+        message["Subject"] = f"PPP Data Contact Form Submission: {form.name.data}"
         message["From"] = sender_email
         message["To"] = receiver_email
 
