@@ -26,3 +26,4 @@ __pycache__
 deprecated_files
 main/__pycache__
 static/data/all_data
+static/data/combined_data
