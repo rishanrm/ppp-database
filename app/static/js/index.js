@@ -47,7 +47,9 @@ function callTable(i) {
 
     console.log("COUNT REQUEST RESET TO 0")
     function ajaxRequest(params) {
-        if(page.includes('data-150k-and-up')) {
+        if(page.includes('all-data')) {
+            initialSortColumn = 'loanrange'
+        } else if(page.includes('data-150k-and-up')) {
             initialSortColumn = 'loanrange'
         } else if(page.includes('data-under-150k')) {
             initialSortColumn = 'loanamount'
@@ -162,7 +164,26 @@ function callTable(i) {
 
         var orderedData
         function getOrderedData() {
-            if(page.includes('data-150k-and-up')) {
+            if(page.includes('all-data')) {
+                orderedData = {
+                    "loanrange": "Loan Range",
+                    "businessname": "Business Name",
+                    "address": "Address",
+                    "city": "City",
+                    "state": "State",
+                    "zip": "ZIP Code",
+                    "naicscode": "Industry (NAICS Code)",
+                    "businesstype": "Business Type",
+                    "raceethnicity": "Race/Ethnicity",
+                    "gender": "Gender",
+                    "veteran": "Veteran",
+                    "nonprofit": "Nonprofit",
+                    "jobsreported": "Jobs Reported",
+                    "dateapproved": "Date Approved",
+                    "lender": "Lender",
+                    "cd": "House District"
+                }
+            } else if(page.includes('data-150k-and-up')) {
                 orderedData = {
                     "loanrange": "Loan Range",
                     "businessname": "Business Name",
