@@ -18,8 +18,6 @@ class Data():
                     state = "unstated"
             elif request.args["page"] == "data-150k-and-up":
                 state = "unstated"
-            elif request.args["page"] == "all-data":
-                state = "unstated"
         else:
             state = "unstated"
 
@@ -27,9 +25,6 @@ class Data():
             db_name = current_app.config["DB_NAME_ROOT_UNDER_150K"]
             table_name = current_app.config["DB_NAME_ROOT_UNDER_150K"] + "_" + state.lower()
         elif request.args["page"] == "data-150k-and-up":
-            db_name = current_app.config["DB_NAME_ROOT_150K_AND_UP"]
-            table_name = current_app.config["DB_NAME_ROOT_150K_AND_UP"]
-        elif request.args["page"] == "all-data":
             db_name = current_app.config["DB_NAME_ROOT_150K_AND_UP"]
             table_name = current_app.config["DB_NAME_ROOT_150K_AND_UP"]
 

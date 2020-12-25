@@ -47,9 +47,7 @@ function callTable(i) {
 
     console.log("COUNT REQUEST RESET TO 0")
     function ajaxRequest(params) {
-        if(page.includes('all-data')) {
-            initialSortColumn = 'loanrange'
-        } else if(page.includes('data-150k-and-up')) {
+        if(page.includes('data-150k-and-up')) {
             initialSortColumn = 'loanrange'
         } else if(page.includes('data-under-150k')) {
             initialSortColumn = 'loanamount'
@@ -144,8 +142,7 @@ function callTable(i) {
                     return pageNumber + ' results per page';
                 },
                 formatShowingRows: function (pageFrom, pageTo, totalRows) {
-                    return 'Showing ' + pageFrom + ' to ' + pageTo + ' of ' + totalRows + ' loans';
-                    // return 'Showing ' + pageFrom.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + ' to ' + pageTo.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + ' of ' + totalRows.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + ' loans';
+                    return 'Showing ' + pageFrom.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + ' to ' + pageTo.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + ' of ' + totalRows.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + ' loans';
                 },
                 formatSearch: function () {
                     return 'Search all columns';
@@ -165,26 +162,7 @@ function callTable(i) {
 
         var orderedData
         function getOrderedData() {
-            if(page.includes('all-data')) {
-                orderedData = {
-                    "loanrange": "Loan Range",
-                    "businessname": "Business Name",
-                    "address": "Address",
-                    "city": "City",
-                    "state": "State",
-                    "zip": "ZIP Code",
-                    "naicscode": "Industry (NAICS Code)",
-                    "businesstype": "Business Type",
-                    "raceethnicity": "Race/Ethnicity",
-                    "gender": "Gender",
-                    "veteran": "Veteran",
-                    "nonprofit": "Nonprofit",
-                    "jobsreported": "Jobs Reported",
-                    "dateapproved": "Date Approved",
-                    "lender": "Lender",
-                    "cd": "House District"
-                }
-            } else if(page.includes('data-150k-and-up')) {
+            if(page.includes('data-150k-and-up')) {
                 orderedData = {
                     "loanrange": "Loan Range",
                     "businessname": "Business Name",
