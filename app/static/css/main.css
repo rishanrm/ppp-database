@@ -925,21 +925,6 @@ cookie-close:active {
   border-color: #DC3545;
 }
 
-::-webkit-scrollbar {
-  width: 0;
-}
-
-#progressbar {
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 15px;
-  border-radius: 10px;
-  background: -webkit-gradient(linear, left bottom, left top, from(#DC3C45), to(#037AFB));
-  background: linear-gradient(to top, #DC3C45, #037AFB);
-  z-index: 1011;
-}
-
 .background {
   position: absolute;
   padding-top: 8vh;
