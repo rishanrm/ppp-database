@@ -75,7 +75,7 @@ ul.transition li {
 } */
 
 ul.transition li:nth-child(1) {
-    background-color: #DC3C45;
+    background-color: $bs-red;
 }
 
 ul.transition li:nth-child(2) {
@@ -91,13 +91,13 @@ ul.transition li:nth-child(4) {
 }
 
 ul.transition li:nth-child(5) {
-    background-color: #037AFB;
+    background-color: $bs-blue;
 }
 
 .loader {
     font-size: 26px;
     font-weight: 600;
-    color: #037AFB;
+    color: $bs-blue;
     position: fixed;
     top: 50%;
     left: 50%;

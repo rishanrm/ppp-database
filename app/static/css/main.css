@@ -512,7 +512,7 @@ ul.transition li:nth-child(5) {
 }
 
 .ldio-bvr6pqhlkhj div:nth-child(2) {
-  border-color: #037afb;
+  border-color: #037AFB;
   -webkit-animation-delay: -0.5s;
           animation-delay: -0.5s;
 }
@@ -658,7 +658,7 @@ ul.transition li:nth-child(5) {
   border-bottom: 2px solid var(--current-color);
   pointer-events: none;
   font-size: 20px;
-  color: black;
+  color: #037AFB;
 }
 
 #left-nav-cover-inner {

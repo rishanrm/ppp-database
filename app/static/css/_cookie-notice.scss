@@ -36,7 +36,7 @@
 }
 
 .cookie-link:hover {
-    color: #DC3C45;
+    color: $bs-red;
     text-decoration: none;
 }
 
@@ -48,12 +48,12 @@
 }
 
 .cookie-close:hover {
-    background-color: #DC3C45;
+    background-color: $bs-red;
     border-color: #DC3545;
 }
 
 cookie-close:active {
-    background-color: #DC3C45;
+    background-color: $bs-red;
     border-color: #DC3545;
 }
 
@@ -81,7 +81,7 @@ cookie-close:active {
 //   height: 20px;
 //   background-color: rgba(255, 255, 255, 1);
 //   border: none;
-//   color: #DC3C45;
+//   color: $bs-red;
 //   border-radius: 2px;
 //   cursor: pointer;
 // }
@@ -91,8 +91,8 @@ cookie-close:active {
 // }
 
 		// <!-- Colors:
-		// 	#DC3C45
+		// 	$bs-red
 		// 	#EE9EA2
 		// 	#FFFFFF
 		// 	#81BDFD
-		// 	#037AFB -->
+		// 	$bs-blue -->

@@ -9,7 +9,7 @@
     overflow: hidden;
     z-index: 1013;
     box-shadow: none;
-    background-color: #DC3C45;
+    background-color: $bs-red;
     // position: fixed;
     position: fixed;
     left: 0;
@@ -39,10 +39,10 @@
 }
 
 .footer-link:hover{
-    color: #037AFB;
+    color: $bs-blue;
     transition: $nav-item-transition-time ease;
     background: white;
-    // border: 5px solid #DC3C45;
+    // border: 5px solid $bs-red;
     text-decoration: none;
 }
 
@@ -93,10 +93,10 @@
 
 // .nav-link:hover {
 //     // opacity: 1;
-//     color: #037AFB;
+//     color: $bs-blue;
 //     transition: $nav-item-transition-time ease;
 //     background: white;
-//     border: 5px solid #DC3C45;
+//     border: 5px solid $bs-red;
 //     // border-radius: 1em;
 //     // padding-left: 1em;
 //     // padding-left: 1em;

@@ -34,7 +34,7 @@
     transition: transform 300ms ease-in-out;
     background:
         /* linear-gradient(to right, transparent, 90%, var(--current-color)), */
-        linear-gradient(180deg, #037AFB 25%, #DC3C45 80%);
+        linear-gradient(180deg, $bs-blue 25%, $bs-red 80%);
     z-index: 1011;
 }
 .sidebarMenuInner{
@@ -83,7 +83,7 @@
     border-bottom: 2px solid var(--current-color);
     pointer-events: none;
     font-size: 20px;
-    color: $bs-primary;
+    color: $bs-blue;
     
 }
 
