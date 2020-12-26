@@ -6,7 +6,7 @@
     content="Easily search and sort PPP loan data by any of the 16 categories, including industry, geography, race, and gender." />
 {% endblock %}
 
-{% block title %}All PPP Loan Data{% endblock %}
+{% block title %}PPP Loan Data{% endblock %}
 
 {% block content %}
 
@@ -31,7 +31,7 @@
 
 <div class="changing-content" data-barba="container" data-barba-namespace="data">
     <div class="header">
-        <h1 class="header-text">Explore The Data</h1>
+        <h1 class="header-text">PPP Loan Data</h1>
     </div>
     <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu" onclick="sidebarMenuClick()">
     <label for="openSidebarMenu" class="sidebarIconToggle">
@@ -74,7 +74,7 @@
             data-buttons-class="primary" data-buttons-order="['columns', 'toggle', 'print']"
             data-show-button-text="true" data-search="true" data-search-align="right"
             data-search-accent-neutralise="true" data-search-on-enter-key="false" data-search-text=""
-            data-search-time-out="500" visible-search="true" data-sort-reset="false" data-silent-sort="false"
+            data-search-time-out="1000" visible-search="true" data-sort-reset="false" data-silent-sort="false"
             data-side-pagination="server" data-pagination="true" data-pagination-pre-text="Previous"
             data-pagination-next-text="Next" data-pagination-successively-size="3" data-pagination-v-align="bottom"
             data-pagination-loop="false" data-page-list="[10, 25, 50, 100, 200, 500, 1000]"
@@ -87,7 +87,8 @@
             data-mobile-responsive="true" data-show-print="false" data-reorderable-columns="false"
             data-header-style="headerStyle" data-toolbar="#toolbar" data-detail-view="true"
             data-detail-formatter="detailFormatter" data-detail-view-by-click="false"
-            data-loading-template="loadingTemplate">
+            data-loading-template="loadingTemplate"
+            data-disable-control-when-search="false">
             <thead>
                 <tr>
                     <!--
