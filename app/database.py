@@ -31,13 +31,14 @@ class DatabaseConnection():
             self.database_name = database_name
             self.table_name = table_name
             print("\nNew database connection active.")
+            print(f"Database name:\n{database_name}")
         except (Exception, psycopg2.Error) as error:
             print("Error while fetching data from PostgreSQL", error)
             quit("Exiting program.")
 
 
     def fetch_total_count(self):
-
+        print(f"TABLE NAME IN TOTAL FETCH:\n{self.table_name}")
         stmt = sql.SQL("""            
             SELECT row_to_json(t)
             FROM (
@@ -147,7 +148,10 @@ class DatabaseConnection():
     def sql_field_search(page, search_term):
         search_sql = sql.SQL('AND (')
         search_term_count = 0
-        if page == "data-150k-and-up":
+        if page == "all-data":
+            column_headers = current_app.config["HEADERS_ALL_DATA"]
+            print(f"HEADERS:\n{column_headers}")
+        elif page == "data-150k-and-up":
             column_headers = current_app.config["HEADERS_150K_AND_UP"]
         elif page == "data-under-150k":
             column_headers = current_app.config["HEADERS_UNDER_150K"]

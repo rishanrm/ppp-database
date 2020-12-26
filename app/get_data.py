@@ -9,7 +9,7 @@ class Data():
     @staticmethod
     def get_data(request):
         if "filter" in request.args:
-            if request.args["page"] == "data-under-150k":
+            if ((request.args["page"] == "data-under-150k") or (request.args["page"] == "all-data")):
                 substr = 'state":"'
                 if substr in request.args["filter"]:
                     state_index = request.args["filter"].index(substr)+len(substr)
@@ -21,7 +21,12 @@ class Data():
         else:
             state = "unstated"
 
-        if request.args["page"] == "data-under-150k":
+        if request.args["page"] == "all-data":
+            db_name = current_app.config["DB_NAME_ROOT_ALL_DATA"]
+            table_name = current_app.config["DB_NAME_ROOT_ALL_DATA"] + \
+                "_" + state.lower()
+            print(f"Table name:\n{table_name}")
+        elif request.args["page"] == "data-under-150k":
             db_name = current_app.config["DB_NAME_ROOT_UNDER_150K"]
             table_name = current_app.config["DB_NAME_ROOT_UNDER_150K"] + "_" + state.lower()
         elif request.args["page"] == "data-150k-and-up":

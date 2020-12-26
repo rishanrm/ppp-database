@@ -51,6 +51,8 @@ function callTable(i) {
             initialSortColumn = 'loanrange'
         } else if(page.includes('data-under-150k')) {
             initialSortColumn = 'loanamount'
+        } else if(page.includes('all-data')) {
+            initialSortColumn = 'loanamount'
         }
 
         $('select[class*="bootstrap-table-filter-control-state"]').each(function(i) {
@@ -162,7 +164,26 @@ function callTable(i) {
 
         var orderedData
         function getOrderedData() {
-            if(page.includes('data-150k-and-up')) {
+            if(page.includes('all-data')) {
+                orderedData = {
+                    "loanamount": "Loan Amount",
+                    "businessname": "Business Name",
+                    "address": "Address",
+                    "city": "City",
+                    "state": "State",
+                    "zip": "ZIP Code",
+                    "naicscode": "Industry (NAICS Code)",
+                    "businesstype": "Business Type",
+                    "raceethnicity": "Race/Ethnicity",
+                    "gender": "Gender",
+                    "veteran": "Veteran",
+                    "nonprofit": "Nonprofit",
+                    "jobsreported": "Jobs Reported",
+                    "dateapproved": "Date Approved",
+                    "lender": "Lender",
+                    "cd": "House District"
+                }
+            } else if(page.includes('data-150k-and-up')) {
                 orderedData = {
                     "loanrange": "Loan Range",
                     "businessname": "Business Name",
