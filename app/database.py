@@ -307,7 +307,10 @@ class DatabaseConnection():
                 for result in results[0][0]:
                     for key, value in result.items():
                         if key in current_app.config["NAMES_TO_CAPITALIZE"]:
-                            result[key] = value.title()
+                            if value != None:
+                                result[key] = value.title()
+                            else:
+                                result[key] = None
             chars_to_strip = 2
         results_str = json.dumps(results)[chars_to_strip:-chars_to_strip]
         if results_str == "null":
