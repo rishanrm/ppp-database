@@ -81,7 +81,7 @@ function callTable(i) {
         if (requestCount == 0) {
             requestParams = 'search=&sort='
                             + initialSortColumn
-                            + '&order=asc&offset=0&limit=10&filter=%7B%22'
+                            + '&order=desc&offset=0&limit=10&filter=%7B%22'
                             + initialFilterColumn
                             + '%22%3A%22'
                             + initialFilterValue
