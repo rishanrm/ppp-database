@@ -256,11 +256,14 @@ function callTable(i) {
             $.each(orderedColumns, function (index, columnName) {
                 // if (columnName == "Loan Amount") {
                 //     value = amountFormatter(orderedValues[i]);
-                if (columnName == "Industry (NAICS Code)") {
-                    value = colOptions["naicscode"][orderedValues[i]]
-                } else {
-                    value = orderedValues[i]
-                }
+                value = orderedValues[i]
+
+                // If NAICS code needs formatting:
+                // if (columnName == "Industry (NAICS Code)") {
+                //     value = colOptions["naicscode"][orderedValues[i]]
+                // } else {
+                //     value = orderedValues[i]
+                // }
                 html.push('<p><b>' + columnName + ':</b> ' + value + '</p>')
                 i += 1
             })
