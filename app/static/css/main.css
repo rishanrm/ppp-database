@@ -988,6 +988,7 @@ cookie-close:active {
   width: 50vw;
   position: fixed;
   right: 0;
+  padding-left: 3vw;
 }
 
 .right-nav {
@@ -999,7 +1000,7 @@ cookie-close:active {
 
 .right-text {
   color: white;
-  padding-top: 15vh;
+  padding-top: 17vh;
   list-style-type: none;
   text-align: right;
   font-size: calc(1em + 1vw);
@@ -1018,7 +1019,7 @@ cookie-close:active {
 
 .nav-link {
   color: white;
-  text-align: right;
+  text-align: center;
   font-size: calc(1em + 0.5vw);
   line-height: calc(1em + 0.5vw);
   padding-left: 1em;
@@ -1026,6 +1027,9 @@ cookie-close:active {
   border-radius: 1em;
   border: 5px solid transparent;
   margin: 0;
+  border: 5px solid #037AFB;
+  background: #037AFB;
+  margin-bottom: 3vh;
 }
 
 .nav-link:hover {
@@ -1042,10 +1046,10 @@ cookie-close:active {
 
 @media all and (max-width: 905px) {
   .first-line {
-    padding-top: 8vh;
+    padding-top: 10vh;
   }
   .right-text {
-    padding-top: 8vh;
+    padding-top: 11vh;
   }
   .nav-link {
     padding: 0.25rem 1rem;
