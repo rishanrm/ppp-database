@@ -3,6 +3,8 @@
     // font-size: 1.5rem;
     font-weight: bold;
     font-style: italic;
+    border-bottom: 3px solid #DC3C45;
+    border-bottom-style: double;
 }
 .about-content{
     margin-top: $header-height + $about-offset-top;

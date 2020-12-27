@@ -1265,6 +1265,8 @@ cookie-close:active {
   color: #037AFB;
   font-weight: bold;
   font-style: italic;
+  border-bottom: 3px solid #DC3C45;
+  border-bottom-style: double;
 }
 
 .about-content {
