@@ -1,3 +1,35 @@
+::-webkit-scrollbar {
+    width: 0;
+}
+.fixed-table-body::-webkit-scrollbar:vertical {
+    all: unset;
+    background: #dee2e6;
+    border-radius: 0px 10px 0px 0px;
+}
+.fixed-table-body::-webkit-scrollbar:horizontal {
+    background: #dee2e6;
+    border-radius: 0px 0px 0px 10px;
+}
+
+.fixed-table-body::-webkit-scrollbar-track {
+    border-radius: 10px;
+}
+
+.fixed-table-body::-webkit-scrollbar-corner {
+    background: #dee2e6;
+    border-radius: 0px 0px 10px 0px;
+}
+
+.fixed-table-body::-webkit-scrollbar-thumb:vertical {
+    background: linear-gradient(0deg, rgba(220, 60, 69,1)  0%, rgba(3, 122, 251,1) 100%);
+    border-radius: 10px;
+}
+
+.fixed-table-body::-webkit-scrollbar-thumb:horizontal {
+    background: linear-gradient(270deg, rgba(220, 60, 69,1)  0%, rgba(3, 122, 251,1) 100%);
+    border-radius: 10px;
+}
+
 .source{
     margin-left: 10vw;
     margin-right: 10vw;
@@ -28,7 +60,9 @@
 
 .fixed-table-body {
     border-top: 1px solid #dee2e6;
-    border-bottom: 1px solid #dee2e6;
+    border-left: 1px solid #dee2e6;
+    // border-bottom: 1px solid #dee2e6;
+    border-radius: 10px;
 }
 
 .detailview {
