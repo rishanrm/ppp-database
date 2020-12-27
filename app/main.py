@@ -6,7 +6,7 @@ import config
 from routes import main
 
 def create_app():
-    env = "development"
+    env = "production"
 
     app = Flask(__name__, static_url_path='')
     if env == "production":
