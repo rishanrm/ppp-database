@@ -325,7 +325,7 @@ section {
   border-radius: 0.25em;
 }
 
-@media all and (max-width: 800px) {
+@media all and (max-width: 768px) {
   .footer {
     height: 5vh;
     font-size: calc(1em + 0.25vw);
@@ -456,7 +456,7 @@ ul.transition li:nth-child(5) {
   height: 5vw;
 }
 
-@media all and (max-width: 800px) {
+@media all and (max-width: 768px) {
   .spinner-transition {
     width: 10vw;
     height: 10vw;
@@ -1246,11 +1246,21 @@ cookie-close:active {
   margin-bottom: 5vh;
 }
 
+.about-header {
+  color: #037AFB;
+  font-weight: bold;
+  font-style: italic;
+}
+
 .about-content {
   margin-top: 11vh;
   margin-bottom: 2vh;
   text-align: center;
   font-size: 1.25rem !important;
+}
+
+.learn-more {
+  margin-top: 1vh;
 }
 
 .about-disclaimer {
@@ -1263,6 +1273,7 @@ cookie-close:active {
 
 .card-group {
   margin-top: 1vh;
+  padding-bottom: 3vh;
 }
 
 .card {
@@ -1275,12 +1286,18 @@ cookie-close:active {
   margin-right: auto;
 }
 
-@media all and (max-width: 800px) {
+@media all and (max-width: 768px) {
   .about-disclaimer {
     margin-bottom: 10vh;
   }
   .about-content {
     font-size: 1rem !important;
+  }
+  .card-group {
+    padding-bottom: 6vh;
+  }
+  .card-group .learn-more {
+    margin-top: 0vh;
   }
 }
 /*# sourceMappingURL=main.css.map */

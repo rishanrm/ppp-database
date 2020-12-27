@@ -65,7 +65,7 @@
     border-radius: 0.25em;
     }
 
-@media all and (max-width: 800px) {
+@media all and (max-width: 768px) {
     .footer {
         height: $header-height * 0.5;
         font-size: calc(1em + 0.25vw);
