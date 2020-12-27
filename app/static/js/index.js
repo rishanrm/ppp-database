@@ -407,9 +407,17 @@ function sidebarMenuClick(element, eventName) {
 // End cookie notification
 
 // Hide initial page loader
-
 $('#table').on('load-success.bs.table', function () {
     document.querySelector(".pre-table-spinner").style.display = "none";
 });
-
 // End hide initial page loader
+
+// Scroll progress bar
+$(window).scroll(function() {
+  var scroll = $(window).scrollTop(),
+  dh = $(document).height(),
+  wh = $(window).height();
+  scrollPercent = (scroll / (dh - wh)) * 100;
+  $("#progressbar").css("height", scrollPercent + "%");
+});
+// End scroll progress bar
