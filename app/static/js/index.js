@@ -55,6 +55,24 @@ function callTable(i) {
             initialSortColumn = 'loanamount'
         }
 
+        var actualInputValues = {}
+        var columns = Object.keys(orderedData)
+        console.log(columns)
+        for (column of columns) {
+            var openFieldVal = $("#table").find("input.form-control.bootstrap-table-filter-control-" + column).val()
+            if (openFieldVal != undefined && openFieldVal != '') {
+                actualInputValues[column] = openFieldVal
+            } else {
+                var selectionVal = $('select[class*="bootstrap-table-filter-control-' + column + '"]').val();
+                if (selectionVal != undefined && selectionVal != '') {
+                    actualInputValues[column] = selectionVal
+                }
+            }
+        }
+        console.log(params)
+        params.data.filter = JSON.stringify(actualInputValues)
+        console.log(params)
+
         $('select[class*="bootstrap-table-filter-control-state"]').each(function(i) {
             if ($(this).children('option[selected="selected"]').length != 0) {
                 // alert($(this).children('option[selected="selected"]').attr('value'));
