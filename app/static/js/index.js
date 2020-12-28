@@ -1,4 +1,4 @@
-for (let i = 0; i < 5; i++) {
+for (let i = 0; i < 10; i++) {
     callTable(i)
 }
 
@@ -37,24 +37,16 @@ function callTable(i) {
     // <!-- Get data -->
     var requestCount = 0
     var initial_state = true
-    var resetButtonClicked = false
     var requestParams
     var initialSortColumn
     var initialFilterColumn = 'state'
     var initialFilterValue = 'AK'
     var initialStateAddition
-    var globalSearchInput
 
     var page = window.location.href.split('//')[1].split('/')[1]
 
-    function queryParams(params) {
-        // params.search = "I PUT THIS HEREkjhgfkdhgfdkjghdfkghdfkjghdfkgjhdgfkhgd"
-    return params
-    }
-
     console.log("COUNT REQUEST RESET TO 0")
     function ajaxRequest(params) {
-        console.log("\n\n\nA REQUEST HAS BEEN MADE\n\n\n")
         if(page.includes('data-150k-and-up')) {
             initialSortColumn = 'loanrange'
         } else if(page.includes('data-under-150k')) {
@@ -62,52 +54,6 @@ function callTable(i) {
         } else if(page.includes('all-data')) {
             initialSortColumn = 'loanamount'
         }
-
-
-        console.log("PARAMS:")
-        params.data.search = "I PUT THIS HERE"
-        console.log(params)
-
-        if(typeof params.data != 'undefined') {
-            params.data.search = $("body > div.changing-content > div.outside > div.bootstrap-table.bootstrap4 > div.fixed-table-toolbar > div.float-right.search.btn-group > div > input").val();
-            var actualSearchParams = {}
-            var currentFilterValue
-            console.log(orderedData)
-            console.log(Object.keys(orderedData))
-            for (var column of Object.keys(orderedData)) {
-                console.log(column)
-                    var selector = 'select[class*="bootstrap-table-filter-control-' + column + '"]'
-                    console.log(selector)
-                if (typeof $(selector) != 'undefined') {
-                    currentFilterValue = $('select[class*="bootstrap-table-filter-control-' + column + '"]').val();
-                    console.log($('select[class*="bootstrap-table-filter-control-' + column + '"]').val())
-                    actualSearchParams[column] = currentFilterValue
-                }
-            }
-            if (Object.keys(actualSearchParams).length > 0) {
-                params.data.filter = JSON.stringify(actualSearchParams)
-            } else if(typeof params.data.filter != 'undefined') {
-                delete params.data.filter
-            }
-            //         if (typeof params.data.filter != 'undefined') {
-            //             if (params.data.filter.includes(column)) {
-            //                 var indexOfFilter = params.data.filter.indexOf(column)
-            //                 var filterValueIndex = indexOfFilter + 8
-            //                 var newFilterStr = params.data.filter.substring(0, filterValueIndex) + currentFilterValue + params.data.filter.substring(filterValueIndex + initialFilterValue.length)
-            //                 console.log("NEW PARAM STRING: " + newFilterStr)
-            //                 params.data.filter = newFilterStr;
-            //             }
-            //         }
-            //     }
-            // }
-        }
-
-
-        // if (resetButtonClicked){
-        //     // console.log("PARAMS:")
-        //     params.data.search = ''
-        //     // console.log(params)
-        // }
 
         $('select[class*="bootstrap-table-filter-control-state"]').each(function(i) {
             if ($(this).children('option[selected="selected"]').length != 0) {
@@ -125,10 +71,6 @@ function callTable(i) {
                 console.log('Initial state is false because no state is chosen.')
             }
         });
-        if (resetButtonClicked == true) {
-            initial_state = true
-            resetButtonClicked = false
-        }
         console.log('Request Count: ' + requestCount)
         var url = '/data'
         console.log("HERE ARE THE PARAMS IN THE REQUEST:")
@@ -147,7 +89,7 @@ function callTable(i) {
             console.log("Manual params:")
             console.log(requestParams)
         } else {
-            if (initial_state || resetButtonClicked){
+            if (initial_state){
                 console.log('STILL INITIAL STATE')
                 console.log($.param(params.data))
                 console.log($.param(params.data).includes('filter'))
@@ -164,19 +106,12 @@ function callTable(i) {
             }
         }
         console.log('The request params are: \r\n' + requestParams)
-        // console.log(url + '?' + 'page=' + page + '&' + requestParams)
+        console.log(url + '?' + 'page=' + page + '&' + requestParams)
         $.get(url + '?' + 'page=' + page + '&' + requestParams)
         
         .then(function (res) {
             params.success(res)
             console.log(res)
-            if (requestCount == 1) {
-                globalSearchInput = $("body > div.changing-content > div.outside > div.bootstrap-table.bootstrap4 > div.fixed-table-toolbar > div.float-right.search.btn-group > div > input");
-                console.log('QUERY VAL: '+ globalSearchInput.val())
-                globalSearchInput.val('')
-                $('select[class*="bootstrap-table-filter-control-' + initialFilterColumn + '"]').val(initialFilterValue);
-            }
-
         });
         requestCount++;
     };
@@ -248,42 +183,42 @@ function callTable(i) {
                     "lender": "Lender",
                     "cd": "House District"
                 }
-            // } else if(page.includes('data-150k-and-up')) {
-            //     orderedData = {
-            //         "loanrange": "Loan Range",
-            //         "businessname": "Business Name",
-            //         "address": "Address",
-            //         "city": "City",
-            //         "state": "State",
-            //         "zip": "ZIP Code",
-            //         "naicscode": "Industry (NAICS Code)",
-            //         "businesstype": "Business Type",
-            //         "raceethnicity": "Race/Ethnicity",
-            //         "gender": "Gender",
-            //         "veteran": "Veteran",
-            //         "nonprofit": "Nonprofit",
-            //         "jobsreported": "Jobs Reported",
-            //         "dateapproved": "Date Approved",
-            //         "lender": "Lender",
-            //         "cd": "House District"
-            //     }
-            // } else if(page.includes('data-under-150k')) {
-            //     orderedData = {
-            //         "loanamount": "Loan Amount",
-            //         "city": "City",
-            //         "state": "State",                
-            //         "zip": "ZIP Code",
-            //         "naicscode": "Industry (NAICS Code)",
-            //         "businesstype": "Business Type",
-            //         "raceethnicity": "Race/Ethnicity",
-            //         "gender": "Gender",
-            //         "veteran": "Veteran",
-            //         "nonprofit": "Nonprofit",
-            //         "jobsreported": "Jobs Reported",
-            //         "dateapproved": "Date Approved",
-            //         "lender": "Lender",
-            //         "cd": "House District"
-            //     }
+            } else if(page.includes('data-150k-and-up')) {
+                orderedData = {
+                    "loanrange": "Loan Range",
+                    "businessname": "Business Name",
+                    "address": "Address",
+                    "city": "City",
+                    "state": "State",
+                    "zip": "ZIP Code",
+                    "naicscode": "Industry (NAICS Code)",
+                    "businesstype": "Business Type",
+                    "raceethnicity": "Race/Ethnicity",
+                    "gender": "Gender",
+                    "veteran": "Veteran",
+                    "nonprofit": "Nonprofit",
+                    "jobsreported": "Jobs Reported",
+                    "dateapproved": "Date Approved",
+                    "lender": "Lender",
+                    "cd": "House District"
+                }
+            } else if(page.includes('data-under-150k')) {
+                orderedData = {
+                    "loanamount": "Loan Amount",
+                    "city": "City",
+                    "state": "State",                
+                    "zip": "ZIP Code",
+                    "naicscode": "Industry (NAICS Code)",
+                    "businesstype": "Business Type",
+                    "raceethnicity": "Race/Ethnicity",
+                    "gender": "Gender",
+                    "veteran": "Veteran",
+                    "nonprofit": "Nonprofit",
+                    "jobsreported": "Jobs Reported",
+                    "dateapproved": "Date Approved",
+                    "lender": "Lender",
+                    "cd": "House District"
+                }
             }
         }
         getOrderedData()
@@ -342,23 +277,8 @@ function callTable(i) {
             $resetButton.click(function () {
                 requestCount = 0
                 initial_state = true
-                resetButtonClicked = true            
-                // params.data.search = $("body > div.changing-content > div.outside > div.bootstrap-table.bootstrap4 > div.fixed-table-toolbar > div.float-right.search.btn-group > div > input").val();
-                // var actualSearchParams = {}
-                // var currentFilterValue
-                
-                for (column in Object.keys(orderedData)) {
-                    if (typeof $('select[class*="bootstrap-table-filter-control-' + column + '"]') != 'undefined') {
-                        $('select[class*="bootstrap-table-filter-control-' + column + '"]').val('');
-                    }
-                }
-                // $('select[class*="bootstrap-table-filter-control-' + initialFilterColumn + '"]').val('');
-                // globalSearchInput = $("body > div.changing-content > div.outside > div.bootstrap-table.bootstrap4 > div.fixed-table-toolbar > div.float-right.search.btn-group > div > input");
-                // console.log('QUERY VAL: '+ globalSearchInput.val())
-                // globalSearchInput.val('')
-                $('table').bootstrapTable('refresh')
-                // $('table').bootstrapTable('clearFilterControl')
-                // $('select[class*="bootstrap-table-filter-control-' + initialFilterColumn + '"]').val(initialFilterValue);
+                $('table').bootstrapTable('clearFilterControl')
+                $('select[class*="bootstrap-table-filter-control-' + initialFilterColumn + '"]').val(initialFilterValue);
             })
         })
     
@@ -397,12 +317,6 @@ function callTable(i) {
     
         $('#table').on('post-body.bs.table', function (e, arg1, arg2) {
             console.log('POST BODY RAN')
-            if (initial_state == true) {
-                $('select[class*="bootstrap-table-filter-control-' + initialFilterColumn + '"]').val(initialFilterValue);
-                console.log("SUPPOSED TO HAVE RESET")
-            } else {
-                console.log("POST BODY says initial_state is false")
-            }
             $table.bootstrapTable('resetView')
             // $('div.hidden').fadeIn(2000).removeClass('hidden');
         });
@@ -431,7 +345,7 @@ function callTable(i) {
                 $('div.hidden').fadeIn(500).removeClass('hidden');
             // setTimeout(() => { $('div.hidden').fadeIn(1000).removeClass('hidden'); }, 1);
             }
-            console.log("Pre-body Count: " + preBodyRanCount)
+            console.log(preBodyRanCount)
             preBodyRanCount++;
         });
 
