@@ -277,8 +277,15 @@ function callTable(i) {
             $resetButton.click(function () {
                 requestCount = 0
                 initial_state = true
-                $('table').bootstrapTable('clearFilterControl')
+                // $('table').bootstrapTable('clearFilterControl')
                 $('select[class*="bootstrap-table-filter-control-' + initialFilterColumn + '"]').val(initialFilterValue);
+
+                var columns = Object.keys(orderedData)
+                console.log(columns)
+                console.log($("#table").find("input.form-control.bootstrap-table-filter-control-loanamount").val())
+
+
+
             })
         })
     
