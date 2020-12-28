@@ -325,6 +325,7 @@ function callTable(i) {
                 }
 
                 $('select[class*="bootstrap-table-filter-control-' + initialFilterColumn + '"]').val(initialFilterValue);
+                $table.bootstrapTable('refresh')
             })
         })
     
