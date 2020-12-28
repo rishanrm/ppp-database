@@ -6,6 +6,7 @@ html {
   -ms-scroll-snap-type: y mandatory;
       scroll-snap-type: y mandatory;
   background-color: gray;
+  overflow: auto;
 }
 
 body {
