@@ -282,7 +282,10 @@ function callTable(i) {
 
                 var columns = Object.keys(orderedData)
                 console.log(columns)
-                console.log($("#table").find("input.form-control.bootstrap-table-filter-control-loanamount").val())
+                for (column of columns) {
+                    $("#table").find("input.form-control.bootstrap-table-filter-control-" + column).val('')
+                }
+                // console.log($("#table").find("input.form-control.bootstrap-table-filter-control-loanamount").val())
 
 
 
