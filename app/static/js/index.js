@@ -278,17 +278,35 @@ function callTable(i) {
                 requestCount = 0
                 initial_state = true
                 // $('table').bootstrapTable('clearFilterControl')
-                $('select[class*="bootstrap-table-filter-control-' + initialFilterColumn + '"]').val(initialFilterValue);
 
+                document.querySelector("body > div.changing-content > div.outside > div.bootstrap-table.bootstrap4 > div.fixed-table-toolbar > div.float-right.search.btn-group > div > input").value = ''
                 var columns = Object.keys(orderedData)
                 console.log(columns)
                 for (column of columns) {
                     $("#table").find("input.form-control.bootstrap-table-filter-control-" + column).val('')
+                    $('select[class*="bootstrap-table-filter-control-' + column + '"]').val('');
+                    // console.log($("#table").find("input.form-control.bootstrap-table-filter-control-loanamount").val())
+                    
+                    // $('select[class*="bootstrap-table-filter-control-' + column + '"]').each(function(i) {
+                    //     if ($(this).children('option[selected="selected"]').length != 0) {
+                    //         // alert($(this).children('option[selected="selected"]').attr('value'));
+                    //         // console.log('there\'s a state!')
+                    //         // console.log($(this).children('option[selected="selected"]').attr('value'))
+                    //         // console.log(initialFilterValue)
+                    //         // console.log(($(this).children('option[selected="selected"]').attr('value') != initialFilterValue))
+                    //         if ($(this).children('option[selected="selected"]').attr('value') != initialFilterValue) {
+                    //             initial_state = false;
+                    //             console.log('Initial state set to false because a new state is chosen.');
+                    //         }
+                    //     } else {
+                    //         initial_state = false;
+                    //         console.log('Initial state is false because no state is chosen.')
+                    //     }
+                    // });
+
                 }
-                // console.log($("#table").find("input.form-control.bootstrap-table-filter-control-loanamount").val())
 
-
-
+                $('select[class*="bootstrap-table-filter-control-' + initialFilterColumn + '"]').val(initialFilterValue);
             })
         })
     
