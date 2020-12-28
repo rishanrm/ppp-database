@@ -489,3 +489,9 @@ $(window).scroll(function() {
   $("#progressbar").css("height", scrollPercent + "%");
 });
 // End scroll progress bar
+
+// Prevent scrolling when clicking into a card view
+document.getElementsByClassName('fa').addEventListener('click', function (e) {
+    e.preventDefault();
+})
+// End prevent scrolling when clicking into a card view
