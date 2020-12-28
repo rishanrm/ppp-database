@@ -42,6 +42,7 @@ function callTable(i) {
     var initialFilterColumn = 'state'
     var initialFilterValue = 'AK'
     var initialStateAddition
+    var resetButtonClicked = false
 
     var page = window.location.href.split('//')[1].split('/')[1]
 
@@ -72,6 +73,14 @@ function callTable(i) {
         console.log(params)
         params.data.filter = JSON.stringify(actualInputValues)
         console.log(params)
+
+        var searchValue = document.querySelector("body > div.changing-content > div.outside > div.bootstrap-table.bootstrap4 > div.fixed-table-toolbar > div.float-right.search.btn-group > div > input").value
+        if (searchValue != '') {
+            params.data.search = searchValue
+        } else {
+            delete params.data.search
+        }
+
 
         $('select[class*="bootstrap-table-filter-control-state"]').each(function(i) {
             if ($(this).children('option[selected="selected"]').length != 0) {
@@ -295,6 +304,7 @@ function callTable(i) {
             $resetButton.click(function () {
                 requestCount = 0
                 initial_state = true
+                resetButtonClicked = true
                 // $('table').bootstrapTable('clearFilterControl')
 
                 document.querySelector("body > div.changing-content > div.outside > div.bootstrap-table.bootstrap4 > div.fixed-table-toolbar > div.float-right.search.btn-group > div > input").value = ''
@@ -365,7 +375,18 @@ function callTable(i) {
         $('#table').on('post-body.bs.table', function (e, arg1, arg2) {
             console.log('POST BODY RAN')
             $table.bootstrapTable('resetView')
-            // $('div.hidden').fadeIn(2000).removeClass('hidden');
+
+            if (resetButtonClicked) {
+                document.querySelector("body > div.changing-content > div.outside > div.bootstrap-table.bootstrap4 > div.fixed-table-toolbar > div.float-right.search.btn-group > div > input").value = ''
+                var columns = Object.keys(orderedData)
+                console.log(columns)
+                for (column of columns) {
+                    $("#table").find("input.form-control.bootstrap-table-filter-control-" + column).val('')
+                    $('select[class*="bootstrap-table-filter-control-' + column + '"]').val('');
+                }
+                $('select[class*="bootstrap-table-filter-control-' + initialFilterColumn + '"]').val(initialFilterValue);
+                resetButtonClicked = false;
+            }
         });
 
         // $('#table').on('toggle.bs.table', function (e, arg1, arg2) {
