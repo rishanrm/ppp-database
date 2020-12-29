@@ -146,6 +146,7 @@ function callTable(i) {
         .then(function (res) {
             params.success(res)
             console.log(res)
+            console.log(res.footer.jobsreported)
             console.log("THAT WAS THE RES")
         });
         requestCount++;
