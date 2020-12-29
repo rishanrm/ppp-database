@@ -64,6 +64,19 @@
     z-index: 1;
   }
 
+input.form-control.form-control.search-input {
+    border-radius: .25rem;
+}
+
+button[name=toggle] {
+    margin-left: 5px !important;
+    border-radius: .25rem !important;
+}
+
+.btn.btn-primary.dropdown-toggle {
+    border-radius: .25rem !important;
+}
+
 .fixed-table-body {
     border-top: 1px solid #dee2e6;
     border-right: 1px solid #dee2e6;
