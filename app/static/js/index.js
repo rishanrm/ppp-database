@@ -305,6 +305,23 @@ function callTable(i) {
             return html.join('')
         }
     
+        // function amountFooterFormatter(data, footerValue) {
+        //     // return footerValue
+        //     return "HELLO"
+        // }
+
+        function totalFormatter(data, row) {
+            // return 'Total: <span id="totalspan" class="text-nowrap"></span>';
+            return "HELLO";
+        }
+
+        // $("#table").on('load-success.bs.table', function (e, data) {
+        //     $("#totalspan").html(
+        //     '$ ' + data.loanamountsum.toString().replace(/\d(?=(\d{3})+\.)/g, '$&,') 
+        //     + '<br />(' + data.loanamountsum + ')');
+        // });
+
+
     // <!-- Reset table button -->
     
         $(function() {

@@ -77,6 +77,27 @@ class DatabaseConnection():
         results = self.my_cursor.fetchall()
         return results
 
+    def fetch_summary_data(self, args, query_features):
+
+        query_start = sql.SQL("""            
+            SELECT row_to_json(t)
+            FROM (
+                SELECT SUM(jobsreported) as "jobsreported"
+                FROM {table_name}
+                WHERE ''=''
+        """).format(
+            table_name=sql.Identifier(self.table_name)
+        )
+        query_body = self.get_query_body(args, query_features)
+        query_end = self.get_query_end()
+
+        sql_query_data = {
+            "query": query_start + query_body["query"] + query_end,
+            "data": query_body["data"]
+        }
+        self.my_cursor.execute(sql_query_data["query"], sql_query_data["data"])
+        results = self.my_cursor.fetchall()
+        return results
 
     def run_sql_query(self, args, query_features, return_type):
         sql_query_data = self.build_query(args, query_features)
@@ -300,7 +321,7 @@ class DatabaseConnection():
     @staticmethod
     def get_json_component(results, data_type):
 
-        if data_type == "total":
+        if data_type == "total" or data_type == "footer":
             chars_to_strip = 3
         elif data_type == "data":
             if (results[0][0]) != None:
@@ -319,13 +340,21 @@ class DatabaseConnection():
         if data_type == "data":
             results_str = "\"rows\": " + results_str
 
+        if data_type == "footer":
+            results_str = "\"footer\": {" + results_str + " }"
+
+        print(results_str)
+        print("THAT WAS IT")
+
         return results_str
 
     @staticmethod
-    def build_table_json(results_len_str, total_count_str, results_str):
+    # def build_table_json(results_len_str, total_count_str, results_str):
+    def build_table_json(results_len_str, total_count_str, results_str, summary_data_str):
 
         #results_len_str = "\"total\": " + str(results_len)
-        table_json_str = "{ " + results_len_str + ", " + total_count_str + ", " + results_str + " }"
+        # table_json_str = "{ " + results_len_str + ", " + total_count_str + ", " + results_str + " }"
+        table_json_str = "{ " + results_len_str + ", " + total_count_str + ", " + results_str + ", " + summary_data_str + " }"
         return table_json_str
 
     def get_column_options(self, column):

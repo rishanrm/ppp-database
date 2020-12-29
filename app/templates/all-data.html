@@ -70,33 +70,71 @@
         <div id="toolbar">
             <button id="resetButton" class="btn btn-danger">Reset</button>
         </div>
-        <table id="table" data-toggle="table" data-ajax="ajaxRequest" data-buttons-align="right"
-            data-buttons-class="primary" data-buttons-order="['columns', 'toggle', 'print']"
-            data-show-button-text="true" data-search="true" data-search-align="right"
-            data-search-accent-neutralise="true" data-search-on-enter-key="false" data-search-text=""
-            data-search-time-out="1000" visible-search="true" data-sort-reset="false" data-silent-sort="false"
-            data-side-pagination="server" data-pagination="true" data-pagination-pre-text="Previous"
-            data-pagination-next-text="Next" data-pagination-successively-size="3" data-pagination-v-align="bottom"
-            data-pagination-loop="false" data-page-list="[10, 25, 50, 100, 200, 500, 1000]"
-            data-show-pagination-switch="false" data-show-extended-pagination="false" data-show-jump-to="true"
-            data-remember-order="true" data-show-columns="true" data-show-columns-search="true"
-            data-show-columns-toggle-all="true" data-show-header="true" data-show-footer="false"
-            data-show-fullscreen="false" data-show-refresh="false" data-show-toggle="true" data-smart-display="true"
-            data-undefined-text="N/A" data-virtual-scroll="true" data-addrbar="false" data-show-export="false"
-            data-export-data-type="basic" data-filter-control="true" data-show-search-clear-button="true"
-            data-show-print="false" data-reorderable-columns="false"
-            data-header-style="headerStyle" data-toolbar="#toolbar" data-detail-view="true"
-            data-detail-formatter="detailFormatter" data-detail-view-by-click="false"
+
+        <table
+            id="table"
+            data-toggle="table"
+            data-ajax="ajaxRequest"
+            data-buttons-align="right"
+            data-buttons-class="primary"
+            data-buttons-order="['columns', 'toggle', 'print']"
+            data-show-button-text="true"
+            data-search="true"
+            data-search-align="right"
+            data-search-accent-neutralise="true"
+            data-search-on-enter-key="false"
+            data-search-text=""
+            data-search-time-out="1000"
+            visible-search="true"
+            data-sort-reset="false"
+            data-silent-sort="false"
+            data-side-pagination="server"
+            data-pagination="true"
+            data-pagination-pre-text="Previous"
+            data-pagination-next-text="Next"
+            data-pagination-successively-size="3"
+            data-pagination-v-align="bottom"
+            data-pagination-loop="false"
+            data-page-list="[10, 25, 50, 100, 200, 500, 1000]"
+            data-show-pagination-switch="false"
+            data-show-extended-pagination="false"
+            data-show-jump-to="true"
+            data-remember-order="true"
+            data-show-columns="true"
+            data-show-columns-search="true"
+            data-show-columns-toggle-all="true"
+            data-show-header="true"
+            data-show-footer="false"
+            data-show-fullscreen="false"
+            data-show-refresh="false"
+            data-show-toggle="true"
+            data-smart-display="true"
+            data-undefined-text="N/A"
+            data-virtual-scroll="true"
+            data-addrbar="false"
+            data-show-export="false"
+            data-export-data-type="basic"
+            data-filter-control="true"
+            data-show-search-clear-button="true"
+            data-show-print="false"
+            data-reorderable-columns="false"
+            data-header-style="headerStyle"
+            data-toolbar="#toolbar"
+            data-detail-view="true"
+            data-detail-formatter="detailFormatter"
+            data-detail-view-by-click="false"
             data-loading-template="loadingTemplate"
-            data-disable-control-when-search="false">
+            data-disable-control-when-search="false"
+            data-show-footer="true"
+            data-footer-field="footer">
             <thead>
                 <tr>
                     <!--
                     loanrange,businessname,address,city,state,zip,naicscode,businesstype,raceethnicity,gender,veteran,nonprofit,jobsretained,dateapproved,lender,cd
                     -->
-                    <th data-field="loanamount" data-sortable="true" data-filter-control="input" data-sorter="alphanum"
-                        data-sort-order="desc" data-formatter="amountFormatter">Loan Amount</th>
-                    <th data-field="businessname" data-sortable="true" data-filter-control="input">Business Name</th>
+                    <!-- <th data-field="loanamount" data-sortable="true" data-filter-control="input" data-sorter="alphanum"
+                        data-sort-order="desc" data-formatter="amountFormatter" data-footer-formatter="totalFormatter">Loan Amount</th> -->
+                    <!-- <th data-field="businessname" data-sortable="true" data-filter-control="input">Business Name</th>
                     <th data-field="address" data-sortable="true" data-filter-control="input">Address</th>
                     <th data-field="city" data-sortable="true" data-filter-control="input">City</th>
                     <th data-field="state" data-sortable="true" data-filter-control="select"
@@ -114,15 +152,15 @@
                     <th data-field="veteran" data-sortable="true" data-filter-control="select"
                         data-filter-data="obj:colOptions.veteran" data-visible="false">Veteran</th>
                     <th data-field="nonprofit" data-sortable="true" data-filter-control="select"
-                        data-filter-data="obj:colOptions.nonprofit" data-visible="false">Nonprofit</th>
+                        data-filter-data="obj:colOptions.nonprofit" data-visible="false">Nonprofit</th> -->
                     <th data-field="jobsreported" data-sortable="true" data-filter-control="input"
-                        data-sorter="alphanum">Jobs Reported</th>
-                    <th data-field="dateapproved" data-sortable="true" data-filter-control="select"
+                        data-sorter="alphanum" data-footer-formatter="totalFormatter">Jobs Reported</th>
+                    <!-- <th data-field="dateapproved" data-sortable="true" data-filter-control="select"
                         data-filter-data="obj:colOptions.dateapproved" data-visible="false">Date Approved</th>
                     <th data-field="lender" data-sortable="true" data-filter-control="input" data-visible="false">Lender
                     </th>
                     <th data-field="cd" data-sortable="true" data-filter-control="select"
-                        data-filter-data="obj:colOptions.cd">House District</th>
+                        data-filter-data="obj:colOptions.cd">House District</th> -->
                 </tr>
             </thead>
         </table>
