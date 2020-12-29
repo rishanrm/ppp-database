@@ -106,6 +106,13 @@ function callTable(i) {
         // $.get(url + '?' + $.param(params.data))
 
         if (requestCount == 0) {
+            var toggleText = $('button[name ="toggle"]').contents().filter(function() {
+                return this.nodeType == Node.TEXT_NODE;
+            })
+            if (toggleText.prevObject[1].data === ' Toggle') {
+                toggleText.prevObject[1].data = " Show card view"
+            }
+
             requestParams = 'search=&sort='
                             + initialSortColumn
                             + '&order=desc&offset=0&limit=10&filter=%7B%22'
@@ -352,6 +359,16 @@ function callTable(i) {
             }
         });
 
+    // <!-- Change Toggle View text -->
+        $('#table').on('toggle.bs.table', function (cardView) {
+            var toggleText = $('button[name ="toggle"]').contents().filter(function() {
+                return this.nodeType == Node.TEXT_NODE;
+            })
+            if (toggleText.prevObject[1].data === ' Hide card view') {
+                toggleText.prevObject[1].data = ' Show table view'
+            }
+        });
+
     // <!-- Loading screen overlay -->
         
             var type = 'bsGrow'
@@ -477,6 +494,7 @@ function sidebarMenuClick(element, eventName) {
 // Hide initial page loader
 $('#table').on('load-success.bs.table', function () {
     document.querySelector(".pre-table-spinner").style.display = "none";
+
 });
 // End hide initial page loader
 
@@ -490,8 +508,34 @@ $(window).scroll(function() {
 });
 // End scroll progress bar
 
+// var toggleButtonText = document.querySelector('body > div.changing-content > div.outside > div.bootstrap-table.bootstrap4 > div.fixed-table-toolbar > div.columns.columns-right.btn-group.float-right > button')
+// var toggleButtonText = document.querySelector("body > div.changing-content > div.outside > div.bootstrap-table.bootstrap4 > div.fixed-table-toolbar > div.columns.columns-right.btn-group.float-right > button > i")
+var toggleButtonText = $( "[name='toggle']" )
+console.log("TOGGLE JQUERY TEXT:")
+console.log(toggleButtonText.innerHTML)
+toggleButtonText.onload = function(){
+    console.log("TOGGLE BUTTON:")
+    console.log(toggleButtonText.innerHTML)
+    toggleButtonText.innerHTML = "NEW BUTTON TEXT"
+}
+// console.log(document.evaluate(
+//     '/html/body/div[3]/div[5]/div[1]/div[1]/div[2]/button',
+//     document,
+//     null,
+//     XPathResult.ANY_TYPE,
+//     null))
+// var toggleItem = $x(toggleText)
+// console.log(toggleItem)
+
+
+
+
+
+
+console.log("THAT WAS THE ITEM")
 // Prevent scrolling when clicking into a card view
 document.getElementsByClassName('fa').addEventListener('click', function (e) {
     e.preventDefault();
 })
 // End prevent scrolling when clicking into a card view
+
