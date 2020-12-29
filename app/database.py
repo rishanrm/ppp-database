@@ -300,7 +300,7 @@ class DatabaseConnection():
     @staticmethod
     def get_json_component(results, data_type):
 
-        if data_type == "total":
+        if data_type == "total" or data_type == "footer":
             chars_to_strip = 3
         elif data_type == "data":
             if (results[0][0]) != None:
@@ -319,13 +319,20 @@ class DatabaseConnection():
         if data_type == "data":
             results_str = "\"rows\": " + results_str
 
+        if data_type == "footer":
+            results_str = "\"footer\": {" + results_str + " }"
+
+        print(results_str)
+        print("THAT WAS IT")
+
         return results_str
 
     @staticmethod
-    def build_table_json(results_len_str, total_count_str, results_str):
+    def build_table_json(results_len_str, total_count_str, results_str, summary_data_str):
 
         #results_len_str = "\"total\": " + str(results_len)
-        table_json_str = "{ " + results_len_str + ", " + total_count_str + ", " + results_str + " }"
+        # table_json_str = "{ " + results_len_str + ", " + total_count_str + ", " + results_str + " }"
+        table_json_str = "{ " + results_len_str + ", " + total_count_str + ", " + results_str + ", " + summary_data_str + " }"
         return table_json_str
 
     def get_column_options(self, column):

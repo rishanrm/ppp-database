@@ -46,7 +46,13 @@ class Data():
             request.args, ["search", "filter", "sort", "offset", "limit"], "data")
         results_str = db.get_json_component(results_data, "data")
 
+        summary_data = db.fetch_summary_data(
+            request.args, ["search", "filter"])
+        summary_data_str = db.get_json_component(summary_data, "footer")
+        print(summary_data_str)
+
         table_data_json = db.build_table_json(
-            filtered_count_str, total_count_str, results_str)
+            filtered_count_str, total_count_str, results_str, summary_data_str)
+        # filtered_count_str, total_count_str, results_str)
 
         return json.loads(table_data_json)
