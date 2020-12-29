@@ -146,6 +146,7 @@ function callTable(i) {
         .then(function (res) {
             params.success(res)
             console.log(res)
+            console.log("THAT WAS THE RES")
         });
         requestCount++;
     };
@@ -309,40 +310,68 @@ function callTable(i) {
     
         $(function() {
             $resetButton.click(function () {
-                requestCount = 0
-                initial_state = true
-                resetButtonClicked = true
-                // $('table').bootstrapTable('clearFilterControl')
 
-                document.querySelector("body > div.changing-content > div.outside > div.bootstrap-table.bootstrap4 > div.fixed-table-toolbar > div.float-right.search.btn-group > div > input").value = ''
-                var columns = Object.keys(orderedData)
-                console.log(columns)
-                for (column of columns) {
-                    $("#table").find("input.form-control.bootstrap-table-filter-control-" + column).val('')
-                    $('select[class*="bootstrap-table-filter-control-' + column + '"]').val('');
-                    // console.log($("#table").find("input.form-control.bootstrap-table-filter-control-loanamount").val())
+
+// var block_to_insert ;
+// var container_block ;
+ 
+// block_to_insert = document.createElement( 'div' );
+// block_to_insert.innerHTML = 'This demo DIV block was inserted into the page using JavaScript.' ;
+ 
+// container_block = document.getElementsByClassName("source");
+// console.log(container_block)
+// // container_block.append( block_to_insert );
+
+// var newElement = document.createElement("div");
+//     newElement.innerHTML = "my New Div Text";
+// var myCurrentElement= document.getElementsByClassName('source');
+//     // insertAfter(newElement, myCurrentElement);
+//     myCurrentElement.innerHTML += "<h3>This is the text which has been inserted by JS</h3>"
+//     console.log("DID IT")
+
+
+   var tag = document.createElement("p");
+   var text = document.createTextNode("Tutorix is the best e-learning platform");
+   tag.appendChild(text);
+   var element = document.getElementsByClassName("fixed-table-pagination");
+   element.appendChild(tag);
+
+
+
+            //     requestCount = 0
+            //     initial_state = true
+            //     resetButtonClicked = true
+            //     // $('table').bootstrapTable('clearFilterControl')
+
+            //     document.querySelector("body > div.changing-content > div.outside > div.bootstrap-table.bootstrap4 > div.fixed-table-toolbar > div.float-right.search.btn-group > div > input").value = ''
+            //     var columns = Object.keys(orderedData)
+            //     console.log(columns)
+            //     for (column of columns) {
+            //         $("#table").find("input.form-control.bootstrap-table-filter-control-" + column).val('')
+            //         $('select[class*="bootstrap-table-filter-control-' + column + '"]').val('');
+            //         // console.log($("#table").find("input.form-control.bootstrap-table-filter-control-loanamount").val())
                     
-                    // $('select[class*="bootstrap-table-filter-control-' + column + '"]').each(function(i) {
-                    //     if ($(this).children('option[selected="selected"]').length != 0) {
-                    //         // alert($(this).children('option[selected="selected"]').attr('value'));
-                    //         // console.log('there\'s a state!')
-                    //         // console.log($(this).children('option[selected="selected"]').attr('value'))
-                    //         // console.log(initialFilterValue)
-                    //         // console.log(($(this).children('option[selected="selected"]').attr('value') != initialFilterValue))
-                    //         if ($(this).children('option[selected="selected"]').attr('value') != initialFilterValue) {
-                    //             initial_state = false;
-                    //             console.log('Initial state set to false because a new state is chosen.');
-                    //         }
-                    //     } else {
-                    //         initial_state = false;
-                    //         console.log('Initial state is false because no state is chosen.')
-                    //     }
-                    // });
+            //         // $('select[class*="bootstrap-table-filter-control-' + column + '"]').each(function(i) {
+            //         //     if ($(this).children('option[selected="selected"]').length != 0) {
+            //         //         // alert($(this).children('option[selected="selected"]').attr('value'));
+            //         //         // console.log('there\'s a state!')
+            //         //         // console.log($(this).children('option[selected="selected"]').attr('value'))
+            //         //         // console.log(initialFilterValue)
+            //         //         // console.log(($(this).children('option[selected="selected"]').attr('value') != initialFilterValue))
+            //         //         if ($(this).children('option[selected="selected"]').attr('value') != initialFilterValue) {
+            //         //             initial_state = false;
+            //         //             console.log('Initial state set to false because a new state is chosen.');
+            //         //         }
+            //         //     } else {
+            //         //         initial_state = false;
+            //         //         console.log('Initial state is false because no state is chosen.')
+            //         //     }
+            //         // });
 
-                }
+            //     }
 
-                $('select[class*="bootstrap-table-filter-control-' + initialFilterColumn + '"]').val(initialFilterValue);
-                $table.bootstrapTable('refresh')
+            //     $('select[class*="bootstrap-table-filter-control-' + initialFilterColumn + '"]').val(initialFilterValue);
+            //     $table.bootstrapTable('refresh')
             })
         })
     
@@ -528,8 +557,7 @@ toggleButtonText.onload = function(){
 // console.log(toggleItem)
 
 
-
-
+// body > div.changing-content > div.outside > div.bootstrap-table.bootstrap4
 
 
 console.log("THAT WAS THE ITEM")
