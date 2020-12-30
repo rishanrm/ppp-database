@@ -47,6 +47,7 @@ function callTable(i) {
     var page = window.location.href.split('//')[1].split('/')[1]
 
     console.log("COUNT REQUEST RESET TO 0")
+
     function ajaxRequest(params) {
         if(page.includes('data-150k-and-up')) {
             initialSortColumn = 'loanrange'
@@ -106,6 +107,8 @@ function callTable(i) {
         // $.get(url + '?' + $.param(params.data))
 
         if (requestCount == 0) {
+
+            // Customize toggle switch text
             var toggleText = $('button[name ="toggle"]').contents().filter(function() {
                 return this.nodeType == Node.TEXT_NODE;
             })
@@ -113,6 +116,7 @@ function callTable(i) {
                 toggleText.prevObject[1].data = " Show card view"
             }
 
+            // Change request params for initial table load
             requestParams = 'search=&sort='
                             + initialSortColumn
                             + '&order=desc&offset=0&limit=10&filter=%7B%22'
@@ -146,25 +150,47 @@ function callTable(i) {
         .then(function (res) {
             params.success(res)
             console.log(res)
-            var loanCount = res.total
-            var jobsString = ' job'
-            var pluralize = 's'
-            if (loanCount > 1) {
-                jobsString += pluralize
-            }
-            loanCount = numberWithCommas(loanCount)
-            var loanTotal = res.footer.loanamountsum
-            var jobsTotal = numberWithCommas(res.footer.jobsreportedsum)
-            console.log(res.total)
-            console.log(res.footer.loanamountsum)
-            console.log(res.footer.jobsreportedsum)
             console.log("THAT WAS THE RES")
-            var summary = ('The upshot: ' + loanCount + ' businesses received ' + loanTotal + ' to save ' + jobsTotal + jobsString + '.')
-            // document.getElementById("summary").innerText = summary;
+            var thisTerm
+            var businessTerm
+            var stateSelected
+            var loanCountTerm
+            var loanCount = res.total
+            if (loanCount == 0) {
+                summary = ' '
+            } else {
+                if (loanCount == 1) {
+                    thisTerm = 'This'
+                    loanCountTerm = ''
+                    businessTerm = 'business'
+                } else {
+                    thisTerm = 'These'
+                    loanCountTerm = numberWithCommas(loanCount) + ' '
+                    businessTerm = 'businesses'
+                }
+                var loanTotal = res.footer.loanamountsum
+                var jobsTotal = res.footer.jobsreportedsum
+                var jobsString = ' job'
+                var pluralize = 's'
+                if (jobsTotal > 1) {
+                    jobsString += pluralize
+                }
+                jobsTotal = numberWithCommas(jobsTotal)
+                var paramsStateIdentifier = 'state%22%3A%22'
+                if (requestParams.includes(paramsStateIdentifier)) {
+                    var stateIndex = requestParams.indexOf("state%22%3A%22") + paramsStateIdentifier.length;
+                    stateSelected = requestParams.substring(stateIndex, stateIndex + 2);
+                } else {
+                    stateSelected = ''
+                }
+
+                var summary = ('The upshot: ' + thisTerm + ' <span class=\'summary-var\'>' + loanCountTerm + ' ' + stateSelected + ' ' + businessTerm + ' </span>received <span class=\'summary-var\'>' + loanTotal + '</span> to save <span class=\'summary-var\'>' + jobsTotal + '</span> ' + jobsString + '.')
+            }
+                // document.getElementById("summary").innerText = summary;
             var summaryDiv = document.getElementById("summary");
             console.log(summaryDiv)
             summaryDiv.innerHTML = summary;
-            console.log(summary)
+            console.log(summary);
         });
         requestCount++;
     };

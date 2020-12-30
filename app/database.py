@@ -343,8 +343,8 @@ class DatabaseConnection():
         if data_type == "footer":
             results_str = "\"footer\": {" + results_str + " }"
 
-        print(results_str)
-        print("THAT WAS IT")
+        # print(results_str)
+        # print("THAT WAS IT")
 
         return results_str
 
