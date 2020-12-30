@@ -234,7 +234,7 @@ class DatabaseConnection():
                 else:
                     equality_type = "LIKE"
                     modifier_opening = "LOWER("
-                    filter_term = sql.Literal(filter_data[filter] + '%%')
+                    filter_term = sql.Literal('%%' + filter_data[filter] + '%%')
                     modifier_closing = ")"
 
                 filter_sql += sql.SQL("AND LOWER({filter_column}) {equality_type} {modifier_opening}{filter_term}{modifier_closing} ").format(
