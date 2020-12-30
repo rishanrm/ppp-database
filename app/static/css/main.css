@@ -61,10 +61,19 @@ body {
 
 #summary {
   text-align: center;
-  margin-right: 10vw !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
+  margin-top: 3vh;
+  margin-left: auto;
+  margin-right: auto;
   width: 80vw;
+}
+
+.summary-intro {
+  font-weight: bold;
+}
+
+.summary-var {
+  font-weight: bold;
+  color: #037AFB;
 }
 
 .source {
@@ -204,9 +213,6 @@ section {
   .bs-bars.float-left, #toolbar, #resetButton {
     width: 100%;
     margin-bottom: 0px !important;
-  }
-  .table-content {
-    padding-top: 5vh;
   }
   .form-control.search-input {
     border-radius: 0rem;
@@ -820,6 +826,7 @@ input[type=checkbox] {
   transition: all 0.3s;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  display: none;
 }
 
 .sidebarIconToggle {

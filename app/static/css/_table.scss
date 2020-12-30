@@ -41,10 +41,18 @@
 
 #summary {
     text-align: center;
-    margin-right: 10vw !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
+    margin-top: 3vh;
+    margin-left: auto;
+    margin-right: auto;
     width: 80vw;
+}
+
+.summary-intro {
+    font-weight: bold;
+}
+.summary-var {
+    font-weight: bold;
+    color: $bs-blue;
 }
 
 .source{
@@ -184,9 +192,9 @@ section {
         margin-bottom: 0px !important;
     }
 
-    .table-content {
-        padding-top: 5vh;
-    }
+    // .table-content {
+    //     padding-top: 5vh;
+    // }
 
     .form-control.search-input {
         border-radius: 0rem;
