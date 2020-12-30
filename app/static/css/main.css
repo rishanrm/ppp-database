@@ -79,24 +79,27 @@ body {
   color: #037AFB;
 }
 
-.source {
+.source, .note {
   margin-left: 10vw;
   margin-right: 10vw;
   padding-left: 5px;
   padding-right: 5px;
-  padding-bottom: 3vh;
   font-style: italic;
   font-size: smaller;
   -webkit-box-sizing: unset !important;
           box-sizing: unset !important;
 }
 
-.source:before {
+.note {
+  padding-bottom: 6vh;
+}
+
+.source:before, .note:before {
   -webkit-box-sizing: unset !important;
           box-sizing: unset !important;
 }
 
-.source:after {
+.source:after, .note:after {
   -webkit-box-sizing: unset !important;
           box-sizing: unset !important;
 }
@@ -261,7 +264,7 @@ section {
   }
 }
 
-@media all and (max-width: 450px) {
+@media all and (max-width: 600px) {
   .card-view-title {
     padding-right: 10px;
   }
@@ -321,10 +324,14 @@ section {
   .pagination-info, .page-list {
     font-size: 1rem !important;
   }
-  .source {
-    padding-bottom: 6vh;
+  .source, .note {
     text-align: center;
-    font-size: 1rem !important;
+    font-size: 0.75rem;
+    margin-left: 5vw;
+    margin-right: 5vw;
+  }
+  .note {
+    padding-bottom: 6vh;
   }
 }
 

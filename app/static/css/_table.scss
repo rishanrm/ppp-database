@@ -58,22 +58,25 @@
     color: $bs-blue;
 }
 
-.source{
+.source, .note{
     margin-left: 10vw;
     margin-right: 10vw;
     padding-left: 5px;
     padding-right: 5px;
-    padding-bottom: $footer-height;    
     font-style: italic;
     font-size: smaller;
     box-sizing: unset !important;
 }
 
-.source:before{
+.note{
+    padding-bottom: $footer-height + 3vh;
+}
+
+.source:before, .note:before{
     box-sizing: unset !important;
 }
 
-.source:after{
+.source:after, .note:after{
     box-sizing: unset !important;
 }
 
@@ -190,7 +193,6 @@ section {
     }
 }
 
-
 @media all and (max-width: 899px) {
     .form-control.search-input {
         margin-top: -10px;
@@ -246,7 +248,7 @@ section {
 
 }
 
-@media all and (max-width: 450px) {
+@media all and (max-width: 600px) {
     // .float-right.search.btn-group {
     //     width: 100%;
     // }
@@ -332,9 +334,14 @@ section {
         font-size: $small-screen-pagination-font-size !important;
     }
 
-    .source {
-        padding-bottom: $header-height * 0.5 + 1vh;
+    .source, .note {
         text-align: center;
-        font-size: $small-screen-pagination-font-size !important;
+        font-size: 0.75rem;
+        margin-left: 5vw;
+        margin-right: 5vw;
+    }
+
+    .note {
+        padding-bottom: $header-height * 0.5 + 1vh;
     }
 }
