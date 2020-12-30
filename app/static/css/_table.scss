@@ -41,7 +41,7 @@
 
 #summary {
     text-align: center;
-    margin-top: 3vh;
+    margin-top: -0.5vh;
     margin-left: auto;
     margin-right: auto;
     width: 80vw;
@@ -85,6 +85,7 @@
 
 input.form-control.form-control.search-input {
     border-radius: .25rem;
+    margin-right: 1px;
 }
 
 button[name=toggle] {
@@ -177,7 +178,23 @@ section {
     height: $pre-table-spinner-radius;
 }
 
-@media all and (max-width: 450px) {
+
+
+
+
+@media all and (max-width: 899px) {
+    .form-control.search-input {
+        margin-top: -10px;
+        margin-right: 1px;
+        width: 292px;
+    }
+
+    #resetButton {
+        height: 86px;
+    }
+}
+
+@media all and (max-width: 618px) {
     .float-right.search.btn-group {
         width: 100%;
     }
@@ -192,14 +209,49 @@ section {
         margin-bottom: 0px !important;
     }
 
-    // .table-content {
-    //     padding-top: 5vh;
-    // }
-
     .form-control.search-input {
         border-radius: 0rem;
+        margin-top: 0px;
         margin-right: 1px;
+        
     }
+
+        .form-control.search-input {
+        margin-top: 0px;
+    }
+
+    #resetButton {
+        height: 38px;
+    }
+
+}
+
+@media all and (max-width: 450px) {
+    // .float-right.search.btn-group {
+    //     width: 100%;
+    // }
+
+    // .columns.columns-right.btn-group.float-right {
+    //     width: 100%;
+    //     margin-bottom: 0px;
+    // }
+
+    // .bs-bars.float-left, #toolbar, #resetButton{
+    //     width: 100%;
+    //     margin-bottom: 0px !important;
+    // }
+
+    // // .table-content {
+    // //     padding-top: 5vh;
+    // // }
+
+    // .form-control.search-input {
+    //     border-radius: 0rem;
+
+
+    // }
+
+
 
     .card-view-title {
         padding-right: 10px;

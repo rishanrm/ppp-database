@@ -61,7 +61,7 @@ body {
 
 #summary {
   text-align: center;
-  margin-top: 3vh;
+  margin-top: -0.5vh;
   margin-left: auto;
   margin-right: auto;
   width: 80vw;
@@ -109,6 +109,7 @@ body {
 
 input.form-control.form-control.search-input {
   border-radius: .25rem;
+  margin-right: 1px;
 }
 
 button[name=toggle] {
@@ -202,7 +203,18 @@ section {
   height: 10vh;
 }
 
-@media all and (max-width: 450px) {
+@media all and (max-width: 899px) {
+  .form-control.search-input {
+    margin-top: -10px;
+    margin-right: 1px;
+    width: 292px;
+  }
+  #resetButton {
+    height: 86px;
+  }
+}
+
+@media all and (max-width: 618px) {
   .float-right.search.btn-group {
     width: 100%;
   }
@@ -216,8 +228,18 @@ section {
   }
   .form-control.search-input {
     border-radius: 0rem;
+    margin-top: 0px;
     margin-right: 1px;
   }
+  .form-control.search-input {
+    margin-top: 0px;
+  }
+  #resetButton {
+    height: 38px;
+  }
+}
+
+@media all and (max-width: 450px) {
   .card-view-title {
     padding-right: 10px;
   }
@@ -826,7 +848,6 @@ input[type=checkbox] {
   transition: all 0.3s;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  display: none;
 }
 
 .sidebarIconToggle {
