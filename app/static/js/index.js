@@ -231,7 +231,7 @@ function callTable(i) {
                     return 'Search all columns';
                 },
                 formatNoMatches: function () {
-                    return '<br>There are no loans in the center of that particular Venn diagram...<br><br>¯\\_(ツ)_/¯<br><br>but don\'t give up! Try it again with fewer filters.<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>';
+                    return '<br>Those loans don\'t exist...¯\\_(ツ)_/¯<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>';
                 },
                 formatExport: function () {
                     return 'Export page'

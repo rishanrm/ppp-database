@@ -142,9 +142,12 @@ div.hidden {
     width: 186px;
 }
 
-.no-records-found {
+.bootstrap-table .fixed-table-container .table tbody tr.no-records-found td {
     font-size:100%;
     color:#dc3546;
+    width: 30vw;
+    text-align: left;
+    font-weight: bold;
 }
 
 section {
