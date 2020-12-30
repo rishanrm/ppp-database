@@ -593,14 +593,14 @@ $(window).scroll(function() {
 
 // var toggleButtonText = document.querySelector('body > div.changing-content > div.outside > div.bootstrap-table.bootstrap4 > div.fixed-table-toolbar > div.columns.columns-right.btn-group.float-right > button')
 // var toggleButtonText = document.querySelector("body > div.changing-content > div.outside > div.bootstrap-table.bootstrap4 > div.fixed-table-toolbar > div.columns.columns-right.btn-group.float-right > button > i")
-var toggleButtonText = $( "[name='toggle']" )
-console.log("TOGGLE JQUERY TEXT:")
-console.log(toggleButtonText.innerHTML)
-toggleButtonText.onload = function(){
-    console.log("TOGGLE BUTTON:")
-    console.log(toggleButtonText.innerHTML)
-    toggleButtonText.innerHTML = "NEW BUTTON TEXT"
-}
+// var toggleButtonText = $( "[name='toggle']" )
+// console.log("TOGGLE JQUERY TEXT:")
+// console.log(toggleButtonText.innerHTML)
+// toggleButtonText.onload = function(){
+//     console.log("TOGGLE BUTTON:")
+//     console.log(toggleButtonText.innerHTML)
+//     toggleButtonText.innerHTML = "NEW BUTTON TEXT"
+// }
 // console.log(document.evaluate(
 //     '/html/body/div[3]/div[5]/div[1]/div[1]/div[2]/button',
 //     document,
@@ -614,10 +614,10 @@ toggleButtonText.onload = function(){
 // body > div.changing-content > div.outside > div.bootstrap-table.bootstrap4
 
 
-console.log("THAT WAS THE ITEM")
+// console.log("THAT WAS THE ITEM")
 // Prevent scrolling when clicking into a card view
-document.getElementsByClassName('fa').addEventListener('click', function (e) {
-    e.preventDefault();
-})
+// document.getElementsByClassName('fa').addEventListener('click', function (e) {
+//     e.preventDefault();
+// })
 // End prevent scrolling when clicking into a card view
 
