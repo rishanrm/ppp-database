@@ -40,19 +40,30 @@ function getColumnNames() {
     console.log("Got column names.")
 }
 getColumnNames()
-updateCdOptions(initialFilterValue)
+updateCdOptions(initialFilterValue, '')
 // cdOptions = updateCdOptions(initialFilterValue)
 
-function updateCdOptions(state) {
+function updateCdOptions(state, cd) {
     console.log('STATE: ' + state)
+    console.log('CD: ' + cd)
     // cdOptions = {}
-    var updatedOptionsHtml = '<option value="" selected="selected"></option>'
+    var updatedOptionsHtml
+    if (cd == '') {
+        updatedOptionsHtml = '<option value selected="selected"></option>'
+    } else {
+        updatedOptionsHtml = '<option value></option>'
+    }
     for (var [key, val] of Object.entries(colOptions.cd)) {
         if (key.includes(state)) {
             // cdOptions[key] = val;
-            updatedOptionsHtml += '<option value="' + key + '">' + val + '</option>'
+            if (key == cd) {
+                updatedOptionsHtml += '<option value="' + key + '" selected="selected">' + val + '</option>'
+            } else {
+                updatedOptionsHtml += '<option value="' + key + '">' + val + '</option>'
+            }
         }
     }
+
     console.log("UPDATED CD OPTIONS:")
     console.log(cdOptions)
     var cdColumn = document.getElementsByClassName('bootstrap-table-filter-control-cd')[0]
@@ -98,8 +109,9 @@ function ajaxRequest(params) {
         }
     }
     console.log("ACTUAL INPUT VALUES:")
+    console.log(actualInputValues)
     console.log(actualInputValues['state'])
-    updateCdOptions(actualInputValues['state'])
+    updateCdOptions(actualInputValues['state'], actualInputValues['cd'])
     console.log(params)
     params.data.filter = JSON.stringify(actualInputValues)
     console.log(params)
