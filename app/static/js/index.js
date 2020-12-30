@@ -184,7 +184,7 @@ function callTable(i) {
                     stateSelected = ''
                 }
 
-                var summary = ('<span class=\'summary-intro\'>THE UPSHOT:</span> ' + thisTerm + ' <span class=\'summary-var\'>' + loanCountTerm + ' ' + stateSelected + ' ' + businessTerm + ' </span>received <span class=\'summary-var\'>' + loanTotal + '</span> of PPP funds to save <span class=\'summary-var\'>' + jobsTotal + '</span> ' + jobsString + '.')
+                var summary = ('<span class=\'summary-intro\'>THE GIST:</span> ' + thisTerm + ' <span class=\'summary-var\'>' + loanCountTerm + ' ' + stateSelected + ' ' + businessTerm + ' </span>received <span class=\'summary-var\'>' + loanTotal + '</span> of PPP funds to support <span class=\'summary-var\'>' + jobsTotal + '</span> ' + jobsString + '.')
             }
                 // document.getElementById("summary").innerText = summary;
             var summaryDiv = document.getElementById("summary");
