@@ -24,8 +24,7 @@ var colOptions;
 var cdOptions = {};
 
 function getColumnNames() {
-    console.log("IN GET COLUMNS")
-    // console.log(params)
+     // console.log(params)
     var request = new XMLHttpRequest();
     // request.open('GET', '/header_options', false);  // `false` makes the request synchronous
     request.open('GET', '/data/column_options.json', false);  // `false` makes the request synchronous
@@ -33,20 +32,12 @@ function getColumnNames() {
 
     if (request.status === 200) {
         colOptions = JSON.parse(request.responseText);
-        console.log("GOT THEM...")
-        // console.log(colOptions.cd)
-
     }
-    console.log("Got column names.")
 }
 getColumnNames()
 updateCdOptions(initialFilterValue, '')
-// cdOptions = updateCdOptions(initialFilterValue)
 
 function updateCdOptions(state, cd) {
-    console.log('STATE: ' + state)
-    console.log('CD: ' + cd)
-    // cdOptions = {}
     var updatedOptionsHtml
     if (cd == '') {
         updatedOptionsHtml = '<option value selected="selected"></option>'
@@ -55,7 +46,6 @@ function updateCdOptions(state, cd) {
     }
     for (var [key, val] of Object.entries(colOptions.cd)) {
         if (key.includes(state)) {
-            // cdOptions[key] = val;
             if (key == cd) {
                 updatedOptionsHtml += '<option value="' + key + '" selected="selected">' + val + '</option>'
             } else {
@@ -63,20 +53,10 @@ function updateCdOptions(state, cd) {
             }
         }
     }
-
-    console.log("UPDATED CD OPTIONS:")
-    console.log(cdOptions)
     var cdColumn = document.getElementsByClassName('bootstrap-table-filter-control-cd')[0]
-    // console.log(cdColumn)
-    // var insideHTML = '<option value="" selected="selected"></option><option value="NE-01">NE-01</option><option value="NE-03">NE-03</option>'
     if (cdColumn != undefined) {
         cdColumn.innerHTML = updatedOptionsHtml
     }
-
-{/* <select class="form-control bootstrap-table-filter-control-cd" style="width: 100%;" dir="ltr"></select> */}
-    // colOptions.cd = newCdColOptions
-    // console.log(newCdColOptions)
-    // console.log(colOptions)
 }
 
 // <!-- Reset button -->
@@ -110,11 +90,9 @@ function ajaxRequest(params) {
     }
     console.log("ACTUAL INPUT VALUES:")
     console.log(actualInputValues)
-    console.log(actualInputValues['state'])
     updateCdOptions(actualInputValues['state'], actualInputValues['cd'])
     console.log(params)
     params.data.filter = JSON.stringify(actualInputValues)
-    console.log(params)
 
     // <!-- Get global search box input on the HTML page -->
     var searchValue = document.querySelector("body > div.changing-content > div.outside > div.bootstrap-table.bootstrap4 > div.fixed-table-toolbar > div.float-right.search.btn-group > div > input").value
@@ -127,21 +105,21 @@ function ajaxRequest(params) {
     // <!-- Determine if state selection in the table has been changed -->
     $('select[class*="bootstrap-table-filter-control-state"]').each(function(i) {
         if ($(this).children('option[selected="selected"]').length != 0) {
-            console.log('there\'s a state!')
+            // console.log('there\'s a state!')
             if ($(this).children('option[selected="selected"]').attr('value') != initialFilterValue) {
                 initial_state = false;
-                console.log('Initial state set to false because a new state is chosen.');
+                // console.log('Initial state set to false because a new state is chosen.');
             }
         } else {
             initial_state = false;
-            console.log('Initial state is false because no state is chosen.')
+            // console.log('Initial state is false because no state is chosen.')
         }
     });
     console.log('Request Count: ' + requestCount)
     var url = '/data'
     console.log("HERE ARE THE PARAMS IN THE REQUEST:")
     console.log($.param(params.data))
-    console.log("END PARAMS")
+    // console.log("END PARAMS")
     // $.get(url + '?' + $.param(params.data))
 
     if (requestCount == 0) {
@@ -166,9 +144,9 @@ function ajaxRequest(params) {
         console.log(requestParams)
     } else {
         if (initial_state){
-            console.log('STILL INITIAL STATE')
-            console.log($.param(params.data))
-            console.log($.param(params.data).includes('filter'))
+            // console.log('STILL INITIAL STATE')
+            // console.log($.param(params.data))
+            // console.log($.param(params.data).includes('filter'))
             if ($.param(params.data).includes('filter')){
                 initialStateAddition = '%2C%22' + initialFilterColumn + '%22%3A%22' + initialFilterValue + '%22'
                 requestParams = $.param(params.data).substring(0, $.param(params.data).length - 3) + initialStateAddition + $.param(params.data).substring($.param(params.data).length - 3, $.param(params.data).length);
@@ -177,7 +155,7 @@ function ajaxRequest(params) {
                 requestParams = $.param(params.data) + initialStateAddition;
             }
         } else {
-        console.log('NOT INITIAL STATE ANYMORE')
+        // console.log('NOT INITIAL STATE ANYMORE')
         requestParams = $.param(params.data)
         }
     }
@@ -230,13 +208,11 @@ function ajaxRequest(params) {
                 stateSelected = ''
             }
 
-            var summary = ('<span class=\'summary-intro\'>THE GIST:</span> ' + thisTerm + ' <span class=\'summary-var\'>' + loanCountTerm + ' ' + stateSelected + ' ' + businessTerm + ' </span>received <span class=\'summary-var\'>' + loanTotal + '</span> of PPP funds to support <span class=\'summary-var\'>' + jobsTotal + '</span> ' + jobsString + '.*')
+            var summary = ('<span class=\'summary-intro\'>THE GIST:</span> ' + thisTerm + ' <span class=\'summary-var\'>' + loanCountTerm + ' ' + stateSelected + ' ' + businessTerm + ' </span>received <span class=\'summary-var\'>' + loanTotal + '</span> in PPP funds to support <span class=\'summary-var\'>' + jobsTotal + '</span> ' + jobsString + '.*')
         }
             // document.getElementById("summary").innerText = summary;
         var summaryDiv = document.getElementById("summary");
-        console.log(summaryDiv)
         summaryDiv.innerHTML = summary;
-        console.log(summary);
     });
     requestCount++;
 };
@@ -398,7 +374,6 @@ function detailFormatter(index, row) {
 }
 
 // <!-- Reset table button -->
-
 $(function() {
     $resetButton.click(function () {
         requestCount = 0
@@ -412,25 +387,6 @@ $(function() {
         for (column of columns) {
             $("#table").find("input.form-control.bootstrap-table-filter-control-" + column).val('')
             $('select[class*="bootstrap-table-filter-control-' + column + '"]').val('');
-            // console.log($("#table").find("input.form-control.bootstrap-table-filter-control-loanamount").val())
-            
-            // $('select[class*="bootstrap-table-filter-control-' + column + '"]').each(function(i) {
-            //     if ($(this).children('option[selected="selected"]').length != 0) {
-            //         // alert($(this).children('option[selected="selected"]').attr('value'));
-            //         // console.log('there\'s a state!')
-            //         // console.log($(this).children('option[selected="selected"]').attr('value'))
-            //         // console.log(initialFilterValue)
-            //         // console.log(($(this).children('option[selected="selected"]').attr('value') != initialFilterValue))
-            //         if ($(this).children('option[selected="selected"]').attr('value') != initialFilterValue) {
-            //             initial_state = false;
-            //             console.log('Initial state set to false because a new state is chosen.');
-            //         }
-            //     } else {
-            //         initial_state = false;
-            //         console.log('Initial state is false because no state is chosen.')
-            //     }
-            // });
-
         }
 
         $('select[class*="bootstrap-table-filter-control-' + initialFilterColumn + '"]').val(initialFilterValue);
@@ -483,7 +439,6 @@ $('#table').on('post-body.bs.table', function (e, arg1, arg2) {
     if (resetButtonClicked) {
         document.querySelector("body > div.changing-content > div.outside > div.bootstrap-table.bootstrap4 > div.fixed-table-toolbar > div.float-right.search.btn-group > div > input").value = ''
         var columns = Object.keys(orderedData)
-        console.log(columns)
         for (column of columns) {
             $("#table").find("input.form-control.bootstrap-table-filter-control-" + column).val('')
             $('select[class*="bootstrap-table-filter-control-' + column + '"]').val('');
@@ -518,12 +473,10 @@ function sidebarMenuClick(element, eventName) {
             if ((target.getAttribute("id") != "sidebarMenu" && target.getAttribute("id") != "openSidebarMenu") && document.getElementById("openSidebarMenu").checked == true) {
                 document.getElementById("openSidebarMenu").checked = false;
                 sidebarMenuClick(checkbox, 'change');
-                console.log("CHANGE")
             };
             if (target.getAttribute("id") == "openSidebarMenu" && document.getElementById("openSidebarMenu").checked == false) {
                 document.getElementById("openSidebarMenu").checked = false;
                 sidebarMenuClick(checkbox, 'change');
-                console.log("CHANGE")
             };
         }, false);
 
@@ -536,15 +489,11 @@ function sidebarMenuClick(element, eventName) {
         // var div = document.createElement('div');
         // div.id = 'left-nav-cover';
         document.getElementsByTagName('body')[0].appendChild(div);
-        // checkbox.addEventListener('change', function () {
-            if (checkbox.checked) {
-                div.innerHTML = "<div id='left-nav-cover-inner'></div>";
-                console.log("CREATED")
-            } else {
-                div.removeChild(document.getElementById("left-nav-cover-inner"));
-                console.log("REMOVED")
-            }
-        // });
+        if (checkbox.checked) {
+            div.innerHTML = "<div id='left-nav-cover-inner'></div>";
+        } else {
+            div.removeChild(document.getElementById("left-nav-cover-inner"));
+        }
     }
 }
 
@@ -566,9 +515,9 @@ $('#table').on('load-success.bs.table', function () {
 
 // Scroll progress bar
 $(window).scroll(function() {
-  var scroll = $(window).scrollTop(),
-  dh = $(document).height(),
-  wh = $(window).height();
-  scrollPercent = (scroll / (dh - wh)) * 100;
-  $("#progressbar").css("height", scrollPercent + "%");
+    var scroll = $(window).scrollTop(),
+    dh = $(document).height(),
+    wh = $(window).height();
+    scrollPercent = (scroll / (dh - wh)) * 100;
+    $("#progressbar").css("height", scrollPercent + "%");
 });
