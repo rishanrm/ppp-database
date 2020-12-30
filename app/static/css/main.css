@@ -60,12 +60,14 @@ body {
 }
 
 #summary {
+  display: inline-block;
   text-align: center;
-  margin-top: -0.5vh;
-  margin-left: auto;
-  margin-right: auto;
+  margin-top: 1vh;
+  margin-bottom: 2vh;
+  margin-left: 10vw;
   width: 80vw;
   height: 24px;
+  font-size: 1.5rem;
 }
 
 .summary-intro {
@@ -207,6 +209,12 @@ section {
   height: 10vh;
 }
 
+@media all and (max-width: 1450px) {
+  #summary {
+    margin-top: 0vw;
+  }
+}
+
 @media all and (max-width: 899px) {
   .form-control.search-input {
     margin-top: -10px;
@@ -215,6 +223,16 @@ section {
   }
   #resetButton {
     height: 86px;
+  }
+}
+
+@media all and (max-width: 761px) {
+  #summary {
+    font-size: 1rem;
+    margin-top: 0vw;
+  }
+  .bootstrap-table.bootstrap4 {
+    padding-top: 10px;
   }
 }
 

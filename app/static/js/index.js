@@ -155,6 +155,8 @@ function callTable(i) {
             var businessTerm
             var stateSelected
             var loanCountTerm
+            var loanTotal
+            var jobsTotal
             var loanCount = res.total
             if (loanCount == 0) {
                 summary = ' '
@@ -168,12 +170,18 @@ function callTable(i) {
                     loanCountTerm = numberWithCommas(loanCount) + ' '
                     businessTerm = 'businesses'
                 }
-                var loanTotal = res.footer.loanamountsum
-                var jobsTotal = res.footer.jobsreportedsum
+                loanTotal = res.footer.loanamountsum
+                if (loanTotal == null) {
+                    loanTotal = '$ ¯\\_(ツ)_/¯'
+                }
+                jobsTotal = res.footer.jobsreportedsum
                 var jobsString = ' job'
                 var pluralize = 's'
-                if (jobsTotal > 1) {
+                if ((jobsTotal > 1) || (jobsTotal == null)) {
                     jobsString += pluralize
+                }
+                if (jobsTotal == null) {
+                    jobsTotal = '¯\\_(ツ)_/¯'
                 }
                 jobsTotal = numberWithCommas(jobsTotal)
                 var paramsStateIdentifier = 'state%22%3A%22'
