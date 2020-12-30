@@ -177,7 +177,7 @@ function callTable(i) {
                 jobsTotal = res.footer.jobsreportedsum
                 var jobsString = ' job'
                 var pluralize = 's'
-                if ((jobsTotal > 1) || (jobsTotal == null)) {
+                if ((jobsTotal > 1) || (jobsTotal == null) || (jobsTotal == 0)) {
                     jobsString += pluralize
                 }
                 if (jobsTotal == null) {
