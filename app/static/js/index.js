@@ -379,7 +379,7 @@ $(function() {
         requestCount = 0
         initial_state = true
         resetButtonClicked = true
-        $('table').bootstrapTable('clearFilterControl')
+        // $('table').bootstrapTable('clearFilterControl')
 
         document.querySelector("body > div.changing-content > div.outside > div.bootstrap-table.bootstrap4 > div.fixed-table-toolbar > div.float-right.search.btn-group > div > input").value = ''
         var columns = Object.keys(orderedData)
