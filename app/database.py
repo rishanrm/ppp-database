@@ -82,7 +82,7 @@ class DatabaseConnection():
         query_start = sql.SQL("""            
             SELECT row_to_json(t)
             FROM (
-                SELECT SUM(jobsreported) as "jobsreported"
+                SELECT SUM (loanamount) as "loanamountsum", SUM(jobsreported) as "jobsreportedsum"
                 FROM {table_name}
                 WHERE ''=''
         """).format(

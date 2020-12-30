@@ -63,14 +63,13 @@
 
     <div class="container table-content"></div>
     <div class="outside hidden">
-
         <!-- <div class="table-title">
             <h1>Loans under $150,000</h1>
         </div> -->
         <div id="toolbar">
             <button id="resetButton" class="btn btn-danger">Reset</button>
-            <div class="summary">HELLO</div>
         </div>
+
         <table id="table" data-toggle="table" data-ajax="ajaxRequest" data-buttons-align="right"
             data-buttons-class="primary" data-buttons-order="['columns', 'toggle', 'print']"
             data-show-button-text="true" data-search="true" data-search-align="right"
@@ -92,6 +91,7 @@
             data-disable-control-when-search="false">
 
             <thead>
+            <div id="summary">HELLO</div>
                 <tr>
                     <!--
                     loanrange,businessname,address,city,state,zip,naicscode,businesstype,raceethnicity,gender,veteran,nonprofit,jobsretained,dateapproved,lender,cd

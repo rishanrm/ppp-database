@@ -146,13 +146,32 @@ function callTable(i) {
         .then(function (res) {
             params.success(res)
             console.log(res)
-            console.log(res.footer.jobsreported)
+            var loanCount = res.total
+            var jobsString = ' job'
+            var pluralize = 's'
+            if (loanCount > 1) {
+                jobsString += pluralize
+            }
+            loanCount = numberWithCommas(loanCount)
+            var loanTotal = res.footer.loanamountsum
+            var jobsTotal = numberWithCommas(res.footer.jobsreportedsum)
+            console.log(res.total)
+            console.log(res.footer.loanamountsum)
+            console.log(res.footer.jobsreportedsum)
             console.log("THAT WAS THE RES")
+            var summary = ('The upshot: ' + loanCount + ' businesses received ' + loanTotal + ' to save ' + jobsTotal + jobsString + '.')
+            // document.getElementById("summary").innerText = summary;
+            var summaryDiv = document.getElementById("summary");
+            console.log(summaryDiv)
+            summaryDiv.innerHTML = summary;
+            console.log(summary)
         });
         requestCount++;
     };
     
-
+    function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
     // <!-- Format loan amount data -->        
     
         function amountFormatter(value) {
