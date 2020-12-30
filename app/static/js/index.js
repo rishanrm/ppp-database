@@ -1,3 +1,13 @@
+var requestCount = 0
+var initial_state = true
+var requestParams
+var initialSortColumn
+var initialFilterColumn = 'state'
+var initialFilterValue = 'AK'
+var initialStateAddition
+var resetButtonClicked = false
+var page = window.location.href.split('//')[1].split('/')[1]
+
 for (let i = 0; i < 10; i++) {
     callTable(i)
 }
@@ -11,6 +21,7 @@ function callTable(i) {
 
 // <!-- Get column options -->
 var colOptions;
+var cdOptions = {};
 
 function getColumnNames() {
     console.log("IN GET COLUMNS")
@@ -23,26 +34,45 @@ function getColumnNames() {
     if (request.status === 200) {
         colOptions = JSON.parse(request.responseText);
         console.log("GOT THEM...")
+        // console.log(colOptions.cd)
+
     }
     console.log("Got column names.")
 }
 getColumnNames()
+updateCdOptions(initialFilterValue)
+// cdOptions = updateCdOptions(initialFilterValue)
+
+function updateCdOptions(state) {
+    console.log('STATE: ' + state)
+    // cdOptions = {}
+    var updatedOptionsHtml = '<option value="" selected="selected"></option>'
+    for (var [key, val] of Object.entries(colOptions.cd)) {
+        if (key.includes(state)) {
+            // cdOptions[key] = val;
+            updatedOptionsHtml += '<option value="' + key + '">' + val + '</option>'
+        }
+    }
+    console.log("UPDATED CD OPTIONS:")
+    console.log(cdOptions)
+    var cdColumn = document.getElementsByClassName('bootstrap-table-filter-control-cd')[0]
+    // console.log(cdColumn)
+    // var insideHTML = '<option value="" selected="selected"></option><option value="NE-01">NE-01</option><option value="NE-03">NE-03</option>'
+    if (cdColumn != undefined) {
+        cdColumn.innerHTML = updatedOptionsHtml
+    }
+
+{/* <select class="form-control bootstrap-table-filter-control-cd" style="width: 100%;" dir="ltr"></select> */}
+    // colOptions.cd = newCdColOptions
+    // console.log(newCdColOptions)
+    // console.log(colOptions)
+}
 
 // <!-- Reset button -->
 var $table = $('#table')
 var $resetButton = $('#resetButton')
 
 // <!-- Get data -->
-var requestCount = 0
-var initial_state = true
-var requestParams
-var initialSortColumn
-var initialFilterColumn = 'state'
-var initialFilterValue = 'AK'
-var initialStateAddition
-var resetButtonClicked = false
-var page = window.location.href.split('//')[1].split('/')[1]
-
 function ajaxRequest(params) {
     if(page.includes('data-150k-and-up')) {
         initialSortColumn = 'loanrange'
@@ -67,6 +97,9 @@ function ajaxRequest(params) {
             }
         }
     }
+    console.log("ACTUAL INPUT VALUES:")
+    console.log(actualInputValues['state'])
+    updateCdOptions(actualInputValues['state'])
     console.log(params)
     params.data.filter = JSON.stringify(actualInputValues)
     console.log(params)
