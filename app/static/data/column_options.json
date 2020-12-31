@@ -1260,15 +1260,16 @@
         "Unanswered": "Unanswered",
         "White": "White"
     }, "gender": {
-        "Female Owned": "Female Owned",
-        "Male Owned": "Male Owned",
+        "Female Owned": "Female-Owned",
+        "Male Owned": "Male-Owned",
         "Unanswered": "Unanswered"
     }, "veteran": {
         "Non-Veteran": "Non-Veteran",
         "Unanswered": "Unanswered",
         "Veteran": "Veteran"
     }, "nonprofit": {
-        "Y": "Y"
+        "Yes": "Yes",
+        "No": "No"
     }, "dateapproved": {
         "2020-04-03": "2020-04-03",
         "2020-04-04": "2020-04-04",
