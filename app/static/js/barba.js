@@ -197,7 +197,7 @@ barba.init({
     ]
 })
 
-Barba.Prefetch.init()
+// Barba.Prefetch.init()
 
 
 // Barba.Pjax.start();
