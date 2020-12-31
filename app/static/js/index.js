@@ -231,7 +231,7 @@ function numberWithCommas(x) {
         if (colOptions["naicscode"][value]) {
             return colOptions["naicscode"][value].replace(' ', '<br>');
         } else {
-            return "N/A";
+            return "Unanswered";
         }
     }
 
@@ -341,7 +341,7 @@ function formatValues(values) {
     var i;
     for (i = 0; i < values.length; i++) { 
         if (values[i] == null) {
-            values[i] = "N/A"
+            values[i] = "Unanswered"
         }
     }
     return values

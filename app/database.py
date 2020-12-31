@@ -215,7 +215,7 @@ class DatabaseConnection():
         numeric_headers = current_app.config["NUMERIC_HEADERS"]
         for filter in filter_data:
             if filter not in numeric_headers:
-                if (filter == "address" or filter == "city") and (filter_data[filter].replace('/', '').lower() == "na"):
+                if (filter == "address" or filter == "city") and (filter_data[filter].replace('/', '').lower() == "na" or filter_data[filter].replace('/', '').lower() == "unanswered"):
                     equality_type = "LIKE"
                     modifier_opening = "LOWER("
                     filter_term = sql.Literal("N/A")
@@ -235,7 +235,7 @@ class DatabaseConnection():
                     modifier_opening = ""
                     filter_term = sql.Literal(filter_data[filter].lower())
                     modifier_closing = ""
-                elif (filter == "zip" or filter == "naicscode") and (filter_data[filter].replace('/', '').lower() == "na"):
+                elif (filter == "zip" or filter == "naicscode") and (filter_data[filter].replace('/', '').lower() == "na" or filter_data[filter].replace('/', '').lower() == "unanswered"):
                     equality_type = "IS"
                     modifier_opening = ""
                     filter_term = sql.Literal(None)
