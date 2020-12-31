@@ -215,7 +215,6 @@ class DatabaseConnection():
         numeric_headers = current_app.config["NUMERIC_HEADERS"]
         for filter in filter_data:
             if filter not in numeric_headers:
-
                 if (filter == "address" or filter == "city") and (filter_data[filter].replace('/', '').lower() == "na"):
                     equality_type = "LIKE"
                     modifier_opening = "LOWER("
@@ -225,6 +224,16 @@ class DatabaseConnection():
                     equality_type = "IS"
                     modifier_opening = ""
                     filter_term = sql.Literal(filter_data[filter])
+                    modifier_closing = ""
+                elif filter == "gender":
+                    equality_type = "="
+                    modifier_opening = ""
+                    filter_term = sql.Literal(filter_data[filter].lower())
+                    modifier_closing = ""
+                elif filter == "veteran":
+                    equality_type = "="
+                    modifier_opening = ""
+                    filter_term = sql.Literal(filter_data[filter].lower())
                     modifier_closing = ""
                 elif (filter == "zip" or filter == "naicscode") and (filter_data[filter].replace('/', '').lower() == "na"):
                     equality_type = "IS"
@@ -244,6 +253,7 @@ class DatabaseConnection():
                     filter_term = filter_term,
                     modifier_closing = sql.SQL(modifier_closing)
                 )
+                print(filter_sql)
             elif filter in numeric_headers:
                 equality_type = "="
                 modifier_opening = ""
