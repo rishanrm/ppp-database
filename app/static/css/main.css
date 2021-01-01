@@ -34,6 +34,31 @@ thead th {
 
 .dropdown-menu.dropdown-menu-right {
   z-index: 1002 !important;
+  border-top-right-radius: 5px;
+}
+
+.dropdown-menu.dropdown-menu-right::-webkit-scrollbar:vertical {
+  all: unset;
+  background: #dee2e6;
+  border-radius: 0px 5px 0px 0px;
+}
+
+.dropdown-menu.dropdown-menu-right::-webkit-scrollbar-track {
+  background: #dee2e6;
+}
+
+.dropdown-menu.dropdown-menu-right::-webkit-scrollbar-track:vertical {
+  border-radius: 10px 10px 0px 0px;
+}
+
+.dropdown-menu.dropdown-menu-right::-webkit-scrollbar-corner {
+  background: #dee2e6;
+}
+
+.dropdown-menu.dropdown-menu-right::-webkit-scrollbar-thumb:vertical {
+  background: -webkit-gradient(linear, left bottom, left top, from(#dc3c45), to(#037afb));
+  background: linear-gradient(0deg, #dc3c45 0%, #037afb 100%);
+  border-radius: 10px;
 }
 
 ::-webkit-scrollbar {
