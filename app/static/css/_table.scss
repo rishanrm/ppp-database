@@ -1,3 +1,20 @@
+
+    thead th {
+        position:sticky;
+        top: 0 ;
+        z-index: 1001;
+        // border-top: 1px solid #dee2e6;
+    }
+
+    .th-inner {
+        margin-top: -1px;
+        border-top: 1px solid #dee2e6;
+    }
+
+    .fht-cell {
+        border-bottom: 1px solid #dee2e6;
+    }
+
 ::-webkit-scrollbar {
     width: 0;
 }
