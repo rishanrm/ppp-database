@@ -143,6 +143,10 @@ class DatabaseConnection():
             if "state" not in args_dict["filter"]:
                 args_dict["filter"]["state"] = None
 
+        if(args_dict["sort"] == ""):
+            args_dict["sort"] = "loanamount"
+            args_dict["order"] = "desc"
+
         for arg in args_dict:
 
             if args_dict[arg] != "" and args_dict[arg] != "undefined" and args_dict[arg] != None and arg in query_features:
