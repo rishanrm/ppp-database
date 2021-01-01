@@ -65,6 +65,23 @@ var $resetButton = $('#resetButton')
 
 // <!-- Get data -->
 function ajaxRequest(params) {
+    $.getJSON("https://api.ipify.org?format=json", function(data) { 
+        const ipAddress = data.ip
+        const key = '1bd286a9abf0d0a3b629f55cb52fbd0f'
+        $("#location").html(ipAddress);
+
+    const url = `http://api.ipstack.com/${ipAddress}?access_key=${key}&fields=region_code,city,zip`
+    console.log(url)
+    fetch(url)
+    .then(data => {
+        $("#location2").html(data);
+        console.log("DATA:")
+        console.log(data)
+    }).catch(error => {
+        console.log("fetch error")
+    });
+    })
+
     if(page.includes('data-150k-and-up')) {
         initialSortColumn = 'loanrange'
     } else if(page.includes('data-under-150k')) {
