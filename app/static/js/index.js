@@ -180,11 +180,11 @@ function ajaxRequest(params) {
             if (loanCount == 1) {
                 thisTerm = 'This'
                 loanCountTerm = ''
-                businessTerm = 'business'
+                businessTerm = 'organization'
             } else {
                 thisTerm = 'These'
                 loanCountTerm = numberWithCommas(loanCount) + ' '
-                businessTerm = 'businesses'
+                businessTerm = 'organizations'
             }
             loanTotal = res.footer.loanamountsum
             if (loanTotal == null) {
@@ -192,9 +192,9 @@ function ajaxRequest(params) {
             }
             jobsTotal = res.footer.jobsreportedsum
             var jobsString = ' job'
-            var pluralize = 's'
+
             if ((jobsTotal > 1) || (jobsTotal == null) || (jobsTotal == 0)) {
-                jobsString += pluralize
+                jobsString += 's'
             }
             if (jobsTotal == null) {
                 jobsTotal = '¯\\_(ツ)_/¯'
