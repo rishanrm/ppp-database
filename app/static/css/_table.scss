@@ -15,6 +15,10 @@
         border-bottom: 1px solid #dee2e6;
     }
 
+    .dropdown-menu.dropdown-menu-right {
+        z-index: 1002 !important;
+    }
+
 ::-webkit-scrollbar {
     width: 0;
 }
