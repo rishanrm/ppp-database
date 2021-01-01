@@ -17,6 +17,10 @@ def index():
 def all_data():
     return render_template("all-data.html", data="", headers=current_app.config["HEADERS_ALL_DATA"])
 
+@main.route("/all-data-test")
+def all_data_test():
+    return render_template("all-data-test.html", data="", headers=current_app.config["HEADERS_ALL_DATA"])
+
 @main.route("/data-under-150k")
 def data_under_150k():
     return render_template('data-under-150k.html', data="", headers=current_app.config["HEADERS_UNDER_150K"])
