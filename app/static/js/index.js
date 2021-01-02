@@ -521,3 +521,20 @@ $(window).scroll(function() {
     scrollPercent = (scroll / (dh - wh)) * 100;
     $("#progressbar").css("height", scrollPercent + "%");
 });
+
+// Mobile Modal
+// $('#myModal').on('shown.bs.modal', function () {
+//     $('#myInput').trigger('focus')
+// })
+
+// $(window).on('load', function() {
+//     $('#mobileModal').modal('show');
+// });
+
+$(document).ready(function(){
+    console.log("INNER WIDTH:")
+    console.log(window.innerWidth)
+    // if (window.innerWidth < 600) {
+        $("#mobileModal").modal('show');
+    // }
+});
