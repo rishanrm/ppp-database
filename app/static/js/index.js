@@ -523,14 +523,31 @@ $(window).scroll(function() {
 });
 
 // Active focus
-var activeEle
-var activeCount = 0
-document.addEventListener('focusin', function() {
-    if (activeCount < 2) {
-        activeEle = document.activeElement
-        console.log('focused: ', document.activeElement)
-        activeCount += 1
-    } else {
-        activeEle.focus();
-    }
-}, true);
+// var activeEle
+// var windowHeight = window.innerHeight;
+// var activeCount = 0
+// document.addEventListener('focusin', function() {
+//     // if (activeCount < 2) {
+//         // activeEle = document.activeElement
+//         console.log('focused: ', document.activeElement)
+//         // activeCount += 1
+//     // } else {
+//     //     activeEle.focus();
+//     // }
+//     document.activeElement.blur()
+//     // if (document.activeElement == document.querySelector(".bootstrap-table-filter-control-state")) {
+//     //     document.activeElement.blur()
+//     // }
+// }, true);
+
+// window.addEventListener('resize', function() {
+//     if (windowHeight > window.innerHeight) {
+//         activeEle.focus();
+//     };
+//     windowHeight = window.innerHeight;
+// });
+
+var meta = document.createElement('meta');
+meta.name = 'viewport';
+meta.content = 'width=device-width,height='+window.innerHeight+', initial-scale=1.0';
+document.getElementsByTagName('head')[0].appendChild(meta);
