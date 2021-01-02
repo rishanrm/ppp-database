@@ -65,12 +65,13 @@ var $resetButton = $('#resetButton')
 
 // <!-- Get data -->
 function ajaxRequest(params) {
+    console.log("ENTERING AJAX REQUEST")
     $.getJSON("https://api.ipify.org?format=json", function(data) { 
         const ipAddress = data.ip
-        const key = '1bd286a9abf0d0a3b629f55cb52fbd0f'
+        const key = 'sn6uiu8fba471e'
         $("#location").html(ipAddress);
 
-    const url = `http://api.ipstack.com/${ipAddress}?access_key=${key}&fields=region_code,city,zip`
+    const url = `https://api.ipregistry.co/${ipAddress}?key=${key}`
     console.log(url)
     fetch(url)
     .then(data => {
