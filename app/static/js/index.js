@@ -521,3 +521,16 @@ $(window).scroll(function() {
     scrollPercent = (scroll / (dh - wh)) * 100;
     $("#progressbar").css("height", scrollPercent + "%");
 });
+
+// Active focus
+var activeEle
+var activeCount = 0
+document.addEventListener('focusin', function() {
+    if (activeCount < 2) {
+        activeEle = document.activeElement
+        console.log('focused: ', document.activeElement)
+        activeCount += 1
+    } else {
+        activeEle.focus();
+    }
+}, true);
