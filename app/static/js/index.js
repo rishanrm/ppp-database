@@ -539,3 +539,5 @@ $(document).ready(function(){
         $("#mobileModal").modal('show');
     }
 });
+
+alert("Message test: 7:03pm")
