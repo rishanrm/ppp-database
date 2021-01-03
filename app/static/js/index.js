@@ -66,18 +66,32 @@ var $resetButton = $('#resetButton')
 // <!-- Get data -->
 function ajaxRequest(params) {
     console.log("ENTERING AJAX REQUEST")
+
+    // <!-- Get IP Address -->
     $.getJSON("https://api.ipify.org?format=json", function(data) { 
         const ipAddress = data.ip
         const key = 'sn6uiu8fba471e'
         $("#location").html(ipAddress);
+        console.log(ipAddress)
 
+    // <!-- Get location -->
     const url = `https://api.ipregistry.co/${ipAddress}?key=${key}`
     console.log(url)
     fetch(url)
-    .then(data => {
-        $("#location2").html(data);
-        console.log("DATA:")
+    .then(resp => {
+        return resp.text();
+    })
+    .then(function(data) {
         console.log(data)
+        var obj = JSON.parse(data);
+        console.log("START")
+        console.log(obj)
+        console.log(obj.ip)
+        const stateCode = obj.location.region.code;
+        const userState = stateCode.substr(stateCode.length - 2);
+        console.log(userState)
+        console.log("END")
+        $("#location2").html(userState);
     }).catch(error => {
         console.log("fetch error")
     });
