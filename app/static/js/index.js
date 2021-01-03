@@ -534,7 +534,8 @@ $(window).scroll(function() {
 $(document).ready(function(){
     console.log("INNER WIDTH:")
     console.log(window.innerWidth)
-    // if (window.innerWidth < 600) {
+    if (window.innerWidth < 600) {
+        console.log(window.innerWidth < 600)
         $("#mobileModal").modal('show');
-    // }
+    }
 });
