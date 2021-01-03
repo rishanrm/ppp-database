@@ -540,4 +540,4 @@ $(document).ready(function(){
     }
 });
 
-alert("Message test: 7:03pm")
+console.log("\n\n\nUPDATED 7:58pm\n\n\n")
