@@ -1,5 +1,5 @@
 var requestCount = 0
-var initial_state = true
+var initialConditions = true
 var requestParams
 var initialSortColumn
 var initialFilterColumn = 'state'
@@ -142,11 +142,11 @@ function ajaxRequest(params) {
             if ($(this).children('option[selected="selected"]').length != 0) {
                 // console.log('there\'s a state!')
                 if ($(this).children('option[selected="selected"]').attr('value') != initialFilterValue) {
-                    initial_state = false;
+                    initialConditions = false;
                     // console.log('Initial state set to false because a new state is chosen.');
                 }
             } else {
-                initial_state = false;
+                initialConditions = false;
                 // console.log('Initial state is false because no state is chosen.')
             }
         });
@@ -178,7 +178,7 @@ function ajaxRequest(params) {
             console.log("Manual params:")
             console.log(requestParams)
         } else {
-            if (initial_state){
+            if (initialConditions){
                 // console.log('STILL INITIAL STATE')
                 // console.log($.param(params.data))
                 // console.log($.param(params.data).includes('filter'))
@@ -416,7 +416,7 @@ function detailFormatter(index, row) {
 $(function() {
     $resetButton.click(function () {
         requestCount = 0
-        initial_state = true
+        initialConditions = true
         resetButtonClicked = true
         // $('table').bootstrapTable('clearFilterControl')
 
