@@ -1,7 +1,7 @@
 var requestCount = 0
 var initialConditions = true
 var requestParams
-var initialSortColumn
+var initialSortColumn = 'loanamount'
 var initialFilterColumn = 'state'
 var defaultFilterValue = 'AK'
 var initialFilterValue = 'AK'
@@ -111,6 +111,10 @@ const getUserStateFromIP = new Promise((resolve, reject) => {
 function ajaxRequest(params) {
     console.log("ENTERING AJAX REQUEST")
 
+    if (initialConditions) {
+
+    }
+
     getUserStateFromIP
     .then(function(userStateFromIP) {
         initialFilterValue = userStateFromIP
@@ -124,14 +128,6 @@ function ajaxRequest(params) {
         }
         console.log(initialFilterValue)
         $("#location2").html(initialFilterValue);
-
-        if(page.includes('data-150k-and-up')) {
-            initialSortColumn = 'loanrange'
-        } else if(page.includes('data-under-150k')) {
-            initialSortColumn = 'loanamount'
-        } else if(page.includes('all-data')) {
-            initialSortColumn = 'loanamount'
-        }
 
         // <!-- Get column inputs on the HTML page -->
         var actualInputValues = {}
