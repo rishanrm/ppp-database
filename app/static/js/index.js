@@ -3,6 +3,7 @@ var initialConditions = true
 var requestParams
 var initialSortColumn
 var initialFilterColumn = 'state'
+var defaultFilterValue = 'AK'
 var initialFilterValue = 'AK'
 // var initialFilterValue = getUserState()
 var initialStateAddition
@@ -64,10 +65,11 @@ function updateCdOptions(state, cd) {
 var $table = $('#table')
 var $resetButton = $('#resetButton')
 
-// <!-- Get data -->
-function ajaxRequest(params) {
-    console.log("ENTERING AJAX REQUEST")
 
+
+
+
+const getUserStateFromIP = new Promise((resolve, reject) => {
     var ipAddress = "";
     const key = 'sn6uiu8fba471e'
     // <!-- Get IP Address -->
@@ -76,30 +78,50 @@ function ajaxRequest(params) {
         $("#location").html(ipAddress);
         console.log(ipAddress)
     })
-
     // <!-- Get location -->
     const ipUrl = `https://api.ipregistry.co/${ipAddress}?key=${key}`
     console.log(ipUrl)
-    fetch(ipUrl)
-    .then(resp => {
-        return resp.text();
+    try {
+        fetch(ipUrl)
+        .then(resp => {
+            return resp.text();
+        })
+        .then(function(data) {
+            console.log(data)
+            var obj = JSON.parse(data);
+            console.log("START")
+            console.log(obj)
+            console.log(obj.ip)
+            console.log(obj.location.region.code)
+            const stateCode = obj.location.region.code;
+            initialFilterValue = stateCode.substr(stateCode.length - 2);
+            console.log(initialFilterValue)
+            console.log("END")
+            resolve(initialFilterValue);
+        })
+        .catch(error => {
+            reject(error)
+        })
+    }
+    catch(error) {
+        reject(error)
+    }
+})
+
+// <!-- Get data -->
+function ajaxRequest(params) {
+    console.log("ENTERING AJAX REQUEST")
+
+    getUserStateFromIP
+    .then(function(userStateFromIP) {
+        initialFilterValue = userStateFromIP
     })
-    .then(function(data) {
-        console.log(data)
-        var obj = JSON.parse(data);
-        console.log("START")
-        console.log(obj)
-        console.log(obj.ip)
-        console.log(obj.location.region.code)
-        const stateCode = obj.location.region.code;
-        initialFilterValue = stateCode.substr(stateCode.length - 2);
-        console.log(initialFilterValue)
-        console.log("END")
+    .catch(() => {
+        initialFilterValue = defaultFilterValue;
+    })
+    .then(value => {
         $("#location2").html(initialFilterValue);
-    }).catch(error => {
-        console.log("fetch error")
-    })
-    .then( value => {
+
         if(page.includes('data-150k-and-up')) {
             initialSortColumn = 'loanrange'
         } else if(page.includes('data-under-150k')) {
