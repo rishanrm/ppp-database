@@ -248,6 +248,9 @@ function ajaxRequest(params) {
                 // document.getElementById("summary").innerText = summary;
             var summaryDiv = document.getElementById("summary");
             summaryDiv.innerHTML = summary;
+
+            $('select[class*="bootstrap-table-filter-control-' + 'state' + '"]').val(initialFilterValue);
+
         });
         requestCount++;
     })
