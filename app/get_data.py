@@ -9,7 +9,7 @@ class Data():
     @staticmethod
     def get_data(request):
         if "filter" in request.args:
-            if ((request.args["page"] == "data-under-150k") or (request.args["page"] == "all-data")):
+            if ((request.args["page"] == "data-under-150k") or (request.args["page"] == "all-data") or (request.args["page"] == "all-data-test")):
                 substr = 'state":"'
                 if substr in request.args["filter"]:
                     state_index = request.args["filter"].index(substr)+len(substr)
@@ -21,7 +21,7 @@ class Data():
         else:
             state = "unstated"
 
-        if request.args["page"] == "all-data":
+        if ((request.args["page"] == "all-data") or (request.args["page"] == "all-data-test")):
             db_name = current_app.config["DB_NAME_ROOT_ALL_DATA"]
             table_name = current_app.config["DB_NAME_ROOT_ALL_DATA"] + \
                 "_" + state.lower()

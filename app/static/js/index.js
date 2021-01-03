@@ -1,12 +1,19 @@
+var firstPageLoadRequest = true
 var requestCount = 0
-var initial_state = true
+var initialConditions = true
 var requestParams
-var initialSortColumn
+var initialSortColumn = 'loanamount'
 var initialFilterColumn = 'state'
-var initialFilterValue = 'AK'
+var defaultFilterValue = 'AK'
+var initialFilterValue
 var initialStateAddition
 var resetButtonClicked = false
 var page = window.location.href.split('//')[1].split('/')[1]
+var $table = $('#table')
+var $resetButton = $('#resetButton')
+
+const stateOptions =
+    ['AE','AK','AL','AR','AS','AZ','CA','CO','CT','DC','DE','FL','GA','GU','HI','IA','ID','IL','IN','KS','KY','LA','MA','MD','ME','MI','MN','MO','MP','MS','MT','NC','ND','NE','NH','NJ','NM','NV','NY','OH','OK','OR','PA','PR','RI','SC','SD','TN','TX','UT','VA','VI','VT','WA','WI','WV','WY']
 
 for (let i = 0; i < 10; i++) {
     callTable(i)
@@ -59,162 +66,214 @@ function updateCdOptions(state, cd) {
     }
 }
 
-// <!-- Reset button -->
-var $table = $('#table')
-var $resetButton = $('#resetButton')
+// <!-- Get user state from IP-->
+const getUserState = new Promise((resolve, reject) => {
+    if (firstPageLoadRequest) {
+        var ipAddress = "";
+        const key = 'sn6uiu8fba471e'
+
+        // <!-- Get IP Address -->
+        $.getJSON("https://api.ipify.org?format=json", function(data) { 
+            ipAddress = data.ip
+            $("#location").html(ipAddress);
+            console.log(ipAddress)
+        })
+
+        // <!-- Get location -->
+        const ipUrl = `https://api.ipregistry.co/${ipAddress}?key=${key}`
+        console.log(ipUrl)
+        try {
+            fetch(ipUrl)
+            .then(resp => {
+                return resp.text();
+            })
+            .then(function(data) {
+                var obj = JSON.parse(data);
+                const stateCode = obj.location.region.code;
+                initialFilterValue = stateCode.substr(stateCode.length - 2);
+                resolve(initialFilterValue);
+            })
+            .catch(error => {
+                reject(error)
+            })
+        }
+        catch(error) {
+            reject(error)
+        }
+    } else {
+        resolve(initialFilterValue)
+    }
+})
 
 // <!-- Get data -->
 function ajaxRequest(params) {
-    if(page.includes('data-150k-and-up')) {
-        initialSortColumn = 'loanrange'
-    } else if(page.includes('data-under-150k')) {
-        initialSortColumn = 'loanamount'
-    } else if(page.includes('all-data')) {
-        initialSortColumn = 'loanamount'
-    }
+    console.log("ENTERING AJAX REQUEST RIGHT HERE")
 
-    // <!-- Get column inputs on the HTML page -->
-    var actualInputValues = {}
-    var columns = Object.keys(orderedData)
-    console.log(columns)
-    for (column of columns) {
-        var openFieldVal = $("#table").find("input.form-control.bootstrap-table-filter-control-" + column).val()
-        if (openFieldVal != undefined && openFieldVal != '') {
-            actualInputValues[column] = openFieldVal
-        } else {
-            var selectionVal = $('select[class*="bootstrap-table-filter-control-' + column + '"]').val();
-            if (selectionVal != undefined && selectionVal != '') {
-                actualInputValues[column] = selectionVal
-            }
-        }
-    }
-    console.log("ACTUAL INPUT VALUES:")
-    console.log(actualInputValues)
-    updateCdOptions(actualInputValues['state'], actualInputValues['cd'])
-    console.log(params)
-    params.data.filter = JSON.stringify(actualInputValues)
+    getUserState
+    .then(function(userStateFromIP) {
+        console.log("HERE HERE HERE")
+        initialFilterValue = userStateFromIP
+    })
+    .catch(() => {
+        initialFilterValue = defaultFilterValue;
+    })
+    .then(value => {
 
-    // <!-- Get global search box input on the HTML page -->
-    var searchValue = document.querySelector("body > div.changing-content > div.outside > div.bootstrap-table.bootstrap4 > div.fixed-table-toolbar > div.float-right.search.btn-group > div > input").value
-    if (searchValue != '') {
-        params.data.search = searchValue
-    } else {
-        delete params.data.search
-    }
-
-    // <!-- Determine if state selection in the table has been changed -->
-    $('select[class*="bootstrap-table-filter-control-state"]').each(function(i) {
-        if ($(this).children('option[selected="selected"]').length != 0) {
-            // console.log('there\'s a state!')
-            if ($(this).children('option[selected="selected"]').attr('value') != initialFilterValue) {
-                initial_state = false;
-                // console.log('Initial state set to false because a new state is chosen.');
-            }
-        } else {
-            initial_state = false;
-            // console.log('Initial state is false because no state is chosen.')
-        }
-    });
-    console.log('Request Count: ' + requestCount)
-    var url = '/data'
-    console.log("HERE ARE THE PARAMS IN THE REQUEST:")
-    console.log($.param(params.data))
-    // console.log("END PARAMS")
-    // $.get(url + '?' + $.param(params.data))
-
-    if (requestCount == 0) {
-
-        // Customize toggle switch text
-        var toggleText = $('button[name ="toggle"]').contents().filter(function() {
-            return this.nodeType == Node.TEXT_NODE;
-        })
-        if (toggleText.prevObject[1].data === ' Toggle') {
-            toggleText.prevObject[1].data = " Show card view"
+        // <!-- Ensure state from IP is among the state options -->
+        if (!stateOptions.includes(initialFilterValue)) {
+            initialFilterValue = defaultFilterValue
         }
 
-        // Change request params for initial table load
-        requestParams = 'search=&sort='
-                        + initialSortColumn
-                        + '&order=desc&offset=0&limit=10&filter=%7B%22'
-                        + initialFilterColumn
-                        + '%22%3A%22'
-                        + initialFilterValue
-                        + '%22%7D'
-        console.log("Manual params:")
-        console.log(requestParams)
-    } else {
-        if (initial_state){
-            // console.log('STILL INITIAL STATE')
-            // console.log($.param(params.data))
-            // console.log($.param(params.data).includes('filter'))
-            if ($.param(params.data).includes('filter')){
-                initialStateAddition = '%2C%22' + initialFilterColumn + '%22%3A%22' + initialFilterValue + '%22'
-                requestParams = $.param(params.data).substring(0, $.param(params.data).length - 3) + initialStateAddition + $.param(params.data).substring($.param(params.data).length - 3, $.param(params.data).length);
+        // <!-- Set the state dropdown value to the user's state -->
+        if (firstPageLoadRequest) {
+            $('select[class*="bootstrap-table-filter-control-' + 'state' + '"]').val(initialFilterValue);
+            firstPageLoadRequest = false;
+        }
+    })
+    .then(value => {
+
+        // <!-- Get column inputs on the HTML page -->
+        var actualInputValues = {}
+        var columns = Object.keys(orderedData)
+        console.log(columns)
+        for (column of columns) {
+            var openFieldVal = $("#table").find("input.form-control.bootstrap-table-filter-control-" + column).val()
+            if (openFieldVal != undefined && openFieldVal != '') {
+                actualInputValues[column] = openFieldVal
             } else {
-                initialStateAddition = '&filter=%7B%22' + initialFilterColumn + '%22%3A%22' + initialFilterValue + '%22%7D'
-                requestParams = $.param(params.data) + initialStateAddition;
+                var selectionVal = $('select[class*="bootstrap-table-filter-control-' + column + '"]').val();
+                if (selectionVal != undefined && selectionVal != '') {
+                    actualInputValues[column] = selectionVal
+                }
             }
-        } else {
-        // console.log('NOT INITIAL STATE ANYMORE')
-        requestParams = $.param(params.data)
         }
-    }
-    console.log('The request params are: \r\n' + requestParams)
-    console.log(url + '?' + 'page=' + page + '&' + requestParams)
-    $.get(url + '?' + 'page=' + page + '&' + requestParams)
-    
-    .then(function (res) {
-        params.success(res)
-        console.log(res)
-        console.log("THAT WAS THE RES")
-        var thisTerm
-        var businessTerm
-        var stateSelected
-        var loanCountTerm
-        var loanTotal
-        var jobsTotal
-        var loanCount = res.total
-        if (loanCount == 0) {
-            summary = ' '
-        } else {
-            if (loanCount == 1) {
-                thisTerm = 'This'
-                loanCountTerm = ''
-                businessTerm = 'organization'
-            } else {
-                thisTerm = 'These'
-                loanCountTerm = numberWithCommas(loanCount) + ' '
-                businessTerm = 'organizations'
-            }
-            loanTotal = res.footer.loanamountsum
-            if (loanTotal == null) {
-                loanTotal = '$ ¯\\_(ツ)_/¯'
-            }
-            jobsTotal = res.footer.jobsreportedsum
-            var jobsString = ' job'
+        console.log("ACTUAL INPUT VALUES:")
+        console.log(actualInputValues)
+        updateCdOptions(actualInputValues['state'], actualInputValues['cd'])
+        console.log(params)
+        params.data.filter = JSON.stringify(actualInputValues)
 
-            if ((jobsTotal > 1) || (jobsTotal == null) || (jobsTotal == 0)) {
-                jobsString += 's'
-            }
-            if (jobsTotal == null) {
-                jobsTotal = '¯\\_(ツ)_/¯'
-            }
-            jobsTotal = numberWithCommas(jobsTotal)
-            var paramsStateIdentifier = 'state%22%3A%22'
-            if (requestParams.includes(paramsStateIdentifier)) {
-                var stateIndex = requestParams.indexOf("state%22%3A%22") + paramsStateIdentifier.length;
-                stateSelected = requestParams.substring(stateIndex, stateIndex + 2);
+        // <!-- Get global search box input on the HTML page -->
+        var searchValue = document.querySelector("body > div.changing-content > div.outside > div.bootstrap-table.bootstrap4 > div.fixed-table-toolbar > div.float-right.search.btn-group > div > input").value
+        if (searchValue != '') {
+            params.data.search = searchValue
+        } else {
+            delete params.data.search
+        }
+
+        // <!-- Determine if state selection in the table has been changed -->
+        $('select[class*="bootstrap-table-filter-control-state"]').each(function(i) {
+
+            // State found
+            if ($(this).children('option[selected="selected"]').length != 0) {
+
+                // New state has been selected
+                if ($(this).children('option[selected="selected"]').attr('value') != initialFilterValue) {
+                    initialConditions = false;
+                }
             } else {
-                stateSelected = ''
+                // 'No state' option has been selected
+                initialConditions = false;
+            }
+        });
+        console.log('Request Count: ' + requestCount)
+        var url = '/data'
+        console.log("HERE ARE THE PARAMS IN THE REQUEST:")
+        console.log($.param(params.data))
+        // console.log("END PARAMS")
+        // $.get(url + '?' + $.param(params.data))
+
+        if (requestCount == 0) {
+
+            // Customize toggle switch text
+            var toggleText = $('button[name ="toggle"]').contents().filter(function() {
+                return this.nodeType == Node.TEXT_NODE;
+            })
+            if (toggleText.prevObject[1].data === ' Toggle') {
+                toggleText.prevObject[1].data = " Show card view"
             }
 
-            var summary = ('<span class=\'summary-intro\'>THE GIST:</span> ' + thisTerm + ' <span class=\'summary-var\'>' + loanCountTerm + ' ' + stateSelected + ' ' + businessTerm + ' </span>received <span class=\'summary-var\'>' + loanTotal + '</span> in PPP funds to support <span class=\'summary-var\'>' + jobsTotal + '</span> ' + jobsString + '.*')
+            // Change request params for initial table load
+            requestParams = 'search=&sort='
+                            + initialSortColumn
+                            + '&order=desc&offset=0&limit=10&filter=%7B%22'
+                            + initialFilterColumn
+                            + '%22%3A%22'
+                            + initialFilterValue
+                            + '%22%7D'
+            console.log("Manual params:")
+            console.log(requestParams)
+        } else {
+            if (initialConditions){
+                if ($.param(params.data).includes('filter')){
+                    initialStateAddition = '%2C%22' + initialFilterColumn + '%22%3A%22' + initialFilterValue + '%22'
+                    requestParams = $.param(params.data).substring(0, $.param(params.data).length - 3) + initialStateAddition + $.param(params.data).substring($.param(params.data).length - 3, $.param(params.data).length);
+                } else {
+                    initialStateAddition = '&filter=%7B%22' + initialFilterColumn + '%22%3A%22' + initialFilterValue + '%22%7D'
+                    requestParams = $.param(params.data) + initialStateAddition;
+                }
+            } else {
+                requestParams = $.param(params.data)
+            }
         }
-            // document.getElementById("summary").innerText = summary;
-        var summaryDiv = document.getElementById("summary");
-        summaryDiv.innerHTML = summary;
-    });
-    requestCount++;
+        console.log('The request params are: \r\n' + requestParams)
+        console.log(url + '?' + 'page=' + page + '&' + requestParams)
+        $.get(url + '?' + 'page=' + page + '&' + requestParams)
+        
+        .then(function (res) {
+            params.success(res)
+            console.log(res)
+            console.log("THAT WAS THE RES")
+            var thisTerm
+            var businessTerm
+            var stateSelected
+            var loanCountTerm
+            var loanTotal
+            var jobsTotal
+            var loanCount = res.total
+            if (loanCount == 0) {
+                summary = ' '
+            } else {
+                if (loanCount == 1) {
+                    thisTerm = 'This'
+                    loanCountTerm = ''
+                    businessTerm = 'organization'
+                } else {
+                    thisTerm = 'These'
+                    loanCountTerm = numberWithCommas(loanCount) + ' '
+                    businessTerm = 'organizations'
+                }
+                loanTotal = res.footer.loanamountsum
+                if (loanTotal == null) {
+                    loanTotal = '$ ¯\\_(ツ)_/¯'
+                }
+                jobsTotal = res.footer.jobsreportedsum
+                var jobsString = ' job'
+
+                if ((jobsTotal > 1) || (jobsTotal == null) || (jobsTotal == 0)) {
+                    jobsString += 's'
+                }
+                if (jobsTotal == null) {
+                    jobsTotal = '¯\\_(ツ)_/¯'
+                }
+                jobsTotal = numberWithCommas(jobsTotal)
+                var paramsStateIdentifier = 'state%22%3A%22'
+                if (requestParams.includes(paramsStateIdentifier)) {
+                    var stateIndex = requestParams.indexOf("state%22%3A%22") + paramsStateIdentifier.length;
+                    stateSelected = requestParams.substring(stateIndex, stateIndex + 2);
+                } else {
+                    stateSelected = ''
+                }
+
+                var summary = ('<span class=\'summary-intro\'>THE GIST:</span> ' + thisTerm + ' <span class=\'summary-var\'>' + loanCountTerm + ' ' + stateSelected + ' ' + businessTerm + ' </span>received <span class=\'summary-var\'>' + loanTotal + '</span> in PPP funds to support <span class=\'summary-var\'>' + jobsTotal + '</span> ' + jobsString + '.*')
+            }
+                // document.getElementById("summary").innerText = summary;
+            var summaryDiv = document.getElementById("summary");
+            summaryDiv.innerHTML = summary;
+
+        });
+        requestCount++;
+    })
 };
     
 function numberWithCommas(x) {
@@ -377,7 +436,7 @@ function detailFormatter(index, row) {
 $(function() {
     $resetButton.click(function () {
         requestCount = 0
-        initial_state = true
+        initialConditions = true
         resetButtonClicked = true
         // $('table').bootstrapTable('clearFilterControl')
 

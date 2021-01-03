@@ -173,7 +173,7 @@ class DatabaseConnection():
     def sql_field_search(page, search_term):
         search_sql = sql.SQL('AND (')
         search_term_count = 0
-        if page == "all-data":
+        if page == "all-data" or page == "all-data-test":
             column_headers = current_app.config["HEADERS_ALL_DATA"]
             print(f"HEADERS:\n{column_headers}")
         elif page == "data-150k-and-up":
