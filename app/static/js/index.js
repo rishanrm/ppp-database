@@ -1,14 +1,16 @@
+var firstPageLoadRequest = true
 var requestCount = 0
 var initialConditions = true
 var requestParams
 var initialSortColumn = 'loanamount'
 var initialFilterColumn = 'state'
 var defaultFilterValue = 'AK'
-var initialFilterValue = 'AK'
-// var initialFilterValue = getUserState()
+var initialFilterValue
 var initialStateAddition
 var resetButtonClicked = false
 var page = window.location.href.split('//')[1].split('/')[1]
+var $table = $('#table')
+var $resetButton = $('#resetButton')
 
 const stateOptions =
     ['AE','AK','AL','AR','AS','AZ','CA','CO','CT','DC','DE','FL','GA','GU','HI','IA','ID','IL','IN','KS','KY','LA','MA','MD','ME','MI','MN','MO','MP','MS','MT','NC','ND','NE','NH','NJ','NM','NV','NY','OH','OK','OR','PA','PR','RI','SC','SD','TN','TX','UT','VA','VI','VT','WA','WI','WV','WY']
@@ -64,70 +66,71 @@ function updateCdOptions(state, cd) {
     }
 }
 
-// <!-- Reset button -->
-var $table = $('#table')
-var $resetButton = $('#resetButton')
+// <!-- Get user state from IP-->
+const getUserState = new Promise((resolve, reject) => {
+    if (firstPageLoadRequest) {
+        var ipAddress = "";
+        const key = 'sn6uiu8fba471e'
 
-const getUserStateFromIP = new Promise((resolve, reject) => {
-    var ipAddress = "";
-    const key = 'sn6uiu8fba471e'
-    // <!-- Get IP Address -->
-    $.getJSON("https://api.ipify.org?format=json", function(data) { 
-        ipAddress = data.ip
-        $("#location").html(ipAddress);
-        console.log(ipAddress)
-    })
-    // <!-- Get location -->
-    const ipUrl = `https://api.ipregistry.co/${ipAddress}?key=${key}`
-    console.log(ipUrl)
-    try {
-        fetch(ipUrl)
-        .then(resp => {
-            return resp.text();
+        // <!-- Get IP Address -->
+        $.getJSON("https://api.ipify.org?format=json", function(data) { 
+            ipAddress = data.ip
+            $("#location").html(ipAddress);
+            console.log(ipAddress)
         })
-        .then(function(data) {
-            console.log(data)
-            var obj = JSON.parse(data);
-            console.log("START")
-            console.log(obj)
-            console.log(obj.ip)
-            console.log(obj.location.region.code)
-            const stateCode = obj.location.region.code;
-            initialFilterValue = stateCode.substr(stateCode.length - 2);
-            console.log(initialFilterValue)
-            console.log("END")
-            resolve(initialFilterValue);
-        })
-        .catch(error => {
+
+        // <!-- Get location -->
+        const ipUrl = `https://api.ipregistry.co/${ipAddress}?key=${key}`
+        console.log(ipUrl)
+        try {
+            fetch(ipUrl)
+            .then(resp => {
+                return resp.text();
+            })
+            .then(function(data) {
+                var obj = JSON.parse(data);
+                const stateCode = obj.location.region.code;
+                initialFilterValue = stateCode.substr(stateCode.length - 2);
+                resolve(initialFilterValue);
+            })
+            .catch(error => {
+                reject(error)
+            })
+        }
+        catch(error) {
             reject(error)
-        })
-    }
-    catch(error) {
-        reject(error)
+        }
+    } else {
+        resolve(initialFilterValue)
     }
 })
 
 // <!-- Get data -->
 function ajaxRequest(params) {
-    console.log("ENTERING AJAX REQUEST")
+    console.log("ENTERING AJAX REQUEST RIGHT HERE")
 
-    if (initialConditions) {
-
-    }
-
-    getUserStateFromIP
+    getUserState
     .then(function(userStateFromIP) {
+        console.log("HERE HERE HERE")
         initialFilterValue = userStateFromIP
     })
     .catch(() => {
         initialFilterValue = defaultFilterValue;
     })
     .then(value => {
+
+        // <!-- Ensure state from IP is among the state options -->
         if (!stateOptions.includes(initialFilterValue)) {
             initialFilterValue = defaultFilterValue
         }
-        console.log(initialFilterValue)
-        $("#location2").html(initialFilterValue);
+
+        // <!-- Set the state dropdown value to the user's state -->
+        if (firstPageLoadRequest) {
+            $('select[class*="bootstrap-table-filter-control-' + 'state' + '"]').val(initialFilterValue);
+            firstPageLoadRequest = false;
+        }
+    })
+    .then(value => {
 
         // <!-- Get column inputs on the HTML page -->
         var actualInputValues = {}
@@ -160,15 +163,17 @@ function ajaxRequest(params) {
 
         // <!-- Determine if state selection in the table has been changed -->
         $('select[class*="bootstrap-table-filter-control-state"]').each(function(i) {
+
+            // State found
             if ($(this).children('option[selected="selected"]').length != 0) {
-                // console.log('there\'s a state!')
+
+                // New state has been selected
                 if ($(this).children('option[selected="selected"]').attr('value') != initialFilterValue) {
                     initialConditions = false;
-                    // console.log('Initial state set to false because a new state is chosen.');
                 }
             } else {
+                // 'No state' option has been selected
                 initialConditions = false;
-                // console.log('Initial state is false because no state is chosen.')
             }
         });
         console.log('Request Count: ' + requestCount)
@@ -200,9 +205,6 @@ function ajaxRequest(params) {
             console.log(requestParams)
         } else {
             if (initialConditions){
-                // console.log('STILL INITIAL STATE')
-                // console.log($.param(params.data))
-                // console.log($.param(params.data).includes('filter'))
                 if ($.param(params.data).includes('filter')){
                     initialStateAddition = '%2C%22' + initialFilterColumn + '%22%3A%22' + initialFilterValue + '%22'
                     requestParams = $.param(params.data).substring(0, $.param(params.data).length - 3) + initialStateAddition + $.param(params.data).substring($.param(params.data).length - 3, $.param(params.data).length);
@@ -211,8 +213,7 @@ function ajaxRequest(params) {
                     requestParams = $.param(params.data) + initialStateAddition;
                 }
             } else {
-            // console.log('NOT INITIAL STATE ANYMORE')
-            requestParams = $.param(params.data)
+                requestParams = $.param(params.data)
             }
         }
         console.log('The request params are: \r\n' + requestParams)
@@ -269,8 +270,6 @@ function ajaxRequest(params) {
                 // document.getElementById("summary").innerText = summary;
             var summaryDiv = document.getElementById("summary");
             summaryDiv.innerHTML = summary;
-
-            $('select[class*="bootstrap-table-filter-control-' + 'state' + '"]').val(initialFilterValue);
 
         });
         requestCount++;
