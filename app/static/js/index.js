@@ -10,6 +10,9 @@ var initialStateAddition
 var resetButtonClicked = false
 var page = window.location.href.split('//')[1].split('/')[1]
 
+const stateOptions =
+    ['AE','AK','AL','AR','AS','AZ','CA','CO','CT','DC','DE','FL','GA','GU','HI','IA','ID','IL','IN','KS','KY','LA','MA','MD','ME','MI','MN','MO','MP','MS','MT','NC','ND','NE','NH','NJ','NM','NV','NY','OH','OK','OR','PA','PR','RI','SC','SD','TN','TX','UT','VA','VI','VT','WA','WI','WV','WY']
+
 for (let i = 0; i < 10; i++) {
     callTable(i)
 }
@@ -65,10 +68,6 @@ function updateCdOptions(state, cd) {
 var $table = $('#table')
 var $resetButton = $('#resetButton')
 
-
-
-
-
 const getUserStateFromIP = new Promise((resolve, reject) => {
     var ipAddress = "";
     const key = 'sn6uiu8fba471e'
@@ -120,6 +119,10 @@ function ajaxRequest(params) {
         initialFilterValue = defaultFilterValue;
     })
     .then(value => {
+        if (!stateOptions.includes(initialFilterValue)) {
+            initialFilterValue = defaultFilterValue
+        }
+        console.log(initialFilterValue)
         $("#location2").html(initialFilterValue);
 
         if(page.includes('data-150k-and-up')) {
