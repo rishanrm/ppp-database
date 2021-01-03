@@ -547,7 +547,10 @@ $(window).scroll(function() {
 //     windowHeight = window.innerHeight;
 // });
 
-var meta = document.createElement('meta');
-meta.name = 'viewport';
-meta.content = 'width=device-width,height='+window.innerHeight+', initial-scale=1.0';
-document.getElementsByTagName('head')[0].appendChild(meta);
+// var meta = document.createElement('meta');
+// meta.name = 'viewport';
+// meta.content = 'width=device-width,height='+window.innerHeight+', initial-scale=1.0';
+// document.getElementsByTagName('head')[0].appendChild(meta);
+
+alert("Hi friend! I'm literally testing as we speak 6:51pm")
+alert("ANOTHER MESSAGE")
