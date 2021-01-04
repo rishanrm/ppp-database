@@ -173,9 +173,7 @@ button[name=toggle] {
 }
 
 .fixed-table-body {
-  border-top: 1px solid #dee2e6;
-  border-right: 1px solid #dee2e6;
-  border-left: 1px solid #dee2e6;
+  border: 1px solid #dee2e6;
   border-radius: 10px 10px 0px 10px;
 }
 
