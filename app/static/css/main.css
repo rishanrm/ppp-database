@@ -260,6 +260,17 @@ section {
   height: 10vh;
 }
 
+.modal-title {
+  padding-left: 2rem;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.modal-close {
+  margin-left: 0 !important;
+}
+
 @media all and (max-width: 1450px) {
   #summary {
     margin-top: 0vw;
