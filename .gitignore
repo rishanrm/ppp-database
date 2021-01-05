@@ -9,6 +9,7 @@ app/main/__pycache__
 app/static/data/all_data
 app/static/data/combined_data
 .bash_profile
+~$*.xlsx
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
