@@ -13,9 +13,10 @@ class Email():
         receiver_email = current_app.config["CONTACT_EMAIL_ADDR"]
 
         message = MIMEMultipart("alternative")
-        message["Subject"] = f"PPP Data Contact Form Submission: {form.name.data}"
-        message["From"] = sender_email
+        message["Subject"] = f"PPP Data Contact Form: message from {form.name.data}"
+        message["From"] = form.email.data
         message["To"] = receiver_email
+        message["Reply-to"] = form.email.data
 
         # Create the plain-text and HTML version of your message
         text = f"""\
