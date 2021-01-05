@@ -13,6 +13,10 @@ class Config:
                         'state', 'zip', 'naicscode', 'businesstype',
                         'raceethnicity', 'gender', 'veteran', 'nonprofit',
                         'jobsreported', 'dateapproved', 'lender', 'cd']
+    HEADERS_DATA_SUMMARY = ['state', 'loancount', 'totaljobs',
+                            'totalloanamount', 'avgloansize',
+                            'jobsperloan', 'dollarsperjob', 'loancountnojobs',
+                            'totalloansnojobs', 'avgloansizenojobs']
     HEADERS_UNDER_150K = ['loanamount', 'city', 'state', 'zip', 'naicscode',
                         'businesstype', 'raceethnicity', 'gender', 'veteran',
                         'nonprofit', 'jobsreported', 'dateapproved', 'lender',
