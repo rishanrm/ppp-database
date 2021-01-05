@@ -101,7 +101,8 @@
             <button id="resetButton" class="btn btn-danger">Reset</button>
         </div>
 
-        <table id="table" data-toggle="table" data-ajax="ajaxRequest" data-buttons-align="right"
+        <table id="table"
+                data-toggle="table" data-ajax="ajaxRequest" data-buttons-align="right"
             data-buttons-class="primary" data-buttons-order="['columns', 'toggle', 'print']"
             data-show-button-text="true" data-search="true" data-search-align="right"
             data-search-accent-neutralise="true" data-search-on-enter-key="false" data-search-text=""
@@ -122,38 +123,9 @@
             <thead>
                 <div id="summary"> </div>
                 <tr>
-                    <!--
-                    loanrange,businessname,address,city,state,zip,naicscode,businesstype,raceethnicity,gender,veteran,nonprofit,jobsretained,dateapproved,lender,cd
-                    -->
-                    <th data-field="state" data-sortable="true" data-filter-control="select"
-                        data-filter-data="obj:colOptions.state" data-filter-default="AK">State</th>
-                    <th data-field="loanamount" data-sortable="true" data-filter-control="input" data-sorter="alphanum"
-                        data-sort-order="desc" data-formatter="amountFormatter">Loan Amount</th>
-                    <th data-field="businessname" data-sortable="true" data-filter-control="input">Business Name</th>
-                    <th data-field="address" data-sortable="true" data-filter-control="input">Address</th>
-                    <th data-field="city" data-sortable="true" data-filter-control="input">City</th>
-                    <th data-field="zip" data-sortable="true" data-filter-control="input">ZIP Code</th>
-                    <th data-field="naicscode" data-sortable="true" data-filter-control="select"
-                        data-filter-data="obj:colOptions.naicscode" data-visible="true">
-                        Industry (NAICS Code)</th>
-                    <th data-field="businesstype" data-sortable="true" data-filter-control="select"
-                        data-filter-data="obj:colOptions.businesstype" data-visible="false">Business Type</th>
-                    <th data-field="raceethnicity" data-sortable="true" data-filter-control="select"
-                        data-filter-data="obj:colOptions.raceethnicity">Race&#47;Ethnicity</th>
-                    <th data-field="gender" data-sortable="true" data-filter-control="select"
-                        data-filter-data="obj:colOptions.gender">Gender</th>
-                    <th data-field="veteran" data-sortable="true" data-filter-control="select"
-                        data-filter-data="obj:colOptions.veteran" data-visible="false">Veteran</th>
-                    <th data-field="nonprofit" data-sortable="true" data-filter-control="select"
-                        data-filter-data="obj:colOptions.nonprofit" data-visible="false">Nonprofit</th>
-                    <th data-field="jobsreported" data-sortable="true" data-filter-control="input"
-                        data-sorter="alphanum">Jobs Reported</th>
-                    <th data-field="dateapproved" data-sortable="true" data-filter-control="select"
-                        data-filter-data="obj:colOptions.dateapproved" data-visible="false">Date Approved</th>
-                    <th data-field="lender" data-sortable="true" data-filter-control="input" data-visible="false">Lender
-                    </th>
-                    <th data-field="cd" data-sortable="true" data-filter-control="select"
-                        data-filter-data="obj:cdOptions">House District</th>
+                    <th data-field="state" data-sortable="true" data-filter-control="select" data-filter-data="obj:colOptions.state" data-filter-default="AK">State</th>
+                    <th data-field="loancount" data-sortable="true" data-filter-control="input" data-sorter="alphanum" data-sort-order="desc" data-formatter="amountFormatter"># of Loan</th>
+                    <th data-field="totaljobs" data-sortable="true" data-filter-control="input" data-sorter="alphanum" data-sort-order="desc" data-formatter="amountFormatter"># of Jobs</th>
                 </tr>
             </thead>
         </table>
