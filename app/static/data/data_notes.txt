@@ -8,10 +8,10 @@ Data columns:
 
 -- SQL Query:
 SELECT
-    state,
-    COUNT(loanamount) as loancount,
-    SUM(jobsreported) as totaljobsreported,
-    SUM(loanamount) as totalloansreported
+	state,
+	COUNT(loanamount) as loancount,
+	SUM(jobsreported) as totaljobsreported,
+	SUM(loanamount) as totalloansreported
 FROM
     ppp_data_all_merged
 GROUP BY
@@ -28,8 +28,8 @@ Data columns:
 
 -- SQL Query:
 SELECT
-    state,
-    SUM(loanamount) / COUNT(loanamount) as avgloansize
+	state,
+	SUM(loanamount) / COUNT(loanamount) as avgloansize
 FROM
     ppp_data_all_merged
 GROUP BY
@@ -47,7 +47,7 @@ Data columns:
 
 -- SQL Query:
 SELECT
-    state,
+	state,
     ROUND(SUM(jobsreported::NUMERIC) / COUNT(loanamount::NUMERIC),1) as jobsperloan,
     CAST(SUM(loanamount::NUMERIC) / SUM(jobsreported) AS MONEY) as dollarsperjob
 
@@ -71,9 +71,9 @@ Data columns:
 
 -- SQL QUERY:
 SELECT
-    state,
-    COUNT(loanamount) as loancountnulljobs,
-    CAST(SUM(loanamount) AS MONEY) as totalloansreportednulljobs,
+	state,
+	COUNT(loanamount) as loancountnulljobs,
+	CAST(SUM(loanamount) AS MONEY) as totalloansreportednulljobs,
     CAST(SUM(loanamount) / COUNT(loanamount) AS MONEY) as avgloansizenulljobs
 FROM
     ppp_data_all_merged
@@ -87,52 +87,24 @@ ORDER BY
 
 --------------------------------------------------------------------------------
 
---OLD QUERIES
-
-
-SELECT
-	state,
-	COUNT(loanrange) as loancount,
-	SUM(jobsreported) as totaljobsreported,
-	ROUND(AVG(jobsreported)::numeric,1) as avgjobsreported,
-	SUM(loanrange::NUMERIC) as totalloansreported,
-	ROUND(SUM(loanrange::NUMERIC) / COUNT(loanrange)::numeric,1) as avgloansize,
-	ROUND(SUM(loanrange::NUMERIC) / SUM(jobsreported)::numeric,1) as dollarsperjob
-
-FROM
-    ppp_data_150k_and_up_080820
-WHERE
-    loanrange IS NOT NULL AND jobsreported IS NOT NULL AND state != 'AE'
-GROUP BY
-    state
-ORDER BY
-    dollarsperjob ASC
-;
-
-
-SELECT
-	state,
-	COUNT(loanamount) as loancount,
-	SUM(jobsreported) as totaljobsreported,
-	ROUND(AVG(jobsreported)::numeric,1) as avgjobsreported,
-	SUM(loanamount::NUMERIC) as totalloansreported,
-	ROUND(SUM(loanamount::NUMERIC) / COUNT(loanamount)::numeric,1) as avgloansize,
-	ROUND(SUM(loanamount::NUMERIC) / SUM(jobsreported)::numeric,1) as dollarsperjob
-FROM
-    ppp_data_all_merged
-WHERE
-    loanamount IS NOT NULL AND jobsreported IS NOT NULL AND state != 'AE'
-GROUP BY
-    state
-ORDER BY
-    dollarsperjob ASC
-;
 
 
 
 
 
+Data columns 2:
+    % of loans below
+
+    % of loan dollars below
+
+Loans by bank
+
+Rank for each metric?
+
+Data Notes:
+    Jobs/loan and $/job metrics exclude AE
+    Avg jobs/loan and Avg $/job exclude loans that did not reported a job count of 0 or did not report a job count 
 
 
-
-
+Improvements to the data:
+In cases where the State did not match the Congressional District, addresses and business names were input into Google in an attempt to find the correct state. A complete list of loans that had their state changed can be found here.
