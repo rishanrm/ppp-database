@@ -1,0 +1,292 @@
+[
+    {
+        "state": "CA",
+        "loancount": "617,236",
+        "totaljobs": "6,178,761"
+    },
+    {
+        "state": "FL",
+        "loancount": "423,147",
+        "totaljobs": "3,303,060"
+    },
+    {
+        "state": "TX",
+        "loancount": "411,598",
+        "totaljobs": "4,340,525"
+    },
+    {
+        "state": "NY",
+        "loancount": "344,776",
+        "totaljobs": "3,265,581"
+    },
+    {
+        "state": "IL",
+        "loancount": "220,927",
+        "totaljobs": "2,217,285"
+    },
+    {
+        "state": "PA",
+        "loancount": "172,565",
+        "totaljobs": "1,858,612"
+    },
+    {
+        "state": "GA",
+        "loancount": "169,555",
+        "totaljobs": "1,493,822"
+    },
+    {
+        "state": "NJ",
+        "loancount": "155,859",
+        "totaljobs": "1,527,821"
+    },
+    {
+        "state": "OH",
+        "loancount": "147,852",
+        "totaljobs": "1,894,366"
+    },
+    {
+        "state": "NC",
+        "loancount": "127,915",
+        "totaljobs": "1,262,514"
+    },
+    {
+        "state": "MI",
+        "loancount": "127,028",
+        "totaljobs": "1,568,960"
+    },
+    {
+        "state": "MA",
+        "loancount": "117,776",
+        "totaljobs": "1,177,975"
+    },
+    {
+        "state": "VA",
+        "loancount": "113,664",
+        "totaljobs": "985,183"
+    },
+    {
+        "state": "CO",
+        "loancount": "108,501",
+        "totaljobs": "885,927"
+    },
+    {
+        "state": "WA",
+        "loancount": "107,012",
+        "totaljobs": "917,490"
+    },
+    {
+        "state": "MN",
+        "loancount": "102,015",
+        "totaljobs": "1,102,491"
+    },
+    {
+        "state": "TN",
+        "loancount": "98,661",
+        "totaljobs": "926,420"
+    },
+    {
+        "state": "MO",
+        "loancount": "95,219",
+        "totaljobs": "945,927"
+    },
+    {
+        "state": "WI",
+        "loancount": "89,166",
+        "totaljobs": "1,021,139"
+    },
+    {
+        "state": "MD",
+        "loancount": "86,056",
+        "totaljobs": "950,460"
+    },
+    {
+        "state": "AZ",
+        "loancount": "85,076",
+        "totaljobs": "887,497"
+    },
+    {
+        "state": "IN",
+        "loancount": "82,671",
+        "totaljobs": "961,239"
+    },
+    {
+        "state": "LA",
+        "loancount": "78,010",
+        "totaljobs": "811,809"
+    },
+    {
+        "state": "AL",
+        "loancount": "69,324",
+        "totaljobs": "679,626"
+    },
+    {
+        "state": "SC",
+        "loancount": "66,254",
+        "totaljobs": "669,059"
+    },
+    {
+        "state": "OR",
+        "loancount": "66,102",
+        "totaljobs": "618,828"
+    },
+    {
+        "state": "OK",
+        "loancount": "66,044",
+        "totaljobs": "624,341"
+    },
+    {
+        "state": "CT",
+        "loancount": "64,214",
+        "totaljobs": "616,411"
+    },
+    {
+        "state": "IA",
+        "loancount": "61,258",
+        "totaljobs": "529,144"
+    },
+    {
+        "state": "KS",
+        "loancount": "53,648",
+        "totaljobs": "525,097"
+    },
+    {
+        "state": "UT",
+        "loancount": "52,125",
+        "totaljobs": "600,186"
+    },
+    {
+        "state": "KY",
+        "loancount": "50,397",
+        "totaljobs": "604,392"
+    },
+    {
+        "state": "MS",
+        "loancount": "48,008",
+        "totaljobs": "419,948"
+    },
+    {
+        "state": "NV",
+        "loancount": "45,135",
+        "totaljobs": "428,362"
+    },
+    {
+        "state": "NE",
+        "loancount": "43,993",
+        "totaljobs": "331,823"
+    },
+    {
+        "state": "AR",
+        "loancount": "43,518",
+        "totaljobs": "378,260"
+    },
+    {
+        "state": "PR",
+        "loancount": "39,491",
+        "totaljobs": "386,084"
+    },
+    {
+        "state": "ID",
+        "loancount": "30,989",
+        "totaljobs": "272,600"
+    },
+    {
+        "state": "ME",
+        "loancount": "28,266",
+        "totaljobs": "256,260"
+    },
+    {
+        "state": "HI",
+        "loancount": "25,009",
+        "totaljobs": "226,101"
+    },
+    {
+        "state": "NH",
+        "loancount": "24,664",
+        "totaljobs": "220,664"
+    },
+    {
+        "state": "MT",
+        "loancount": "23,867",
+        "totaljobs": "217,046"
+    },
+    {
+        "state": "SD",
+        "loancount": "23,470",
+        "totaljobs": "183,544"
+    },
+    {
+        "state": "NM",
+        "loancount": "22,870",
+        "totaljobs": "251,346"
+    },
+    {
+        "state": "ND",
+        "loancount": "20,478",
+        "totaljobs": "178,084"
+    },
+    {
+        "state": "WV",
+        "loancount": "18,031",
+        "totaljobs": "206,881"
+    },
+    {
+        "state": "RI",
+        "loancount": "17,874",
+        "totaljobs": "161,577"
+    },
+    {
+        "state": "WY",
+        "loancount": "13,550",
+        "totaljobs": "111,633"
+    },
+    {
+        "state": "DC",
+        "loancount": "13,339",
+        "totaljobs": "168,366"
+    },
+    {
+        "state": "DE",
+        "loancount": "13,094",
+        "totaljobs": "139,144"
+    },
+    {
+        "state": "VT",
+        "loancount": "12,362",
+        "totaljobs": "116,841"
+    },
+    {
+        "state": "AK",
+        "loancount": "12,038",
+        "totaljobs": "117,420"
+    },
+    {
+        "state": "GU",
+        "loancount": "2,201",
+        "totaljobs": "32,124"
+    },
+    {
+        "state": "VI",
+        "loancount": "2,039",
+        "totaljobs": "17,130"
+    },
+    {
+        "state": "MP",
+        "loancount": 481,
+        "totaljobs": "7,488"
+    },
+    {
+        "state": "AS",
+        "loancount": 293,
+        "totaljobs": "4,302"
+    },
+    {
+        "state": "AE",
+        "loancount": 1,
+        "totaljobs": ""
+    },
+    {
+        "state": "N/A",
+        "loancount": 138,
+        "totaljobs": 220
+    }
+]
