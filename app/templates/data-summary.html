@@ -108,21 +108,21 @@
             data-buttons-class="primary"
             data-buttons-order="['columns', 'toggle', 'print']"
             data-show-button-text="true"
-            data-search="true"
+            data-search="false"
             data-search-align="right"
             data-search-accent-neutralise="true"
             data-search-on-enter-key="false"
             data-search-text=""
             data-search-time-out="1000"
-            visible-search="true"
+            visible-search="false"
             data-sort-reset="false"
             data-silent-sort="false"
             data-remember-order="true"
             data-show-columns="true"
-            data-show-columns-search="true"
+            data-show-columns-search="false"
             data-show-columns-toggle-all="true"
             data-show-header="true"
-            data-show-footer="false"
+            data-show-footer="true"
             data-show-fullscreen="false"
             data-show-refresh="false"
             data-show-toggle="true"
@@ -139,6 +139,7 @@
             data-header-style="headerStyle"
             data-toolbar="#toolbar"
             data-detail-view="true"
+
             data-detail-view-by-click="false"
             data-loading-template="loadingTemplate"
             data-disable-control-when-search="false"
@@ -147,9 +148,9 @@
             <thead>
                 <!-- <div id="summary"> </div> -->
                 <tr>
-                    <th data-field="state" data-sortable="true" data-filter-control="select">State</th>
-                    <th data-field="loancount" data-sortable="true" data-sorter="alphanum" data-sort-order="desc"># of Loan</th>
-                    <th data-field="totaljobs" data-sortable="true" data-sorter="alphanum"># of Jobs</th>
+                    <th data-field="state" data-sortable="true" data-filter-control="select" data-footer-formatter="TOTAL">State</th>
+                    <th data-field="loancount" data-sortable="true" data-footer-formatter="123,456" data-sort-order="desc"># of Loan</th>
+                    <th data-field="totaljobs" data-sortable="true"># of Jobs</th>
                 </tr>
             </thead>
         </table>

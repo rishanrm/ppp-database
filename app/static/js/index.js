@@ -602,4 +602,21 @@ $(document).ready(function(){
     }
 });
 
+
+function summaryFormatterState() {
+    return 'TOTAL'
+}
+
+function summaryFormatterNumberOfLoans(data) {
+    var field = this.field
+    return '$' + data.map(function (row) {
+    return +row[field].substring(1)
+    }).reduce(function (sum, i) {
+    return sum + i
+    }, 0)
+}
+
+
+
 console.log("\n\n\nUPDATED 1:41pm\n\n\n")
+
