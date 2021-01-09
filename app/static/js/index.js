@@ -626,6 +626,11 @@ $('#table').on('load-success.bs.table', function () {
 
 });
 
+$('#summary-table').on('load-success.bs.table', function () {
+    document.querySelector(".pre-table-spinner").style.display = "none";
+
+});
+
 // Scroll progress bar
 $(window).scroll(function() {
     var scroll = $(window).scrollTop(),
