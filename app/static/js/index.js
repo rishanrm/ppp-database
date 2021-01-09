@@ -437,6 +437,23 @@ function detailFormatter(index, row) {
     return html.join('')
 }
 
+function summaryDetailFormatter(index, row) {
+
+    var summaryCols = {
+        'state': 'State',
+        'loancount': 'Number of Loans',
+        'totaljobs': 'Number of Jobs'
+    }
+    var html = ['<div class="detailview">']
+    $.each(row, function (key, value) {
+        html.push('<p><b>' + summaryCols[key] + ':</b> ' + value + '</p>')
+    })
+    html.push('</div>')
+    return html.join('')
+}
+
+
+
 // <!-- Reset table button -->
 $(function() {
     $resetButton.click(function () {
@@ -544,6 +561,16 @@ $('#summary-table').on('pre-body.bs.table', function (e, arg1, arg2) {
     }
     console.log(preBodyRanCount)
     preBodyRanCount++;
+
+    if (requestCount == 0) {
+        // Customize toggle switch text
+        var toggleText = $('button[name ="toggle"]').contents().filter(function() {
+            return this.nodeType == Node.TEXT_NODE;
+        })
+        if (toggleText.prevObject[1].data === ' Toggle') {
+            toggleText.prevObject[1].data = " Show card view"
+        }
+    }
 });
 
 // Sidebar menu closing fix
@@ -639,7 +666,6 @@ function summaryFormatterNumberOfLoans(data) {
     return sum + i
     }, 0)
 }
-
 
 
 console.log("\n\n\nUPDATED 1:41pm\n\n\n")
