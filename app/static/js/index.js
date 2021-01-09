@@ -670,6 +670,7 @@ function summaryFormatterNumberOfLoans(data) {
 
 console.log("\n\n\nUPDATED 1:41pm\n\n\n")
 
-var exportOptions= {
-    fileName:'exportName'
-}
+// $('#summary-table').tableExport({
+//     fileName: 'sFileName',
+//     ignoreColumn: [0]
+// });
