@@ -320,8 +320,8 @@ function numberWithCommas(x) {
             return '<br>Those loans don\'t exist...¯\\_(ツ)_/¯<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>';
         },
         formatExport: function () {
-            return 'Export page'
-        }
+            return 'Export'
+        },
     };
     $.extend($.fn.bootstrapTable.defaults, $.fn.bootstrapTable.locales['en-US-custom']);
 })(jQuery);
