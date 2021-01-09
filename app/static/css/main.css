@@ -217,7 +217,7 @@ div.hidden {
   height: 62vh;
 }
 
-#resetButton {
+#resetButton, #summaryResetButton {
   width: 186px;
 }
 
@@ -283,7 +283,7 @@ section {
     margin-right: 1px;
     width: 292px;
   }
-  #resetButton {
+  #resetButton #summaryResetButton {
     height: 86px;
   }
 }
@@ -306,7 +306,7 @@ section {
     width: 100%;
     margin-bottom: 0px;
   }
-  .bs-bars.float-left, #toolbar, #resetButton {
+  .bs-bars.float-left, #toolbar, #resetButton, #summaryResetButton {
     width: 100%;
     margin-bottom: 0px !important;
   }
@@ -318,7 +318,7 @@ section {
   .form-control.search-input {
     margin-top: 0px;
   }
-  #resetButton {
+  #resetButton, #summaryResetButton {
     height: 38px;
   }
 }

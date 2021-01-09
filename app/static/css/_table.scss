@@ -191,7 +191,7 @@ div.hidden {
     height: 100vh - $header-height - $table-offset-top - $footer-height - $table-offset-bottom - $table-height-correction;
 }
 
-#resetButton {
+#resetButton, #summaryResetButton {
     width: 186px;
 }
 
@@ -259,7 +259,7 @@ section {
         width: 292px;
     }
 
-    #resetButton {
+    #resetButton #summaryResetButton {
         height: 86px;
     }
 }
@@ -285,7 +285,7 @@ section {
         margin-bottom: 0px;
     }
 
-    .bs-bars.float-left, #toolbar, #resetButton{
+    .bs-bars.float-left, #toolbar, #resetButton, #summaryResetButton {
         width: 100%;
         margin-bottom: 0px !important;
     }
@@ -301,7 +301,7 @@ section {
         margin-top: 0px;
     }
 
-    #resetButton {
+    #resetButton, #summaryResetButton {
         height: 38px;
     }
 
@@ -317,7 +317,7 @@ section {
     //     margin-bottom: 0px;
     // }
 
-    // .bs-bars.float-left, #toolbar, #resetButton{
+    // .bs-bars.float-left, #toolbar, #resetButton, #summaryResetButton{
     //     width: 100%;
     //     margin-bottom: 0px !important;
     // }
