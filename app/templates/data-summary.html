@@ -97,11 +97,11 @@
         <!-- <div class="table-title">
             <h1>Loans under $150,000</h1>
         </div> -->
-        <div id="toolbar">
+        <!-- <div id="toolbar">
             <button id="resetButton" class="btn btn-danger">Reset</button>
-        </div>
+        </div> -->
 
-        <table id="table"
+        <table id="summary-table"
             data-toggle="table"
             data-url="data/summary_data.json"
             data-buttons-align="right"
@@ -149,8 +149,8 @@
                 <!-- <div id="summary"> </div> -->
                 <tr>
                     <th data-field="state"     data-sortable="true" data-footer-formatter="TOTAL"       data-filter-control="select">State</th>
-                    <th data-field="loancount" data-sortable="true" data-footer-formatter="123,456"     data-sort-order="desc"># of Loan</th>
-                    <th data-field="totaljobs" data-sortable="true" data-footer-formatter="PLACEHOLDER"># of Jobs</th>
+                    <th data-field="loancount" data-sortable="true" data-footer-formatter="123,456"     data-filter-control="input" data-sort-order="desc"># of Loan</th>
+                    <th data-field="totaljobs" data-sortable="true" data-footer-formatter="PLACEHOLDER" data-filter-control="input" ># of Jobs</th>
                 </tr>
             </thead>
         </table>

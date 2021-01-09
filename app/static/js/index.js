@@ -522,6 +522,17 @@ $('#table').on('pre-body.bs.table', function (e, arg1, arg2) {
     preBodyRanCount++;
 });
 
+$('#summary-table').on('pre-body.bs.table', function (e, arg1, arg2) {
+    console.log('PRE BODY RAN')
+    // $('div.hidden').fadeIn(7000).removeClass('hidden');
+    if (preBodyRanCount > 0) {
+        $('div.hidden').fadeIn(500).removeClass('hidden');
+    // setTimeout(() => { $('div.hidden').fadeIn(1000).removeClass('hidden'); }, 1);
+    }
+    console.log(preBodyRanCount)
+    preBodyRanCount++;
+});
+
 // Sidebar menu closing fix
 var checkbox = document.querySelector("input[id=openSidebarMenu]");
 var div = document.createElement('div');
