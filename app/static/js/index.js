@@ -10,7 +10,9 @@ var initialStateAddition
 var resetButtonClicked = false
 var page = window.location.href.split('//')[1].split('/')[1]
 var $table = $('#table')
+var $summaryTable = $('#summary-table')
 var $resetButton = $('#resetButton')
+var $summaryResetButton = $('#summaryResetButton')
 var stateList = ['AE','AK','AL','AR','AS','AZ','CA','CO','CT','DC'
                 ,'DE','FL','GA','GU','HI','IA','ID','IL','IN','KS'
                 ,'KY','LA','MA','MD','ME','MI','MN','MO','MP','MS'
@@ -455,6 +457,17 @@ $(function() {
         $table.bootstrapTable('refresh')
     })
 })
+
+$(function() {
+    $summaryResetButton.click(function () {
+        console.log("CLICKED IT")
+        $summaryTable.bootstrapTable('clearFilterControl')
+    })
+})
+
+
+
+
 
 // <!-- Navigate back to Page 1 when the results per page selection changes -->
 var currentPageSize = 10
