@@ -53,6 +53,7 @@ thead tr th .fht-cell {
 
 .dropdown-menu.dropdown-menu-right::-webkit-scrollbar-corner {
   background: #dee2e6;
+  border-bottom-right-radius: 10px;
 }
 
 .dropdown-menu.dropdown-menu-right::-webkit-scrollbar-thumb:vertical {
@@ -90,6 +91,7 @@ thead tr th .fht-cell {
 
 .fixed-table-body::-webkit-scrollbar-corner {
   background: #dee2e6;
+  border-bottom-right-radius: 10px;
 }
 
 .fixed-table-body::-webkit-scrollbar-thumb:vertical {
@@ -174,7 +176,7 @@ button[name=toggle] {
 
 .fixed-table-body {
   border: 1px solid #dee2e6;
-  border-radius: 10px 10px 0px 10px;
+  border-radius: 10px;
 }
 
 .detailview {
