@@ -5,12 +5,12 @@ thead th {
     // border-top: 1px solid #dee2e6;
 }
 
-.th-inner {
+thead tr th .th-inner {
     margin-top: -1px;
     border-top: 1px solid #dee2e6;
 }
 
-.fht-cell {
+thead tr th .fht-cell {
     border-bottom: 1px solid #dee2e6;
 }
 
