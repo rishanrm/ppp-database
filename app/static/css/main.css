@@ -174,6 +174,10 @@ button[name=toggle] {
   border-radius: .25rem !important;
 }
 
+.export.btn-group {
+  margin-left: 5px !important;
+}
+
 .fixed-table-body {
   border: 1px solid #dee2e6;
   border-radius: 10px;
@@ -290,7 +294,7 @@ section {
   }
 }
 
-@media all and (max-width: 761px) {
+@media all and (max-width: 763px) {
   #summary {
     font-size: 1rem;
     margin-top: 0vw;
@@ -298,9 +302,6 @@ section {
   .bootstrap-table.bootstrap4 {
     padding-top: 10px;
   }
-}
-
-@media all and (max-width: 618px) {
   .float-right.search.btn-group {
     width: 100%;
   }
