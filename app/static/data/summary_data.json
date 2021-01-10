@@ -674,11 +674,11 @@
     {
         "state": "AE",
         "loancount": 1,
-        "totaljobs": "",
+        "totaljobs": 0,
         "totalloanamount": "$27,400.00",
         "avgloansize": "$27,400.00",
-        "jobsperloan": "",
-        "dollarsperjob": "",
+        "jobsperloan": 0,
+        "dollarsperjob": "N/A",
         "loancountnojobs": 1,
         "totalloansnojobs": "$27,400.00",
         "avgloansizenojobs": "$27,400.00"

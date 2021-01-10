@@ -154,16 +154,16 @@
             <thead>
                 <!-- <div id="summary"> </div> -->
                 <tr>
-                    <th data-field="state"              data-sortable="true" data-footer-formatter=sumFooterState               data-filter-control="select">State</th>
-                    <th data-field="loancount"          data-sortable="true" data-footer-formatter=sumFooterLoanCount           data-filter-control="input" data-sort-order="desc"># of Loans</th>
-                    <th data-field="totaljobs"          data-sortable="true" data-footer-formatter=sumFooterTotalJobs           data-filter-control="input" ># of Jobs</th>
-                    <th data-field="totalloanamount"    data-sortable="true" data-footer-formatter=sumFooterTotalAmount         data-filter-control="input" >Loan Amount</th>
-                    <th data-field="avgloansize"        data-sortable="true" data-footer-formatter=sumFooterAvgLoan             data-filter-control="input" >Average Loan Size</th>
-                    <th data-field="jobsperloan"        data-sortable="true" data-footer-formatter=sumFooterJobsPerLoan         data-filter-control="input" >Average Jobs per Loan</th>
-                    <th data-field="dollarsperjob"      data-sortable="true" data-footer-formatter=sumFooterDollarsPerJob       data-filter-control="input" >Average Loan Dollars per Job</th>
-                    <th data-field="loancountnojobs"    data-sortable="true" data-footer-formatter=sumFooterLoanCountNullJobs   data-filter-control="input" ># of Loans Reporting No Jobs</th>
-                    <th data-field="totalloansnojobs"   data-sortable="true" data-footer-formatter=sumFooterTotalAmountNullJobs data-filter-control="input" >Total Amount for Loans Reporting No Jobs</th>
-                    <th data-field="avgloansizenojobs"  data-sortable="true" data-footer-formatter=sumFooterAvgLoan             data-filter-control="input" >Average Loan Size for Loans Reporting No Jobs</th>
+                    <th data-field="state"              data-sortable="true" data-footer-formatter=sumFooterState                                         data-filter-control="select"                          >State</th>
+                    <th data-field="loancount"          data-sortable="true" data-sorter="numericOnly" data-footer-formatter=sumFooterLoanCount           data-filter-control="input" data-sort-order="desc"    ># of Loans</th>
+                    <th data-field="totaljobs"          data-sortable="true" data-sorter="numericOnly" data-footer-formatter=sumFooterTotalJobs           data-filter-control="input"                           ># of Jobs</th>
+                    <th data-field="totalloanamount"    data-sortable="true" data-sorter="numericOnly" data-footer-formatter=sumFooterTotalAmount         data-filter-control="input"                           >Total $</th>
+                    <th data-field="avgloansize"        data-sortable="true" data-sorter="numericOnly" data-footer-formatter=sumFooterAvgLoan             data-filter-control="input"                           >Avg Loan $</th>
+                    <th data-field="jobsperloan"        data-sortable="true" data-sorter="numericOnly" data-footer-formatter=sumFooterJobsPerLoan         data-filter-control="input"                           >Avg Jobs / Loan</th>
+                    <th data-field="dollarsperjob"      data-sortable="true" data-sorter="numericOnly" data-footer-formatter=sumFooterDollarsPerJob       data-filter-control="input"                           >Avg $ / Job</th>
+                    <th data-field="loancountnojobs"    data-sortable="true" data-sorter="numericOnly" data-footer-formatter=sumFooterLoanCountNullJobs   data-filter-control="input"                           ># of Loans Reporting No Jobs</th>
+                    <th data-field="totalloansnojobs"   data-sortable="true" data-sorter="numericOnly" data-footer-formatter=sumFooterTotalAmountNullJobs data-filter-control="input"                           >Total $ for Loans Reporting No Jobs</th>
+                    <th data-field="avgloansizenojobs"  data-sortable="true" data-sorter="numericOnly" data-footer-formatter=sumFooterAvgLoan             data-filter-control="input"                           >Avg $ / Loan Reporting No Jobs</th>
                 </tr>
             </thead>
             <tbody></tbody>
