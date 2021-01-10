@@ -438,21 +438,58 @@ function detailFormatter(index, row) {
 }
 
 function summaryDetailFormatter(index, row) {
-
     var summaryCols = {
         'state': 'State',
-        'loancount': 'Number of Loans',
-        'totaljobs': 'Number of Jobs'
+        'loancount': '# of Loans',
+        'totaljobs': '# of Jobs',
+        "totalloanamount": "Total $",
+        "avgloansize": "Avg Loan $",
+        "jobsperloan": "Avg Jobs / Loan",
+        "dollarsperjob": "Avg $ / Job",
+        "loancountnojobs": "# of Loans Reporting No Jobs",
+        "totalloansnojobs": "Total $ for Loans Reporting No Jobs",
+        "avgloansizenojobs": "Avg $ / Loan Reporting No Jobs"
     }
     var html = ['<div class="detailview">']
     $.each(row, function (key, value) {
         html.push('<p><b>' + summaryCols[key] + ':</b> ' + value + '</p>')
+        console.log(summaryCols[key])
+        console.log(value)
     })
     html.push('</div>')
     return html.join('')
 }
 
-
+function sumFooterState() {
+    return "TOTAL"
+}
+function sumFooterLoanCount() {
+    return "5,156,850"
+}
+function sumFooterTotalJobs() {
+    return "50,785,196"
+}
+function sumFooterTotalAmount() {
+    return "$522,949,800,494.12"
+}
+function sumFooterAvgLoan() {
+    return "$101,408.77"
+}
+function sumFooterJobsPerLoan() {
+    return "12.0"
+}
+function sumFooterDollarsPerJob() {
+    return "$8,907.63"
+}
+function sumFooterLoanCountNullJobs() {
+    return "932,556"
+}
+function sumFooterTotalAmountNullJobs() {
+    return "$70,573,990,121.26"
+}
+function sumFooterAvgLoan() {
+    return "$75,678.02"
+}
 
 // <!-- Reset table button -->
 $(function() {
