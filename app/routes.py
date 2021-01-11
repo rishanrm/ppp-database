@@ -17,9 +17,9 @@ def index():
 def all_data():
     return render_template("all-data.html", data="", headers=current_app.config["HEADERS_ALL_DATA"])
 
-@main.route("/data-summary")
-def data_summary():
-    return render_template("data-summary.html", data="", headers=current_app.config["HEADERS_DATA_SUMMARY"])
+@main.route("/summary-stats")
+def summary_stats():
+    return render_template("summary-stats.html", data="", headers=current_app.config["HEADERS_DATA_SUMMARY"])
 
 @main.route("/all-data-test")
 def all_data_test():
