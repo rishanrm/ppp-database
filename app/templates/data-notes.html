@@ -63,71 +63,32 @@
         </div>
     </div>
         <div class="card-group">
-            <div class="col-sm-6 col-lg-4 col-xl-2 mb-4">
-                <div class="card text-center">
-                    <img src="{{ url_for('static', filename='images/about-sba-logo.svg') }}" class="card-img-top"
-                        alt="SBA logo">
-                    <div class="card-body">
-                        <h5 class="card-title">SBA</h5>
-                        <p class="card-text">The Small Business Administration (SBA) implements the PPP and has the most
-                            up-to-date information on the program:</p>
-                        <a href="https://www.sba.gov/funding-programs/loans/coronavirus-relief-options/paycheck-protection-program"
-                            class="btn btn-primary" rel="noopener" target="_blank">Go to the SBA</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-lg-4 col-xl-2 mb-4">
-                <div class="card text-center">
-                    <img src="{{ url_for('static', filename='images/about-treasury-logo.svg') }}" class="card-img-top"
-                        alt="U.S. Treasury seal">
-                    <div class="card-body">
-                        <h5 class="card-title">U.S. Treasury</h5>
-                        <p class="card-text">The U.S. Treasury Department supports the PPP. Here you can find loan reports and
-                            resources for program participants:</p>
-                        <a href="https://home.treasury.gov/policy-issues/cares/assistance-for-small-businesses"
-                            class="btn btn-primary" rel="noopener" target="_blank">Go to the Treasury</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-lg-4 col-xl-2 mb-4">
-                <div class="card text-center">
-                    <img src="{{ url_for('static', filename='images/about-ap-logo.svg') }}" class="card-img-top" alt="AP logo">
-                    <div class="card-body">
-                        <h5 class="card-title">Associated Press</h5>
-                        <p class="card-text">Read a basic overview of the most important elements of the PPP along with a set of
-                            frequently-asked questions:</p>
-                        <a href="https://apnews.com/article/b0d2a36521f39010273317fa3562c2e4" class="btn btn-primary"
-                            rel="noopener" target="_blank">Go to the AP</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-lg-4 col-xl-2 mb-4">
-                <div class="card text-center">
-                    <img src="{{ url_for('static', filename='images/about-wapo-logo.svg') }}" class="card-img-top"
-                        alt="Washington Post logo">
-                    <div class="card-body">
-                        <h5 class="card-title">Washington Post</h5>
-                        <p class="card-text">See a map of where PPP loan recipients are based across the country in this
-                            searchable data visualization:</p>
-                        <a href="https://www.washingtonpost.com/graphics/2020/business/sba-ppp-data/" class="btn btn-primary"
-                            rel="noopener" target="_blank">Go to the Post</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-lg-4 col-xl-2 mb-4">
+            <div class="col-sm-6 mb-4">
                 <div class="card text-center">
                     <img src="{{ url_for('static', filename='images/about-congress-logo.png') }}" class="card-img-top"
                         alt="Congress seal">
                     <div class="card-body">
-                        <h5 class="card-title">Legal Text</h5>
-                        <p class="card-text">See the final text of the Coronavirus Aid, Relief, and Economic Security (CARES)
-                            Act, including Section 1102 which defines the PPP:</p>
+                        <h5 class="card-title">Summary Stats</h5>
+                        <p class="card-text">
+                            For the XXXXXXXNUMBER of instances in which the original data set had a mismatch between a loan's State vs. its Congressional District (e.g., a CA-5 district listed as an FL loan), we tried to determine the true State of the loan by following this process:
+                            <ul class="data-notes">
+                                <li>1. Search the street address in Google to determine in which state the street address actually exists</li>
+                                <li>2. If the street address cannot be found or if the address exists in both states, add in the business name to the search to determine if there are any other public records or databases that list the company and the state in which it is based.</li>
+                                <li>3. Change the state designation in our pppdata.us database if there is reasonable evidence to support doing so.</li>
+                            </ul>
+                        </p>
+                        <p>
+                            In every case, the decision to change the State was a judgement call that was arrived at in a good-faith effort to provide you with the most accurate data. 
+                            That said, at the end of the day we may not have gotten it right every time. If you believe a state designation was changed incorrectly, please 
+                            <span><a href="{{ url_for('main.contact') }}" target="_blank">contact us</a></span>. 
+                            The full dataset of states that have been changed is available below.
+                        </p>
                         <a href="https://www.congress.gov/116/bills/hr748/BILLS-116hr748enr.pdf" class="btn btn-primary"
-                            rel="noopener" target="_blank">Go to the bill</a>
+                            rel="noopener" target="_blank">Download the State changes</a>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6 col-lg-4 col-xl-2 mb-4">
+            <div class="col-sm-6 mb-4">
                 <div class="card text-center">
                     <img src="{{ url_for('static', filename='images/about-data-logo.svg') }}" class="card-img-top"
                         alt="Data logo">
