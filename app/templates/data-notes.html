@@ -1,0 +1,136 @@
+{% extends 'layout.html' %}
+
+{% block head %}
+<link rel="canonical" href="https://pppdata.us/contact.html" />
+<meta name="description"
+    content="Contact the creators of pppdata.us and let us know how we can continue democratizing access to data and increasing government accountability." />
+{% endblock %}
+
+{% block title %}Notes on Our PPP Data{% endblock %}
+
+{% block content %}
+
+<div class="changing-content" data-barba="container" data-barba-namespace="contact">
+    <!-- <script src="https://www.google.com/recaptcha/api.js"></script>
+
+    <script>
+        function onSubmit(token) {
+            document.getElementById("demo-form").submit();
+        }
+    </script>
+
+    <script src="https://www.google.com/recaptcha/api.js?render=reCAPTCHA_site_key"></script>
+
+    <script>
+        function onClick(e) {
+            e.preventDefault();
+            grecaptcha.ready(function () {
+                grecaptcha.execute('reCAPTCHA_site_key', { action: 'submit' }).then(function (token) {
+                    // Add your logic to submit to your backend server here.
+                });
+            });
+        }
+    </script> -->
+
+    <div class="header">
+        <h1 class="header-text">Data Notes</h1>
+    </div>
+    <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu" onclick="sidebarMenuClick()">
+    <label for="openSidebarMenu" class="sidebarIconToggle">
+        <div class="menuIcon diagonal part-1"></div>
+        <div class="menuIcon horizontal"></div>
+        <div class="menuIcon diagonal part-2"></div>
+    </label>
+
+    <div id="sidebarMenu">
+        <div class="sidebarMenuInner">
+            <a class="sidebarLink" href="{{ url_for('main.index') }}" alt="Broken Home Link" title="Home">Home</a>
+            <a class="sidebarLink" href="{{ url_for('main.all_data') }}" title="All PPP Loan Data">Explore The Data</a>
+            <a class="sidebarLink" href="{{ url_for('main.about') }}" title="About">About</a>
+            <a class="sidebarLink current" href="{{ url_for('main.contact') }}" title="Contact">Contact</a>
+        </div>
+    </div>
+
+    <div class="container contact">
+        <div class="content-section mx-auto">
+
+            <p class="contact-text text-center">
+                Our mission at <span><a href="{{ url_for('main.index') }}">pppdata.us</a></span> is to improve the
+                government's ability to serve the people by democratizing access to data and increasing government
+                accountability.<br><br>
+                We'd love to hear any questions, comments, or feedback to help us get there:
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+
+
+
+
+<!-- 
+
+    <form>
+        <div class="row form-group">
+            <div class="col">
+                <input type="text" class="form-control" placeholder="Full Name">
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col">
+                <input type="text" class="form-control" placeholder="Organization (optional)">
+                <div class="form-control">{{ form.name(size=20) }}</div>
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col">
+                <input type="text" class="form-control" placeholder="Email">
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col">
+                <!- - <label for="exampleFormControlTextarea1">Example textarea</label> -- >
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="10" placeholder="Message"></textarea>
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </form>
+
+
+
+<div class="formwrapper">
+    <! -- <h2 class="title">Contact</h2> - ->
+    <form method="POST" action="/">
+        <div class="form-group">{{ form.name.label }} {{ form.name(size=20) }}</div>
+        <div class="form-group">{{ form.email.label }} {{ form.email }}</div>
+        <div class="form-group">{{ form.message.label }} {{ form.message }}</div>
+        {{ form.submit }}
+    </form>
+</div>
+
+
+<div class="formwrapper">
+    <!- - <h2 class="title">Contact</h2> - ->
+    <form method="POST" action="/">
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Join Today</legend>
+
+            <dir class-"form-group">
+                {{ form.name.label(class="form-control-label") }}
+            </dir>
+        </fieldset>
+        <div class="form-field">{{ form.name.label }} {{ form.name(size=20) }}</div>
+        <div class="form-field">{{ form.email.label }} {{ form.email }}</div>
+        <div class="form-field">{{ form.message.label }} {{ form.message }}</div>
+        {{ form.submit }}
+    </form>
+</div> -->

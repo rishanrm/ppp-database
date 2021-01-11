@@ -21,6 +21,10 @@ def all_data():
 def summary_stats():
     return render_template("summary-stats.html", data="", headers=current_app.config["HEADERS_DATA_SUMMARY"])
 
+@main.route("/data-notes")
+def data_notes():
+    return render_template("data-notes.html", data="")
+
 @main.route("/all-data-test")
 def all_data_test():
     return render_template("all-data-test.html", data="", headers=current_app.config["HEADERS_ALL_DATA"])
