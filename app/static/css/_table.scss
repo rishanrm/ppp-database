@@ -14,6 +14,11 @@ thead tr th .fht-cell {
     border-bottom: 1px solid #dee2e6;
 }
 
+.header-asterisk {
+    font-weight: bold;
+    color: $bs-blue;
+}
+
 .dropdown-menu.dropdown-menu-right {
     z-index: 1002 !important;
     border-top-right-radius: 5px;

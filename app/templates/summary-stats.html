@@ -159,11 +159,11 @@
                     <th data-field="totaljobs"          data-sortable="true" data-sorter="numericOnly" data-footer-formatter=sumFooterTotalJobs           data-filter-control="input"                           ># of Jobs</th>
                     <th data-field="totalloanamount"    data-sortable="true" data-sorter="numericOnly" data-footer-formatter=sumFooterTotalAmount         data-filter-control="input"                           >Total $</th>
                     <th data-field="avgloansize"        data-sortable="true" data-sorter="numericOnly" data-footer-formatter=sumFooterAvgLoan             data-filter-control="input"                           >Avg Loan $</th>
-                    <th data-field="jobsperloan"        data-sortable="true" data-sorter="numericOnly" data-footer-formatter=sumFooterJobsPerLoan         data-filter-control="input"                           >Avg Jobs / Loan</th>
-                    <th data-field="dollarsperjob"      data-sortable="true" data-sorter="numericOnly" data-footer-formatter=sumFooterDollarsPerJob       data-filter-control="input"                           >Avg $ / Job</th>
-                    <th data-field="loancountnojobs"    data-sortable="true" data-sorter="numericOnly" data-footer-formatter=sumFooterLoanCountNullJobs   data-filter-control="input"                           ># of Loans Reporting No Jobs</th>
-                    <th data-field="totalloansnojobs"   data-sortable="true" data-sorter="numericOnly" data-footer-formatter=sumFooterTotalAmountNullJobs data-filter-control="input"                           >Total $ for Loans Reporting No Jobs</th>
-                    <th data-field="avgloansizenojobs"  data-sortable="true" data-sorter="numericOnly" data-footer-formatter=sumFooterAvgLoan             data-filter-control="input"                           >Avg $ / Loan Reporting No Jobs</th>
+                    <th data-field="jobsperloan"        data-sortable="true" data-sorter="numericOnly" data-footer-formatter=sumFooterJobsPerLoan         data-filter-control="input"                           >Avg Jobs / Loans<span class="header-asterisk">*</span></th>
+                    <th data-field="dollarsperjob"      data-sortable="true" data-sorter="numericOnly" data-footer-formatter=sumFooterDollarsPerJob       data-filter-control="input"                           >Avg $ / Job<span class="header-asterisk">*</span></th>
+                    <th data-field="loancountnojobs"    data-sortable="true" data-sorter="numericOnly" data-footer-formatter=sumFooterLoanCountNullJobs   data-filter-control="input"                           ># of Loans Reporting No Jobs<span class="header-asterisk">**</span></th>
+                    <th data-field="totalloansnojobs"   data-sortable="true" data-sorter="numericOnly" data-footer-formatter=sumFooterTotalAmountNullJobs data-filter-control="input"                           >Total $ for Loans Reporting No Jobs<span class="header-asterisk">**</span></th>
+                    <th data-field="avgloansizenojobs"  data-sortable="true" data-sorter="numericOnly" data-footer-formatter=sumFooterAvgLoan             data-filter-control="input"                           >Avg $ / Loan Reporting No Jobs<span class="header-asterisk">**</span></th>
                 </tr>
             </thead>
             <tbody></tbody>
@@ -185,12 +185,12 @@
         <div class="source">
             Source: 
             <a href="https://sba.app.box.com/s/5myd1nxutoq8wxecx2562baruz774si6/folder/127201759675"
-            rel="nofollow noopener" target="_blank">SBA</a>
-            , with 
-            <a href="{{ url_for('main.data_notes') }}" target="_blank">manual adjustments</a>
+            rel="nofollow noopener" target="_blank">SBA</a>, with manual adjustments (see
+            <a href="{{ url_for('main.data_notes') }}" target="_blank">data notes</a>)
         </div>
         <div class="note">
-            * Total jobs does not account for those reported as "Unanswered"
+            <span class="header-asterisk">*</span> Excludes loans for which Jobs Reported was 0 or blank<br>
+            <span class="header-asterisk">**</span> Refers to loans for which Jobs Reported was 0 or blank
         </div>
     </div>
 
