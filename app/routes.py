@@ -1,4 +1,4 @@
-from flask import current_app, render_template, request, Blueprint, url_for, flash, redirect, send_file
+from flask import current_app, render_template, request, Blueprint, url_for, flash, redirect, send_file, send_from_directory
 
 from get_data import Data
 from forms import ContactForm
@@ -7,8 +7,8 @@ from send_email import Email
 main = Blueprint('main', __name__)
 
 @main.route("/", methods=['GET', 'POST'])
-@main.route("/index", methods=['GET', 'POST'])
-@main.route("/home", methods=['GET', 'POST'])
+# @main.route("/index", methods=['GET', 'POST'])
+# @main.route("/home", methods=['GET', 'POST'])
 def index():
     return render_template('index.html')
 
@@ -74,10 +74,16 @@ def header_options():
     except Exception as e:
         return str(e)
 
-@main.route("/robots.txt")
-def robots():
-    return render_template('robots.txt')
+# @main.route("/robots.txt")
+# def robots():
+#     return render_template('robots.txt')
 
-@main.route("/sitemap.xml")
-def sitemap():
-    return render_template('sitemap.xml')
+# @main.route("/sitemap.xml")
+# def sitemap():
+#     return render_template('sitemap.xml')
+
+
+@main.route('/robots.txt')
+@main.route('/sitemap.xml')
+def static_from_root():
+    return send_from_directory(current_app.static_folder, request.path[1:])

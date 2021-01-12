@@ -791,7 +791,7 @@ function numericOnly(a, b) {
 
 
 
-console.log("\n\n\nUPDATED 1:41pm\n\n\n")
+console.log("\n\n\nUPDATED 1/12/21 3:26am\n\n\n")
 
 // $('#summary-table').tableExport({
 //     fileName: 'sFileName',
