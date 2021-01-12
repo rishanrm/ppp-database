@@ -452,7 +452,13 @@ function summaryDetailFormatter(index, row) {
     }
     var html = ['<div class="detailview">']
     $.each(row, function (key, value) {
-        html.push('<p><b>' + summaryCols[key] + ':</b> ' + value + '</p>')
+        if (key == 'jobsperloan' || key == 'dollarsperjob') {
+            html.push('<p><b>' + summaryCols[key] + '<span class="header-asterisk">*</span>' + ':</b> ' + value + '</p>')
+        } else if (key == 'loancountnojobs' || key == 'totalloansnojobs' || key == 'avgloansizenojobs'){
+            html.push('<p><b>' + summaryCols[key] + '<span class="header-asterisk">**</span>' + ':</b> ' + value + '</p>')
+        } else {
+            html.push('<p><b>' + summaryCols[key] + ':</b> ' + value + '</p>')
+        }
         console.log(summaryCols[key])
         console.log(value)
     })
