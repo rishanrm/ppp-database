@@ -25,6 +25,11 @@ def summary_stats():
 def data_notes():
     return render_template("data-notes.html", data="")
 
+@main.route("/data-notes-download")
+def data_notes_download():
+    path = "./static/data/ppp_data_state_changes.csv"
+    return send_file(path, as_attachment=True)
+
 @main.route("/all-data-test")
 def all_data_test():
     return render_template("all-data-test.html", data="", headers=current_app.config["HEADERS_ALL_DATA"])
