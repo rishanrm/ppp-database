@@ -1513,4 +1513,13 @@ cookie-close:active {
 .data-notes-step span {
   font-weight: normal;
 }
+
+.data-notes-intro {
+  margin-top: 10vh;
+}
+
+.notes-text {
+  margin-top: 12.5vh;
+  margin-bottom: 4vh;
+}
 /*# sourceMappingURL=main.css.map */

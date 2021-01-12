@@ -10,3 +10,13 @@
 .data-notes-step span {
     font-weight: normal;
 }
+
+.data-notes-intro{
+    margin-top: $header-height;
+    // margin-bottom: $footer-height + $contact-offset-bottom;
+}
+
+.notes-text {
+    margin-top: 12.5vh;
+    margin-bottom: 4vh;
+}
