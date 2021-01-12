@@ -62,8 +62,8 @@
                             Because this searchable data set does not include any changes to the values of the data,
                             the figures presented here may not match exactly with those presented in the 
                             <span><a href="{{ url_for('main.summary_stats') }}" target="_blank">Summary Stats</a></span> table,
-                            where some states have been changed in an attempt to show more accurate data. The original data set can
-                            be accessed below.
+                            where we changed the geographic state on some loans if we found it to be likely incorrect (see the data notes on the Summary Stats for more details). 
+                            The original data set can be accessed below.
                         </p>
                         <a href="https://sba.app.box.com/s/5myd1nxutoq8wxecx2562baruz774si6/folder/127201759675"
                             class="btn btn-primary" rel="noopener" target="_blank">See the original data</a>
@@ -80,7 +80,7 @@
                         <p class="card-text">
                             For the XXXXXXXNUMBERX instances in which the original data set had a mismatch between a loan's state vs. its congressional district (e.g., a CA-5 district listed as an FL loan), we tried to determine the true state of the loan by following this process:
                             <ol class="data-notes">
-                                <li class="data-notes-step"><span>Search the street address in Google to determine in which state the street address actually exists</span></li>
+                                <li class="data-notes-step"><span>Search the street address in Google to determine in which state the street address actually exists.</span></li>
                                 <li class="data-notes-step"><span>If the street address cannot be found or if the address exists in both states, add in the business name to the search to determine if there are any other public records or databases that list the company and the state in which it is based.</span></li>
                                 <li class="data-notes-step"><span>Change the state designation in our pppdata.us database if there is reasonable evidence to support doing so.</span></li>
                             </ol>
@@ -91,7 +91,7 @@
                             That said, at the end of the day we may not have gotten it right every time. 
                             If you believe a state designation was changed incorrectly, please 
                             <span><a href="{{ url_for('main.contact') }}" target="_blank">contact us</a></span>. 
-                            The full dataset of states that have been changed is available below.
+                            The full list of loans with states that have been changed is available below.
                         </p>    
                         <p class="card-text">
                             The figures presented here may not match exactly with those presented in the Summary Stats table, where no states have been changed 
