@@ -27,6 +27,7 @@ for (let i = 0; i < 10; i++) {
 function callTable(i) {
     setTimeout(function() {
         $table.bootstrapTable();
+        $summaryTable.bootstrapTable();
         // console.log('Table called time #' + i);
     }, 2000 * i);
 }

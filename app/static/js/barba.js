@@ -66,6 +66,28 @@ barba.init({
                 })
             },
         },
+        {namespace: 'summary-stats',
+            afterLeave({ next }) {
+                const myPromise = new Promise((resolve, reject) => {
+                    let script = document.createElement('script');
+                    script.src = '/js/index.js';
+                    next.container.appendChild(script);
+                    console.log("RAN INIT ON BARBA RIGHT HERE");
+                    resolve("Success!")
+                })
+            },
+        },
+        {namespace: 'data-notes',
+            afterLeave({ next }) {
+                const myPromise = new Promise((resolve, reject) => {
+                    let script = document.createElement('script');
+                    script.src = '/js/index.js';
+                    next.container.appendChild(script);
+                    console.log("RAN INIT ON BARBA RIGHT HERE");
+                    resolve("Success!")
+                })
+            },
+        },
         {namespace: 'home',
             afterLeave({ next }) {
                 const myPromise = new Promise((resolve, reject) => {
