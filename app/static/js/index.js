@@ -467,7 +467,7 @@ function summaryDetailFormatter(index, row) {
 }
 
 function sumFooterState() {
-    return "TOTAL"
+    return "ALL"
 }
 function sumFooterLoanCount() {
     return "5,156,850"
