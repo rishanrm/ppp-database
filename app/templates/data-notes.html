@@ -55,7 +55,7 @@
                                     href="https://investigativereportingworkshop.org/about-irw/" rel="nofollow noopener"
                                     target="_blank">Investigative Reporting Workshop</a></span>, based out of the American
                             University School of Communication in Washington, DC.
-                            Some of those changes we made ourselves.
+                            Some we made ourselves.
                             All of them were made with the goal of making this data easier to read and interpret.
                         </p>
                         <p class="card-text">
@@ -63,7 +63,7 @@
                             the figures presented here may not match exactly with those presented in the 
                             <span><a href="{{ url_for('main.summary_stats') }}" target="_blank">Summary Stats</a></span> table,
                             where we changed the geographic state on some loans if we found it to be likely incorrect (see the data notes on the Summary Stats for more details). 
-                            The original data set can be accessed below.
+                            When in doubt, the original data from the Small Business Administration set can be accessed below.
                         </p>
                         <a href="https://sba.app.box.com/s/5myd1nxutoq8wxecx2562baruz774si6/folder/127201759675"
                             class="btn btn-primary" rel="noopener" target="_blank">See the original data</a>
@@ -78,23 +78,25 @@
                         <h3 class="about-header">Summary Stats</h3>
                         <!-- <h5 class="card-title">Summary Stats</h5> -->
                         <p class="card-text">
-                            For the XXXXXXXNUMBERX instances in which the original data set had a mismatch between a loan's state vs. its congressional district (e.g., a CA-5 district listed as an FL loan), we tried to determine the true state of the loan by following this process:
+                            We found <span class="note-number">1,013</span> instances in the original data set where there was a mismatch between a loan's state vs. its congressional district (e.g., a loan with a congressional district listed as CA-19 but a state listed as AL). We also found <span class="note-number">165</span> instances in which a loan had no state listed at all.
+                            In these cases, we tried to determine the true state of the loan by following this process:
                             <ol class="data-notes">
-                                <li class="data-notes-step"><span>Search the street address in Google to determine in which state the street address actually exists.</span></li>
+                                <li class="data-notes-step"><span>If the state is blank but there is a ZIP code listed, search for it in Google to determine the state.</span></li>
+                                <li class="data-notes-step"><span>If the state and the congressional district don't match, search for the street address in Google to determine in which state the street address actually exists.</span></li>
                                 <li class="data-notes-step"><span>If the street address cannot be found or if the address exists in both states, add in the business name to the search to determine if there are any other public records or databases that list the company and the state in which it is based.</span></li>
-                                <li class="data-notes-step"><span>Change the state designation in our pppdata.us database if there is reasonable evidence to support doing so.</span></li>
+                                <li class="data-notes-step"><span>Change the state listed in our pppdata.us database if there is reasonable evidence to support doing so.</span></li>
                             </ol>
                         </p>
                         <p class="card-text">
-                            As a result of this process, we changed the state on XXXXXXNUMBER loans. 
+                            We updated the states on a total of <span class="note-number">299</span> loans, changing <span class="note-number">272</span> states on loans where the original state and congressional district did not match and adding <span class="note-number">27</span> states to loans that originally did not have one. 
                             In every case, the decision to change the state was a judgement call that was arrived at in a good-faith effort to provide you with the most accurate data. 
                             That said, at the end of the day we may not have gotten it right every time. 
                             If you believe a state designation was changed incorrectly, please 
                             <span><a href="{{ url_for('main.contact') }}" target="_blank">contact us</a></span>. 
-                            The full list of loans with states that have been changed is available below.
+                            The full list of loans with mismatched or missing states (along with the changes we have made) is available below.
                         </p>    
                         <p class="card-text">
-                            The figures presented here may not match exactly with those presented in the Summary Stats table, where no states have been changed 
+                            The figures presented here may not match exactly with those presented in the searchable <span><a href="{{ url_for('main.all_data') }}" target="_blank">PPP data table</a></span>, where no states have been changed 
                             (except one instance of a state labeled as "FI" that was clearly intended to be "FL").
                         </p>
                         <a href="https://www.congress.gov/116/bills/hr748/BILLS-116hr748enr.pdf" class="btn btn-primary"

@@ -1,6 +1,7 @@
 .data-notes {
     text-align: left !important;
     font-weight: bold;
+    color: $bs-blue;
 }
 
 .data-notes-step {
@@ -9,6 +10,7 @@
 
 .data-notes-step span {
     font-weight: normal;
+    color: black;
 }
 
 .data-notes-intro{
@@ -19,4 +21,9 @@
 .notes-text {
     margin-top: 12.5vh;
     margin-bottom: 4vh;
+}
+
+.note-number {
+    font-weight: bold;
+    color: $bs-blue;
 }

@@ -1504,6 +1504,7 @@ cookie-close:active {
 .data-notes {
   text-align: left !important;
   font-weight: bold;
+  color: #037AFB;
 }
 
 .data-notes-step {
@@ -1512,6 +1513,7 @@ cookie-close:active {
 
 .data-notes-step span {
   font-weight: normal;
+  color: black;
 }
 
 .data-notes-intro {
@@ -1521,5 +1523,10 @@ cookie-close:active {
 .notes-text {
   margin-top: 12.5vh;
   margin-bottom: 4vh;
+}
+
+.note-number {
+  font-weight: bold;
+  color: #037AFB;
 }
 /*# sourceMappingURL=main.css.map */
