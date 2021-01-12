@@ -1500,4 +1500,17 @@ cookie-close:active {
     margin-top: 0vh;
   }
 }
+
+.data-notes {
+  text-align: left !important;
+  font-weight: bold;
+}
+
+.data-notes-step {
+  margin-bottom: 5px;
+}
+
+.data-notes-step span {
+  font-weight: normal;
+}
 /*# sourceMappingURL=main.css.map */
