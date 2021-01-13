@@ -18,6 +18,11 @@ def create_app():
 
     # db.init_app(app)
     app.register_blueprint(main)
+    app.register_error_handler(403, main.page_forbidden)
+    app.register_error_handler(404, main.page_not_found)
+    app.register_error_handler(500, main.internal_server_error)
+    app.register_error_handler(503, main.service_unavailable)
+
     return app
 
 app = create_app()

@@ -74,16 +74,20 @@ def header_options():
     except Exception as e:
         return str(e)
 
-# @main.route("/robots.txt")
-# def robots():
-#     return render_template('robots.txt')
-
-# @main.route("/sitemap.xml")
-# def sitemap():
-#     return render_template('sitemap.xml')
-
-
 @main.route('/robots.txt')
 @main.route('/sitemap.xml')
 def static_from_root():
     return send_from_directory(current_app.static_folder, request.path[1:])
+
+def page_forbidden(e):
+    return render_template('403.html'), 403
+
+def page_not_found(e):
+    return render_template('404.html'), 404
+
+def internal_server_error(e):
+    return render_template('500.html'), 500
+
+def service_unavailable(e):
+    return render_template('503.html'), 503
+
