@@ -79,15 +79,20 @@ def header_options():
 def static_from_root():
     return send_from_directory(current_app.static_folder, request.path[1:])
 
+
+@main.app_errorhandler(403)
 def page_forbidden(e):
-    return render_template('403.html'), 403
+    return render_template('errors/403.html'), 403
 
+@main.app_errorhandler(404)
 def page_not_found(e):
-    return render_template('404.html'), 404
+    return render_template('errors/404.html'), 404
 
+@main.app_errorhandler(500)
 def internal_server_error(e):
-    return render_template('500.html'), 500
+    return render_template('errors/500.html'), 500
 
+@main.app_errorhandler(503)
 def service_unavailable(e):
-    return render_template('503.html'), 503
+    return render_template('errors/503.html'), 503
 
