@@ -1,17 +1,17 @@
 {% extends 'layout.html' %}
 
 {% block head %}
-<meta name="description" content="500 error" />
+<meta name="description" content="503 error" />
 {% endblock %}
 
-{% block title %}PPP Data 500 Error{% endblock %}
+{% block title %}PPP Data 503 Error{% endblock %}
 
 {% block content %}
 
 <div class="changing-content" data-barba="container" data-barba-namespace="data-notes">
 
     <div class="header">
-        <h1 class="header-text">500: We Broke Something</h1>
+        <h1 class="header-text">503: Service Unavailable</h1>
     </div>
     <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu" onclick="sidebarMenuClick()">
     <label for="openSidebarMenu" class="sidebarIconToggle">
@@ -33,15 +33,12 @@
 
     <div class="container data-notes-intro">
         <div class="content-section mx-auto">
-            <!-- <p class="notes-text text-center">
-                I guess Congress must be out of session. Shall we head back to the home page?
-            </p> -->
         </div>
     </div>
     <div class="card-group">
         <div class="col-md-8 mb-4 mx-auto">
             <div class="card text-center error-card">
-                <h3 class="about-header">Let's hope we handle data better than we do our website backend because something is broken.</h3>
+                <h3 class="about-header">There are too many of you here right now! A great problem to have, but a problem nonetheless, sorry about that.</h3>
                 <img src="{{ url_for('static', filename='images/about-data-logo.svg') }}" class="card-img-top"
                     alt="Data logo">
                 <div class="card-body">

@@ -1534,4 +1534,9 @@ cookie-close:active {
   font-weight: bold;
   color: #037AFB;
 }
+
+.error-card {
+  border: none !important;
+  margin-top: 15vh;
+}
 /*# sourceMappingURL=main.css.map */

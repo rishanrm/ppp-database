@@ -1,7 +1,57 @@
-{% extends "layout.html" %}
+{% extends 'layout.html' %}
+
+{% block head %}
+<meta name="description" content="403 error" />
+{% endblock %}
+
+{% block title %}PPP Data 403 Error{% endblock %}
+
 {% block content %}
-    <div class="content-section">
-        <h1>You don't have permission to do that. (403)</h1>
-        <p>Please check your account and try again.</p>
+
+<div class="changing-content" data-barba="container" data-barba-namespace="data-notes">
+
+    <div class="header">
+        <h1 class="header-text">403: That's Not For You</h1>
     </div>
+    <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu" onclick="sidebarMenuClick()">
+    <label for="openSidebarMenu" class="sidebarIconToggle">
+        <div class="menuIcon diagonal part-1"></div>
+        <div class="menuIcon horizontal"></div>
+        <div class="menuIcon diagonal part-2"></div>
+    </label>
+
+    <div id="sidebarMenu">
+        <div class="sidebarMenuInner">
+            <a class="sidebarLink" href="{{ url_for('main.index') }}" alt="Broken Home Link" title="Home">Home</a>
+            <a class="sidebarLink" href="{{ url_for('main.all_data') }}" title="All PPP Loan Data">Explore The Data</a>
+            <a class="sidebarLink" href="{{ url_for('main.summary_stats') }}" title="PPP Summary Stats">Summary
+                Stats</a>
+            <a class="sidebarLink" href="{{ url_for('main.about') }}" title="About">About</a>
+            <a class="sidebarLink" href="{{ url_for('main.contact') }}" title="Contact">Contact</a>
+        </div>
+    </div>
+
+    <div class="container data-notes-intro">
+        <div class="content-section mx-auto">
+            <!-- <p class="notes-text text-center">
+                I guess Congress must be out of session. Shall we head back to the home page?
+            </p> -->
+        </div>
+    </div>
+    <div class="card-group">
+        <div class="col-md-8 mb-4 mx-auto">
+            <div class="card text-center error-card">
+                <h3 class="about-header">Looks like you found the vault where they keep the $522,949,800,494.12. But you can't go in, sorry.</h3>
+                <img src="{{ url_for('static', filename='images/about-data-logo.svg') }}" class="card-img-top"
+                    alt="Data logo">
+                <div class="card-body">
+                    <p class="card-text">
+                        Shall we head back home?
+                    </p>
+                    <a href="{{ url_for('main.index') }}" class="btn btn-primary">Return Home</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock content %}
