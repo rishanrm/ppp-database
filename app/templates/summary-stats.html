@@ -31,11 +31,6 @@
 
 <div class="changing-content" data-barba="container" data-barba-namespace="summary-stats">
 
-    <!-- Button trigger modal -->
-    <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#mobileModal">
-        Launch demo modal
-    </button> -->
-
     <!-- Modal -->
     <div class="modal fade" id="mobileModal" tabindex="-1" role="dialog" aria-labelledby="ModalCenterTitle"
         aria-hidden="true">
@@ -87,17 +82,9 @@
         </div>
     </div>
 
-    <!-- Enable nav menu to close with a click outside of the menu -->
-
-
-    <!-- <section class="section-1 child" style="--screen:1"> -->
-    <!-- <div class="container hidden"> -->
-
     <div class="container table-content"></div>
     <div class="outside hidden">
-        <!-- <div class="table-title">
-            <h1>Loans under $150,000</h1>
-        </div> -->
+
         <div id="toolbar">
             <button id="summaryResetButton" class="btn btn-danger">Reset</button>
         </div>
@@ -153,7 +140,6 @@
             >
 
             <thead>
-                <!-- <div id="summary"> </div> -->
                 <tr>
                     <th data-field="state"              data-sortable="true" data-footer-formatter=sumFooterState                                         data-filter-control="select"                          >State</th>
                     <th data-field="loancount"          data-sortable="true" data-sorter="numericOnly" data-footer-formatter=sumFooterLoanCount           data-filter-control="input" data-sort-order="desc"    ># of Loans</th>
@@ -168,36 +154,19 @@
                 </tr>
             </thead>
             <tbody></tbody>
-
-<!-- {
-"state": "TOTAL",
-"loancount": "5,156,850",
-"totaljobs": "50,785,196",
-"totalloanamount": "$522,949,800,494.12",
-"avgloansize": "$101,408.77",
-"jobsperloan": 12,
-"dollarsperjob": "$8,907.63",
-"loancountnojobs": "932,556",
-"totalloansnojobs": "$70,573,990,121.26",
-"avgloansizenojobs": "$75,678.02"
-} -->
-
         </table>
+
         <div class="source">
             Source: 
             <a href="https://sba.app.box.com/s/5myd1nxutoq8wxecx2562baruz774si6/folder/127201759675"
             rel="nofollow noopener" target="_blank">SBA</a>, with manual adjustments (see
             <a href="{{ url_for('main.data_notes') }}" target="_blank">data notes</a>)
         </div>
+
         <div class="note">
             <span class="header-asterisk">*</span> Excludes loans for which Jobs Reported was 0 or blank<br>
             <span class="header-asterisk">**</span> Refers to loans for which Jobs Reported was 0 or blank
         </div>
     </div>
-
-    <!-- <script src="{{ url_for('static',filename='js/index.js') }}"></script> -->
-    <!-- <script>
-        $table.bootstrapTable()
-    </script> -->
 </div>
 {% endblock content %}

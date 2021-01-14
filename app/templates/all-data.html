@@ -11,30 +11,25 @@
 {% block content %}
 
 <script type="application/ld+json">
-        {
-            "@context":"https://schema.org/",
-            "@type":"Dataset",
-            "name": "Paycheck Protection Program Loan Data",
-            "description": "Complete set of loan-level data on the recipients of Paycheck Protection Program loans",
-            "alternateName": ["PPP Loan Data", "PPP Data for All Loans"],
-            "creator": [
-                {
-                    "@type": "Organization",
-                    "sameAs": "http://ror.org/015t55b95",
-                    "name": "Small Business Administration"
-                }
-            ],
-            "url": "https://home.treasury.gov/policy-issues/cares-act/assistance-for-small-businesses/sba-paycheck-protection-program-loan-level-data",
-            "license":"http://creativecommons.org/publicdomain/zero/1.0/"
-        }
-    </script>
+    {
+        "@context":"https://schema.org/",
+        "@type":"Dataset",
+        "name": "Paycheck Protection Program Loan Data",
+        "description": "Complete set of loan-level data on the recipients of Paycheck Protection Program loans",
+        "alternateName": ["PPP Loan Data", "PPP Data for All Loans"],
+        "creator": [
+            {
+                "@type": "Organization",
+                "sameAs": "http://ror.org/015t55b95",
+                "name": "Small Business Administration"
+            }
+        ],
+        "url": "https://home.treasury.gov/policy-issues/cares-act/assistance-for-small-businesses/sba-paycheck-protection-program-loan-level-data",
+        "license":"http://creativecommons.org/publicdomain/zero/1.0/"
+    }
+</script>
 
 <div class="changing-content" data-barba="container" data-barba-namespace="data">
-
-    <!-- Button trigger modal -->
-    <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#mobileModal">
-        Launch demo modal
-    </button> -->
 
     <!-- Modal -->
     <div class="modal fade" id="mobileModal" tabindex="-1" role="dialog" aria-labelledby="ModalCenterTitle"
@@ -86,17 +81,8 @@
         </div>
     </div>
 
-    <!-- Enable nav menu to close with a click outside of the menu -->
-
-
-    <!-- <section class="section-1 child" style="--screen:1"> -->
-    <!-- <div class="container hidden"> -->
-
     <div class="container table-content"></div>
     <div class="outside hidden">
-        <!-- <div class="table-title">
-            <h1>Loans under $150,000</h1>
-        </div> -->
         <div id="toolbar">
             <button id="resetButton" class="btn btn-danger">Reset</button>
         </div>
@@ -124,9 +110,6 @@
             <thead>
             <div id="summary"> </div>
                 <tr>
-                    <!--
-                    loanrange,businessname,address,city,state,zip,naicscode,businesstype,raceethnicity,gender,veteran,nonprofit,jobsretained,dateapproved,lender,cd
-                    -->
                     <th data-field="state" data-sortable="true" data-filter-control="select" data-filter-data="obj:colOptions.state" data-filter-default="AK">State</th>
                     <th data-field="loanamount" data-sortable="true" data-filter-control="input" data-sorter="alphanum" data-sort-order="desc" data-formatter="amountFormatter">Loan Amount</th>
                     <th data-field="businessname" data-sortable="true" data-filter-control="input">Business Name</th>
@@ -146,19 +129,17 @@
                 </tr>
             </thead>
         </table>
+
         <div class="source">
             Source: <a
                 href="http://investigativereportingworkshop.org/news/download-state-by-state-ppp-loan-data/"
                 rel="nofollow noopener" target="_blank">SBA via the Investigative Reporting Workshop</a>
         </div>
+
         <div class="note">
             <span class="header-asterisk">*</span> Total jobs does not account for those reported as "Unanswered"
         </div>
-    </div>
 
-    <!-- <script src="{{ url_for('static',filename='js/index.js') }}"></script> -->
-    <!-- <script>
-        $table.bootstrapTable()
-    </script> -->
+    </div>
 </div>
 {% endblock content %}

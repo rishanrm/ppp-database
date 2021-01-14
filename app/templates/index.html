@@ -10,10 +10,10 @@
 {% block content %}
 
 <div class="changing-content" data-barba="container" data-barba-namespace="home">
+
     <div class="header">
         <h1 class="header-text">Paycheck Protection Program Database</h1>
     </div>
-
 
     <div class="contact-success">
         <div class="inner-contact-success">
@@ -38,11 +38,9 @@
             <source class="background-image" type="image/jpeg" srcset="../images/us-capitol.jpg" alt="U.S. Capitol Building">
             <img class="background-image" src="../images/us-capitol.jpg" alt="U.S. Capitol Building">
         </picture>
-
     </div>
-    <main id="home">
-        <!-- <div class="container-fluid bg-primary top"> -->
-        
+
+    <main id="home">        
         <div class="container-fluid all-content">
             <div class="row">
                 <div class="left">
@@ -59,58 +57,12 @@
                         <ul class="list-group right-text">
                             <li class="nav-item"><a class="nav-link" href="{{ url_for('main.all_data') }}" alt="Broken Home Link" title="PPP Loan Data">Loan Data</a></li>
                             <li class="nav-item"><a class="nav-link" href="{{ url_for('main.summary_stats') }}" alt="Broken Summary Stats Link" title="PPP Summary Stats">Summary Stats</a></li>
-                            <!-- <li class="nav-item"><a class="nav-link" href="{{ url_for('main.data_150k_and_up') }}" alt="Broken Home Link" title="Loans $150K and up">Loans $150K and up</a></li> -->
                             <li class="nav-item"><a class="nav-link" href="{{ url_for('main.about') }}" alt="Broken Home Link" title="About the PPP">About the PPP</a></li>
-                            <!-- <li class="nav-item"><a class="nav-link" href="{{ url_for('main.contact') }}" alt="Broken Home Link" title="Contact us">Contact us</a></li> -->
-                            <!-- <li class="nav-item">Loans $150K and up </li><br/>
-                            <li class="nav-item">About the PPP</li><br/>
-                            <li class="nav-item">Contact us</li><br/> -->
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
     </main>
-    
 </div>
 {% endblock content %}
-<!-- </body>
-</html> -->
-
-
-        <!-- <div class="container-fluid bg-secondary bottom">
-            <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4">
-                <a class="bottom-content" href="https://www.google.com">
-
-                < !-- <div class="container">
-                    <img src="../static/images/open.jpg" alt="Avatar" class="image">
-                    <div class="overlay">
-                        <div class="text">Hello World</div>
-                    </div>
-                </div>
-                -- >
-
-                    <div class="tester">
-                        <img src="../static/images/open.jpg" alt="Small Loans" class="image">
-                        <div class="overlay">
-                            <h1>Loans under $150K</h1>
-                        </div>
-                    </div>
-                </a>
-                <a class="bottom-content" href="https://www.bing.com">
-                    <div>
-                        <h1>Loans $150K and up</h1>
-                    </div>
-                </a>
-                <a class="bottom-content" href="https://www.firefox.com">
-                    <div>
-                        <h1>About</h1>
-                    </div>
-                </a>
-                <a class="bottom-content" href="https://www.duckduckgo.com">
-                    <div>
-                        <h1>Contact</h1>
-                    </div>
-                </a>
-            </div> 
-        </div>-->

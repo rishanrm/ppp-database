@@ -14,15 +14,9 @@
 					j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
 						'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
 			})(window, document, 'script', 'dataLayer', 'GTM-TVD3RQP');</script>
-		<!-- End Google Tag Manager -->
 
 		<!-- ShareThis Social Sharing -->
 		<script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=5fe2f8e1b0768f00123aa4a3&product=sop' async='async'></script>
-		<!-- End ShareThis Social Sharing -->
-
-		<!-- ShareThis Verification -->
-		<!-- <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=5fe2f8e1b0768f00123aa4a3&product=sticky-share-buttons' async='async'></script> -->
-		<!-- ShareThis Verification -->
 
 		{% block head %}{% endblock %}
 
@@ -77,13 +71,12 @@
 
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-		<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/akottr/dragtable@master/dragtable.css"> -->
 		<link rel="text/css" href="https://unpkg.com/placeholder-loading/dist/css/placeholder-loading.min.css">
 		<link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.18.0/dist/bootstrap-table.min.css">
 		<link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.18.0/dist/extensions/page-jump-to/bootstrap-table-page-jump-to.min.css">
 		<link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.18.0/dist/extensions/filter-control/bootstrap-table-filter-control.css">
 
-		<!-- FLASK CSS -->
+		<!-- CUSTOM CSS -->
 		<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/main.css') }}">
 	</head>
 
@@ -91,10 +84,8 @@
 
 		<!-- Google Tag Manager (noscript) -->
 		<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TVD3RQP" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-		<!-- End Google Tag Manager (noscript) -->
 		
 		<!-- JS LIBRARIES -->
-		
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
 			integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
 			crossorigin="anonymous"></script>
@@ -105,10 +96,6 @@
 		<script src="https://unpkg.com/tableexport.jquery.plugin/libs/jsPDF-AutoTable/jspdf.plugin.autotable.js"></script>
 		<script src="https://unpkg.com/tableexport.jquery.plugin/tableExport.min.js"></script>
 		
-		<!-- Reorder columns -->
-		<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-		<script src="https://cdn.jsdelivr.net/gh/akottr/dragtable@master/jquery.dragtable.js"></script> -->
-		
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
 			integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
 			crossorigin="anonymous"></script>
@@ -116,30 +103,15 @@
 			integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
 			crossorigin="anonymous"></script>
 		<script src="https://unpkg.com/bootstrap-table@1.18.0/dist/bootstrap-table.min.js"></script>
-		
-		<!-- Sort columns -->
-		<!-- <script scr="https://unpkg.com/browse/bootstrap-table@1.15.5/dist/extensions/natural-sorting/bootstrap-table-natural-sorting.min.js"></script> -->
-		
-		<!-- Extensions -->
+
+		<!-- Other Extensions -->
 		<script src="https://unpkg.com/bootstrap-table@1.18.0/dist/extensions/addrbar/bootstrap-table-addrbar.min.js"></script>
-		<!-- <script src="https://unpkg.com/bootstrap-table@1.18.0/dist/extensions/export/bootstrap-table-export.min.js"></script> -->
-		<!-- <script src="https://unpkg.com/bootstrap-table@1.18.0/dist/extensions/mobile/bootstrap-table-mobile.min.js"></script> -->
 		<script src="https://unpkg.com/bootstrap-table@1.18.0/dist/extensions/page-jump-to/bootstrap-table-page-jump-to.min.js"></script>
-		<!-- <script src="https://unpkg.com/bootstrap-table@1.18.0/dist/extensions/print/bootstrap-table-print.min.js"></script> -->
-		<!-- <script src="https://unpkg.com/bootstrap-table@1.18.0/dist/extensions/reorder-columns/bootstrap-table-reorder-columns.min.js"></script> -->
-
-		<!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.min.js"></script> -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.18.1/extensions/export/bootstrap-table-export.min.js"></script>
-
-
-		
-		<!-- <script src="{{ url_for('static',filename='js/bootstrap-table-filter-control.js') }}"></script> -->
 		<script src="https://unpkg.com/bootstrap-table@1.18.0/dist/extensions/filter-control/bootstrap-table-filter-control.min.js"></script>
 		
+		<!-- Bootstrap Table -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.14.1/locale/bootstrap-table-en-US.min.js"></script>
-		
-
-
 
 		<ul class="transition">
 			<li></li>
@@ -200,26 +172,16 @@
 				</div>
 			</div>
 		</div>
-
-	<!-- PARTICLES.JS -->
-		<!-- <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-	
-		<script>
-			particlesJS.load('particles-js',
-				'particles.json', function() {
-					console.log('callback - particles.js config loaded');
-				});
-		</script> -->
 		
-	<!-- BARBA.JS -->
-	<script src="https://unpkg.com/@barba/core"></script>
-	
-	
-	<!-- GSAP -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+		<!-- BARBA.JS -->
+		<script src="https://unpkg.com/@barba/core"></script>
+		
+		<!-- GSAP -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
 
-	<script src="{{ url_for('static',filename='js/barba.js') }}"></script>
-	<script src="{{ url_for('static',filename='js/index.js') }}"></script>
+		<!-- CUSTOM JS -->
+		<script src="{{ url_for('static',filename='js/barba.js') }}"></script>
+		<script src="{{ url_for('static',filename='js/index.js') }}"></script>
 
-</body>
+	</body>
 </html>
