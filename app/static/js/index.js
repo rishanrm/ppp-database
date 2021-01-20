@@ -28,7 +28,6 @@ function callTable(i) {
     setTimeout(function() {
         $table.bootstrapTable();
         $summaryTable.bootstrapTable();
-        // console.log('Table called time #' + i);
     }, 2000 * i);
 }
 
@@ -37,9 +36,7 @@ var colOptions;
 var cdOptions = {};
 
 function getColumnNames() {
-     // console.log(params)
     var request = new XMLHttpRequest();
-    // request.open('GET', '/header_options', false);  // `false` makes the request synchronous
     request.open('GET', '/data/column_options.json', false);  // `false` makes the request synchronous
     request.send(null);
 
@@ -82,12 +79,10 @@ var getUserState = new Promise((resolve, reject) => {
         $.getJSON("https://api.ipify.org?format=json", function(data) { 
             ipAddress = data.ip
             $("#location").html(ipAddress);
-            console.log(ipAddress)
         })
 
         // <!-- Get location -->
         const ipUrl = `https://api.ipregistry.co/${ipAddress}?key=${key}`
-        console.log(ipUrl)
         try {
             fetch(ipUrl)
             .then(resp => {
@@ -113,11 +108,9 @@ var getUserState = new Promise((resolve, reject) => {
 
 // <!-- Get data -->
 function ajaxRequest(params) {
-    console.log("ENTERING AJAX REQUEST RIGHT HERE")
 
     getUserState
     .then(function(userStateFromIP) {
-        console.log("HERE HERE HERE")
         initialFilterValue = userStateFromIP
     })
     .catch(() => {
@@ -141,7 +134,6 @@ function ajaxRequest(params) {
         // <!-- Get column inputs on the HTML page -->
         var actualInputValues = {}
         var columns = Object.keys(orderedData)
-        console.log(columns)
         for (column of columns) {
             var openFieldVal = $("#table").find("input.form-control.bootstrap-table-filter-control-" + column).val()
             if (openFieldVal != undefined && openFieldVal != '') {
@@ -153,10 +145,7 @@ function ajaxRequest(params) {
                 }
             }
         }
-        console.log("ACTUAL INPUT VALUES:")
-        console.log(actualInputValues)
         updateCdOptions(actualInputValues['state'], actualInputValues['cd'])
-        console.log(params)
         params.data.filter = JSON.stringify(actualInputValues)
 
         // <!-- Get global search box input on the HTML page -->
@@ -182,12 +171,7 @@ function ajaxRequest(params) {
                 initialConditions = false;
             }
         });
-        console.log('Request Count: ' + requestCount)
         var url = '/data'
-        console.log("HERE ARE THE PARAMS IN THE REQUEST:")
-        console.log($.param(params.data))
-        // console.log("END PARAMS")
-        // $.get(url + '?' + $.param(params.data))
 
         if (requestCount == 0) {
 
@@ -207,8 +191,6 @@ function ajaxRequest(params) {
                             + '%22%3A%22'
                             + initialFilterValue
                             + '%22%7D'
-            console.log("Manual params:")
-            console.log(requestParams)
         } else {
             if (initialConditions){
                 if ($.param(params.data).includes('filter')){
@@ -222,14 +204,10 @@ function ajaxRequest(params) {
                 requestParams = $.param(params.data)
             }
         }
-        console.log('The request params are: \r\n' + requestParams)
-        console.log(url + '?' + 'page=' + page + '&' + requestParams)
         $.get(url + '?' + 'page=' + page + '&' + requestParams)
         
         .then(function (res) {
             params.success(res)
-            console.log(res)
-            console.log("THAT WAS THE RES")
             var thisTerm
             var businessTerm
             var stateSelected
@@ -273,10 +251,8 @@ function ajaxRequest(params) {
 
                 var summary = ('<span class=\'summary-intro\'>THE GIST:</span> ' + thisTerm + ' <span class=\'summary-var\'>' + loanCountTerm + ' ' + stateSelected + ' ' + businessTerm + ' </span>received <span class=\'summary-var\'>' + loanTotal + '</span> in PPP funds to support <span class=\'summary-var\'>' + jobsTotal + '</span> ' + jobsString + '.<span class="header-asterisk">*</span>')
             }
-                // document.getElementById("summary").innerText = summary;
             var summaryDiv = document.getElementById("summary");
             summaryDiv.innerHTML = summary;
-
         });
         requestCount++;
     })
@@ -285,8 +261,8 @@ function ajaxRequest(params) {
 function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
-// <!-- Format loan amount data -->        
 
+// <!-- Format loan amount data -->        
     function amountFormatter(value) {
         // return value.substring(0, value.length - 3)
         return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -301,7 +277,6 @@ function numberWithCommas(x) {
     }
 
 // <!-- Custom text for loading message, footer, search box placeholder, no match found -->
-        
 (function ($) {
     'use strict';
     $.fn.bootstrapTable.locales['en-US-custom'] = {
@@ -326,7 +301,6 @@ function numberWithCommas(x) {
     };
     $.extend($.fn.bootstrapTable.defaults, $.fn.bootstrapTable.locales['en-US-custom']);
 })(jQuery);
-
 
 // <!-- Format data when a row is expanded -->
 var orderedData
@@ -416,7 +390,6 @@ function detailFormatter(index, row) {
     var orderedColumns = getOrderedColumns()
     var orderedValues = reorderValues(row)
     orderedValues = formatValues(orderedValues)
-
     var html = ['<div class="detailview">']
     var i = 0
     var value
@@ -460,8 +433,6 @@ function summaryDetailFormatter(index, row) {
         } else {
             html.push('<p><b>' + summaryCols[key] + ':</b> ' + value + '</p>')
         }
-        console.log(summaryCols[key])
-        console.log(value)
     })
     html.push('</div>')
     return html.join('')
@@ -506,18 +477,15 @@ function totalCurrencySort(a, b, rowA, rowB) {
     return 0;
 }
 
-
 // <!-- Reset table button -->
 $(function() {
     $resetButton.click(function () {
         requestCount = 0
         initialConditions = true
         resetButtonClicked = true
-        // $('table').bootstrapTable('clearFilterControl')
 
         document.querySelector("body > div.changing-content > div.outside > div.bootstrap-table.bootstrap4 > div.fixed-table-toolbar > div.float-right.search.btn-group > div > input").value = ''
         var columns = Object.keys(orderedData)
-        console.log(columns)
         for (column of columns) {
             $("#table").find("input.form-control.bootstrap-table-filter-control-" + column).val('')
             $('select[class*="bootstrap-table-filter-control-' + column + '"]').val('');
@@ -530,14 +498,9 @@ $(function() {
 
 $(function() {
     $summaryResetButton.click(function () {
-        console.log("CLICKED IT")
         $summaryTable.bootstrapTable('clearFilterControl')
     })
 })
-
-
-
-
 
 // <!-- Navigate back to Page 1 when the results per page selection changes -->
 var currentPageSize = 10
@@ -578,7 +541,6 @@ $('#table').on('toggle.bs.table', function (cardView) {
     
 // <!-- Fix for Toggle All issue where table overlaps bottom pagination controls -->
 $('#table').on('post-body.bs.table', function (e, arg1, arg2) {
-    console.log('POST BODY RAN')
     $table.bootstrapTable('resetView')
 
     if (resetButtonClicked) {
@@ -595,24 +557,16 @@ $('#table').on('post-body.bs.table', function (e, arg1, arg2) {
 
 var preBodyRanCount = 0
 $('#table').on('pre-body.bs.table', function (e, arg1, arg2) {
-    console.log('PRE BODY RAN')
-    // $('div.hidden').fadeIn(7000).removeClass('hidden');
     if (preBodyRanCount > 0) {
         $('div.hidden').fadeIn(500).removeClass('hidden');
-    // setTimeout(() => { $('div.hidden').fadeIn(1000).removeClass('hidden'); }, 1);
     }
-    console.log(preBodyRanCount)
     preBodyRanCount++;
 });
 
 $('#summary-table').on('pre-body.bs.table', function (e, arg1, arg2) {
-    console.log('PRE BODY RAN')
-    // $('div.hidden').fadeIn(7000).removeClass('hidden');
     if (preBodyRanCount > 0) {
         $('div.hidden').fadeIn(500).removeClass('hidden');
-    // setTimeout(() => { $('div.hidden').fadeIn(1000).removeClass('hidden'); }, 1);
     }
-    console.log(preBodyRanCount)
     preBodyRanCount++;
 
     if (requestCount == 0) {
@@ -646,14 +600,6 @@ function sidebarMenuClick(element, eventName) {
             };
         }, false);
 
-        // function sidebarMenuClick(element, eventName) {
-        //     var manualEvent = document.createEvent("HTMLEvents");
-        //     manualEvent.initEvent(eventName, false, true);
-        //     element.dispatchEvent(manualEvent);
-        // }
-
-        // var div = document.createElement('div');
-        // div.id = 'left-nav-cover';
         document.getElementsByTagName('body')[0].appendChild(div);
         if (checkbox.checked) {
             div.innerHTML = "<div id='left-nav-cover-inner'></div>";
@@ -676,12 +622,10 @@ $('.cookie-close').click(function () {
 // Hide initial page loader
 $('#table').on('load-success.bs.table', function () {
     document.querySelector(".pre-table-spinner").style.display = "none";
-
 });
 
 $('#summary-table').on('load-success.bs.table', function () {
     document.querySelector(".pre-table-spinner").style.display = "none";
-
 });
 
 // Scroll progress bar
@@ -693,20 +637,8 @@ $(window).scroll(function() {
     $("#progressbar").css("height", scrollPercent + "%");
 });
 
-// Mobile Modal
-// $('#myModal').on('shown.bs.modal', function () {
-//     $('#myInput').trigger('focus')
-// })
-
-// $(window).on('load', function() {
-//     $('#mobileModal').modal('show');
-// });
-
 $(document).ready(function(){
-    console.log("INNER WIDTH:")
-    console.log(window.innerWidth)
     if (window.innerWidth < 600) {
-        console.log(window.innerWidth < 600)
         $("#mobileModal").modal('show');
     }
 });
@@ -785,18 +717,3 @@ function numericOnly(a, b) {
 
     return stripNonNumber(a) - stripNonNumber(b);
 }
-
-
-
-
-
-
-console.log("\n\n\nUPDATED 1/12/21 10:00pm\n\n\n")
-
-// $('#summary-table').tableExport({
-//     fileName: 'sFileName',
-//     ignoreColumn: [0]
-// });
-
-
-
