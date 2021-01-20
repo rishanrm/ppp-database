@@ -7,11 +7,8 @@ from send_email import Email
 main = Blueprint('main', __name__)
 
 @main.route("/", methods=['GET', 'POST'])
-# @main.route("/index", methods=['GET', 'POST'])
-# @main.route("/home", methods=['GET', 'POST'])
 def index():
     return render_template('index.html')
-
 
 @main.route("/all-data")
 def all_data():

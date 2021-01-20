@@ -16,7 +16,6 @@ def create_app():
     else:
         raise ValueError('Invalid environment name')
 
-    # db.init_app(app)
     app.register_blueprint(main)
     return app
 

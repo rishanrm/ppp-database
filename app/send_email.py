@@ -56,7 +56,6 @@ Message: {form.message.data}"""
         # Create secure connection with server and send email
         context = ssl.create_default_context()
         with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
-            # with smtplib.SMTP_SSL("smtp.gmail.com", 587, context=context) as server:
             server.login(current_app.config["CONTACT_EMAIL_ADDR"], current_app.config["CONTACT_EMAIL_PASS"])
             server.sendmail(
                 sender_email, receiver_email, message.as_string()

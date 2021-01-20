@@ -180,7 +180,6 @@ class DatabaseConnection():
             column_headers = current_app.config["HEADERS_150K_AND_UP"]
         elif page == "data-under-150k":
             column_headers = current_app.config["HEADERS_UNDER_150K"]
-        # column_headers = DatabaseNames.get_csv_column_headers(current_app.config.SOURCE_FILE_NAME)
         numeric_headers = current_app.config["NUMERIC_HEADERS"]
         string_headers = [column for column in column_headers if column not in numeric_headers]
 
@@ -215,7 +214,6 @@ class DatabaseConnection():
         print("FILTER DATA:")
         print(filter_data)
         filter_sql = sql.SQL("")
-        # filter_data = json.loads(filter_data)
         numeric_headers = current_app.config["NUMERIC_HEADERS"]
         for filter in filter_data:
             if filter not in numeric_headers:
@@ -258,6 +256,7 @@ class DatabaseConnection():
                     modifier_closing = sql.SQL(modifier_closing)
                 )
                 print(filter_sql)
+
             elif filter in numeric_headers:
                 equality_type = "="
                 modifier_opening = ""
@@ -275,13 +274,6 @@ class DatabaseConnection():
                     equality_type = sql.SQL(equality_type),
                     filter_term = sql.Literal(filter_term)
                 )
-                # filter_term = filter_data[filter].strip("$").replace(',', '').split(".", 1)[0]
-                # if filter_term.isdigit():
-                #     filter_sql += sql.SQL("AND {filter_column} = {filter_term} ").format(
-                #         filter_column = sql.Identifier(filter),
-                #         filter_term = sql.Literal(filter_term)
-                #     )
-
         return filter_sql
         
     @staticmethod
@@ -316,11 +308,6 @@ class DatabaseConnection():
         return sql.SQL(") t;")
 
     def fetch_from_db(self, sql_query_data, return_type):
-        # print("SQL QUERY - QUERY PARAMETER:")
-        # print(sql_query_data["query"])
-        # print("\n")
-        # print("SQL QUERY - DATA PARAMETER:")
-        # print(sql_query_data["data"])
         self.my_cursor.execute(sql_query_data["query"], sql_query_data["data"])
         results = self.my_cursor.fetchall()
 
@@ -357,16 +344,10 @@ class DatabaseConnection():
         if data_type == "footer":
             results_str = "\"footer\": {" + results_str + " }"
 
-        # print(results_str)
-        # print("THAT WAS IT")
-
         return results_str
 
     @staticmethod
     def build_table_json(results_len_str, total_count_str, results_str, summary_data_str):
-
-        #results_len_str = "\"total\": " + str(results_len)
-        # table_json_str = "{ " + results_len_str + ", " + total_count_str + ", " + results_str + " }"
         table_json_str = "{ " + results_len_str + ", " + total_count_str + ", " + results_str + ", " + summary_data_str + " }"
         return table_json_str
 
@@ -387,7 +368,6 @@ class DatabaseConnection():
         options_dict = {}
         for option in column_options:
             options_dict[option[0]] = option[0]
-        # return (options_dict)
         return ({column: options_dict}) #Returns result labeled by the column name
 
     def get_all_column_options(self, column_headers):
@@ -422,7 +402,6 @@ class DatabaseConnection():
             i += 1
         return all_options_dict
         
-
 """Functionality for initial data population in a database"""
 class DatabaseNames():
 
@@ -433,14 +412,3 @@ class DatabaseNames():
             .replace(" ", "_")\
             .replace("-", "")\
             .lower()
-        # DB_NAME = name_root + "_db"
-        # TABLE_NAME = name_root + "_table"
-
-"""
-#p355491811298-swj734@gcp-sa-cloud-sql.iam.gserviceaccount.com
-355491811298-compute@developer.gserviceaccount.com
-gcloud sql connect ppp-test-16 --user=root
-gcloud sql connect ppp-test-16 --user=postgres < employees.sql
-https://us-central1-ppp-test-283923.cloudfunctions.net/codelab-sql
-https://us-central1-ppp-test-283923.cloudfunctions.net/function-1
-"""
