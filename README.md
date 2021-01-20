@@ -1,2 +1,2 @@
-# bs-table
+# ppp-database
 Paycheck Protection Program Database
