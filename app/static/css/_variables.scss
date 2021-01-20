@@ -2,6 +2,10 @@ $bs-blue: #037AFB;
 $bs-red: #DC3C45;
 
 $header-height: 10vh;
+$footer-height: 3vh;
+
+$top-height: 100vh;
+$bottom-height: 100vh - $top-height;
 
 $background-vertical-offset: 2vh;
 
@@ -13,21 +17,14 @@ $table-side-margin: 10vw;
 $pre-table-spinner-radius: 10vh;
 
 $small-screen-pagination-font-size: 1rem;
-// $small-screen-pagination-font-size: 0.514rem;
 
 $about-offset-top: 1vh;
 $privacy-offset-bottom: 5vh;
 $terms-offset-bottom: $privacy-offset-bottom;
 $contact-offset-bottom: $privacy-offset-bottom;
 
-$footer-height: 3vh;
-
-$top-height: 100vh;
-$bottom-height: 100vh - $top-height;
-
 $sidebar-icon-toggle-height: 5vh;
 $sidebar-icon-toggle-width: 5vh;
-
 $sidebar-icon-line-height: 3px;
 
 $enable-responsive-font-sizes: true;

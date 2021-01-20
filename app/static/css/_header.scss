@@ -5,7 +5,6 @@
     max-width: 100%;
     box-shadow: none;
     background-color: $bs-blue;
-    // background-color: transparent;
     position: fixed;
     height: $header-height;
     overflow: hidden;
@@ -16,7 +15,6 @@
     width: 100vw;
     padding-left: 10vh;
     padding-right: 10vh;
-    // height: 100vh - $header-height;
     position: absolute;
     font-size: calc(1em + 2vw);
     font-weight: bold;
@@ -26,11 +24,6 @@
     left: 50%;
     transform: translate(-50%, -50%);
     line-height: 1.0 !important;
-    /* vertical-align: middle; */
-
-    /* top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); */
 }
 
 .ppp-logo {
@@ -41,14 +34,6 @@
     margin-top: $header-height * 0.1;
     right: 2vw;
 }
-
-// @media all and (max-width: 768px) {
-//     .ppp-logo {
-//         display: none;
-//     }
-// }
-
-
 
 @media all and (max-width: 441px) {
     .header-text {

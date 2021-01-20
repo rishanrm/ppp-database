@@ -1,16 +1,10 @@
 .terms{
-    // margin: 10vw !important;
     margin-top: $header-height;
     margin-bottom: $footer-height + $terms-offset-bottom;
 }
 
 .lastElement {
     margin-bottom: 10vh;
-}
-
-[data-custom-class='body'],
-[data-custom-class='body'] * {
-    // background: transparent !important;
 }
 
 [data-custom-class='title'],

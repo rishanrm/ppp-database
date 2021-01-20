@@ -1,11 +1,11 @@
 .about-header {
     color: $bs-blue;
-    // font-size: 1.5rem;
     font-weight: bold;
     font-style: italic;
     border-bottom: 3px solid #DC3C45;
     border-bottom-style: double;
 }
+
 .about-content{
     margin-top: $header-height + $about-offset-top;
     margin-bottom: 2vh;
@@ -44,14 +44,16 @@
     .about-disclaimer {
         margin-bottom: 10vh;
     }
+
     .about-content {
         font-size: 1rem !important;
     }
+
     .card-group {
     padding-bottom: 6vh;
+    }
     
     .learn-more {
         margin-top: 0vh;
     }
-}
 }

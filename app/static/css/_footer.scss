@@ -1,25 +1,16 @@
 .footer {
-    // display: block;
-    // position: absolute;
-    // top: 100vh - $header-height - $footer-height;
-    // margin: 0 auto;
-    // margin-top: 10vh;
     width: 100%;
     height: $footer-height;
     overflow: hidden;
     z-index: 1013;
     box-shadow: none;
     background-color: $bs-red;
-    // position: fixed;
     position: fixed;
     left: 0;
     bottom: 0;
     display: flex;
-    // justify-content: center;
     align-items: center;
     text-align: center;
-    // font-weight: lighter;
-    // font-size: 1em;
     font-size: calc(0.5em + .25vw);
     color: white;
     line-height: 1.2;
@@ -29,12 +20,9 @@
     color: white;
     padding-left: 0.5em;
     padding-right: 0.5em;
-    // padding-top: 0.0625em * 3;
-    // padding-bottom: 0.0625em * 3;
     padding-top: 0.5vh;
     padding-bottom: 0.5vh;
     border-radius: 1em;
-    // border: 2px solid transparent;
     margin: 0;
 }
 
@@ -42,7 +30,6 @@
     color: $bs-blue;
     transition: $nav-item-transition-time ease;
     background: white;
-    // border: 5px solid $bs-red;
     text-decoration: none;
 }
 
@@ -60,8 +47,8 @@
     padding: 0;
     margin-top: ($footer-height - $social-icon-dim)/2;
     margin-bottom: ($footer-height - $social-icon-dim)/2;
-     margin-left: $social-icon-dim * 0.2;
-     margin-right: $social-icon-dim * 0.2;
+    margin-left: $social-icon-dim * 0.2;
+    margin-right: $social-icon-dim * 0.2;
     border-radius: 0.25em;
     }
 
@@ -71,53 +58,12 @@
         font-size: calc(1em + 0.25vw);
         font-weight: bold;
     }
+
     .copyright-link-full {
         display: none;
     }
+
     .copyright-link-short {
         display: inline-flex;
     }
 }
-
-// .nav-link {
-//     color: rgb(255, 255, 255);
-//     text-align: right;
-//     font-size: calc(1em + 0.5vw);
-//     line-height: calc(1em + 0.5vw);
-    // padding-left: 1em;
-    // padding-right: 1em;
-    // border-radius: 1em;
-    // border: 5px solid transparent;
-    // margin: 0;
-// }
-
-// .nav-link:hover {
-//     // opacity: 1;
-//     color: $bs-blue;
-//     transition: $nav-item-transition-time ease;
-//     background: white;
-//     border: 5px solid $bs-red;
-//     // border-radius: 1em;
-//     // padding-left: 1em;
-//     // padding-left: 1em;
-// }
-
-// .copyright {
-//     font-size: calc(0.5em + .25vw);
-// }
-
-// .footer-items{
-    // margin: 0;
-    // padding: 0;
-// }
-
-// .test-row{
-//     margin:0;
-//     padding:0;
-//     width: 100%;
-// }
-
-// .bs-reset {
-//     max-width: none;
-//     padding: 0;
-// }

@@ -6,52 +6,14 @@ html, body {
 
 body {
     height: 100vh;
-    // background: rgb(240, 240 240);
 }
 
-/* .wrapper {
-    padding: 1em;
-} */
-
-/* ul {
-    list-style: none;
-    display: flex;
-    padding: 0;
-    margin-right: auto;
-} */
-
-/* a {
-    text-decoration: none;
-    color: black;
-} */
-
-    /* li a {
-        margin-right: 2em;
-    } */
-
-
-/* .cta {
-    display: block;
-    padding: 2em 2em 2em 0;
-    font-size: 1.4em
-} */
-
-/* img {
-    width: 100%;
-    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
-} */
-
 ul.transition {
-
     list-style: none;
-
     padding: 0;
     margin-right: auto;
-
-
     display: flex;
     position: fixed;
-    // position: absolute;
     z-index: 1101;
     height: 100vh;
     width: 100%;
@@ -67,12 +29,12 @@ ul.transition li {
     width: 20%;
 }
 
-/* ul.transition {
-    height: 100vh;
-    width: 100%;
-    background: #be2829;
-    display: none;
-} */
+// <!-- Colors:
+// 	#DC3C45
+// 	#EE9EA2
+// 	#FFFFFF
+// 	#81BDFD
+// 	#037AFB -->
 
 ul.transition li:nth-child(1) {
     background-color: $bs-red;
@@ -105,18 +67,3 @@ ul.transition li:nth-child(5) {
     z-index: 1102;
     opacity: 0;
 }
-
-
-/* GSAP */
-/* .loader {
-    position: fixed;
-    width: 100vw;
-    height: 200vh;
-    pointer-events: none;
-    background-color: #FFF6ED;
-    z-index: 1;
-    visibility: hidden;
-    opacity: 0;
-} */
-/* END GSAP */
-
